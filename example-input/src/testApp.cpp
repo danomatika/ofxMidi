@@ -3,16 +3,17 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){
-     ofBackground(255,255,255);
-     midiIn.listPorts();
-     midiIn.openPort(1);
-     midiIn.addListener(this);
-
-     // to register only to one controller pass the id as first argument
-     // midiIn.addListener(84,this);
-
-     // to debug
-     // midiIn.setVerbose(true);
+	ofSetVerticalSync(true);
+	ofBackground(255,255,255);
+	midiIn.listPorts();
+	midiIn.openPort(1);
+	midiIn.addListener(this);
+	
+	// to register only to one controller pass the id as first argument
+	// midiIn.addListener(84,this);
+	
+	// to debug
+	// midiIn.setVerbose(true);
 }
 
 //--------------------------------------------------------------
@@ -22,22 +23,14 @@ void testApp::update(){
 
 //--------------------------------------------------------------
 void testApp::draw(){
-     ofSetColor(0x000000);
-     ofRect(20,40,(ofGetWidth()-40)*(float)value/127,20);
-     ofDrawBitmapString(msg,20,300);
-}
-
-//midiIn events
-void testApp::newMessage(int _port, int _id, int _value, double _timestamp){
-	value 		= _value;
-	id 			= _id;
-	port 		= _port;
-	timestamp 	= _timestamp;
+	ofSetColor(0x000000);
+	ofRect(20,40,(ofGetWidth()-40)*(float)value/127,20);
+	ofDrawBitmapString(msg,20,300);
 }
 
 //--------------------------------------------------------------
 void testApp::keyPressed  (int key){
-
+	
 }
 
 //--------------------------------------------------------------
@@ -50,12 +43,12 @@ void testApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void testApp::mouseDragged(int x, int y, int button){
-
+	
 }
 
 //--------------------------------------------------------------
 void testApp::mousePressed(int x, int y, int button){
-
+	
 }
 
 //--------------------------------------------------------------
