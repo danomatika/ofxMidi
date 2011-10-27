@@ -17,7 +17,6 @@ public:
 	void openPort(unsigned int port=0);
 	void closePort();
 	unsigned int getPort();
-	void setVerbose(bool verbose);
 	
 	void sendNoteOn(int channel, int id, int value);
 	void sendNoteOff(int channel, int id, int value);
@@ -32,7 +31,5 @@ protected:
 	RtMidiOut midiout;
 	unsigned int nPorts;
 	unsigned int port;
-	bool bVerbose;
-	std::vector<unsigned char> message;
-	
+	vector<unsigned char> message;
 };

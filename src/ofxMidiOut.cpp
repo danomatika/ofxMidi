@@ -24,11 +24,11 @@ void ofxMidiOut::listPorts(){
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::openPort(unsigned int _port){
 	if ( nPorts == 0 ) {
-		printf( "No ports available!\n" );
+		ofLogError() << "No ports available!";
 		return;
 	}
 	if ( _port+1 > nPorts ){
-		printf("The selected port is not available\n");
+		ofLogError() << "The selected port is not available";
 		return;
 	}
 	
@@ -38,10 +38,6 @@ void ofxMidiOut::openPort(unsigned int _port){
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::closePort(){
 	midiout.closePort();
-}
-// --------------------------------------------------------------------------------------
-void ofxMidiOut::setVerbose(bool verbose){
-	bVerbose=verbose;
 }
 // --------------------------------------------------------------------------------------
 unsigned int ofxMidiOut::getPort(){
