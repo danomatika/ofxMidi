@@ -12,6 +12,7 @@ ofxMidiIn::ofxMidiIn() {
 	// Check available ports.
 	nPorts = midii.getPortCount();
 	portNames.clear();
+	bVerbose = false;
 }
 // --------------------------------------------------------------------------------------
 ofxMidiIn::~ofxMidiIn() {
