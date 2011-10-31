@@ -8,7 +8,7 @@
 
 #include "ofMain.h"
 
-void ofxMidiInCallback( double deltatime, std::vector< unsigned char > *message, void *userData );
+void ofxMidiInCallback( double deltatime, vector< unsigned char > *message, void *userData );
 
 class ofxMidiIn {
 public:
@@ -18,7 +18,7 @@ public:
 	void listPorts();
 	void openPort(unsigned int port=0);
 	void closePort();
-	void manageNewMessage(double deltatime, std::vector< unsigned char > *message);
+	void manageNewMessage(double deltatime, vector< unsigned char > *message);
 	unsigned int getPort();
 	void setVerbose(bool verbose);
 	

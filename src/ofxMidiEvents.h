@@ -13,7 +13,7 @@ public:
 	double timestamp;
 };
 
-typedef ofEvent <ofxMidiEventArgs> ofxMidiEvent ;
+typedef ofEvent <ofxMidiEventArgs> ofxMidiEvent;
 
 class ofxMidiListener {
 public:

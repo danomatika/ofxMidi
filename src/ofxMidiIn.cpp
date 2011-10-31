@@ -1,6 +1,6 @@
 #include "ofxMidiIn.h"
 
-void ofxMidiInCallback( double deltatime, std::vector< unsigned char > *message, void *userData ){
+void ofxMidiInCallback( double deltatime, vector< unsigned char > *message, void *userData ){
 	((ofxMidiIn*)userData)->manageNewMessage(deltatime,message);
 	
 }
@@ -52,15 +52,15 @@ void ofxMidiIn::closePort(){
 	midii.closePort();
 }
 // --------------------------------------------------------------------------------------
-void ofxMidiIn::manageNewMessage(double deltatime, std::vector< unsigned char > *message){
+void ofxMidiIn::manageNewMessage(double deltatime, vector< unsigned char > *message){
 	
 	unsigned int nBytes = message->size();
 	if(bVerbose){
-		std::cout << "num bytes: "<<nBytes;
+		cout << "num bytes: "<<nBytes;
 		for ( unsigned int i=0; i<nBytes; i++ )
-			std::cout << " Byte " << i << " = " << (int)message->at(i) << ", ";
+			cout << " Byte " << i << " = " << (int)message->at(i) << ", ";
 		if ( nBytes > 0 )
-			std::cout << "stamp = " << deltatime << '\n';
+			cout << "stamp = " << deltatime << '\n';
 	}
 	
 	if(nBytes>0){
