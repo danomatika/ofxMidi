@@ -17,12 +17,12 @@ public:
 	
 	void listPorts();
 	void openPort(unsigned int _port=0);
+	void openPort(string _deviceName);
 	void openVirtualPort(string _port);
 	void closePort();
 	void manageNewMessage(double deltatime, vector< unsigned char > *message);
 	unsigned int getPort();
 	void setVerbose(bool verbose);
-	
 	vector<string> portNames;
 	
 protected:

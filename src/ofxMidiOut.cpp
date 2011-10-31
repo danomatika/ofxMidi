@@ -36,6 +36,32 @@ void ofxMidiOut::openPort(unsigned int _port){
 	midiout.openPort( port );
 }
 // --------------------------------------------------------------------------------------
+void ofxMidiOut::openPort(string _deviceName){
+	if ( nPorts == 0 ) {
+		printf( "No ports available!\n" );
+		return;
+	}
+	
+	// Iterate through MIDI ports, find requested devices
+	bool foundDevice = false;
+	int _port;
+	for(unsigned int i=0; i < nPorts; ++i){
+		string portName = portNames[i].c_str();
+		if(portName.compare(_deviceName) == 0) {
+			foundDevice = true;
+			_port = i;
+		}
+	}
+	if(!foundDevice) {
+		// if not found
+		printf("The selected port is not available\n");
+		return;
+	} 
+	
+	port = _port;
+	midiout.openPort( port );
+}
+// --------------------------------------------------------------------------------------
 void ofxMidiOut::openVirtualPort(string _port){
 	
 	midiout.openVirtualPort(_port);
