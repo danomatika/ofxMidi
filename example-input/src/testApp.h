@@ -21,21 +21,18 @@ public:
 	void mousePressed(int x, int y, int button);
 	void mouseReleased();
 	
+	void newMidiMessage(ofxMidiEventArgs& eventArgs);
 	
+	// vars
 	int port;
 	int id;
 	int value;
 	double timestamp;
 	char msg[255];
 	
+	// midi addon
 	ofxMidiIn	midiIn;
-	//midiIn events
-	void newMidiMessage(ofxMidiEventArgs& eventArgs) {
-		value = eventArgs.byteOne;
-		id = eventArgs.channel;
-		port = eventArgs.port;
-		timestamp = eventArgs.timestamp;
-	}
+
 };
 
 #endif

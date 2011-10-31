@@ -29,6 +29,18 @@ void testApp::draw(){
 }
 
 //--------------------------------------------------------------
+void testApp::newMidiMessage(ofxMidiEventArgs& eventArgs) {
+	
+	// store some data from midi message in variables
+	value = eventArgs.byteOne;
+	id = eventArgs.channel;
+	port = eventArgs.port;
+	timestamp = eventArgs.timestamp;
+	
+	
+}
+
+//--------------------------------------------------------------
 void testApp::keyPressed  (int key){
 	
 }
