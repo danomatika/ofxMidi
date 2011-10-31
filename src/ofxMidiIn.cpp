@@ -48,6 +48,12 @@ void ofxMidiIn::openPort(unsigned int _port){
 	midii.ignoreTypes( false, false, false );
 }
 // --------------------------------------------------------------------------------------
+void ofxMidiIn::openVirtualPort(string _port){
+	
+	midii.openVirtualPort(_port);
+	
+}
+// --------------------------------------------------------------------------------------
 void ofxMidiIn::closePort(){
 	midii.closePort();
 }

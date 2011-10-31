@@ -36,6 +36,12 @@ void ofxMidiOut::openPort(unsigned int _port){
 	midiout.openPort( port );
 }
 // --------------------------------------------------------------------------------------
+void ofxMidiOut::openVirtualPort(string _port){
+	
+	midiout.openVirtualPort(_port);
+	
+}
+// --------------------------------------------------------------------------------------
 void ofxMidiOut::closePort(){
 	midiout.closePort();
 }
