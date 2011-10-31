@@ -1,4 +1,7 @@
-// ofxMidi was originally developed by Chris O'Shea and Arturo Castro.
+/*
+ ofxMidi
+ http://www.chrisoshea.org/lab/ofxmidi
+*/
 
 #pragma once
 

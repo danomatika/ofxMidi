@@ -21,6 +21,8 @@ public:
 	void sendNoteOn(int channel, int id, int value);
 	void sendNoteOff(int channel, int id, int value);
 	void sendControlChange(int channel, int id, int value);
+	void sendProgramChange(int channel, int value);
+	void sendPitchBend(int channel, int lsb, int msb);
 	
 	vector<string> portNames;
 	

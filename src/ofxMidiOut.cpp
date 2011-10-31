@@ -71,3 +71,18 @@ void ofxMidiOut::sendControlChange(int channel, int id, int value){
 	message.push_back( value );
 	sendMessage();
 }
+// --------------------------------------------------------------------------------------
+void ofxMidiOut::sendProgramChange(int channel, int value){
+	message.clear();
+	message.push_back( MIDI_PROGRAM_CHANGE+(channel-1) );
+	message.push_back( value );
+	sendMessage();
+}
+// --------------------------------------------------------------------------------------
+void ofxMidiOut::sendPitchBend(int channel, int lsb, int msb){
+	message.clear();
+	message.push_back( MIDI_PITCH_BEND+(channel-1) );
+	message.push_back( lsb );
+	message.push_back( msb );
+	sendMessage();
+}
