@@ -48,6 +48,39 @@ void ofxMidiIn::openPort(unsigned int _port){
 	midii.ignoreTypes( false, false, false );
 }
 // --------------------------------------------------------------------------------------
+void ofxMidiIn::openPort(string _deviceName){
+	if ( nPorts == 0 ) {
+		printf( "No ports available!\n" );
+		return;
+	}
+	
+	// Iterate through MIDI ports, find requested devices
+	bool foundDevice = false;
+	int _port;
+	for(unsigned int i=0; i < nPorts; ++i){
+		string portName = portNames[i].c_str();
+		if(portName.compare(_deviceName) == 0) {
+			foundDevice = true;
+			_port = i;
+		}
+	}
+	if(!foundDevice) {
+		// if not found
+		printf("The selected port is not available\n");
+		return;
+	} 
+	
+	port = _port;
+	midii.openPort( port );
+	// Set our callback function. This should be done immediately after
+	// opening the port to avoid having incoming messages written to the
+	// queue.
+	midii.setCallback( &ofxMidiInCallback, this );
+	
+	// Don't ignore sysex, timing, or active sensing messages.
+	midii.ignoreTypes( false, false, false );
+}
+// --------------------------------------------------------------------------------------
 void ofxMidiIn::openVirtualPort(string _port){
 	
 	midii.openVirtualPort(_port);
