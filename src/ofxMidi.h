@@ -1,12 +1,6 @@
-/*
- *      ofxMidi.h
- *
- *      v 0.02 July 2009
- *      Arturo & Chris O'Shea
- */
+// ofxMidi was originally developed by Chris O'Shea and Arturo Castro.
 
-#ifndef OFX_MIDI_H_
-#define OFX_MIDI_H_
+#pragma once
 
 #include <iostream>
 #include "RtMidi.h"
@@ -16,6 +10,3 @@
 
 #include "ofxMidiIn.h"
 #include "ofxMidiOut.h"
-
-
-#endif

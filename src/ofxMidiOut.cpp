@@ -1,12 +1,4 @@
-/*
- *      ofxMidiOut.cpp
- *
- *      v 0.02 July 2009
- *      Arturo & Chris O'Shea
- */
-
 #include "ofxMidiOut.h"
-
 
 // --------------------------------------------------------------------------------------
 ofxMidiOut::ofxMidiOut() {
@@ -19,7 +11,7 @@ ofxMidiOut::ofxMidiOut() {
 }
 // --------------------------------------------------------------------------------------
 ofxMidiOut::~ofxMidiOut() {
-    closePort();
+	closePort();
 }
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::listPorts(){
@@ -32,24 +24,20 @@ void ofxMidiOut::listPorts(){
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::openPort(unsigned int _port){
 	if ( nPorts == 0 ) {
-		printf( "No ports available!\n" );
+		ofLogError() << "No ports available!";
 		return;
 	}
 	if ( _port+1 > nPorts ){
-		printf("The selected port is not available\n");
+		ofLogError() << "The selected port is not available";
 		return;
 	}
-
+	
 	port = _port;
 	midiout.openPort( port );
 }
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::closePort(){
-    midiout.closePort();
-}
-// --------------------------------------------------------------------------------------
-void ofxMidiOut::setVerbose(bool verbose){
-	bVerbose=verbose;
+	midiout.closePort();
 }
 // --------------------------------------------------------------------------------------
 unsigned int ofxMidiOut::getPort(){
@@ -57,29 +45,29 @@ unsigned int ofxMidiOut::getPort(){
 }
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::sendMessage(){
-    midiout.sendMessage( &message );
+	midiout.sendMessage( &message );
 }
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::sendNoteOn(int channel, int id, int value){
-    message.clear();
-    message.push_back( MIDI_NOTE_ON+(channel-1) );
-    message.push_back( id );
-    message.push_back( value );
-    sendMessage();
+	message.clear();
+	message.push_back( MIDI_NOTE_ON+(channel-1) );
+	message.push_back( id );
+	message.push_back( value );
+	sendMessage();
 }
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::sendNoteOff(int channel, int id, int value){
-    message.clear();
-    message.push_back( MIDI_NOTE_OFF+(channel-1) );
-    message.push_back( id );
-    message.push_back( value );
-    sendMessage();
+	message.clear();
+	message.push_back( MIDI_NOTE_OFF+(channel-1) );
+	message.push_back( id );
+	message.push_back( value );
+	sendMessage();
 }
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::sendControlChange(int channel, int id, int value){
-    message.clear();
-    message.push_back( MIDI_CONTROL_CHANGE+(channel-1) );
-    message.push_back( id );
-    message.push_back( value );
-    sendMessage();
+	message.clear();
+	message.push_back( MIDI_CONTROL_CHANGE+(channel-1) );
+	message.push_back( id );
+	message.push_back( value );
+	sendMessage();
 }
