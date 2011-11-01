@@ -15,6 +15,7 @@ public:
 	
 	void listPorts();
 	void openPort(unsigned int port=0);
+	void openPort(string _deviceName);
 	void openVirtualPort(string _port);
 	void closePort();
 	unsigned int getPort();
