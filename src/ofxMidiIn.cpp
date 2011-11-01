@@ -6,13 +6,12 @@ void ofxMidiInCallback( double deltatime, vector< unsigned char > *message, void
 }
 // --------------------------------------------------------------------------------------
 ofxMidiIn::ofxMidiIn() {
-	//eventManager = new ofxMidiInEventManager(this);
-	//newMessageEvent.init("ofxMidiInIn::newMessage");
-	//ofEvents::addEvent(newMessageEvent,"ofxMidiInIn::newMessage");
+	
 	// Check available ports.
-	nPorts = midii.getPortCount();
-	portNames.clear();
+	findPorts();
+	
 	bVerbose = false;
+	
 }
 // --------------------------------------------------------------------------------------
 ofxMidiIn::~ofxMidiIn() {
@@ -22,23 +21,23 @@ ofxMidiIn::~ofxMidiIn() {
 void ofxMidiIn::listPorts(){
 	printf( "ofxMidiIn: %i ports available \n", nPorts );
 	for(unsigned int i=0; i<nPorts; i++){
-		printf("%i: %s\n",i,midii.getPortName(i).c_str());
-		portNames.push_back( midii.getPortName(i) );
+		printf("%i: %s\n",i, portNames[i].c_str());
 	}
 }
 // --------------------------------------------------------------------------------------
 void ofxMidiIn::openPort(unsigned int _port){
 	if ( nPorts == 0 ) {
-		printf( "No ports available!\n" );
+		ofLogError() << "No ports available!";
 		return;
 	}
 	if ( _port+1 > nPorts ){
-		printf("The selected port is not available\n");
+		ofLogError() << "The selected port is not available";
 		return;
 	}
 	
 	port = _port;
 	midii.openPort( port );
+	
 	// Set our callback function. This should be done immediately after
 	// opening the port to avoid having incoming messages written to the
 	// queue.
@@ -50,7 +49,7 @@ void ofxMidiIn::openPort(unsigned int _port){
 // --------------------------------------------------------------------------------------
 void ofxMidiIn::openPort(string _deviceName){
 	if ( nPorts == 0 ) {
-		printf( "No ports available!\n" );
+		ofLogError() << "No ports available!";
 		return;
 	}
 	
@@ -66,19 +65,12 @@ void ofxMidiIn::openPort(string _deviceName){
 	}
 	if(!foundDevice) {
 		// if not found
-		printf("The selected port is not available\n");
+		ofLogError() << "The selected port is not available";
 		return;
-	} 
+	}
 	
-	port = _port;
-	midii.openPort( port );
-	// Set our callback function. This should be done immediately after
-	// opening the port to avoid having incoming messages written to the
-	// queue.
-	midii.setCallback( &ofxMidiInCallback, this );
+	openPort( _port );	
 	
-	// Don't ignore sysex, timing, or active sensing messages.
-	midii.ignoreTypes( false, false, false );
 }
 // --------------------------------------------------------------------------------------
 void ofxMidiIn::openVirtualPort(string _port){
@@ -89,6 +81,19 @@ void ofxMidiIn::openVirtualPort(string _port){
 // --------------------------------------------------------------------------------------
 void ofxMidiIn::closePort(){
 	midii.closePort();
+}
+// --------------------------------------------------------------------------------------
+void ofxMidiIn::findPorts(){
+	
+	// how many ports?
+	nPorts = midii.getPortCount();
+	
+	portNames.clear();
+	
+	// store port names
+	for(unsigned int i=0; i<nPorts; i++){
+		portNames.push_back( midii.getPortName(i) );
+	}
 }
 // --------------------------------------------------------------------------------------
 void ofxMidiIn::manageNewMessage(double deltatime, vector< unsigned char > *message){
@@ -120,8 +125,6 @@ void ofxMidiIn::manageNewMessage(double deltatime, vector< unsigned char > *mess
 		
 		ofNotifyEvent( newMessageEvent, eventArgs, this );
 		
-		// i have taken this out for now whilst I work out the best way to handle event types
-		//ofNotifyEvent( *newIdMessageEvents[eventArgs.status], eventArgs, this );
 	}
 	
 	

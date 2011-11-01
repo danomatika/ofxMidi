@@ -31,6 +31,7 @@ public:
 protected:
 	
 	void sendMessage();
+	void findPorts();
 	
 	RtMidiOut midiout;
 	unsigned int nPorts;

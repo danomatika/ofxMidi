@@ -31,6 +31,8 @@ protected:
 	unsigned int port;
 	bool bVerbose;
 	
+	void findPorts();
+	
 	// events
 public:
 	void addListener(int id,ofxMidiListener * listener);

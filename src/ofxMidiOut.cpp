@@ -2,12 +2,10 @@
 
 // --------------------------------------------------------------------------------------
 ofxMidiOut::ofxMidiOut() {
-	//eventManager = new ofxMidiEventManager(this);
-	//newMessageEvent.init("ofxMidiIn::newMessage");
-	//ofEvents::addEvent(newMessageEvent,"ofxMidiIn::newMessage");
+
 	// Check available ports.
-	nPorts = midiout.getPortCount();
-	portNames.clear();
+	findPorts();
+
 }
 // --------------------------------------------------------------------------------------
 ofxMidiOut::~ofxMidiOut() {
@@ -17,7 +15,19 @@ ofxMidiOut::~ofxMidiOut() {
 void ofxMidiOut::listPorts(){
 	printf( "ofxMidiOut: %i ports available \n", nPorts );
 	for(unsigned int i=0; i<nPorts; i++){
-		printf("%i: %s\n",i,midiout.getPortName(i).c_str());
+		printf("%i: %s\n", i, portNames[i].c_str());
+	}
+}
+// --------------------------------------------------------------------------------------
+void ofxMidiOut::findPorts(){
+	
+	// how many ports?
+	nPorts = midiout.getPortCount();
+	
+	portNames.clear();
+	
+	// store port names
+	for(unsigned int i=0; i<nPorts; i++){
 		portNames.push_back( midiout.getPortName(i) );
 	}
 }
@@ -38,7 +48,7 @@ void ofxMidiOut::openPort(unsigned int _port){
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::openPort(string _deviceName){
 	if ( nPorts == 0 ) {
-		printf( "No ports available!\n" );
+		ofLogError() << "No ports available!";
 		return;
 	}
 	
@@ -54,12 +64,11 @@ void ofxMidiOut::openPort(string _deviceName){
 	}
 	if(!foundDevice) {
 		// if not found
-		printf("The selected port is not available\n");
+		ofLogError() << "The selected port is not available";
 		return;
 	} 
 	
-	port = _port;
-	midiout.openPort( port );
+	openPort( _port );
 }
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::openVirtualPort(string _port){
