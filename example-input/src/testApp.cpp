@@ -5,8 +5,14 @@
 void testApp::setup(){
 	ofSetVerticalSync(true);
 	ofBackground(255,255,255);
+	
+	printf("do list ports\n");
 	midiIn.listPorts();
-	midiIn.openPort(1);
+	
+	printf("try open port\n");
+	midiIn.openPort(0);
+	
+	
 	midiIn.addListener(this);
 	
 	// to register only to one controller pass the id as first argument
