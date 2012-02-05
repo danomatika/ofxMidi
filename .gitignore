@@ -1,13 +1,29 @@
-*.depend
-*.layout
-*.mode*v3
+
+# xcode
 *.pbxuser
-*.app*
+*.perspectivev3
+*.mode*v3
+xcuserdata
+build
+*.app
+*.a
+
+# OSX
 *.DS_*
 
+# codeblocks
+*.depend
+*.layout
+example-input/obj
+example-output/obj
+
+# Win
+*.exe
+*.dll
+
+# svn
 .svn/
 obj/
 bin/
 build/
 !data/
-example-input/InputExample.xcodeproj/project.pbxproj
