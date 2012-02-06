@@ -25,7 +25,7 @@ public:
 	/// print the connected output ports
 	void listPorts();
 	
-	/// get the connected output ports list
+	/// get a list of output port names
 	/// 
 	/// the vector index corresponds with the name's port number
 	///
@@ -37,7 +37,7 @@ public:
 	/// get the number of output ports
 	int getNumPorts();
 	
-	/// get the name of a port by it's number
+	/// get the name of an output port by it's number
 	///
 	/// returns "" if number is invalid
 	///
@@ -58,7 +58,7 @@ public:
 	///
 	bool openVirtualPort(string portName="ofxMidiOut Virtual Client");
 	
-	/// close the currently connected port
+	/// close the port connection
 	void closePort();
 	
 	/// get the port number if connected
@@ -67,7 +67,7 @@ public:
 	///
 	unsigned int getPort();
 	
-	/// get the prot name if connected
+	/// get the connected output port name
 	///
 	/// returns "" if not connected
 	///
