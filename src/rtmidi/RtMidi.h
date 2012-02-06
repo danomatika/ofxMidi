@@ -43,8 +43,6 @@
 #include "RtError.h"
 #include <string>
 
-#include "ofxMidiConstants.h"
-
 class RtMidi
 {
  public:
