@@ -1,38 +1,43 @@
+///
+/// references:
+///		http://www.srm.com/qtma/davidsmidispec.html
+///
 #pragma once
 
 #include "ofConstants.h"
 
 #ifdef TARGET_LINUX
-#define __LINUX_ALSASEQ__
+	#define __LINUX_ALSASEQ__
 #elif defined(TARGET_WIN32)
-#define __WINDOWS_MM__
+	#define __WINDOWS_MM__
 #elif defined(TARGET_MACOSX)
-#define __MACOSX_CORE__
+	#define __MACOSX_CORE__
 #endif
 
-// channel info
-#define MIDI_NOTE_OFF 128
-#define MIDI_NOTE_ON 144
-#define MIDI_POLY_PRESSURE 160
-#define MIDI_CONTROL_CHANGE 176
-#define MIDI_PROGRAM_CHANGE 192
-#define MIDI_CHANNEL_PRESSURE 208
-#define MIDI_PITCH_BEND 224
+// defines for the MIDI status bytes
 
-// system exclusive
-#define MIDI_NOTE_ON 144
+// channel voice messages
+#define MIDI_NOTE_OFF			0x80
+#define MIDI_NOTE_ON			0x90
+#define MIDI_CONTROL_CHANGE		0xB0
+#define MIDI_PROGRAM_CHANGE		0xC0
+#define MIDI_PITCH_BEND			0xE0
+#define MIDI_AFTERTOUCH			0xD0	// aka channel pressure
+#define MIDI_POLY_AFTERTOUCH	0xA0	// aka key pressure
 
-// system common
-#define MIDI_TIME_CODE 241
-#define MIDI_SONG_POS_POINTER 242
-#define MIDI_SONG_SELECT 243
-#define MIDI_TUNE_REQUEST 244
-#define MIDI_EOX 247
+// system messages
+#define MIDI_SYSEX				0xF0
+#define MIDI_TIME_CODE			0xF1
+#define MIDI_SONG_POS_POINTER	0xF2
+#define MIDI_SONG_SELECT		0xF3
+#define MIDI_TUNE_REQUEST		0xF6
+#define MIDI_SYSEX_END			0xF7
+#define MIDI_TIME_CLOCK			0xF8
+#define MIDI_START				0xFA
+#define MIDI_CONTINUE			0xFB
+#define MIDI_STOP				0xFC
+#define MIDI_ACTIVE_SENSING		0xFE
+#define MIDI_SYSTEM_RESET		0xFF
 
-// system realtime
-#define MIDI_TIME_CLOCK 248
-#define MIDI_START 250
-#define MIDI_CONTINUE 251
-#define MIDI_STOP 252
-#define MIDI_ACTIVE_SENSING 254
-#define MIDI_SYSTEM_RESET 255
+// number range defines
+#define MIDI_MAX_BEND			16383

@@ -18,4 +18,8 @@ public:
 	void mouseReleased();
 	
 	ofxMidiOut midiOut;
+	int channel;
+	
+	unsigned int currentPgm;
+	int note, pan, bend, touch, polytouch;
 };
