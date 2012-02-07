@@ -236,15 +236,33 @@ void ofxMidiOut::sendPolyAftertouch(int channel, int pitch, int value) {
 }
 
 // --------------------------------------------------------------------------------------
-void ofxMidiOut::sendMidiByte(unsigned char value) {
+void ofxMidiOut::sendMidiByte(unsigned char byte) {
 
 	// don't flush if a byte stream is in progress
 	if(bMsgInProgress) {
-		message.push_back(value);
+		message.push_back(byte);
 	}
 	else {
 		message.clear();
-		message.push_back(value);
+		message.push_back(byte);
+		sendMessage();
+	}
+}
+
+//----------------------------------------------------------
+void ofxMidiOut::sendMidiBytes(vector<unsigned char>& bytes) {
+
+	// don't flush if a byte stream is in progress
+	if(bMsgInProgress) {
+		for(int i = 0; i < bytes.size(); ++i) {
+			message.push_back(bytes[i]);
+		}
+	}
+	else {
+		message.clear();
+		for(int i = 0; i < bytes.size(); ++i) {
+			message.push_back(bytes[i]);
+		}
 		sendMessage();
 	}
 }

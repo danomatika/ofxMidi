@@ -111,7 +111,8 @@ public:
 	///
 	/// raw midi bytes
 	///
-	void sendMidiByte(unsigned char value);
+	void sendMidiByte(unsigned char byte);
+	void sendMidiBytes(vector<unsigned char>& bytes);
 	
 /// \section Sending Stream Interface
 	
