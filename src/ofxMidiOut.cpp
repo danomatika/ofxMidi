@@ -3,7 +3,9 @@
 // --------------------------------------------------------------------------------------
 ofxMidiOut::ofxMidiOut(const string name) : midiout(name) {
 	portNum = -1;
+	portName = "";
 	bMsgInProgress = false;
+	bVirtual = false;
 }
 
 // --------------------------------------------------------------------------------------
@@ -22,10 +24,10 @@ void ofxMidiOut::listPorts() {
 
 // --------------------------------------------------------------------------------------
 vector<string>& ofxMidiOut::getPortList() {
-	for(unsigned int i=0; i < midiout.getPortCount(); ++i) {
-		portNames.push_back(midiout.getPortName(i));
+	for(unsigned int i = 0; i < midiout.getPortCount(); ++i) {
+		portList.push_back(midiout.getPortName(i));
 	}
-	return portNames;
+	return portList;
 }
 
 // --------------------------------------------------------------------------------------
@@ -35,7 +37,7 @@ int ofxMidiOut::getNumPorts() {
 
 // --------------------------------------------------------------------------------------
 string ofxMidiOut::getPortName(unsigned int portNumber) {
-	return midiout.getPortName(portNumber);
+	return portName;
 }
 
 // --------------------------------------------------------------------------------------
@@ -50,8 +52,8 @@ bool ofxMidiOut::openPort(unsigned int portNumber) {
 		return false;
 	}
 	portNum = portNumber;
-	ofLog(OF_LOG_VERBOSE, "ofxMidiOut: opened port %i %s",
-		portNum, midiout.getPortName(portNum).c_str());
+	portName = midiout.getPortName(portNumber);
+	ofLog(OF_LOG_VERBOSE, "ofxMidiOut: opened port %i %s", portNum, portName.c_str());
 	return true;
 }
 
@@ -61,8 +63,8 @@ bool ofxMidiOut::openPort(string deviceName) {
 	// iterate through MIDI ports, find requested device
 	int port = -1;
 	for(unsigned int i = 0; i < midiout.getPortCount(); ++i) {
-		string portName = midiout.getPortName(i);
-		if(portName == deviceName) {
+		string name = midiout.getPortName(i);
+		if(name == deviceName) {
 			port = i;
 			break;
 		}
@@ -89,33 +91,48 @@ bool ofxMidiOut::openVirtualPort(string portName) {
 			portName.c_str(), err.what());
 		return false;
 	}
+	
+	this->portName = portName;
+	bVirtual = true;
+	ofLog(OF_LOG_VERBOSE, "ofxMidiOut: opened virtual port %s", portName.c_str());
 	return true;
 }
 
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::closePort() {
-	if(portNum > -1) {
+	if(bVirtual) {
+		ofLog(OF_LOG_VERBOSE, "ofxMidiOut: closing virtual port %s",
+			portName.c_str());
+	}
+	else if(portNum > -1) {
 		ofLog(OF_LOG_VERBOSE, "ofxMidiOut: closing port %i %s",
-			portNum, midiout.getPortName(portNum).c_str());
+			portNum, portName.c_str());
 	}
 	midiout.closePort();
 	portNum = -1;
+	portName = "";
 	bMsgInProgress = false;
+	bVirtual = false;
 }
 
 // --------------------------------------------------------------------------------------
-unsigned int ofxMidiOut::getPort() {
+int ofxMidiOut::getPort() {
 	return portNum;
 }
 
 // --------------------------------------------------------------------------------------
 string ofxMidiOut::getName() {
-	return midiout.getPortName(portNum);
+	return portName;;
 }
 
 // --------------------------------------------------------------------------------------
 bool ofxMidiOut::isOpen() {
 	return portNum > -1;
+}
+
+// --------------------------------------------------------------------------------------
+bool ofxMidiOut::isVirtual() {
+	return bVirtual;
 }
 
 // --------------------------------------------------------------------------------------
@@ -322,7 +339,6 @@ ofxMidiOut& ofxMidiOut::operator<<(const StartMidi& var) {
 
 // --------------------------------------------------------------------------------------
 ofxMidiOut& ofxMidiOut::operator<<(const FinishMidi& var) {
-      
     if(!bMsgInProgress) {
     	ofLog(OF_LOG_WARNING, "ofxMidiOut: can not finish midi byte stream, stream not in progress");
 		return *this;

@@ -56,16 +56,18 @@ public:
 	///
 	/// allows for connections between software
 	///
-	bool openVirtualPort(string portName="ofxMidiOut Virtual Client");
+	/// note: a connected virtual port has a portNum = -1
+	///
+	bool openVirtualPort(string portName="ofxMidi Virtual Output");
 	
 	/// close the port connection
 	void closePort();
 	
 	/// get the port number if connected
 	///
-	/// returns -1 if not connected
+	/// returns -1 if not connected or this is a virtual port
 	///
-	unsigned int getPort();
+	int getPort();
 	
 	/// get the connected output port name
 	///
@@ -75,6 +77,9 @@ public:
 	
 	/// returns true if connected
 	bool isOpen();
+	
+	/// returns true if this is a virtual port
+	bool isVirtual();
 	
 /// \section Sending
 	
@@ -149,8 +154,11 @@ protected:
 
 	RtMidiOut midiout;
 	int portNum;					//< current port num, -1 if not connected
-	vector<string> portNames;		//< list of port names
+	string portName;				//< current port name, "" if not connected
+	
+	vector<string> portList;		//< list of port names
 	vector<unsigned char> message;	//< message byte buffer
 	
 	bool bMsgInProgress;			//< used with byte stream
+	bool bVirtual;					//< are we connected to a virtual port?
 };

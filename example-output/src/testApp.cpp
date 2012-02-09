@@ -1,10 +1,11 @@
 #include "testApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup(){
+void testApp::setup() {
 
 	ofSetVerticalSync(true);
 	ofBackground(255);
+	ofSetLogLevel(OF_LOG_VERBOSE);
 	
 	// print the available output ports to the console
 	midiOut.listPorts();
@@ -12,6 +13,9 @@ void testApp::setup(){
 	// connect
 	midiOut.openPort(0);	// by number
 	//midiOut.openPort("IAC Driver Pure Data In");	// by name
+	//midiOut.openVirtualPort("ofxMidiOut");		// open a virtual port
+	
+	midiOut.listPorts();
 	
 	channel = 1;
 	currentPgm = 0;
@@ -23,17 +27,18 @@ void testApp::setup(){
 }
 
 //--------------------------------------------------------------
-void testApp::update(){
+void testApp::update() {
 }
 
 //--------------------------------------------------------------
-void testApp::draw(){
+void testApp::draw() {
 
 	// let's see something
 	ofSetColor(0);
 	stringstream text;
 	text << "connected to port " << midiOut.getPort() 
 		 << " \"" << midiOut.getName() << "\"" << endl
+		 << "is virtual?: " << midiOut.isVirtual() << endl << endl
 		 << "sending to channel " << channel << endl << endl
 		 << "current program: " << currentPgm << endl << endl
 		 << "note: " << note << endl
@@ -45,7 +50,7 @@ void testApp::draw(){
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key){
+void testApp::keyPressed(int key) {
 
 	// send a note on if the key is a letter or a number
 	if(isalnum(key)) {
@@ -58,7 +63,7 @@ void testApp::keyPressed(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key){
+void testApp::keyReleased(int key) {
 	
 	switch(key) {
 	
@@ -93,11 +98,15 @@ void testApp::keyReleased(int key){
 			break;
 			
 		// sysex using raw bytes
-		case 's':
+		case 's': {
 			// send a pitch change to Part 1 of a MULTI on an Akai sampler
 			// from http://troywoodfield.tripod.com/sysex.html
 			//
 			// do you have an S2000 to try?
+			//
+			// note: this is probably not as efficient as the next two methods
+			//       since it sends only one byte at a time, instead of all
+			//       at once
 			//
 			midiOut.sendMidiByte(MIDI_SYSEX);
 			midiOut.sendMidiByte(0x47);	// akai manufacturer code
@@ -115,13 +124,38 @@ void testApp::keyReleased(int key){
 			midiOut.sendMidiByte(0x00); // offset
 			midiOut.sendMidiByte(MIDI_SYSEX_END);
 			
+			// send again using a vector
+			//
+			// sends all bytes within one message
+			//
+			vector<unsigned char> sysexMsg;
+			sysexMsg.push_back(MIDI_SYSEX);
+			sysexMsg.push_back(0x47);
+			sysexMsg.push_back(0x00);
+			sysexMsg.push_back(0x42);
+			sysexMsg.push_back(0x48);
+			sysexMsg.push_back(0x00);
+			sysexMsg.push_back(0x00);
+			sysexMsg.push_back(0x01);
+			sysexMsg.push_back(0x4B);
+			sysexMsg.push_back(0x00);
+			sysexMsg.push_back(0x01);
+			sysexMsg.push_back(0x00);
+			sysexMsg.push_back(0x04);
+			sysexMsg.push_back(0x00);
+			sysexMsg.push_back(MIDI_SYSEX_END);
+			midiOut.sendMidiBytes(sysexMsg);
+			
 			// send again with the byte stream interface
+			//
+			// builds the message, then sends it on FinishMidi()
+			//
 			midiOut << StartMidi() << MIDI_SYSEX
 					<< 0x47 << 0x00 << 0x42 << 0x48 << 0x00 << 0x00 << 0x01
 					<< 0x4B << 0x00 << 0x01 << 0x00 << 0x04 << 0x00
 					<< MIDI_SYSEX_END << FinishMidi();
-			
 			break;
+		}
 		
 		// note off using raw bytes
 		case ' ':	
@@ -141,11 +175,11 @@ void testApp::keyReleased(int key){
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ){
+void testApp::mouseMoved(int x, int y ) {
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+void testApp::mouseDragged(int x, int y, int button) {
 
 	// x pos controls the pan (ctl = 10)
 	pan = ofMap(x, 0, ofGetWidth(), 0, 127);
@@ -157,9 +191,9 @@ void testApp::mouseDragged(int x, int y, int button){
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){	
+void testApp::mousePressed(int x, int y, int button) {	
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(){
+void testApp::mouseReleased() {
 }
