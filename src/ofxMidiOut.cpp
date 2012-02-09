@@ -4,6 +4,7 @@
 ofxMidiOut::ofxMidiOut(const string name) : midiout(name) {
 	portNum = -1;
 	portName = "";
+	bool bOpen = false;
 	bMsgInProgress = false;
 	bVirtual = false;
 }
@@ -24,6 +25,7 @@ void ofxMidiOut::listPorts() {
 
 // --------------------------------------------------------------------------------------
 vector<string>& ofxMidiOut::getPortList() {
+	portList.clear();
 	for(unsigned int i = 0; i < midiout.getPortCount(); ++i) {
 		portList.push_back(midiout.getPortName(i));
 	}
@@ -37,14 +39,22 @@ int ofxMidiOut::getNumPorts() {
 
 // --------------------------------------------------------------------------------------
 string ofxMidiOut::getPortName(unsigned int portNumber) {
-	return portName;
+	// handle rtmidi exceptions
+	try {
+		return midiout.getPortName(portNumber);
+	}
+	catch(RtError& err) {
+		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't get name for port %i: %s",
+			portNumber, err.what());
+	}
+	return "";
 }
 
 // --------------------------------------------------------------------------------------
 bool ofxMidiOut::openPort(unsigned int portNumber) {	
 	// handle rtmidi exceptions
 	try {
-		midiout.closePort();
+		closePort();
 		midiout.openPort(portNumber);
 	}
 	catch(RtError& err) {
@@ -53,6 +63,7 @@ bool ofxMidiOut::openPort(unsigned int portNumber) {
 	}
 	portNum = portNumber;
 	portName = midiout.getPortName(portNumber);
+	bOpen = true;
 	ofLog(OF_LOG_VERBOSE, "ofxMidiOut: opened port %i %s", portNum, portName.c_str());
 	return true;
 }
@@ -83,7 +94,7 @@ bool ofxMidiOut::openPort(string deviceName) {
 bool ofxMidiOut::openVirtualPort(string portName) {
 	// handle rtmidi exceptions
 	try {
-		midiout.closePort();
+		closePort();
 		midiout.openVirtualPort(portName);
 	}
 	catch(RtError& err) {
@@ -93,6 +104,7 @@ bool ofxMidiOut::openVirtualPort(string portName) {
 	}
 	
 	this->portName = portName;
+	bOpen = true;
 	bVirtual = true;
 	ofLog(OF_LOG_VERBOSE, "ofxMidiOut: opened virtual port %s", portName.c_str());
 	return true;
@@ -100,17 +112,16 @@ bool ofxMidiOut::openVirtualPort(string portName) {
 
 // --------------------------------------------------------------------------------------
 void ofxMidiOut::closePort() {
-	if(bVirtual) {
-		ofLog(OF_LOG_VERBOSE, "ofxMidiOut: closing virtual port %s",
-			portName.c_str());
+	if(bVirtual && bOpen) {
+		ofLog(OF_LOG_VERBOSE, "ofxMidiOut: closing virtual port %s", portName.c_str());
 	}
 	else if(portNum > -1) {
-		ofLog(OF_LOG_VERBOSE, "ofxMidiOut: closing port %i %s",
-			portNum, portName.c_str());
+		ofLog(OF_LOG_VERBOSE, "ofxMidiOut: closing port %i %s", portNum, portName.c_str());
 	}
 	midiout.closePort();
 	portNum = -1;
 	portName = "";
+	bOpen = false;
 	bMsgInProgress = false;
 	bVirtual = false;
 }
@@ -122,12 +133,12 @@ int ofxMidiOut::getPort() {
 
 // --------------------------------------------------------------------------------------
 string ofxMidiOut::getName() {
-	return portName;;
+	return portName;
 }
 
 // --------------------------------------------------------------------------------------
 bool ofxMidiOut::isOpen() {
-	return portNum > -1;
+	return bOpen;
 }
 
 // --------------------------------------------------------------------------------------

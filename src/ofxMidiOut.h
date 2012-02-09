@@ -57,6 +57,8 @@ public:
 	/// allows for connections between software
 	///
 	/// note: a connected virtual port has a portNum = -1
+	///	note: an open virtual port ofxMidiOut object cannot see it's virtual
+	///       own virtual port when listing ports
 	///
 	bool openVirtualPort(string portName="ofxMidi Virtual Output");
 	
@@ -159,6 +161,7 @@ protected:
 	vector<string> portList;		//< list of port names
 	vector<unsigned char> message;	//< message byte buffer
 	
+	bool bOpen;						//< is the port currently open?
 	bool bMsgInProgress;			//< used with byte stream
 	bool bVirtual;					//< are we connected to a virtual port?
 };
