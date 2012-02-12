@@ -54,15 +54,15 @@ For Xcode:
 * create a new group "ofxMidi"
 * drag these directories from ofxMidi into this new group: ofxMidi/src
 * add the CoreMIDI framework to your project
-** Xcode 3
-*** right click on your project in the groups & files sidebar
-*** Add > Existing frameworks
-*** select CoreMIDI.framework from the list
-** Xcode 4
-*** click on your project in the sidebar
-*** select the Summary tab
-*** click the + under Linked Frameworks & Libraries
-*** search for and select the CoreMIDI.framework from the list
+	* Xcode 3
+		* right click on your project in the groups & files sidebar
+		* Add > Existing frameworks
+		* select CoreMIDI.framework from the list
+	* Xcode 4
+		* click on your project in the sidebar
+		* select the Summary tab
+		* click the + under Linked Frameworks & Libraries
+		* search for and select the CoreMIDI.framework from the list
 
 DEVELOPING
 ----------
