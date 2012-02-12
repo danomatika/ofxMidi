@@ -1,7 +1,6 @@
 #pragma once
 
 #include "ofMain.h"
-#include <set>
 
 #include "RtMidi.h"
 #include "ofxMidiConstants.h"

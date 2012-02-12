@@ -16,7 +16,7 @@ public:
 	virtual void newMidiMessage(ofxMidiMessage& msg)=0;
 };
 
-/// a single 2 byte MIDI message
+/// a single multi byte MIDI message
 ///
 /// check status type and grab data:
 /// 
@@ -27,7 +27,7 @@ public:
 /// }
 ///
 /// the message-specific types are only set for the appropriate
-/// message types ie note is only set for noteon, noteoff, and
+/// message types ie pitch is only set for noteon, noteoff, and
 /// polyaftertouch messages
 ///
 class ofxMidiMessage: public ofEventArgs {
@@ -37,13 +37,13 @@ public:
 /// \section Variables
 
 	MidiStatus status;
-	int channel;		//< 1-16
+	int channel;		//< 1 - 16
 
 	/// message-specific values,
 	/// converted from raw bytes
-	int pitch;			//< 0-127
-	int velocity;		//< 0-127
-	int control;		//< 0-127
+	int pitch;			//< 0 - 127
+	int velocity;		//< 0 - 127
+	int control;		//< 0 - 127
 	int value;			//< depends on message status type
 	
 	/// raw bytes

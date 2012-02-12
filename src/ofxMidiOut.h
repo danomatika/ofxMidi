@@ -150,7 +150,7 @@ public:
 	ofxMidiOut& operator<<(const FinishMidi& var);
 	ofxMidiOut& operator<<(const unsigned char var);
 	
-protected:
+private:
 	
 	void sendMessage();
 
