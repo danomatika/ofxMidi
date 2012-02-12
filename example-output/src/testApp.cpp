@@ -42,6 +42,7 @@ void testApp::draw() {
 		 << "sending to channel " << channel << endl << endl
 		 << "current program: " << currentPgm << endl << endl
 		 << "note: " << note << endl
+		 << "velocity: " << velocity << endl
 		 << "pan: " << pan << endl
 		 << "bend: " << bend << endl
 		 << "touch: " << touch << endl
@@ -58,7 +59,8 @@ void testApp::keyPressed(int key) {
 		// scale the ascii values to midi velocity range 0-127
 		// see an ascii table: http://www.asciitable.com/
 		note = ofMap(key, 48, 122, 0, 127);
-		midiOut.sendNoteOn(channel, note,  64);
+		velocity = 64;
+		midiOut.sendNoteOn(channel, note,  velocity);
 	}
 }
 
@@ -97,8 +99,8 @@ void testApp::keyReleased(int key) {
 			midiOut << PolyAftertouch(channel, 64, polytouch); // stream interface
 			break;
 			
-		// sysex using raw bytes
-		case 's': {
+		// sysex using raw bytes (use shift + s)
+		case 'S': {
 			// send a pitch change to Part 1 of a MULTI on an Akai sampler
 			// from http://troywoodfield.tripod.com/sysex.html
 			//
@@ -157,6 +159,11 @@ void testApp::keyReleased(int key) {
 			break;
 		}
 		
+		// print the port list
+		case '?':
+			midiOut.listPorts();
+			break;
+		
 		// note off using raw bytes
 		case ' ':	
 			// send with the byte stream interface, noteoff for note 60
@@ -168,7 +175,8 @@ void testApp::keyReleased(int key) {
 			// send a note off if the key is a letter or a number
 			if(isalnum(key)) {
 				note = ofMap(key, 48, 122, 0, 127);
-				midiOut << NoteOff(channel, note); // stream interface
+				velocity = 0;
+				midiOut << NoteOff(channel, note, velocity); // stream interface
 			}
 			break;
 	}

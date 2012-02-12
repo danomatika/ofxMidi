@@ -1,74 +1,100 @@
 #include "testApp.h"
 
-
 //--------------------------------------------------------------
-void testApp::setup(){
+void testApp::setup() {
 	ofSetVerticalSync(true);
-	ofBackground(255,255,255);
+	ofBackground(255, 255, 255);
+	ofSetLogLevel(OF_LOG_VERBOSE);
 	
-	printf("do list ports\n");
+	// print input ports to console
 	midiIn.listPorts();
 	
-	printf("try open port\n");
-	midiIn.openPort(0);
+	// open port by number
+	midiIn.openPort(1);
+	//midiIn.openPort("IAC Pure Data In");	// by name
+	//midiIn.openVirtualPort("ofxMidiIn Input");	// open a virtual port
 	
+	// don't ignore sysex, timing, & active sense messages,
+	// these are ignored by default
+	midiIn.ignoreTypes(false, false, false);
 	
+	// add testApp as a listener
 	midiIn.addListener(this);
 	
-	// to register only to one controller pass the id as first argument
-	// midiIn.addListener(84,this);
+	// print received messages to the console
+	midiIn.setVerbose(true);
+}
+
+//--------------------------------------------------------------
+void testApp::update() {
+}
+
+//--------------------------------------------------------------
+void testApp::draw() {
+	ofSetColor(0);
 	
-	// to debug
-	// midiIn.setVerbose(true);
-}
-
-//--------------------------------------------------------------
-void testApp::update(){
-	sprintf(msg,"value: %i, received from port: %i, id: %i \n\nwith %f milliseconds difference from last message",value,port,id,timestamp);
-}
-
-//--------------------------------------------------------------
-void testApp::draw(){
-	ofSetColor(0x000000);
-	ofRect(20,40,(ofGetWidth()-40)*(float)value/127,20);
-	ofDrawBitmapString(msg,20,300);
-}
-
-//--------------------------------------------------------------
-void testApp::newMidiMessage(ofxMidiEventArgs& eventArgs) {
+	// draw the last recieved message contents to the screen
+	text << "Received: " << ofxMidiMessage::getStatusString(midiMessage.status);
+	ofDrawBitmapString(text.str(), 20, 20);
+	text.str(""); // clear
 	
-	// store some data from midi message in variables
-	value = eventArgs.byteOne;
-	id = eventArgs.channel;
-	port = eventArgs.port;
-	timestamp = eventArgs.timestamp;
+	text << "channel: " << midiMessage.channel;
+	ofDrawBitmapString(text.str(), 20, 34);
+	text.str(""); // clear
 	
+	text << "pitch: " << midiMessage.pitch;
+	ofDrawBitmapString(text.str(), 20, 48);
+	text.str(""); // clear
+	ofRect(20, 58, ofMap(midiMessage.pitch, 0, 127, 0, ofGetWidth()-40), 20);
 	
-}
-
-//--------------------------------------------------------------
-void testApp::keyPressed  (int key){
+	text << "velocity: " << midiMessage.velocity;
+	ofDrawBitmapString(text.str(), 20, 96);
+	text.str(""); // clear
+	ofRect(20, 105, ofMap(midiMessage.velocity, 0, 127, 0, ofGetWidth()-40), 20);
 	
-}
-
-//--------------------------------------------------------------
-void testApp::keyReleased  (int key){
-}
-
-//--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ){
-}
-
-//--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button){
+	text << "control: " << midiMessage.control;
+	ofDrawBitmapString(text.str(), 20, 144);
+	text.str(""); // clear
+	ofRect(20, 154, ofMap(midiMessage.control, 0, 127, 0, ofGetWidth()-40), 20);
 	
+	text << "value: " << midiMessage.value;
+	ofDrawBitmapString(text.str(), 20, 192);
+	text.str(""); // clear
+	if(midiMessage.status == MIDI_PITCH_BEND) {
+		ofRect(20, 202, ofMap(midiMessage.value, 0, MIDI_MAX_BEND, 0, ofGetWidth()-40), 20);
+	}
+	else {
+		ofRect(20, 202, ofMap(midiMessage.value, 0, 127, 0, ofGetWidth()-40), 20);
+	}
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button){
-	
+void testApp::newMidiMessage(ofxMidiMessage& msg) {
+
+	// make a copy of the latest message
+	midiMessage = msg;
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased(){
+void testApp::keyPressed(int key) {
+}
+
+//--------------------------------------------------------------
+void testApp::keyReleased(int key) {
+}
+
+//--------------------------------------------------------------
+void testApp::mouseMoved(int x, int y) {
+}
+
+//--------------------------------------------------------------
+void testApp::mouseDragged(int x, int y, int button) {
+}
+
+//--------------------------------------------------------------
+void testApp::mousePressed(int x, int y, int button) {
+}
+
+//--------------------------------------------------------------
+void testApp::mouseReleased() {
 }

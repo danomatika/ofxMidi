@@ -11,6 +11,7 @@
 		270A244314121F3A0073405C /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 270A243F14121F3A0073405C /* ofxMidiOut.cpp */; };
 		270A248D141220590073405C /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270A248C141220590073405C /* CoreMIDI.framework */; };
 		3026F47214DF4EC200DB4D82 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3026F47014DF4EC200DB4D82 /* RtMidi.cpp */; };
+		30F1206A14E627E5005C561E /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30F1206914E627E5005C561E /* ofxMidiMessage.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -63,7 +64,7 @@
 /* Begin PBXFileReference section */
 		270A243A14121F3A0073405C /* ofxMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMidi.h; path = ../src/ofxMidi.h; sourceTree = SOURCE_ROOT; };
 		270A243B14121F3A0073405C /* ofxMidiConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMidiConstants.h; path = ../src/ofxMidiConstants.h; sourceTree = SOURCE_ROOT; };
-		270A243C14121F3A0073405C /* ofxMidiEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMidiEvents.h; path = ../src/ofxMidiEvents.h; sourceTree = SOURCE_ROOT; };
+		270A243C14121F3A0073405C /* ofxMidiMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMidiMessage.h; path = ../src/ofxMidiMessage.h; sourceTree = SOURCE_ROOT; };
 		270A243D14121F3A0073405C /* ofxMidiIn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidiIn.cpp; path = ../src/ofxMidiIn.cpp; sourceTree = SOURCE_ROOT; };
 		270A243E14121F3A0073405C /* ofxMidiIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMidiIn.h; path = ../src/ofxMidiIn.h; sourceTree = SOURCE_ROOT; };
 		270A243F14121F3A0073405C /* ofxMidiOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidiOut.cpp; path = ../src/ofxMidiOut.cpp; sourceTree = SOURCE_ROOT; };
@@ -72,6 +73,8 @@
 		3026F46F14DF4EC200DB4D82 /* RtError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RtError.h; sourceTree = "<group>"; };
 		3026F47014DF4EC200DB4D82 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RtMidi.cpp; sourceTree = "<group>"; };
 		3026F47114DF4EC200DB4D82 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RtMidi.h; sourceTree = "<group>"; };
+		30F1206814E627BB005C561E /* ofxMidiTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMidiTypes.h; sourceTree = "<group>"; };
+		30F1206914E627E5005C561E /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiMessage.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -135,7 +138,9 @@
 				3026F46E14DF4EC200DB4D82 /* rtmidi */,
 				270A243A14121F3A0073405C /* ofxMidi.h */,
 				270A243B14121F3A0073405C /* ofxMidiConstants.h */,
-				270A243C14121F3A0073405C /* ofxMidiEvents.h */,
+				30F1206814E627BB005C561E /* ofxMidiTypes.h */,
+				270A243C14121F3A0073405C /* ofxMidiMessage.h */,
+				30F1206914E627E5005C561E /* ofxMidiMessage.cpp */,
 				270A243D14121F3A0073405C /* ofxMidiIn.cpp */,
 				270A243E14121F3A0073405C /* ofxMidiIn.h */,
 				270A243F14121F3A0073405C /* ofxMidiOut.cpp */,
@@ -329,6 +334,7 @@
 				270A244214121F3A0073405C /* ofxMidiIn.cpp in Sources */,
 				270A244314121F3A0073405C /* ofxMidiOut.cpp in Sources */,
 				3026F47214DF4EC200DB4D82 /* RtMidi.cpp in Sources */,
+				30F1206A14E627E5005C561E /* ofxMidiMessage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

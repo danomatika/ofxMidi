@@ -21,5 +21,6 @@ public:
 	int channel;
 	
 	unsigned int currentPgm;
-	int note, pan, bend, touch, polytouch;
+	int note, velocity;
+	int pan, bend, touch, polytouch;
 };

@@ -29,11 +29,11 @@ struct NoteOff {
 struct ControlChange {
 
 	const int channel;		///< channel 1 - 16
-	const int controller;	///< controller 0 - 127
+	const int control;		///< control 0 - 127
 	const int value;		///< value 0 - 127
 	
-	explicit ControlChange(const int channel, const int controller, const int value) :
-		channel(channel), controller(controller), value(value) {}
+	explicit ControlChange(const int channel, const int control, const int value) :
+		channel(channel), control(control), value(value) {}
 };
 
 /// change a program value (ie an instrument)

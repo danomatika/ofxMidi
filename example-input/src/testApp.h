@@ -1,11 +1,10 @@
-#ifndef _TEST_APP
-#define _TEST_APP
-
+#pragma once
 
 #include "ofMain.h"
+
 #include "ofxMidi.h"
 
-class testApp : public ofSimpleApp, public ofxMidiListener{
+class testApp : public ofBaseApp, public ofxMidiListener {
 	
 public:
 	
@@ -13,27 +12,18 @@ public:
 	void update();
 	void draw();
 	
-	void keyPressed  (int key);
-	void keyReleased (int key);
+	void keyPressed(int key);
+	void keyReleased(int key);
 	
 	void mouseMoved(int x, int y );
 	void mouseDragged(int x, int y, int button);
 	void mousePressed(int x, int y, int button);
 	void mouseReleased();
 	
-	void newMidiMessage(ofxMidiEventArgs& eventArgs);
+	void newMidiMessage(ofxMidiMessage& eventArgs);
 	
-	// vars
-	int port;
-	int id;
-	int value;
-	double timestamp;
-	char msg[255];
+	stringstream text;
 	
-	// midi addon
 	ofxMidiIn	midiIn;
-
+	ofxMidiMessage midiMessage;
 };
-
-#endif
-

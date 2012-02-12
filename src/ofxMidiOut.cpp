@@ -177,7 +177,7 @@ void ofxMidiOut::sendNoteOff(int channel, int pitch, int velocity) {
 }
 
 // --------------------------------------------------------------------------------------
-void ofxMidiOut::sendControlChange(int channel, int controller, int value) {
+void ofxMidiOut::sendControlChange(int channel, int control, int value) {
 
 	if(bMsgInProgress) {
 		ofLog(OF_LOG_WARNING, "ofxMidiOut: cannot send note ctrl change, byte stream in progress");
@@ -186,7 +186,7 @@ void ofxMidiOut::sendControlChange(int channel, int controller, int value) {
 	
 	message.clear();
 	message.push_back(MIDI_CONTROL_CHANGE+(channel-1));
-	message.push_back(controller);
+	message.push_back(control);
 	message.push_back(value);
 	sendMessage();
 }
@@ -309,7 +309,7 @@ ofxMidiOut& ofxMidiOut::operator<<(const NoteOff& var) {
 
 //----------------------------------------------------------
 ofxMidiOut& ofxMidiOut::operator<<(const ControlChange& var) {
-	sendControlChange(var.channel, var.controller, var.value);
+	sendControlChange(var.channel, var.control, var.value);
 	return *this;
 }
 

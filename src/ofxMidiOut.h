@@ -4,7 +4,7 @@
 
 #include "RtMidi.h"
 #include "ofxMidiConstants.h"
-#include "ofxMidiEvents.h"
+#include "ofxMidiMessage.h"
 #include "ofxMidiTypes.h"
 
 ///
@@ -108,7 +108,7 @@ public:
 	///
 	void sendNoteOn(int channel, int pitch, int velocity=64);
 	void sendNoteOff(int channel, int pitch, int velocity=64);
-	void sendControlChange(int channel, int controller, int value);
+	void sendControlChange(int channel, int control, int value);
 	void sendProgramChange(int channel, int value);
 	void sendPitchBend(int channel, int value);
 	void sendPitchBend(int channel, unsigned char lsb, unsigned char msb);

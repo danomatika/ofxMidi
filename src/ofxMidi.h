@@ -9,7 +9,7 @@
 #include "RtMidi.h"
 
 #include "ofxMidiConstants.h"
-#include "ofxMidiEvents.h"
+#include "ofxMidiMessage.h"
 
 #include "ofxMidiIn.h"
 #include "ofxMidiOut.h"
