@@ -35,6 +35,8 @@
 */
 /**********************************************************************/
 
+#include "ofxMidiConstants.h"
+
 // RtMidi: Version 1.0.15
 
 #include "RtMidi.h"

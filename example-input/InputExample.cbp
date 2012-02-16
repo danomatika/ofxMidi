@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="example-input" />
+		<Option makefile_is_custom="1" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Option virtualFolders="addons/;src/;build config/;addons/ofxMidi/;addons/ofxMidi/src/;addons/ofxMidi/src/rtmidi/;" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/$(PROJECT_NAME)_debug" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Debug/" />
+				<Option external_deps="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworksDebug.a;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+			</Target>
+			<Target title="Release">
+				<Option output="bin/$(PROJECT_NAME" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="bin" />
+				<Option object_output="obj/Release/" />
+				<Option external_deps="../../../libs/openFrameworksCompiled/lib/linux/libopenFrameworks.a;" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option projectLinkerOptionsRelation="2" />
+			</Target>
+		</Build>
+		<Unit filename="config.make">
+			<Option virtualFolder="build config" />
+		</Unit>
+		<Unit filename="src/main.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/testApp.cpp">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="src/testApp.h">
+			<Option virtualFolder="src/" />
+		</Unit>
+		<Unit filename="../src/ofxMidi.h">
+			<Option virtualFolder="addons/ofxMidi/src/" />
+		</Unit>
+		<Unit filename="../src/ofxMidiConstants.h">
+			<Option virtualFolder="addons/ofxMidi/src/" />
+		</Unit>
+		<Unit filename="../src/ofxMidiIn.cpp">
+			<Option virtualFolder="addons/ofxMidi/src/" />
+		</Unit>
+		<Unit filename="../src/ofxMidiIn.h">
+			<Option virtualFolder="addons/ofxMidi/src/" />
+		</Unit>
+		<Unit filename="../src/ofxMidiMessage.cpp">
+			<Option virtualFolder="addons/ofxMidi/src/" />
+		</Unit>
+		<Unit filename="../src/ofxMidiMessage.h">
+			<Option virtualFolder="addons/ofxMidi/src/" />
+		</Unit>
+		<Unit filename="../src/ofxMidiOut.cpp">
+			<Option virtualFolder="addons/ofxMidi/src/" />
+		</Unit>
+		<Unit filename="../src/ofxMidiOut.h">
+			<Option virtualFolder="addons/ofxMidi/src/" />
+		</Unit>
+		<Unit filename="../src/ofxMidiTypes.h">
+			<Option virtualFolder="addons/ofxMidi/src/" />
+		</Unit>
+		<Unit filename="../src/rtmidi/RtError.h">
+			<Option virtualFolder="addons/ofxMidi/src/rtmidi/" />
+		</Unit>
+		<Unit filename="../src/rtmidi/RtMidi.cpp">
+			<Option virtualFolder="addons/ofxMidi/src/rtmidi/" />
+		</Unit>
+		<Unit filename="../src/rtmidi/RtMidi.h">
+			<Option virtualFolder="addons/ofxMidi/src/rtmidi/" />
+		</Unit>
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

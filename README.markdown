@@ -35,21 +35,51 @@ git clone git://github.com/chrisoshea/ofxMidi.git
 The addon should sit in `openFrameworks/addons/ofxMidi/`.
 
 Running the Example Project
--------------------------------
+---------------------------
 
 If you're using OS X, open an Xcode project in ofxMidi/example-input/ or ofxMidi/example-output/ and hit "Build and Run".
 
-The addon should work fine in Windows and Linux, although there are no example build files yet.
+On Linux, you can use the Makefile and/or Codeblocks project files (without the "_win" suffix).
+
+The addon should work fine in Windows, although there are no example build files yet.
+
+Creating a New ofxMidi Project
+------------------------------
+
+To develop your own project based on ofxMidi, simply copy the example project and rename it. You probably want to put it in your apps folder, for example, after copying:
+<pre>
+openFrameworks/addons/ofxPd/example-input/ => openFrameworks/apps/myApps/example-input/
+</pre>
+
+It must be 3 levels down in the openframeworks folder structure.
+
+Then rename the folder:
+<pre>
+openFrameworks/apps/myApps/myPdProject/
+</pre>
+
+#### For Xcode:
+
+Rename the project in Xcode (do not rename the .xcodeproj file in Finder!): XCode Menu->Project->Rename
+
+#### For Codeblocks (Win & Linux):
+
+* rename the *.cbp and *.workspace files
+* open the workspace and readd the renamed project file by dragging ont the project tree(it will complain about the missing project you renamed)
+* if you renamed the project *folder* make sure to set the project name to this folder name or C::B may not be able to :
+	* right click on project in the tree (not the workspace)
+	* Properties...->Title
+
 
 Adding ofxMidi to an Existing Project
----------------------------------------
+-------------------------------------
 
-If you want to add ofxMidi to another project, you need to make sure you include the src folders:
+If you want to add ofxMidi to another project, you may need to make sure to include the src folder:
 <pre>
 openFrameworks/addons/ofxMidi/src
 </pre>
 
-For Xcode:
+### Xcode
 
 * create a new group "ofxMidi"
 * drag these directories from ofxMidi into this new group: ofxMidi/src
@@ -64,6 +94,11 @@ For Xcode:
 		* click the + under Linked Frameworks & Libraries
 		* search for and select the CoreMIDI.framework from the list
 
+### Linux Makefiles/CodeBlocks
+
+* edit addons.make in your project folder and add the following line to the end of the file: 
+	<pre>ofxMidi</pre>
+
 DEVELOPING
 ----------
 
@@ -72,3 +107,13 @@ You can help develop ofxMidi on GitHub: [https://github.com/chrisoshea/ofxMidi](
 Create an account, clone or fork the repo, then request a push/merge. Please use the *develop* branch of updates and pull requests.
 
 If you find any bugs or suggestions please log them to GitHub as well.
+
+### Updating RtMidi
+
+RtMidi can be updated by running the `update_rtmidi.sh` shell script in the scripts folder. Edit the version setting in the script header and run the script to download and place the RtMidi sources into `src/rtmidi`.
+
+Next, make sure to add the following include to `RtMidi.cpp` at around line 38 or there will be link errors:
+<pre>
+#include "ofxConstants.h"
+</pre>
+

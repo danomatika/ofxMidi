@@ -4,7 +4,7 @@
 ofxMidiOut::ofxMidiOut(const string name) : midiout(name) {
 	portNum = -1;
 	portName = "";
-	bool bOpen = false;
+	bOpen = false;
 	bMsgInProgress = false;
 	bVirtual = false;
 }
@@ -282,13 +282,13 @@ void ofxMidiOut::sendMidiBytes(vector<unsigned char>& bytes) {
 
 	// don't flush if a byte stream is in progress
 	if(bMsgInProgress) {
-		for(int i = 0; i < bytes.size(); ++i) {
+		for(unsigned int i = 0; i < bytes.size(); ++i) {
 			message.push_back(bytes[i]);
 		}
 	}
 	else {
 		message.clear();
-		for(int i = 0; i < bytes.size(); ++i) {
+		for(unsigned int i = 0; i < bytes.size(); ++i) {
 			message.push_back(bytes[i]);
 		}
 		sendMessage();

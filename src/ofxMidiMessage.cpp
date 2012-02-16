@@ -47,6 +47,7 @@ ofxMidiMessage& ofxMidiMessage::operator=(const ofxMidiMessage& from) {
 	bytes.clear();
 	for(unsigned int i = 0; i < from.bytes.size(); ++i)
 		bytes.push_back(from.bytes[i]);
+	return *this;
 }
 
 // --------------------------------------------------------------------------------------
