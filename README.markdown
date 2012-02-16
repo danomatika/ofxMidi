@@ -60,13 +60,14 @@ openFrameworks/apps/myApps/myPdProject/
 
 #### For Xcode:
 
-Rename the project in Xcode (do not rename the .xcodeproj file in Finder!): XCode Menu->Project->Rename
+Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
+* Xcode Menu->Project->Rename
 
 #### For Codeblocks (Win & Linux):
 
 * rename the *.cbp and *.workspace files
-* open the workspace and readd the renamed project file by dragging ont the project tree(it will complain about the missing project you renamed)
-* if you renamed the project *folder* make sure to set the project name to this folder name or C::B may not be able to :
+* open the workspace and readd the renamed project file by dragging it onto the project tree (it will complain about the missing project you renamed)
+* if you renamed the project *folder* make sure to set the project name to this folder name or C::B will not be able to run the binary:
 	* right click on project in the tree (not the workspace)
 	* Properties...->Title
 
