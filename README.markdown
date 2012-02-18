@@ -111,7 +111,7 @@ Adding ofxMidi to an Existing Project
 * add the CoreMIDI framework to your project
 	* Xcode 3
 		* right click on your project in the groups & files sidebar
-		* Add > Existing frameworks
+		* Add->Existing frameworks
 		* select CoreMIDI.framework from the list
 	* Xcode 4
 		* click on your project in the sidebar
@@ -132,8 +132,8 @@ ofxMidi/src
 </pre>
 * add the following search paths:
 <pre>
-..\..\..\addons\ofxMidi\src
-..\..\..\addons\ofxMidi\src\rtmidi
+..\\..\\..\addons\ofxMidi\src
+..\\..\\..\addons\ofxMidi\src\rtmidi
 </pre>
 	
 DEVELOPING
