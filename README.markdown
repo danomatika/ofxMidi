@@ -25,7 +25,7 @@ This project utilizes [RtMidi](http://www.music.mcgill.ca/~gary/rtmidi/) for the
 Installation
 ------------
 
-To use ofxMidi, first you need to download and install Open Frameworks. ofxMidi is currently developed against the latest version of Open Frameworks on github (007).
+To use ofxMidi, first you need to download and install OpenFrameworks. ofxMidi is currently developed against the latest version of Open Frameworks on github (007).
 
 To get a copy of the repository you can download the source from [http://github.com/chrisoshea/ofxMidi/zipball/master](http://github.com/chrisoshea/ofxMidi/zipball/master) or, alternatively, you can use git clone:
 <pre>
@@ -37,11 +37,28 @@ The addon should sit in `openFrameworks/addons/ofxMidi/`.
 Running the Example Project
 ---------------------------
 
-If you're using OS X, open an Xcode project in ofxMidi/example-input/ or ofxMidi/example-output/ and hit "Build and Run".
+The example projects are in the ofxMidi/example-input/ or ofxMidi/example-output/ folders.
 
-On Linux, you can use the Makefile and/or Codeblocks project files (without the "_win" suffix).
+### OSX
 
-The addon should work fine in Windows, although there are no example build files yet.
+Xcode3: Open the Xcode project and hit "Build and Run". You might want to choose "Release" instead of "Debug" for faster performance.
+
+Xcode4: Open the Xcode project, select the project scheme, and hit "Run".
+
+### Linux
+
+Open the Code::Blocks .workspace and hit F9 to build. Optionally, you can build the example with the Makefile.
+
+To run it, use the terminal:
+<pre>
+make
+cd bin
+./example-inputDEBUG
+</pre>
+
+### Windows
+
+An example Visual Studio 2010 solution as well as a Codeblocks workspace are included.
 
 Creating a New ofxMidi Project
 ------------------------------
@@ -58,12 +75,12 @@ Then rename the folder:
 openFrameworks/apps/myApps/myPdProject/
 </pre>
 
-#### For Xcode:
+#### Xcode
 
 Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
 * Xcode Menu->Project->Rename
 
-#### For Codeblocks (Win & Linux):
+#### Codeblocks (Win & Linux)
 
 * rename the *.cbp and *.workspace files
 * open the workspace and readd the renamed project file by dragging it onto the project tree (it will complain about the missing project you renamed)
@@ -71,14 +88,15 @@ Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
 	* right click on project in the tree (not the workspace)
 	* Properties...->Title
 
+#### For Visual Studio
+
+* rename the *.sln, *.vcxproj, & *.vcxproj.filters files
+* open the solution and delete the old project from the projects tree
+* go to File->Add->Existing Projects/Solutions and select the *.vcxproj file
+* right click on the project in the projects tree and rename it
 
 Adding ofxMidi to an Existing Project
 -------------------------------------
-
-If you want to add ofxMidi to another project, you may need to make sure to include the src folder:
-<pre>
-openFrameworks/addons/ofxMidi/src
-</pre>
 
 ### Xcode
 
@@ -100,6 +118,18 @@ openFrameworks/addons/ofxMidi/src
 * edit addons.make in your project folder and add the following line to the end of the file: 
 	<pre>ofxMidi</pre>
 
+### Win Codeblocks & Visual Studio
+
+* add the ofxMidi sources to the project tree
+<pre>
+openFrameworks/addons/ofxMidi/src
+</pre>
+* add the following search paths:
+<pre>
+openFrameworks/addons/ofxMidi/src
+openFrameworks/addons/ofxMidi/src/rtmidi
+</pre>
+	
 DEVELOPING
 ----------
 
