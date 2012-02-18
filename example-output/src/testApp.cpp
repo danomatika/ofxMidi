@@ -11,7 +11,7 @@ void testApp::setup() {
 	midiOut.listPorts();
 	
 	// connect
-	midiOut.openPort(0);	// by number
+	midiOut.openPort(1);	// by number
 	//midiOut.openPort("IAC Driver Pure Data In");	// by name
 	//midiOut.openVirtualPort("ofxMidiOut");		// open a virtual port
 	
@@ -54,7 +54,7 @@ void testApp::draw() {
 void testApp::keyPressed(int key) {
 
 	// send a note on if the key is a letter or a number
-	if(isalnum(key)) {
+	if(isalnum((unsigned char) key)) {
 	
 		// scale the ascii values to midi velocity range 0-127
 		// see an ascii table: http://www.asciitable.com/
@@ -71,11 +71,11 @@ void testApp::keyReleased(int key) {
 	
 		// send pgm change on arrow keys
 		case OF_KEY_UP:
-			currentPgm = (unsigned int) ofClamp(currentPgm+1, 0, 127);
+			currentPgm = (int) ofClamp(currentPgm+1, 0, 127);
 			midiOut.sendProgramChange(channel, currentPgm);
 			break;
 		case OF_KEY_DOWN:
-			currentPgm = (unsigned int) ofClamp(currentPgm-1, 0, 127);
+			currentPgm = (int) ofClamp(currentPgm-1, 0, 127);
 			midiOut << ProgramChange(channel, currentPgm); // stream interface
 			break;
 

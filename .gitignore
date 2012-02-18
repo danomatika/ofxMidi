@@ -16,10 +16,14 @@ build
 *.layout
 example-input/obj
 example-output/obj
+*.cbTemp
 
 # Win
 *.exe
 *.dll
+*.sdf
+*.suo
+*.vcxproj.user
 
 # svn
 .svn/
