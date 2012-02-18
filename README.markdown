@@ -34,6 +34,12 @@ git clone git://github.com/chrisoshea/ofxMidi.git
 
 The addon should sit in `openFrameworks/addons/ofxMidi/`.
 
+### Midi Routing on Windows
+
+Windows dosen't come with a virtual MIDI routing system like Linux (ALSA) and OSX (CoreMIDI).
+
+If you want to connect your ofxMidi app to other software (synths, DAWs, etc) check out [loopMIDI](http://www.tobias-erichsen.de/loopMIDI.html). Run the app and create a few virtual ports which you can then connect to within your software. 
+
 Running the Example Project
 ---------------------------
 
@@ -101,7 +107,7 @@ Adding ofxMidi to an Existing Project
 ### Xcode
 
 * create a new group "ofxMidi"
-* drag these directories from ofxMidi into this new group: ofxMidi/src
+* drag these directories from ofxMidi into this new group: `ofxMidi/src`
 * add the CoreMIDI framework to your project
 	* Xcode 3
 		* right click on your project in the groups & files sidebar
@@ -122,12 +128,12 @@ Adding ofxMidi to an Existing Project
 
 * add the ofxMidi sources to the project tree
 <pre>
-openFrameworks/addons/ofxMidi/src
+ofxMidi/src
 </pre>
 * add the following search paths:
 <pre>
-openFrameworks/addons/ofxMidi/src
-openFrameworks/addons/ofxMidi/src/rtmidi
+..\..\..\addons\ofxMidi\src
+..\..\..\addons\ofxMidi\src\rtmidi
 </pre>
 	
 DEVELOPING
