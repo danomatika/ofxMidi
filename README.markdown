@@ -130,12 +130,22 @@ Adding ofxMidi to an Existing Project
 <pre>
 ofxMidi/src
 </pre>
+	* Codeblocks: right click on the project in the project tree and select Add Files Recursively...
+	* Visual Studio: drag the ofxMidi/src folder on the project tree
 * add the following search paths:
 <pre>
 ..\\..\\..\addons\ofxMidi\src
 ..\\..\\..\addons\ofxMidi\src\rtmidi
 </pre>
-	
+	* Codeblocks
+		* right click on the project in the project tree and select Build Options...
+		* select the project name in the tree, not release or debug
+		* Search directories tab->Add
+	* Visual Studio
+		* right click on the project in the project tree and select Properties
+		* set the Configuration to All Configurations
+		* Configuration Properties->C/C++->General->Additional Directories
+
 DEVELOPING
 ----------
 
