@@ -5,5 +5,22 @@ OF_PATH = ../../..
 //THIS HAS ALL THE HEADER AND LIBS FOR OF CORE
 #include "../../../libs/openFrameworksCompiled/project/osx/CoreOF.xcconfig"
 
-OTHER_LDFLAGS = $(OF_CORE_LIBS) 
-HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS)
+///////////////////////////////////////////
+// ADDONS
+
+// path to the addons dir
+ADDONS_PATH = $(OF_PATH)/addons
+
+// ofxMidi
+OFX_MIDI_HEADERS = $(ADDONS_PATH)/ofxMidi/src $(ADDONS_PATH)/ofxMidi/src/rtmidi
+
+// all addons
+OF_ADDON_HEADERS = $(OFX_MIDI_HEADERS)
+OF_ADDON_LIBS = 
+
+///////////////////////////////////////////
+// MAIN
+
+OTHER_CFLAGS = $(OFX_PD_CFLAGS)
+HEADER_SEARCH_PATHS = $(OF_CORE_HEADERS) $(OF_ADDON_HEADERS)
+OTHER_LDFLAGS = $(OF_CORE_LIBS) $(OF_ADDON_LIBS)

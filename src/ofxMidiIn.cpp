@@ -1,176 +1,220 @@
 #include "ofxMidiIn.h"
 
-void ofxMidiInCallback( double deltatime, vector< unsigned char > *message, void *userData ){
-	((ofxMidiIn*)userData)->manageNewMessage(deltatime,message);
-	
-}
 // --------------------------------------------------------------------------------------
-ofxMidiIn::ofxMidiIn() {
-	
-	// Check available ports.
-	findPorts();
-	
+ofxMidiIn::ofxMidiIn(const string name) : midiin(name) {
+	portNum = -1;
+	portName = "";
+	bOpen = false;
 	bVerbose = false;
-	
+	bVirtual = false;
 }
+
 // --------------------------------------------------------------------------------------
 ofxMidiIn::~ofxMidiIn() {
 	closePort();
 }
+
 // --------------------------------------------------------------------------------------
-void ofxMidiIn::listPorts(){
-	printf( "ofxMidiIn: %i ports available \n", nPorts );
-	for(unsigned int i=0; i<nPorts; i++){
-		printf("%i: %s\n",i, portNames[i].c_str());
+// TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
+void ofxMidiIn::listPorts() {
+	cout << "ofxMidiIn: " << midiin.getPortCount() << " ports available" << endl;
+	for(unsigned int i = 0; i < midiin.getPortCount(); ++i){
+		cout << "ofxMidiIn: " <<  i << ": " << midiin.getPortName(i) << endl;
 	}
 }
+
 // --------------------------------------------------------------------------------------
-void ofxMidiIn::openPort(unsigned int _port){
-	if ( nPorts == 0 ) {
-		ofLogError() << "No ports available!";
-		return;
+vector<string>& ofxMidiIn::getPortList() {
+	portList.clear();
+	for(unsigned int i=0; i < midiin.getPortCount(); ++i) {
+		portList.push_back(midiin.getPortName(i));
 	}
-	if ( _port+1 > nPorts ){
-		ofLogError() << "The selected port is not available";
-		return;
-	}
-	
-	port = _port;
-	midii.openPort( port );
-	
-	// Set our callback function. This should be done immediately after
-	// opening the port to avoid having incoming messages written to the
-	// queue.
-	midii.setCallback( &ofxMidiInCallback, this );
-	
-	// Don't ignore sysex, timing, or active sensing messages.
-	midii.ignoreTypes( false, false, false );
+	return portList;
 }
+
 // --------------------------------------------------------------------------------------
-void ofxMidiIn::openPort(string _deviceName){
-	if ( nPorts == 0 ) {
-		ofLogError() << "No ports available!";
-		return;
+int ofxMidiIn::getNumPorts() {
+	return midiin.getPortCount();
+}
+
+// --------------------------------------------------------------------------------------
+string ofxMidiIn::getPortName(unsigned int portNumber) {
+	// handle rtmidi exceptions
+	try {
+		return midiin.getPortName(portNumber);
 	}
+	catch(RtError& err) {
+		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't get name for port %i: %s",
+			portNumber, err.what());
+	}
+	return "";
+}
+
+// --------------------------------------------------------------------------------------
+bool ofxMidiIn::openPort(unsigned int portNumber) {	
+	// handle rtmidi exceptions
+	try {
+		closePort();
+		midiin.setCallback(&_midiMessageCallback, this);
+		midiin.openPort(portNumber);
+	}
+	catch(RtError& err) {
+		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't open port %i: %s", portNumber, err.what());
+		return false;
+	}
+	portNum = portNumber;
+	portName = midiin.getPortName(portNumber);
+	bOpen = true;
+	ofLog(OF_LOG_VERBOSE, "ofxMidiIn: opened port %i %s",
+		portNum, portName.c_str());
+	return true;
+}
+
+// --------------------------------------------------------------------------------------
+bool ofxMidiIn::openPort(string deviceName) {
 	
-	// Iterate through MIDI ports, find requested devices
-	bool foundDevice = false;
-	int _port;
-	for(unsigned int i=0; i < nPorts; ++i){
-		string portName = portNames[i].c_str();
-		if(portName.compare(_deviceName) == 0) {
-			foundDevice = true;
-			_port = i;
+	// iterate through MIDI ports, find requested device
+	int port = -1;
+	for(unsigned int i = 0; i < midiin.getPortCount(); ++i) {
+		string name = midiin.getPortName(i);
+		if(name == deviceName) {
+			port = i;
+			break;
 		}
 	}
-	if(!foundDevice) {
-		// if not found
-		ofLogError() << "The selected port is not available";
-		return;
+	
+	// bail if not found
+	if(port == -1) {
+		ofLog(OF_LOG_ERROR, "ofxMidiIn: port \"%s\" is not available", deviceName.c_str());
+		return false;
+	} 
+	
+	return openPort(port);
+}
+
+// --------------------------------------------------------------------------------------
+bool ofxMidiIn::openVirtualPort(string portName) {
+	// handle rtmidi exceptions
+	try {
+		closePort();
+		midiin.setCallback(&_midiMessageCallback, this);
+		midiin.openVirtualPort(portName);
 	}
-	
-	openPort( _port );	
-	
-}
-// --------------------------------------------------------------------------------------
-void ofxMidiIn::openVirtualPort(string _port){
-	
-	midii.openVirtualPort(_port);
-	
-}
-// --------------------------------------------------------------------------------------
-void ofxMidiIn::closePort(){
-	midii.closePort();
-}
-// --------------------------------------------------------------------------------------
-void ofxMidiIn::findPorts(){
-	
-	// how many ports?
-	nPorts = midii.getPortCount();
-	
-	portNames.clear();
-	
-	// store port names
-	for(unsigned int i=0; i<nPorts; i++){
-		portNames.push_back( midii.getPortName(i) );
+	catch(RtError& err) {
+		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't open virtual port \"%s\": %s",
+			portName.c_str(), err.what());
+		return false;
 	}
+	this->portName = portName;
+	bOpen = true;
+	bVirtual = true;
+	ofLog(OF_LOG_VERBOSE, "ofxMidiOut: opened virtual port %s", portName.c_str());
+	return true;
 }
+
 // --------------------------------------------------------------------------------------
-void ofxMidiIn::manageNewMessage(double deltatime, vector< unsigned char > *message){
-	
-	unsigned int nBytes = message->size();
-	if(bVerbose){
-		cout << "num bytes: "<<nBytes;
-		for ( unsigned int i=0; i<nBytes; i++ )
-			cout << " Byte " << i << " = " << (int)message->at(i) << ", ";
-		if ( nBytes > 0 )
-			cout << "stamp = " << deltatime << '\n';
+void ofxMidiIn::closePort() {
+	if(bVirtual && bOpen) {
+		ofLog(OF_LOG_VERBOSE, "ofxMidiIn: closing virtual port %s", portName.c_str());
 	}
-	
-	if(nBytes>0){
-		
-		ofxMidiEventArgs eventArgs;
-		
-		eventArgs.channel = ((int)(message->at(0)) % 16)+1;
-		eventArgs.status = ((int)message->at(0)) - (eventArgs.channel-1);
-		eventArgs.timestamp = deltatime;
-		
-		if(nBytes==2){
-			eventArgs.byteOne = (int)message->at(1);
-		}else if(nBytes==3){
-			eventArgs.byteOne = (int)message->at(1);
-			eventArgs.byteTwo = (int)message->at(2);
-		}
-		
-		
-		ofNotifyEvent( newMessageEvent, eventArgs, this );
-		
+	else if(portNum > -1) {
+		ofLog(OF_LOG_VERBOSE, "ofxMidiIn: closing port %i %s", portNum, portName.c_str());
 	}
-	
-	
+	midiin.closePort();
+	if(bOpen)
+		midiin.cancelCallback();
+	portNum = -1;
+	portName = "";
+	bOpen = false;
+	bVirtual = false;
 }
+
 // --------------------------------------------------------------------------------------
-void ofxMidiIn::setVerbose(bool verbose){
-	bVerbose=verbose;
+int ofxMidiIn::getPort() {
+	return portNum;
 }
+
 // --------------------------------------------------------------------------------------
-unsigned int ofxMidiIn::getPort(){
-	return port;
+string ofxMidiIn::getName() {
+	return portName;
 }
+
 // --------------------------------------------------------------------------------------
-void ofxMidiIn::addListener(ofxMidiListener* listener){
+bool ofxMidiIn::isOpen() {
+	return bOpen;
+}
+
+// --------------------------------------------------------------------------------------
+void ofxMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
+	midiin.ignoreTypes(midiSysex, midiTiming, midiSense);
+	ofLog(OF_LOG_VERBOSE, "ofxMidiIn: ignore types on %s: sysex: %d timing: %d sense: %d",
+			portName.c_str(), midiSysex, midiTiming, midiSense);
+}
+
+// --------------------------------------------------------------------------------------
+void ofxMidiIn::addListener(ofxMidiListener* listener) {
 	ofAddListener(newMessageEvent, listener, &ofxMidiListener::newMidiMessage);
 }
 
-void ofxMidiIn::removeListener(ofxMidiListener* listener){
+// --------------------------------------------------------------------------------------
+void ofxMidiIn::removeListener(ofxMidiListener* listener) {
 	ofRemoveListener(newMessageEvent, listener, &ofxMidiListener::newMidiMessage);
 }
+
 // --------------------------------------------------------------------------------------
-void ofxMidiIn::addListener(int id,ofxMidiListener* listener){
-	
-	// i have taken this out for now whilst I work out the best way to handle event types
-	/*
-	 ofEvent<ofxMidiEventArgs> * event;
-	 map<int,ofEvent<ofxMidiEventArgs>*>::iterator it=newIdMessageEvents.find(id);
-	 if(it == newIdMessageEvents.end()){
-	 event = new ofEvent<ofxMidiEventArgs>();
-	 ///event->init("ofxMidiInIn:" + ofToString(id) +"::newMessage");
-	 newIdMessageEvents[id]=event;
-	 }else{
-	 event=it->second;
-	 }
-	 ofAddListener(*event,listener, &ofxMidiListener::newMidiMessage);
-	 */
+void ofxMidiIn::setVerbose(bool verbose) {
+	bVerbose = verbose;
 }
+
+// PRIVATE
 // --------------------------------------------------------------------------------------
-void ofxMidiIn::removeListener(int id,ofxMidiListener* listener){
+// TODO: replace cout with ofLogNotice, etc?
+void ofxMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *message) {
+			
+	// parse message and fill event
+	ofxMidiMessage midiMessage(message);
 	
-	// i have taken this out for now whilst I work out the best way to handle event types
+	midiMessage.status = (MidiStatus) (message->at(0) & 0xF0);
+	midiMessage.channel = (int) (message->at(0) & 0x0F)+1;
+	midiMessage.deltatime = deltatime * 1000; // convert s to ms
+	midiMessage.portNum = portNum;
+	midiMessage.portName = portName;
 	
-	/*
-	 map<int,ofEvent<ofxMidiEventArgs>*>::iterator it=newIdMessageEvents.find(id);
-	 if(it != newIdMessageEvents.end()){
-	 ofEvent<ofxMidiEventArgs> * event = it->second;
-	 ofRemoveListener(*event,listener,&ofxMidiListener::newMidiMessage);
-	 }*/
+	switch(midiMessage.status) {
+		case MIDI_NOTE_ON :
+		case MIDI_NOTE_OFF:
+			midiMessage.pitch = (int) message->at(1);
+			midiMessage.velocity = (int) message->at(2);
+			break;
+		case MIDI_CONTROL_CHANGE:
+			midiMessage.control = (int) message->at(1);
+			midiMessage.value = (int) message->at(2);
+			break;
+		case MIDI_PROGRAM_CHANGE:
+		case MIDI_AFTERTOUCH:
+			midiMessage.value = (int) message->at(1);
+			break;
+		case MIDI_PITCH_BEND:
+			midiMessage.value = (int) (message->at(2) << 7) +
+								(int) message->at(1); // msb + lsb
+			break;
+		case MIDI_POLY_AFTERTOUCH:
+			midiMessage.pitch = (int) message->at(1);
+			midiMessage.value = (int) message->at(2);
+			break;
+		default:
+			break;
+	}
+	
+	if(bVerbose) {
+		cout << midiMessage.toString() << endl;
+	}
+	
+	// send event to listeners
+	ofNotifyEvent(newMessageEvent, midiMessage, this);
+}
+
+// --------------------------------------------------------------------------------------
+void ofxMidiIn::_midiMessageCallback(double deltatime, vector<unsigned char> *message, void *userData) {
+	((ofxMidiIn*) userData)->manageNewMessage(deltatime, message);
 }
