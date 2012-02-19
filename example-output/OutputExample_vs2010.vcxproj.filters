@@ -1,52 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\src\ofxMidiIn.cpp">
-      <Filter>addons\ofxMidi\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ofxMidiMessage.cpp">
-      <Filter>addons\ofxMidi\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\ofxMidiOut.cpp">
-      <Filter>addons\ofxMidi\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\rtmidi\RtMidi.cpp">
-      <Filter>addons\ofxMidi\src\rtmidi</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\testApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.cpp">
+      <Filter>addons\ofxMidi\src\rtmidi</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.cpp">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.cpp">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.cpp">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\ofxMidi.h">
-      <Filter>addons\ofxMidi\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ofxMidiConstants.h">
-      <Filter>addons\ofxMidi\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ofxMidiIn.h">
-      <Filter>addons\ofxMidi\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ofxMidiMessage.h">
-      <Filter>addons\ofxMidi\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ofxMidiOut.h">
-      <Filter>addons\ofxMidi\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\ofxMidiTypes.h">
-      <Filter>addons\ofxMidi\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\rtmidi\RtError.h">
-      <Filter>addons\ofxMidi\src\rtmidi</Filter>
-    </ClInclude>
-    <ClInclude Include="..\src\rtmidi\RtMidi.h">
-      <Filter>addons\ofxMidi\src\rtmidi</Filter>
-    </ClInclude>
     <ClInclude Include="src\testApp.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\rtmidi\RtError.h">
+      <Filter>addons\ofxMidi\src\rtmidi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.h">
+      <Filter>addons\ofxMidi\src\rtmidi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidi.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiConstants.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.h">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiTypes.h">
+      <Filter>addons\ofxMidi\src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -108,6 +108,42 @@
 			<Add after='cmd /c if not exist &quot;$(PROJECT_DIR)bin/data&quot; mkdir &quot;$(PROJECT_DIR)bin/data&quot;' />
 			<Mode after="always" />
 		</ExtraCommands>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidi.h">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidiConstants.h">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidiIn.cpp">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidiIn.h">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidiMessage.cpp">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidiMessage.h">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidiOut.cpp">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidiOut.h">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidiTypes.h">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\rtmidi\RtError.h">
+			<Option virtualFolder="addons\ofxMidi\src\rtmidi\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.cpp">
+			<Option virtualFolder="addons\ofxMidi\src\rtmidi\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.h">
+			<Option virtualFolder="addons\ofxMidi\src\rtmidi\" />
+		</Unit>
 		<Unit filename="src\main.cpp">
 			<Option virtualFolder="src" />
 		</Unit>
@@ -116,42 +152,6 @@
 		</Unit>
 		<Unit filename="src\testApp.h">
 			<Option virtualFolder="src" />
-		</Unit>
-		<Unit filename="..\src\ofxMidi.h">
-			<Option virtualFolder="addons\ofxMidi\src\" />
-		</Unit>
-		<Unit filename="..\src\ofxMidiConstants.h">
-			<Option virtualFolder="addons\ofxMidi\src\" />
-		</Unit>
-		<Unit filename="..\src\ofxMidiIn.cpp">
-			<Option virtualFolder="addons\ofxMidi\src\" />
-		</Unit>
-		<Unit filename="..\src\ofxMidiIn.h">
-			<Option virtualFolder="addons\ofxMidi\src\" />
-		</Unit>
-		<Unit filename="..\src\ofxMidiMessage.cpp">
-			<Option virtualFolder="addons\ofxMidi\src\" />
-		</Unit>
-		<Unit filename="..\src\ofxMidiMessage.h">
-			<Option virtualFolder="addons\ofxMidi\src\" />
-		</Unit>
-		<Unit filename="..\src\ofxMidiOut.cpp">
-			<Option virtualFolder="addons\ofxMidi\src\" />
-		</Unit>
-		<Unit filename="..\src\ofxMidiOut.h">
-			<Option virtualFolder="addons\ofxMidi\src\" />
-		</Unit>
-		<Unit filename="..\src\ofxMidiTypes.h">
-			<Option virtualFolder="addons\ofxMidi\src\" />
-		</Unit>
-		<Unit filename="..\src\rtmidi\RtError.h">
-			<Option virtualFolder="addons\ofxMidi\src\rtmidi\" />
-		</Unit>
-		<Unit filename="..\src\rtmidi\RtMidi.cpp">
-			<Option virtualFolder="addons\ofxMidi\src\rtmidi\" />
-		</Unit>
-		<Unit filename="..\src\rtmidi\RtMidi.h">
-			<Option virtualFolder="addons\ofxMidi\src\rtmidi\" />
 		</Unit>
 		<Extensions>
 			<code_completion />

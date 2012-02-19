@@ -117,22 +117,22 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\ofxMidiIn.cpp" />
-    <ClCompile Include="..\src\ofxMidiMessage.cpp" />
-    <ClCompile Include="..\src\ofxMidiOut.cpp" />
-    <ClCompile Include="..\src\rtmidi\RtMidi.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\src\ofxMidi.h" />
-    <ClInclude Include="..\src\ofxMidiConstants.h" />
-    <ClInclude Include="..\src\ofxMidiIn.h" />
-    <ClInclude Include="..\src\ofxMidiMessage.h" />
-    <ClInclude Include="..\src\ofxMidiOut.h" />
-    <ClInclude Include="..\src\ofxMidiTypes.h" />
-    <ClInclude Include="..\src\rtmidi\RtError.h" />
-    <ClInclude Include="..\src\rtmidi\RtMidi.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidi.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiConstants.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiTypes.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\rtmidi\RtError.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>

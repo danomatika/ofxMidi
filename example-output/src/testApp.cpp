@@ -11,7 +11,7 @@ void testApp::setup() {
 	midiOut.listPorts();
 	
 	// connect
-	midiOut.openPort(1);	// by number
+	midiOut.openPort(0);	// by number
 	//midiOut.openPort("IAC Driver Pure Data In");	// by name
 	//midiOut.openVirtualPort("ofxMidiOut");		// open a virtual port
 	
