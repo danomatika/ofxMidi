@@ -94,7 +94,7 @@ Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
 	* right click on project in the tree (not the workspace)
 	* Properties...->Title
 
-#### For Visual Studio
+#### Visual Studio
 
 * rename the *.sln, *.vcxproj, & *.vcxproj.filters files
 * open the solution and delete the old project from the projects tree
@@ -118,6 +118,11 @@ Adding ofxMidi to an Existing Project
 		* select the Summary tab
 		* click the + under Linked Frameworks & Libraries
 		* search for and select the CoreMIDI.framework from the list
+* add the following directories to your search path in your project's Project.xconfig file (See the Project.xconfig of the example project.):
+<pre>
+../../../addons/ofxMidi/src
+../../../addons/ofxMidi/src/rtmidi
+</pre>
 
 ### Linux Makefiles/CodeBlocks
 
