@@ -3,14 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		270A244114121F3A0073405C /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 270A243714121F3A0073405C /* RtMidi.cpp */; };
-		270A244214121F3A0073405C /* ofxMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 270A243D14121F3A0073405C /* ofxMidiIn.cpp */; };
-		270A244314121F3A0073405C /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 270A243F14121F3A0073405C /* ofxMidiOut.cpp */; };
 		270A248D141220590073405C /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270A248C141220590073405C /* CoreMIDI.framework */; };
+		306D311014F098BF0009AEF1 /* ofxMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306D310414F098BE0009AEF1 /* ofxMidiIn.cpp */; };
+		306D311114F098BF0009AEF1 /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306D310614F098BE0009AEF1 /* ofxMidiMessage.cpp */; };
+		306D311214F098BF0009AEF1 /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306D310814F098BE0009AEF1 /* ofxMidiOut.cpp */; };
+		306D311314F098BF0009AEF1 /* RtMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306D310E14F098BF0009AEF1 /* RtMidi.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -61,17 +62,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		270A243614121F3A0073405C /* RtError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtError.h; path = ../libs/RtError.h; sourceTree = SOURCE_ROOT; };
-		270A243714121F3A0073405C /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RtMidi.cpp; path = ../libs/RtMidi.cpp; sourceTree = SOURCE_ROOT; };
-		270A243814121F3A0073405C /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RtMidi.h; path = ../libs/RtMidi.h; sourceTree = SOURCE_ROOT; };
-		270A243A14121F3A0073405C /* ofxMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMidi.h; path = ../src/ofxMidi.h; sourceTree = SOURCE_ROOT; };
-		270A243B14121F3A0073405C /* ofxMidiConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMidiConstants.h; path = ../src/ofxMidiConstants.h; sourceTree = SOURCE_ROOT; };
-		270A243C14121F3A0073405C /* ofxMidiEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMidiEvents.h; path = ../src/ofxMidiEvents.h; sourceTree = SOURCE_ROOT; };
-		270A243D14121F3A0073405C /* ofxMidiIn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidiIn.cpp; path = ../src/ofxMidiIn.cpp; sourceTree = SOURCE_ROOT; };
-		270A243E14121F3A0073405C /* ofxMidiIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMidiIn.h; path = ../src/ofxMidiIn.h; sourceTree = SOURCE_ROOT; };
-		270A243F14121F3A0073405C /* ofxMidiOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ofxMidiOut.cpp; path = ../src/ofxMidiOut.cpp; sourceTree = SOURCE_ROOT; };
-		270A244014121F3A0073405C /* ofxMidiOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ofxMidiOut.h; path = ../src/ofxMidiOut.h; sourceTree = SOURCE_ROOT; };
 		270A248C141220590073405C /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = /System/Library/Frameworks/CoreMIDI.framework; sourceTree = "<absolute>"; };
+		306D310214F098BE0009AEF1 /* ofxMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMidi.h; sourceTree = "<group>"; };
+		306D310314F098BE0009AEF1 /* ofxMidiConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMidiConstants.h; sourceTree = "<group>"; };
+		306D310414F098BE0009AEF1 /* ofxMidiIn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiIn.cpp; sourceTree = "<group>"; };
+		306D310514F098BE0009AEF1 /* ofxMidiIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMidiIn.h; sourceTree = "<group>"; };
+		306D310614F098BE0009AEF1 /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiMessage.cpp; sourceTree = "<group>"; };
+		306D310714F098BE0009AEF1 /* ofxMidiMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMidiMessage.h; sourceTree = "<group>"; };
+		306D310814F098BE0009AEF1 /* ofxMidiOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiOut.cpp; sourceTree = "<group>"; };
+		306D310914F098BE0009AEF1 /* ofxMidiOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMidiOut.h; sourceTree = "<group>"; };
+		306D310A14F098BE0009AEF1 /* ofxMidiTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMidiTypes.h; sourceTree = "<group>"; };
+		306D310C14F098BF0009AEF1 /* readme */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme; sourceTree = "<group>"; };
+		306D310D14F098BF0009AEF1 /* RtError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RtError.h; sourceTree = "<group>"; };
+		306D310E14F098BF0009AEF1 /* RtMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RtMidi.cpp; sourceTree = "<group>"; };
+		306D310F14F098BF0009AEF1 /* RtMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RtMidi.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -83,7 +87,7 @@
 		E45BE9770E8CC7DD009D7055 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = /System/Library/Frameworks/CoreServices.framework; sourceTree = "<absolute>"; };
 		E45BE9790E8CC7DD009D7055 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
 		E45BE97A0E8CC7DD009D7055 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = /System/Library/Frameworks/QuickTime.framework; sourceTree = "<absolute>"; };
-		E4B69B5B0A3A1756003C02F2 /* InputExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InputExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B69B5B0A3A1756003C02F2 /* InputExampleDebug.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InputExampleDebug.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4B69E1D0A3A1BDC003C02F2 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1E0A3A1BDC003C02F2 /* testApp.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = testApp.cpp; path = src/testApp.cpp; sourceTree = SOURCE_ROOT; };
 		E4B69E1F0A3A1BDC003C02F2 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
@@ -121,45 +125,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		270A243014121F2F0073405C /* ofxMidi */ = {
+		306D310014F098AF0009AEF1 /* ofxMidi */ = {
 			isa = PBXGroup;
 			children = (
-				270A243514121F3A0073405C /* libs */,
-				270A243914121F3A0073405C /* src */,
+				306D310114F098BE0009AEF1 /* src */,
 			);
 			name = ofxMidi;
 			sourceTree = "<group>";
 		};
-		270A243514121F3A0073405C /* libs */ = {
+		306D310114F098BE0009AEF1 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				270A243614121F3A0073405C /* RtError.h */,
-				270A243714121F3A0073405C /* RtMidi.cpp */,
-				270A243814121F3A0073405C /* RtMidi.h */,
-			);
-			name = libs;
-			path = ../libs;
-			sourceTree = SOURCE_ROOT;
-		};
-		270A243914121F3A0073405C /* src */ = {
-			isa = PBXGroup;
-			children = (
-				270A243A14121F3A0073405C /* ofxMidi.h */,
-				270A243B14121F3A0073405C /* ofxMidiConstants.h */,
-				270A243C14121F3A0073405C /* ofxMidiEvents.h */,
-				270A243D14121F3A0073405C /* ofxMidiIn.cpp */,
-				270A243E14121F3A0073405C /* ofxMidiIn.h */,
-				270A243F14121F3A0073405C /* ofxMidiOut.cpp */,
-				270A244014121F3A0073405C /* ofxMidiOut.h */,
+				306D310B14F098BE0009AEF1 /* rtmidi */,
+				306D310214F098BE0009AEF1 /* ofxMidi.h */,
+				306D310314F098BE0009AEF1 /* ofxMidiConstants.h */,
+				306D310414F098BE0009AEF1 /* ofxMidiIn.cpp */,
+				306D310514F098BE0009AEF1 /* ofxMidiIn.h */,
+				306D310614F098BE0009AEF1 /* ofxMidiMessage.cpp */,
+				306D310714F098BE0009AEF1 /* ofxMidiMessage.h */,
+				306D310814F098BE0009AEF1 /* ofxMidiOut.cpp */,
+				306D310914F098BE0009AEF1 /* ofxMidiOut.h */,
+				306D310A14F098BE0009AEF1 /* ofxMidiTypes.h */,
 			);
 			name = src;
-			path = ../src;
-			sourceTree = SOURCE_ROOT;
+			path = ../../../addons/ofxMidi/src;
+			sourceTree = "<group>";
+		};
+		306D310B14F098BE0009AEF1 /* rtmidi */ = {
+			isa = PBXGroup;
+			children = (
+				306D310C14F098BF0009AEF1 /* readme */,
+				306D310D14F098BF0009AEF1 /* RtError.h */,
+				306D310E14F098BF0009AEF1 /* RtMidi.cpp */,
+				306D310F14F098BF0009AEF1 /* RtMidi.h */,
+			);
+			path = rtmidi;
+			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
-				270A243014121F2F0073405C /* ofxMidi */,
+				306D310014F098AF0009AEF1 /* ofxMidi */,
 			);
 			name = addons;
 			sourceTree = "<group>";
@@ -212,11 +218,12 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
 				E45BE5980E8CC70C009D7055 /* frameworks */,
-				E4B69B5B0A3A1756003C02F2 /* InputExample.app */,
+				E4B69B5B0A3A1756003C02F2 /* InputExampleDebug.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -233,7 +240,6 @@
 		E4EEC9E9138DF44700A80321 /* openFrameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4EB691F138AFCF100A09F29 /* CoreOF.xcconfig */,
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
@@ -260,7 +266,7 @@
 			);
 			name = InputExample;
 			productName = myOFApp;
-			productReference = E4B69B5B0A3A1756003C02F2 /* InputExample.app */;
+			productReference = E4B69B5B0A3A1756003C02F2 /* InputExampleDebug.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -268,8 +274,11 @@
 /* Begin PBXProject section */
 		E4B69B4C0A3A1720003C02F2 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = E4B69B4D0A3A1720003C02F2 /* Build configuration list for PBXProject "InputExample" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -327,9 +336,10 @@
 			files = (
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* testApp.cpp in Sources */,
-				270A244114121F3A0073405C /* RtMidi.cpp in Sources */,
-				270A244214121F3A0073405C /* ofxMidiIn.cpp in Sources */,
-				270A244314121F3A0073405C /* ofxMidiOut.cpp in Sources */,
+				306D311014F098BF0009AEF1 /* ofxMidiIn.cpp in Sources */,
+				306D311114F098BF0009AEF1 /* ofxMidiMessage.cpp in Sources */,
+				306D311214F098BF0009AEF1 /* ofxMidiOut.cpp in Sources */,
+				306D311314F098BF0009AEF1 /* RtMidi.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +368,7 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_MODEL_TUNING = G5;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
 				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
@@ -387,6 +398,7 @@
 				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_UNROLL_LOOPS = YES;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
 				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
@@ -410,7 +422,6 @@
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_MODEL_TUNING = G4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -481,7 +492,6 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_52)",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
 			};
@@ -496,7 +506,6 @@
 					"$(FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1)",
 				);
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_1 = "\"$(SRCROOT)/../../../libs/glut/lib/osx\"";
-				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G4;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -567,7 +576,6 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_50)",
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_FOR_TARGET_51)",
 				);
-				PREBINDING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
