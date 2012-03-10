@@ -174,12 +174,20 @@ void ofxMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *messag
 	// parse message and fill event
 	ofxMidiMessage midiMessage(message);
 	
-	midiMessage.status = (MidiStatus) (message->at(0) & 0xF0);
-	midiMessage.channel = (int) (message->at(0) & 0x0F)+1;
-	midiMessage.deltatime = deltatime * 1000; // convert s to ms
-	midiMessage.portNum = portNum;
-	midiMessage.portName = portName;
-	
+    if ((message->at(0))>= MIDI_SYSEX)
+    {
+        midiMessage.status = (MidiStatus)(message->at(0) & 0xFF);
+        midiMessage.channel = 0;
+    }else
+    {
+        midiMessage.status = (MidiStatus) (message->at(0) & 0xF0);
+        midiMessage.channel = (int) (message->at(0) & 0x0F)+1;
+    }
+
+    midiMessage.deltatime = deltatime * 1000; // convert s to ms
+    midiMessage.portNum = portNum;
+    midiMessage.portName = portName;
+
 	switch(midiMessage.status) {
 		case MIDI_NOTE_ON :
 		case MIDI_NOTE_OFF:
