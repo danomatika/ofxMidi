@@ -2,22 +2,22 @@
 
 #include "ofMain.h"
 
-#include "RtMidi.h"
-#include "ofxMidiConstants.h"
-#include "ofxMidiMessage.h"
+#ifdef TARGET_OS_IPHONE
+
+// #import "PGMidi.h"
 
 ///
 /// a midi output port
 ///
 /// create multiple instances to connect to multiple ports
 ///
-class ofxMidiIn {
+class ofxPGMidiIn {
 
 public:
 
 	/// set the input client name (optional)
-	ofxMidiIn(const string name="ofxMidiIn Client");
-	virtual ~ofxMidiIn();
+	ofxPGMidiIn();
+	virtual ~ofxPGMidiIn();
 	
 /// \section Port Info
 	
@@ -112,6 +112,11 @@ private:
 	/// parses and sends received messages to listeners
 	void manageNewMessage(double deltatime, vector<unsigned char> *message);
 	
+//	PGMidi * midi;
+//	ofxMidiDelegate * midiDelegate;
+//	
+//	
+//	RtMidiIn midiin;
 	int portNum;				//< current port num, -1 if not connected
 	string portName;			//< current port name, "" if not connected
 	
@@ -125,3 +130,5 @@ private:
 	/// static callback for rtmidi
 	static void _midiMessageCallback(double deltatime, vector< unsigned char > *message, void *userData);
 };
+
+#endif

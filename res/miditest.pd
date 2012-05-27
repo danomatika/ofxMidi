@@ -1,4 +1,4 @@
-#N canvas 559 297 802 343 10;
+#N canvas 474 109 802 343 10;
 #X obj 6 54 notein;
 #X floatatom 6 97 5 0 0 0 - - -;
 #X floatatom 44 98 5 0 0 0 - - -;
@@ -36,15 +36,15 @@
 #X obj 116 281 ctlout 1;
 #X obj 116 252 unpack f f;
 #X obj 119 170 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 12700 1;
+-1 -1 5700 1;
 #X obj 207 253 pgmout;
 #X obj 210 202 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 5200 1;
+-1 -1 3600 1;
 #X floatatom 207 227 5 0 0 0 - - -;
 #X floatatom 116 198 5 0 0 0 - - -;
 #X obj 307 301 bendout;
 #X obj 310 245 hsl 128 15 -8192 8192 0 0 empty empty empty -2 -8 0
-10 -262144 -1 -1 4400 1;
+10 -262144 -1 -1 2600 1;
 #X floatatom 307 270 5 0 0 0 - - -;
 #X text 337 29 bend 0 - 16383;
 #N canvas 551 149 369 179 sysexout 0;
@@ -58,12 +58,12 @@
 #X connect 3 0 2 0;
 #X restore 693 194 pd sysexout;
 #X obj 412 149 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 7400 1;
+-1 -1 4800 1;
 #X floatatom 409 174 5 0 0 0 - - -;
 #X obj 409 200 touchout;
 #X obj 518 266 unpack f f;
 #X obj 521 184 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 1900 1;
+-1 -1 3700 1;
 #X floatatom 518 212 5 0 0 0 - - -;
 #X obj 518 295 polytouchout;
 #X text 323 228 bend -8192 - 8192 in pd;
@@ -71,7 +71,30 @@
 #X msg 518 238 \$1 64;
 #X text 564 238 set value for pitch 64;
 #X text 93 303 set value for ctl 7 (vol);
-#X obj 4 250 makenote 5000;
+#X obj 4 250 makenote 64 1000;
+#N canvas 299 383 433 247 (subpatch) 0;
+#X obj 72 69 inlet;
+#X obj 103 134 delay 2000;
+#X obj 72 104 t b b;
+#X msg 103 160 0;
+#X msg 72 158 127;
+#X text 233 65 for checking delta times;
+#X obj 144 69 metro 4000;
+#X obj 144 38 inlet;
+#X obj 72 191 ctlout 10 1;
+#X connect 0 0 2 0;
+#X connect 1 0 3 0;
+#X connect 2 0 4 0;
+#X connect 2 1 1 0;
+#X connect 3 0 8 0;
+#X connect 4 0 8 0;
+#X connect 6 0 2 0;
+#X connect 7 0 6 0;
+#X restore 693 286 pd 2 sec ctl;
+#X obj 693 263 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X obj 762 265 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
 #X connect 0 0 1 0;
 #X connect 0 1 2 0;
 #X connect 0 2 3 0;
@@ -113,3 +136,5 @@
 #X connect 54 0 48 0;
 #X connect 57 0 28 0;
 #X connect 57 1 28 1;
+#X connect 59 0 58 0;
+#X connect 60 0 58 1;

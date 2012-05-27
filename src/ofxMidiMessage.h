@@ -78,6 +78,7 @@ public:
 	string toString();
 
 	/// get a midi status byte as a string
+	/// ie "Note On", "Note Off", "Control Change", etc
 	static string getStatusString(MidiStatus status);
 };
 

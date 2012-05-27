@@ -1,4 +1,4 @@
-#include "ofxiOSMidiInterface.h"
+#include "ofxPGMidiIn.h"
 
 #import "pgmidi/iOSVersionDetection.h"
 #import <CoreMIDI/CoreMIDI.h>
@@ -8,32 +8,32 @@
 - (void) midiSource:(PGMidiSource*)midi midiReceived:(const MIDIPacketList *)packetList {
     const MIDIPacket * packet = & packetList->packet[0];
     for (int i = 0; i < packetList->numPackets; ++i) {
-        ofxiOSMidiInterface::
+        ofxPGMidiIn::
         packet = MIDIPacketNext(packet);
     }
 }
 
 
 // --------------------------------------------------------------------------------------
-ofxiOSMidiInterface::ofxiOSMidiInterface) {
+ofxPGMidiIn::ofxPGMidiIn) {
 	PGMidi = [[PGMidi alloc] init];
 }
 
 // --------------------------------------------------------------------------------------
-ofxiOSMidiInterface::~ofxiOSMidiInterface() {
+ofxPGMidiIn::~ofxPGMidiIn() {
 	[midi release];
 }
 
 // --------------------------------------------------------------------------------------
-void ofxiOSMidiInterface::listInputPorts() {
-	cout << "ofxiOSMidiInterface: " << midiin.getPortCount() << " ports available" << endl;
+void ofxPGMidiIn::listInputPorts() {
+	cout << "ofxPGMidiIn: " << midiin.getPortCount() << " ports available" << endl;
 	for(unsigned int i = 0; i < midiin.getPortCount(); ++i){
-		cout << "ofxiOSMidiInterface: " <<  i << ": " << midiin.getPortName(i) << endl;
+		cout << "ofxPGMidiIn: " <<  i << ": " << midiin.getPortName(i) << endl;
 	}
 }
 
 // --------------------------------------------------------------------------------------
-vector<string>& ofxiOSMidiInterface::getPortList() {
+vector<string>& ofxPGMidiIn::getPortList() {
 	portList.clear();
 	for(unsigned int i=0; i < midiin.getPortCount(); ++i) {
 		portList.push_back(midiin.getPortName(i));
@@ -42,25 +42,25 @@ vector<string>& ofxiOSMidiInterface::getPortList() {
 }
 
 // --------------------------------------------------------------------------------------
-int ofxiOSMidiInterface::getNumPorts() {
+int ofxPGMidiIn::getNumPorts() {
 	return [midi.sources count]
 }
 
 // --------------------------------------------------------------------------------------
-string ofxiOSMidiInterface::getPortName(unsigned int portNumber) {
+string ofxPGMidiIn::getPortName(unsigned int portNumber) {
 	// handle rtmidi exceptions
 	@try {
 		return (string) [midi.sources objectAtIndex:portNumber].name;
 	}
 	@catch(NSException * ex) {
-		ofLog(OF_LOG_ERROR, "ofxiOSMidiInterface: couldn't get name for port %i: %s: %s",
+		ofLog(OF_LOG_ERROR, "ofxPGMidiIn: couldn't get name for port %i: %s: %s",
 			portNumber, ex.name, ex.reason);
 	}
 	return "";
 }
 
 // --------------------------------------------------------------------------------------
-bool ofxiOSMidiInterface::openPort(unsigned int portNumber) {	
+bool ofxPGMidiIn::openPort(unsigned int portNumber) {	
 	// handle rtmidi exceptions
 	try {
 		closePort();
@@ -68,19 +68,19 @@ bool ofxiOSMidiInterface::openPort(unsigned int portNumber) {
 		midiin.openPort(portNumber);
 	}
 	catch(RtError& err) {
-		ofLog(OF_LOG_ERROR, "ofxiOSMidiInterface: couldn't open port %i: %s", portNumber, err.what());
+		ofLog(OF_LOG_ERROR, "ofxPGMidiIn: couldn't open port %i: %s", portNumber, err.what());
 		return false;
 	}
 	portNum = portNumber;
 	portName = midiin.getPortName(portNumber);
 	bOpen = true;
-	ofLog(OF_LOG_VERBOSE, "ofxiOSMidiInterface: opened port %i %s",
+	ofLog(OF_LOG_VERBOSE, "ofxPGMidiIn: opened port %i %s",
 		portNum, portName.c_str());
 	return true;
 }
 
 // --------------------------------------------------------------------------------------
-bool ofxiOSMidiInterface::openPort(string deviceName) {
+bool ofxPGMidiIn::openPort(string deviceName) {
 	
 	// iterate through MIDI ports, find requested device
 	int port = -1;
@@ -94,7 +94,7 @@ bool ofxiOSMidiInterface::openPort(string deviceName) {
 	
 	// bail if not found
 	if(port == -1) {
-		ofLog(OF_LOG_ERROR, "ofxiOSMidiInterface: port \"%s\" is not available", deviceName.c_str());
+		ofLog(OF_LOG_ERROR, "ofxPGMidiIn: port \"%s\" is not available", deviceName.c_str());
 		return false;
 	} 
 	
@@ -102,7 +102,7 @@ bool ofxiOSMidiInterface::openPort(string deviceName) {
 }
 
 // --------------------------------------------------------------------------------------
-bool ofxiOSMidiInterface::openVirtualPort(string portName) {
+bool ofxPGMidiIn::openVirtualPort(string portName) {
 	// handle rtmidi exceptions
 	try {
 		closePort();
@@ -110,7 +110,7 @@ bool ofxiOSMidiInterface::openVirtualPort(string portName) {
 		midiin.openVirtualPort(portName);
 	}
 	catch(RtError& err) {
-		ofLog(OF_LOG_ERROR, "ofxiOSMidiInterface: couldn't open virtual port \"%s\": %s",
+		ofLog(OF_LOG_ERROR, "ofxPGMidiIn: couldn't open virtual port \"%s\": %s",
 			portName.c_str(), err.what());
 		return false;
 	}
@@ -122,12 +122,12 @@ bool ofxiOSMidiInterface::openVirtualPort(string portName) {
 }
 
 // --------------------------------------------------------------------------------------
-void ofxiOSMidiInterface::closePort() {
+void ofxPGMidiIn::closePort() {
 	if(bVirtual && bOpen) {
-		ofLog(OF_LOG_VERBOSE, "ofxiOSMidiInterface: closing virtual port %s", portName.c_str());
+		ofLog(OF_LOG_VERBOSE, "ofxPGMidiIn: closing virtual port %s", portName.c_str());
 	}
 	else if(portNum > -1) {
-		ofLog(OF_LOG_VERBOSE, "ofxiOSMidiInterface: closing port %i %s", portNum, portName.c_str());
+		ofLog(OF_LOG_VERBOSE, "ofxPGMidiIn: closing port %i %s", portNum, portName.c_str());
 	}
 	midiin.closePort();
 	if(bOpen)
@@ -139,46 +139,46 @@ void ofxiOSMidiInterface::closePort() {
 }
 
 // --------------------------------------------------------------------------------------
-int ofxiOSMidiInterface::getPort() {
+int ofxPGMidiIn::getPort() {
 	return portNum;
 }
 
 // --------------------------------------------------------------------------------------
-string ofxiOSMidiInterface::getName() {
+string ofxPGMidiIn::getName() {
 	return portName;
 }
 
 // --------------------------------------------------------------------------------------
-bool ofxiOSMidiInterface::isOpen() {
+bool ofxPGMidiIn::isOpen() {
 	return bOpen;
 }
 
 // --------------------------------------------------------------------------------------
-void ofxiOSMidiInterface::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
+void ofxPGMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 	midiin.ignoreTypes(midiSysex, midiTiming, midiSense);
-	ofLog(OF_LOG_VERBOSE, "ofxiOSMidiInterface: ignore types on %s: sysex: %d timing: %d sense: %d",
+	ofLog(OF_LOG_VERBOSE, "ofxPGMidiIn: ignore types on %s: sysex: %d timing: %d sense: %d",
 			portName.c_str(), midiSysex, midiTiming, midiSense);
 }
 
 // --------------------------------------------------------------------------------------
-void ofxiOSMidiInterface::addListener(ofxMidiListener* listener) {
+void ofxPGMidiIn::addListener(ofxMidiListener* listener) {
 	ofAddListener(newMessageEvent, listener, &ofxMidiListener::newMidiMessage);
 }
 
 // --------------------------------------------------------------------------------------
-void ofxiOSMidiInterface::removeListener(ofxMidiListener* listener) {
+void ofxPGMidiIn::removeListener(ofxMidiListener* listener) {
 	ofRemoveListener(newMessageEvent, listener, &ofxMidiListener::newMidiMessage);
 }
 
 // --------------------------------------------------------------------------------------
-void ofxiOSMidiInterface::setVerbose(bool verbose) {
+void ofxPGMidiIn::setVerbose(bool verbose) {
 	bVerbose = verbose;
 }
 
 // PRIVATE
 // --------------------------------------------------------------------------------------
 // TODO: replace cout with ofLogNotice, etc?
-void ofxiOSMidiInterface::manageNewMessage(double deltatime, vector<unsigned char> *message) {
+void ofxPGMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *message) {
 			
 	// parse message and fill event
 	ofxMidiMessage midiMessage(message);
@@ -224,6 +224,6 @@ void ofxiOSMidiInterface::manageNewMessage(double deltatime, vector<unsigned cha
 }
 
 // --------------------------------------------------------------------------------------
-void ofxiOSMidiInterface::_midiMessageCallback(double deltatime, vector<unsigned char> *message, void *userData) {
-	((ofxiOSMidiInterface*) userData)->manageNewMessage(deltatime, message);
+void ofxPGMidiIn::_midiMessageCallback(double deltatime, vector<unsigned char> *message, void *userData) {
+	((ofxPGMidiIn*) userData)->manageNewMessage(deltatime, message);
 }

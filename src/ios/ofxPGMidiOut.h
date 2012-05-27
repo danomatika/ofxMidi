@@ -1,28 +1,24 @@
 #pragma once
 
-#include "ofxBaseMidi.h"
+#include "ofMain.h"
 
-// choose the midi backend
-#ifdef TARGET_OF_IPHONE
-	#include "ios/ofxPGMidiOut.h"
-	#define OFX_MIDI_OUT_TYPE ofxPGMidiOut
-#else // OSX, Win, Linux
-	#include "desktop/ofxRtMidiOut.h"
-	#define OFX_MIDI_OUT_TYPE ofxRtMidiOut
-#endif
+#include "RtMidi.h"
+#include "ofxMidiConstants.h"
+#include "ofxMidiMessage.h"
+#include "ofxMidiTypes.h"
 
 ///
 /// a midi output port
 ///
 /// create multiple instances to connect to multiple ports
 ///
-class ofxMidiOut {
+class ofxPGMidiOut {
 
 public:
 
 	/// set the output client name (optional)
-	ofxMidiOut(const string name="ofxMidiOut Client");
-	virtual ~ofxMidiOut();
+	ofxPGMidiOut(const string name="ofxPGMidiOut Client");
+	virtual ~ofxPGMidiOut();
 	
 /// \section Port Info
 	
@@ -61,7 +57,7 @@ public:
 	/// allows for connections between software
 	///
 	/// note: a connected virtual port has a portNum = -1
-	///	note: an open virtual port ofxMidiOut object cannot see it's virtual
+	///	note: an open virtual port ofxPGMidiOut object cannot see it's virtual
 	///       own virtual port when listing ports
 	///
 	bool openVirtualPort(string portName="ofxMidi Virtual Output");
@@ -131,17 +127,16 @@ public:
 	/// midi events
 	///
 	/// midiout << NoteOn(1, 64, 64) << NoteOff(1, 64);
-	/// midiout << ControlChange(1, 100, 64) << ProgramChange(1, 100);
-	/// midiout << << PitchBend(1, 2000);
+	/// midiout << ControlChange(1, 100, 64) << ProgramChange(1, 100) << PitchBend(1, 2000);
 	/// midiout << Aftertouch(1, 127) << PolyAftertouch(1, 64, 127);
 	///
-	ofxMidiOut& operator<<(const NoteOn& var);
-	ofxMidiOut& operator<<(const NoteOff& var);
-	ofxMidiOut& operator<<(const ControlChange& var);
-	ofxMidiOut& operator<<(const ProgramChange& var);
-	ofxMidiOut& operator<<(const PitchBend& var);
-	ofxMidiOut& operator<<(const Aftertouch& var);
-	ofxMidiOut& operator<<(const PolyAftertouch& var);
+	ofxPGMidiOut& operator<<(const NoteOn& var);
+	ofxPGMidiOut& operator<<(const NoteOff& var);
+	ofxPGMidiOut& operator<<(const ControlChange& var);
+	ofxPGMidiOut& operator<<(const ProgramChange& var);
+	ofxPGMidiOut& operator<<(const PitchBend& var);
+	ofxPGMidiOut& operator<<(const Aftertouch& var);
+	ofxPGMidiOut& operator<<(const PolyAftertouch& var);
 	
 	/// compound raw midi byte stream
 	///
@@ -149,14 +144,24 @@ public:
 	///
 	/// build a raw midi byte message and send it with FinishMidi()
 	///
-	/// note: other midi messages (except raw miid bytes) cannot be sent while
-	///       the stream is in progress
+	/// note: other midi messages cannot be sent while the stream is in progress
 	///
-	ofxMidiOut& operator<<(const StartMidi& var);
-	ofxMidiOut& operator<<(const FinishMidi& var);
-	ofxMidiOut& operator<<(const unsigned char var);
+	ofxPGMidiOut& operator<<(const StartMidi& var);
+	ofxPGMidiOut& operator<<(const FinishMidi& var);
+	ofxPGMidiOut& operator<<(const unsigned char var);
 	
 private:
 	
-	ofPtr<ofxBaseMidiOut> midiOut;
+	void sendMessage();
+
+	RtMidiOut midiout;
+	int portNum;					//< current port num, -1 if not connected
+	string portName;				//< current port name, "" if not connected
+	
+	vector<string> portList;		//< list of port names
+	vector<unsigned char> message;	//< message byte buffer
+	
+	bool bOpen;						//< is the port currently open?
+	bool bMsgInProgress;			//< used with byte stream
+	bool bVirtual;					//< are we connected to a virtual port?
 };
