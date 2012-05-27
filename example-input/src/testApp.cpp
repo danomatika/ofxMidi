@@ -66,6 +66,10 @@ void testApp::draw() {
 	else {
 		ofRect(20, 202, ofMap(midiMessage.value, 0, 127, 0, ofGetWidth()-40), 20);
 	}
+	
+	text << "delta: " << midiMessage.deltatime;
+	ofDrawBitmapString(text.str(), 20, 240);
+	text.str(""); // clear
 }
 
 //--------------------------------------------------------------
