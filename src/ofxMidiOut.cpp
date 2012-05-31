@@ -11,7 +11,6 @@ ofxMidiOut::~ofxMidiOut() {
 }
 
 // -----------------------------------------------------------------------------
-// TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxMidiOut::listPorts() {
 	midiOut->listPorts();
 }

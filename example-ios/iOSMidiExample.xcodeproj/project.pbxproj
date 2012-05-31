@@ -18,6 +18,8 @@
 		3022EC631572A5240053CD2B /* PGMidiFind.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC581572A5240053CD2B /* PGMidiFind.mm */; };
 		3022EC641572A5240053CD2B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3022EC591572A5240053CD2B /* README.md */; };
 		3022ECD61572EA100053CD2B /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3022ECD41572EA100053CD2B /* ofxBaseMidi.cpp */; };
+		3022ECEE1576E3C10053CD2B /* ofxPGMidiEventDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022ECEB1576E3C10053CD2B /* ofxPGMidiEventDelegate.mm */; };
+		3022ECEF1576E3C10053CD2B /* ofxPGMidiInDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022ECED1576E3C10053CD2B /* ofxPGMidiInDelegate.mm */; };
 		309212AC14F35D3F00194CAF /* Project-ios.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 309212AB14F35D3F00194CAF /* Project-ios.xcconfig */; };
 		309212B714F35D8A00194CAF /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309212B614F35D8A00194CAF /* CoreMIDI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		309212C814F35DBC00194CAF /* ofxMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 309212BC14F35DBC00194CAF /* ofxMidiIn.cpp */; };
@@ -81,6 +83,11 @@
 		3022EC591572A5240053CD2B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3022ECD41572EA100053CD2B /* ofxBaseMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseMidi.cpp; sourceTree = "<group>"; };
 		3022ECD51572EA100053CD2B /* ofxBaseMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBaseMidi.h; sourceTree = "<group>"; };
+		3022ECE31572F2A00053CD2B /* ofxPGMidiContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiContext.h; sourceTree = "<group>"; };
+		3022ECEA1576E3C00053CD2B /* ofxPGMidiEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiEventDelegate.h; sourceTree = "<group>"; };
+		3022ECEB1576E3C10053CD2B /* ofxPGMidiEventDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxPGMidiEventDelegate.mm; sourceTree = "<group>"; };
+		3022ECEC1576E3C10053CD2B /* ofxPGMidiInDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiInDelegate.h; sourceTree = "<group>"; };
+		3022ECED1576E3C10053CD2B /* ofxPGMidiInDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxPGMidiInDelegate.mm; sourceTree = "<group>"; };
 		309212AB14F35D3F00194CAF /* Project-ios.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Project-ios.xcconfig"; sourceTree = "<group>"; };
 		309212B614F35D8A00194CAF /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		309212BA14F35DBC00194CAF /* ofxMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMidi.h; sourceTree = "<group>"; };
@@ -185,8 +192,13 @@
 		3022EC491572A5230053CD2B /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				3022ECEA1576E3C00053CD2B /* ofxPGMidiEventDelegate.h */,
+				3022ECEB1576E3C10053CD2B /* ofxPGMidiEventDelegate.mm */,
+				3022ECE31572F2A00053CD2B /* ofxPGMidiContext.h */,
 				3022EC4A1572A5240053CD2B /* ofxPGMidiIn.h */,
 				3022EC4B1572A5240053CD2B /* ofxPGMidiIn.mm */,
+				3022ECEC1576E3C10053CD2B /* ofxPGMidiInDelegate.h */,
+				3022ECED1576E3C10053CD2B /* ofxPGMidiInDelegate.mm */,
 				3022EC4C1572A5240053CD2B /* ofxPGMidiOut.h */,
 				3022EC4D1572A5240053CD2B /* ofxPGMidiOut.mm */,
 				3022EC4E1572A5240053CD2B /* pgmidi */,
@@ -414,6 +426,8 @@
 				3022EC621572A5240053CD2B /* PGMidiAllSources.mm in Sources */,
 				3022EC631572A5240053CD2B /* PGMidiFind.mm in Sources */,
 				3022ECD61572EA100053CD2B /* ofxBaseMidi.cpp in Sources */,
+				3022ECEE1576E3C10053CD2B /* ofxPGMidiEventDelegate.mm in Sources */,
+				3022ECEF1576E3C10053CD2B /* ofxPGMidiInDelegate.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
