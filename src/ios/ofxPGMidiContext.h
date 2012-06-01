@@ -11,7 +11,10 @@ class ofxPGMidiContext {
 		static void setup() {
 			if(isSetup())
 				return;
-			midi = [[PGMidi alloc] init];
+//			IF_IOS_HAS_COREMIDI
+//			(
+				midi = [[PGMidi alloc] init];
+//			)
 		}
 	
 		static bool isSetup() {return midi != NULL;}

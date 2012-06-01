@@ -42,7 +42,7 @@ public:
 
 protected:
 
-	/// parses and sends received messages to listeners
+	/// parses and sends received raw messages to listeners
 	void manageNewMessage(double deltatime, vector<unsigned char> *message);
 	
 	int portNum;				//< current port num, -1 if not connected

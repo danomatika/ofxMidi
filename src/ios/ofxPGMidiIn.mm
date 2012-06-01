@@ -1,38 +1,46 @@
 #include "ofxPGMidiIn.h"
 
-#include "ofxPGMidiContext.h"
-#include "ofxPGMidiInDelegate.h"
+#import "ofxPGMidiContext.h"
+#import "ofxPGMidiInDelegate.h"
+
+// PIMPL wrapper from http://stackoverflow.com/questions/7132755/wrapping-objective-c-in-objective-c-c
+struct ofxPGMidiIn::InputDelegate {
+	ofxPGMidiInDelegate * d; ///< Obj-C input delegate
+};
 
 // -----------------------------------------------------------------------------
 ofxPGMidiIn::ofxPGMidiIn(const string name) : ofxBaseMidiIn(name) {
 	
 	// setup global midi instance
 	ofxPGMidiContext::setup();
-	midi = ofxPGMidiContext::getMidi();
 	
 	// setup Obj-C interface to PGMidi
-	inputDelegate = [[ofxPGMidiInDelegate alloc] init];
-	[inputDelegate setInputPtr:(void*) this];
+	inputDelegate = new InputDelegate;
+	inputDelegate->d = [[ofxPGMidiInDelegate alloc] init];
+	[inputDelegate->d setInputPtr:(void*) this];
 }
 
 // -----------------------------------------------------------------------------
 ofxPGMidiIn::~ofxPGMidiIn() {
-	[inputDelegate release];
+	[inputDelegate->d release];
+	delete inputDelegate;
 }
 
 // -----------------------------------------------------------------------------
 // TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxPGMidiIn::listPorts() {
+	PGMidi * midi = ofxPGMidiContext::getMidi();
 	int count = [midi.sources count];
 	cout << "ofxMidiIn: " << count << " ports available" << endl;
 	for(NSUInteger i = 0; i < count; ++i) {
-			PGMidiSource * source = [midi->sources objectAtIndex:i];
+			PGMidiSource * source = [midi.sources objectAtIndex:i];
 			cout << "ofxMidiIn: " << i << ": " << [source.name UTF8String] << endl;
 	}
 }
 
 // -----------------------------------------------------------------------------
 vector<string>& ofxPGMidiIn::getPortList() {
+	PGMidi * midi = ofxPGMidiContext::getMidi();
 	portList.clear();
 	for(PGMidiSource * source in midi.sources) {
 		portList.push_back([source.name UTF8String]);
@@ -42,11 +50,14 @@ vector<string>& ofxPGMidiIn::getPortList() {
 
 // -----------------------------------------------------------------------------
 int ofxPGMidiIn::getNumPorts() {
-	return [midi.sources count];
+	return [ofxPGMidiContext::getMidi().sources count];
 }
 
 // -----------------------------------------------------------------------------
 string ofxPGMidiIn::getPortName(unsigned int portNumber) {
+	
+	PGMidi * midi = ofxPGMidiContext::getMidi();
+	
 	// handle OBJ-C exceptions
 	@try {
 		PGMidiSource * source = [midi.sources objectAtIndex:portNumber]; 
@@ -62,6 +73,7 @@ string ofxPGMidiIn::getPortName(unsigned int portNumber) {
 // -----------------------------------------------------------------------------
 bool ofxPGMidiIn::openPort(unsigned int portNumber) {	
 
+	PGMidi * midi = ofxPGMidiContext::getMidi();
 	PGMidiSource * source = nil;
 	
 	// handle OBJ-C exceptions
@@ -73,7 +85,7 @@ bool ofxPGMidiIn::openPort(unsigned int portNumber) {
 			portNumber, ex.name, ex.reason);
 		return false;
 	}
-	source.delegate = inputDelegate;
+	source.delegate = inputDelegate->d;
 	portNum = portNumber;
 	portName = [source.name UTF8String];
 	bOpen = true;
@@ -84,6 +96,8 @@ bool ofxPGMidiIn::openPort(unsigned int portNumber) {
 
 // -----------------------------------------------------------------------------
 bool ofxPGMidiIn::openPort(string deviceName) {
+
+	PGMidi * midi = ofxPGMidiContext::getMidi();
 
 	// iterate through MIDI ports, find requested device
 	int port = -1;
@@ -118,6 +132,7 @@ void ofxPGMidiIn::closePort() {
 		ofLog(OF_LOG_VERBOSE, "ofxMidiIn: closing port %i %s", portNum, portName.c_str());
 	}
 	
+	PGMidi * midi = ofxPGMidiContext::getMidi();
 	PGMidiSource * source = [midi.sources objectAtIndex:portNum];
 	source.delegate = nil;
 	
@@ -130,10 +145,15 @@ void ofxPGMidiIn::closePort() {
 // -----------------------------------------------------------------------------
 void ofxPGMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 	
-	inputDelegate.bIgnoreSysex = midiSysex;
-	inputDelegate.bIgnoreTiming = midiTiming;
-	inputDelegate.bIgnoreSense = midiSense;
+	inputDelegate->d.bIgnoreSysex = midiSysex;
+	inputDelegate->d.bIgnoreTiming = midiTiming;
+	inputDelegate->d.bIgnoreSense = midiSense;
 	
 	ofLog(OF_LOG_VERBOSE, "ofxPGMidiIn: ignore types on %s: sysex: %d timing: %d sense: %d",
 			portName.c_str(), midiSysex, midiTiming, midiSense);
+}
+
+// -----------------------------------------------------------------------------
+void ofxPGMidiIn::messageReceived(double deltatime, vector<unsigned char> *message) {
+	manageNewMessage(deltatime, message);
 }

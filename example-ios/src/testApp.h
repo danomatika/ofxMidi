@@ -4,7 +4,11 @@
 #include "ofxiPhone.h"
 #include "ofxiPhoneExtras.h"
 
-class testApp : public ofxiPhoneApp {
+#include "ofxMidi.h"
+
+#include <deque>
+
+class testApp : public ofxiPhoneApp, public ofxMidiListener {
 	
 public:
 	void setup();
@@ -22,7 +26,19 @@ public:
 	void gotFocus();
 	void gotMemoryWarning();
 	void deviceOrientationChanged(int newOrientation);
+	
+	void newMidiMessage(ofxMidiMessage& msg);
+	
+	void addMessage(string msg);
 
+	ofxMidiIn midiIn;
+	ofxMidiOut midiOut;
+
+	deque<string> messages;
+	int maxMessages;
+	
+	int note, ctl;
+	vector<unsigned char> bytes;
 };
 
 

@@ -29,6 +29,7 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 // -----------------------------------------------------------------------------
 - (id) init {
 	self = [super init];
+	inputPtr = NULL;
 	lastTime = 0;
 	firstPacket = false;
 	return self;
@@ -36,9 +37,9 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 
 // -----------------------------------------------------------------------------
 // adapted from RTMidi CoreMidi message parsing
-- (void) midiSource:(PGMidiSource*)midi midiReceived:(const MIDIPacketList *)packetList {
+- (void) midiSource:(PGMidiSource *)input midiReceived:(const MIDIPacketList *)packetList {
 
-    const MIDIPacket *packet = &packetList->packet[0];
+    const MIDIPacket * packet = &packetList->packet[0];
 	stringstream msg;
 	unsigned long long time;
 	double delta;
@@ -73,8 +74,8 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 				<< std::dec << std::nouppercase << std::setw(1) << std::setfill(' ');
 		}
 		msg << "] " << delta;
-		//app->addMessage(msg.str());
-		input->manageNewMessage(delta, &message);
+		inputPtr->messageReceived(delta, &message);
+		cout << msg;
 		msg.str("");
 		
 		packet = MIDIPacketNext(packet);
@@ -83,7 +84,7 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 
 // -----------------------------------------------------------------------------
 - (void) setInputPtr:(void *)i {
-	input = (ofxPGMidiIn*) i;
+	inputPtr = (ofxPGMidiIn*) i;
 }
 
 @end

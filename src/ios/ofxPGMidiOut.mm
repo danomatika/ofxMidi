@@ -1,20 +1,27 @@
 #include "ofxPGMidiOut.h"
 
-#include "ofxPGMidiContext.h"
+#import "ofxPGMidiContext.h"
+
+// PIMPL wrapper from http://stackoverflow.com/questions/7132755/wrapping-objective-c-in-objective-c-c
+struct ofxPGMidiOut::Destination {
+	PGMidiDestination * d; ///< output destination
+};
 
 // -----------------------------------------------------------------------------
 ofxPGMidiOut::ofxPGMidiOut(const string name) : ofxBaseMidiOut(name) {
 	
 	// setup global midi instance
 	ofxPGMidiContext::setup();
-	midi = ofxPGMidiContext::getMidi();
 	
-	destination = nil;
+	// setup destination pointer
+	destination = new Destination;
+	destination->d = nil;
 }
 
 // -----------------------------------------------------------------------------
 ofxPGMidiOut::~ofxPGMidiOut() {
 	closePort();
+	delete destination;
 }
 
 // -----------------------------------------------------------------------------
@@ -31,6 +38,7 @@ void ofxPGMidiOut::listPorts() {
 
 // -----------------------------------------------------------------------------
 vector<string>& ofxPGMidiOut::getPortList() {
+	PGMidi* midi = ofxPGMidiContext::getMidi();
 	portList.clear();
 	for(PGMidiDestination * dest in midi.destinations) {
 		portList.push_back([dest.name UTF8String]);
@@ -40,11 +48,14 @@ vector<string>& ofxPGMidiOut::getPortList() {
 
 // -----------------------------------------------------------------------------
 int ofxPGMidiOut::getNumPorts() {
-	return [midi.destinations count];
+	return [ofxPGMidiContext::getMidi().destinations count];
 }
 
 // -----------------------------------------------------------------------------
 string ofxPGMidiOut::getPortName(unsigned int portNumber) {
+	
+	PGMidi* midi = ofxPGMidiContext::getMidi();
+	
 	// handle OBJ-C exceptions
 	@try {
 		PGMidiDestination * dest = [midi.destinations objectAtIndex:portNumber]; 
@@ -60,6 +71,7 @@ string ofxPGMidiOut::getPortName(unsigned int portNumber) {
 // -----------------------------------------------------------------------------
 bool ofxPGMidiOut::openPort(unsigned int portNumber) {	
 	
+	PGMidi* midi = ofxPGMidiContext::getMidi();
 	PGMidiDestination * dest = nil;
 	
 	// handle OBJ-C exceptions
@@ -71,7 +83,7 @@ bool ofxPGMidiOut::openPort(unsigned int portNumber) {
 			portNumber, ex.name, ex.reason);
 		return false;
 	}
-	destination = dest;
+	destination->d = dest;
 	portNum = portNumber;
 	portName = [dest.name UTF8String];
 	bOpen = true;
@@ -82,6 +94,8 @@ bool ofxPGMidiOut::openPort(unsigned int portNumber) {
 
 // -----------------------------------------------------------------------------
 bool ofxPGMidiOut::openPort(string deviceName) {
+	
+	PGMidi* midi = ofxPGMidiContext::getMidi();
 	
 	// iterate through MIDI ports, find requested device
 	int port = -1;
@@ -112,10 +126,10 @@ bool ofxPGMidiOut::openVirtualPort(string portName) {
 // -----------------------------------------------------------------------------
 void ofxPGMidiOut::closePort() {
 
-	if(destination != nil) {
+	if(destination->d != nil) {
 		ofLog(OF_LOG_VERBOSE, "ofxMidiOut: closing port %i %s", portNum, portName.c_str());
 	}
-	destination = nil;
+	destination->d = nil;
 	
 	portNum = -1;
 	portName = "";
@@ -128,12 +142,12 @@ void ofxPGMidiOut::closePort() {
 // adapted from PGMidi sendBytes
 void ofxPGMidiOut::sendMessage() {
 
-    Byte packetBuffer[message.size()+100];
+    Byte packetBuffer[message.size()];
     MIDIPacketList * packetList = (MIDIPacketList*)packetBuffer;
     MIDIPacket * packet = MIDIPacketListInit(packetList);
 
     packet = MIDIPacketListAdd(packetList, sizeof(packetBuffer), packet, 0, message.size(), &message[0]);
 
-	[destination sendPacketList:packetList];
+	[destination->d sendPacketList:packetList];
 	bMsgInProgress = false;
 }

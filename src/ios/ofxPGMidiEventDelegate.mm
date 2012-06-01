@@ -80,7 +80,7 @@
 
 // -----------------------------------------------------------------------------
 - (void) midi:(PGMidi*)midi sourceAdded:(PGMidiSource *)source {
-	source.delegate = self;
+	//source.delegate = self;
 	stringstream msg;
 	msg << "source added: " << [source.name UTF8String];
 	//app->addMessage(msg.str());
@@ -89,7 +89,7 @@
 
 // -----------------------------------------------------------------------------
 - (void) midi:(PGMidi*)midi sourceRemoved:(PGMidiSource *)source {
-	source.delegate = nil;
+	//source.delegate = nil;
 	stringstream msg;
 	msg << "source removed: " << [source.name UTF8String];
 	//app->addMessage(msg.str());
@@ -112,12 +112,12 @@
 	//input->addMessage(msg.str());
 }
 
-// -----------------------------------------------------------------------------
-- (void) attachToAllExistingSources {
-    for(PGMidiSource * source in midi.sources) {
-        source.delegate = self;
-    }
-}
+//// -----------------------------------------------------------------------------
+//- (void) attachToAllExistingSources {
+//    for(PGMidiSource * source in midi.sources) {
+//        source.delegate = self;
+//    }
+//}
 
 // -----------------------------------------------------------------------------
 - (void) setMidiPtr:(PGMidi *)m {

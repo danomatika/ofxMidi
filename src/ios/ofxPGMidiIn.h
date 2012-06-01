@@ -1,10 +1,6 @@
 #pragma once
 
 #include "../ofxBaseMidi.h"
-#include "ofxPGMidiInDelegate.h"
-
-//class PGMidi;
-//class ofxPGMidiInDelegate;
 
 class ofxPGMidiIn : public ofxBaseMidiIn {
 
@@ -25,11 +21,14 @@ public:
 	
 	void ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense);
 
-//private:
+	/// wrapper around manageNewMessage
+	void messageReceived(double deltatime, vector<unsigned char> *message);
+
+private:
 
 	/// parses and sends received messages to listeners
-	void manageNewMessage(double deltatime, vector<unsigned char> *message);
+	///void manageNewMessage(double deltatime, vector<unsigned char> *message);
 	
-	PGMidi * midi; ///< static global pgmidi instance
-	ofxPGMidiInDelegate * inputDelegate;	///< Obj-C midi input interface
+	struct InputDelegate; // forward declaration for Obj-C wrapper
+	InputDelegate * inputDelegate;	///< Obj-C midi input interface
 };

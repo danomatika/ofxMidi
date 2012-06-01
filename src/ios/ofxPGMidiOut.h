@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../ofxBaseMidi.h"
-#import "PGMidi.h"
 
 class ofxPGMidiOut : public ofxBaseMidiOut {
 
@@ -24,6 +23,6 @@ private:
 	
 	void sendMessage();
 
-	PGMidi * midi; ///< static global pgmidi instance
-	PGMidiDestination * destination; ///< output destination
+	struct Destination; // forward declaration for Obj-C wrapper
+	Destination * destination; ///< output destination
 };

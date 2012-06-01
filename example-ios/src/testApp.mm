@@ -15,6 +15,18 @@ void testApp::setup(){
 	//iPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
 	
 	ofBackground(127,127,127);
+	
+	maxMessages = 28;
+	messages.push_back("nothing yet ...");
+	
+	note = -1;
+	ctl = -1;
+	
+	midiIn.listPorts();
+	midiOut.listPorts();
+	
+	midiIn.openPort();
+	midiOut.openPort();
 }
 
 //--------------------------------------------------------------
@@ -29,22 +41,33 @@ void testApp::draw(){
 
 //--------------------------------------------------------------
 void testApp::exit(){
-
+	midiIn.closePort();
+	midiOut.closePort();
 }
 
 //--------------------------------------------------------------
 void testApp::touchDown(ofTouchEventArgs &touch){
 
+	// send note on
+	note = (int) ofMap(touch.y, 0, ofGetHeight(), 0, 127);
+	midiOut.sendNoteOn(1, note);
 }
 
 //--------------------------------------------------------------
 void testApp::touchMoved(ofTouchEventArgs &touch){
 
+	// send ctl change
+	ctl = (int) ofMap(touch.x, 0, ofGetWidth(), 0, 127); 
+	midiOut.sendControlChange(1, 10, ctl); // 10: pan
 }
 
 //--------------------------------------------------------------
 void testApp::touchUp(ofTouchEventArgs &touch){
-
+	
+	// send note off
+	midiOut.sendNoteOff(1, note);
+	note = -1;
+	ctl = -1;
 }
 
 //--------------------------------------------------------------
@@ -78,3 +101,17 @@ void testApp::touchCancelled(ofTouchEventArgs& args){
 
 }
 
+//--------------------------------------------------------------
+void testApp::newMidiMessage(ofxMidiMessage& msg) {
+
+	messages.push_back(msg.toString());
+	while(messages.size() > maxMessages)
+		messages.pop_front();
+}
+
+//--------------------------------------------------------------
+void testApp::addMessage(string msg) {
+	messages.push_back(msg);
+	while(messages.size() > maxMessages)
+		messages.pop_front();
+}

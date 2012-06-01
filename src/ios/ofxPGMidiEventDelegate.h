@@ -10,7 +10,7 @@
 //class ofxPGMidiIn;
 
 /// interface to global pgmidi events
-@interface ofxPGMidiEventDelegate : NSObject <PGMidiDelegate, PGMidiSourceDelegate> {
+@interface ofxPGMidiEventDelegate : NSObject <PGMidiDelegate> {
     PGMidi * midi;
 //	ofxPGMidiIn * input;
 //	unsigned long long lastTime;
@@ -27,7 +27,7 @@
 - (void) midi:(PGMidi*)midi destinationRemoved:(PGMidiDestination *)destination;
 
 /// recieve from all sources
-- (void) attachToAllExistingSources;
+//- (void) attachToAllExistingSources;
 
 /// set the global pgmidi pointer
 - (void) setMidiPtr:(PGMidi *)m;

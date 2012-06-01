@@ -12,7 +12,6 @@
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
 		3022EC5E1572A5240053CD2B /* ofxPGMidiIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC4B1572A5240053CD2B /* ofxPGMidiIn.mm */; };
 		3022EC5F1572A5240053CD2B /* ofxPGMidiOut.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC4D1572A5240053CD2B /* ofxPGMidiOut.mm */; };
-		3022EC601572A5240053CD2B /* CAHostTimeBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC4F1572A5240053CD2B /* CAHostTimeBase.cpp */; };
 		3022EC611572A5240053CD2B /* PGMidi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC541572A5240053CD2B /* PGMidi.mm */; };
 		3022EC621572A5240053CD2B /* PGMidiAllSources.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC561572A5240053CD2B /* PGMidiAllSources.mm */; };
 		3022EC631572A5240053CD2B /* PGMidiFind.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC581572A5240053CD2B /* PGMidiFind.mm */; };
@@ -70,8 +69,6 @@
 		3022EC4B1572A5240053CD2B /* ofxPGMidiIn.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxPGMidiIn.mm; sourceTree = "<group>"; };
 		3022EC4C1572A5240053CD2B /* ofxPGMidiOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiOut.h; sourceTree = "<group>"; };
 		3022EC4D1572A5240053CD2B /* ofxPGMidiOut.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxPGMidiOut.mm; sourceTree = "<group>"; };
-		3022EC4F1572A5240053CD2B /* CAHostTimeBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAHostTimeBase.cpp; sourceTree = "<group>"; };
-		3022EC501572A5240053CD2B /* CAHostTimeBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAHostTimeBase.h; sourceTree = "<group>"; };
 		3022EC511572A5240053CD2B /* iOSVersionDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSVersionDetection.h; sourceTree = "<group>"; };
 		3022EC521572A5240053CD2B /* PGArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGArc.h; sourceTree = "<group>"; };
 		3022EC531572A5240053CD2B /* PGMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMidi.h; sourceTree = "<group>"; };
@@ -209,8 +206,6 @@
 		3022EC4E1572A5240053CD2B /* pgmidi */ = {
 			isa = PBXGroup;
 			children = (
-				3022EC4F1572A5240053CD2B /* CAHostTimeBase.cpp */,
-				3022EC501572A5240053CD2B /* CAHostTimeBase.h */,
 				3022EC511572A5240053CD2B /* iOSVersionDetection.h */,
 				3022EC521572A5240053CD2B /* PGArc.h */,
 				3022EC531572A5240053CD2B /* PGMidi.h */,
@@ -421,7 +416,6 @@
 				309212CA14F35DBC00194CAF /* ofxMidiOut.cpp in Sources */,
 				3022EC5E1572A5240053CD2B /* ofxPGMidiIn.mm in Sources */,
 				3022EC5F1572A5240053CD2B /* ofxPGMidiOut.mm in Sources */,
-				3022EC601572A5240053CD2B /* CAHostTimeBase.cpp in Sources */,
 				3022EC611572A5240053CD2B /* PGMidi.mm in Sources */,
 				3022EC621572A5240053CD2B /* PGMidiAllSources.mm in Sources */,
 				3022EC631572A5240053CD2B /* PGMidiFind.mm in Sources */,
