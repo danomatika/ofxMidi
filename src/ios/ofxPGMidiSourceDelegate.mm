@@ -29,9 +29,15 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 // -----------------------------------------------------------------------------
 - (id) init {
 	self = [super init];
+	
 	inputPtr = NULL;
+	
 	lastTime = 0;
-	firstPacket = false;
+	bFirstPacket = false;
+	bContinueSysex = false;
+	
+	maxMessageLen = 100; // default RtMidiIn length
+	
 	return self;
 }
 
@@ -41,17 +47,21 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 
     const MIDIPacket * packet = &packetList->packet[0];
 	stringstream msg;
+	unsigned char statusByte;
+	unsigned short nBytes, curByte, msgSize;
 	unsigned long long time;
 	double delta;
 	
     for(int i = 0; i < packetList->numPackets; ++i) {
        
-		message.clear();
+		nBytes = packet->length;
+		if(nBytes == 0)
+			continue;
 	   
 		// calc time stamp
 		time = 0;
-		if(firstPacket) {
-			firstPacket = false;
+		if(bFirstPacket) {
+			bFirstPacket = false;
 		}
 		else {
 			time = packet->timeStamp;
@@ -66,17 +76,98 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 		  lastTime = mach_absolute_time();
 		}
 	   
-		msg << "packet: " << packet->length << " [ ";
-		for(int b = 0; b < packet->length; ++b) {
-			message.push_back(packet->data[b]);
-			msg << std::hex << std::uppercase << std::setw(2) << std::setfill('0')
-				<< (int) packet->data[b] << " " 
-				<< std::dec << std::nouppercase << std::setw(1) << std::setfill(' ');
+		// handle segmented sysex messages
+		curByte = 0;
+		if(bContinueSysex) {
+		
+			// copy the packet if not ignoring
+			if(!bIgnoreSysex) {
+				for(int i = 0; i < nBytes; ++i) {
+					message.push_back(packet->data[i]);
+				}
+			}
+			bContinueSysex = packet->data[nBytes-1] != 0xF7; // look for stop
+		
+			if(!bContinueSysex) {
+				// send message if sysex message complete
+				if(!message.empty()) {
+					inputPtr->messageReceived(delta, &message);
+				}
+				message.clear();
+			}
 		}
-		msg << "] " << delta;
-		inputPtr->messageReceived(delta, &message);
-		cout << msg.str() << endl;
-		msg.str("");
+		else { // not sysex, parse bytes
+		
+			while(curByte < nBytes) {
+				msgSize = 0;
+				
+				// next byte in the packet should be a status byte
+				statusByte = packet->data[curByte];
+				if(!statusByte & 0x80)
+					break;
+					
+				// determine number of bytes in midi message
+				if(statusByte < 0xC0)
+					msgSize = 3;
+				else if(statusByte < 0xE0)
+					msgSize = 2;
+				else if(statusByte < 0xF0)
+					msgSize = 3;
+				else if(statusByte == 0xF0) { // sysex message
+					
+					if(bIgnoreSysex) {
+						msgSize = 0;
+						curByte = nBytes;
+					}
+					else {
+						msgSize = nBytes - curByte;
+					}
+					bContinueSysex = packet->data[nBytes-1] != 0xF7;
+				}
+				else if(statusByte == 0xF1) { // time code message
+					
+					if(bIgnoreTiming) {
+						msgSize = 0;
+						curByte += 2;
+					}
+					else {
+						msgSize = 2;
+					}
+				}
+				else if(statusByte == 0xF2)
+					msgSize = 3;
+				else if(statusByte == 0xF3)
+					msgSize = 2;
+				else if(statusByte == 0xF8 && bIgnoreTiming) { // timing tick message
+					// ignoring ...
+					msgSize = 0;
+					curByte += 1;
+				}
+				else if(statusByte == 0xFE && bIgnoreSense) { // active sense message
+					// ignoring ...
+					msgSize = 0;
+					curByte += 1;
+				}
+				else {
+					msgSize = 1;
+				}
+				
+				// copy packet
+				if(msgSize) {
+					
+					message.assign(&packet->data[curByte], &packet->data[curByte+msgSize]);
+					
+					if(!bContinueSysex) {
+						// send message if sysex message complete
+						if(!message.empty()) {
+							inputPtr->messageReceived(delta, &message);
+						}
+						message.clear();
+					}
+					curByte += msgSize;
+				}
+			}
+		}
 		
 		packet = MIDIPacketNext(packet);
     }

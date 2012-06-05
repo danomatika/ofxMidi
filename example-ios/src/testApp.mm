@@ -126,6 +126,7 @@ void testApp::touchCancelled(ofTouchEventArgs& args){
 //--------------------------------------------------------------
 void testApp::newMidiMessage(ofxMidiMessage& msg) {
 
+	cout << msg.toString() << endl;
 	messages.push_back(msg.toString());
 	while(messages.size() > maxMessages)
 		messages.pop_front();

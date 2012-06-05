@@ -11,10 +11,16 @@ class ofxPGMidiIn;
 
 /// interface to pgmidi input
 @interface ofxPGMidiSourceDelegate : NSObject <PGMidiSourceDelegate> {
+	
 	ofxPGMidiIn * inputPtr;	///< object to send receieved midi messages to
+	
 	bool bIgnoreSysex, bIgnoreTiming, bIgnoreSense;	///< ignore midi types?
-	unsigned long long lastTime;	///< timestamp form last packet
-	bool firstPacket;	///< is this the first received packet?
+	
+	unsigned long long lastTime; ///< timestamp from last packet
+	bool bFirstPacket; ///< is this the first received packet?
+	bool bContinueSysex; ///< is this packet part of a sysex message?
+	unsigned int maxMessageLen; ///< max size of the byte buffer
+	
 	std::vector<unsigned char> message;	///< raw byte buffer
 }
 
