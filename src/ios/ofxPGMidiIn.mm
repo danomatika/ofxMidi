@@ -65,7 +65,7 @@ string ofxPGMidiIn::getPortName(unsigned int portNumber) {
 	}
 	@catch(NSException * ex) {
 		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't get name for port %i: %s: %s",
-			portNumber, ex.name, ex.reason);
+			portNumber, [ex.name UTF8String], [ex.reason UTF8String]);
 	}
 	return "";
 }
@@ -81,8 +81,8 @@ bool ofxPGMidiIn::openPort(unsigned int portNumber) {
 		source = [midi.sources objectAtIndex:portNumber]; 
 	}
 	@catch(NSException * ex) {
-		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't get name for port %i: %s: %s",
-			portNumber, ex.name, ex.reason);
+		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't open port %i: %s: %s",
+			portNumber, [ex.name UTF8String], [ex.reason UTF8String]);
 		return false;
 	}
 	source.delegate = inputDelegate->d;

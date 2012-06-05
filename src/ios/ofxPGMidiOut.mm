@@ -27,7 +27,7 @@ ofxPGMidiOut::~ofxPGMidiOut() {
 // -----------------------------------------------------------------------------
 // TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxPGMidiOut::listPorts() {
-	PGMidi* midi = ofxPGMidiContext::getMidi();
+	PGMidi * midi = ofxPGMidiContext::getMidi();
 	int count = [midi.destinations count]; 
 	cout << "ofxMidiOut: " << count << " ports available" << endl;
 	for(NSUInteger i = 0; i < count; ++i) {
@@ -38,7 +38,7 @@ void ofxPGMidiOut::listPorts() {
 
 // -----------------------------------------------------------------------------
 vector<string>& ofxPGMidiOut::getPortList() {
-	PGMidi* midi = ofxPGMidiContext::getMidi();
+	PGMidi * midi = ofxPGMidiContext::getMidi();
 	portList.clear();
 	for(PGMidiDestination * dest in midi.destinations) {
 		portList.push_back([dest.name UTF8String]);
@@ -54,7 +54,7 @@ int ofxPGMidiOut::getNumPorts() {
 // -----------------------------------------------------------------------------
 string ofxPGMidiOut::getPortName(unsigned int portNumber) {
 	
-	PGMidi* midi = ofxPGMidiContext::getMidi();
+	PGMidi * midi = ofxPGMidiContext::getMidi();
 	
 	// handle OBJ-C exceptions
 	@try {
@@ -63,7 +63,7 @@ string ofxPGMidiOut::getPortName(unsigned int portNumber) {
 	}
 	@catch(NSException * ex) {
 		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't get name for port %i: %s: %s",
-			portNumber, ex.name, ex.reason);
+			portNumber, [ex.name UTF8String], [ex.reason UTF8String]);
 	}
 	return "";
 }
@@ -71,7 +71,7 @@ string ofxPGMidiOut::getPortName(unsigned int portNumber) {
 // -----------------------------------------------------------------------------
 bool ofxPGMidiOut::openPort(unsigned int portNumber) {	
 	
-	PGMidi* midi = ofxPGMidiContext::getMidi();
+	PGMidi * midi = ofxPGMidiContext::getMidi();
 	PGMidiDestination * dest = nil;
 	
 	// handle OBJ-C exceptions
@@ -79,8 +79,8 @@ bool ofxPGMidiOut::openPort(unsigned int portNumber) {
 		dest = [midi.destinations objectAtIndex:portNumber]; 
 	}
 	@catch(NSException * ex) {
-		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't get name for port %i: %s: %s",
-			portNumber, ex.name, ex.reason);
+		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't open port %i: %s: %s",
+			portNumber, [ex.name UTF8String], [ex.reason UTF8String]);
 		return false;
 	}
 	destination->d = dest;
@@ -95,7 +95,7 @@ bool ofxPGMidiOut::openPort(unsigned int portNumber) {
 // -----------------------------------------------------------------------------
 bool ofxPGMidiOut::openPort(string deviceName) {
 	
-	PGMidi* midi = ofxPGMidiContext::getMidi();
+	PGMidi * midi = ofxPGMidiContext::getMidi();
 	
 	// iterate through MIDI ports, find requested device
 	int port = -1;
@@ -142,7 +142,7 @@ void ofxPGMidiOut::closePort() {
 // adapted from PGMidi sendBytes
 void ofxPGMidiOut::sendMessage() {
 
-    Byte packetBuffer[message.size()];
+    Byte packetBuffer[message.size()+100];
     MIDIPacketList * packetList = (MIDIPacketList*)packetBuffer;
     MIDIPacket * packet = MIDIPacketListInit(packetList);
 

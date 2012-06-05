@@ -75,7 +75,7 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 		}
 		msg << "] " << delta;
 		inputPtr->messageReceived(delta, &message);
-		cout << msg;
+		cout << msg.str() << endl;
 		msg.str("");
 		
 		packet = MIDIPacketNext(packet);

@@ -1,4 +1,4 @@
-#N canvas 639 111 802 343 10;
+#N canvas 638 111 802 343 10;
 #X obj 6 54 notein;
 #X floatatom 6 97 5 0 0 0 - - -;
 #X floatatom 44 98 5 0 0 0 - - -;
@@ -36,15 +36,15 @@
 #X obj 116 281 ctlout 1;
 #X obj 116 252 unpack f f;
 #X obj 119 170 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 8600 1;
+-1 -1 7300 1;
 #X obj 207 253 pgmout;
 #X obj 210 202 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 9600 1;
+-1 -1 0 1;
 #X floatatom 207 227 5 0 0 0 - - -;
 #X floatatom 116 198 5 0 0 0 - - -;
 #X obj 307 301 bendout;
 #X obj 310 245 hsl 128 15 -8192 8192 0 0 empty empty empty -2 -8 0
-10 -262144 -1 -1 6700 1;
+10 -262144 -1 -1 0 1;
 #X floatatom 307 270 5 0 0 0 - - -;
 #X text 337 29 bend 0 - 16383;
 #N canvas 551 149 369 179 sysexout 0;
@@ -58,12 +58,12 @@
 #X connect 3 0 2 0;
 #X restore 693 194 pd sysexout;
 #X obj 412 149 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 4600 1;
+-1 -1 0 1;
 #X floatatom 409 174 5 0 0 0 - - -;
 #X obj 409 200 touchout;
 #X obj 518 266 unpack f f;
 #X obj 521 184 hsl 128 15 0 127 0 0 empty empty empty -2 -8 0 10 -262144
--1 -1 3800 1;
+-1 -1 0 1;
 #X floatatom 518 212 5 0 0 0 - - -;
 #X obj 518 295 polytouchout;
 #X text 323 228 bend -8192 - 8192 in pd;

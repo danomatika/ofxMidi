@@ -2,6 +2,9 @@
 
 //--------------------------------------------------------------
 void testApp::setup(){	
+
+	ofSetLogLevel(OF_LOG_VERBOSE);
+
 	// register touch events
 	ofRegisterTouchEvents(this);
 	
@@ -25,6 +28,8 @@ void testApp::setup(){
 	midiIn.listPorts();
 	midiOut.listPorts();
 	
+	midiIn.addListener(this);
+	
 	midiIn.openPort();
 	midiOut.openPort();
 }
@@ -37,6 +42,23 @@ void testApp::update(){
 //--------------------------------------------------------------
 void testApp::draw(){
 	
+	ofSetColor(0);
+
+	ofDrawBitmapString("Input:", 10, 20);
+	int x = 10, y = 34;
+	deque<string>::iterator iter = messages.begin();
+	for(; iter != messages.end(); ++iter) {
+		ofDrawBitmapString((*iter), x, y);
+		y += 14;
+	}
+	
+	ofDrawBitmapString("Output:", 10, ofGetHeight()-42);
+	if(note > 0) {
+		ofDrawBitmapString("note "+ofToString(note), 10, ofGetHeight()-28);
+	}
+	if(ctl > 0) {
+		ofDrawBitmapString("pan "+ofToString(ctl), 10, ofGetHeight()-14);
+	}
 }
 
 //--------------------------------------------------------------
@@ -49,7 +71,7 @@ void testApp::exit(){
 void testApp::touchDown(ofTouchEventArgs &touch){
 
 	// send note on
-	note = (int) ofMap(touch.y, 0, ofGetHeight(), 0, 127);
+	note = (int) ofMap(touch.y, ofGetHeight(), 0, 0, 127);
 	midiOut.sendNoteOn(1, note);
 }
 

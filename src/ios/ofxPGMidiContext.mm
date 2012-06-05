@@ -1,21 +1,30 @@
 #include "ofxPGMidiContext.h"
 
+#include "ofLog.h"
+
+PGMidi * ofxPGMidiContext::midi = nil;
+
 void ofxPGMidiContext::setup() {
-	if(isSetup())
+	if(midi != nil)
 		return;
 //			IF_IOS_HAS_COREMIDI
 //			(
-		midi = [[PGMidi alloc] init];
+	midi = [[PGMidi alloc] init];
+	enableNetwork(true);
 //			)
 }
-	
-bool ofxPGMidiContext::isSetup() {return midi != nil;}
 
-PGMidi * ofxPGMidiContext::getMidi() {return midi;}
+PGMidi * ofxPGMidiContext::getMidi() {
+	return midi;
+}
 		
 void ofxPGMidiContext::enableNetwork(bool network) {
-	if(network)
+	if(network) {
 		[midi enableNetwork:YES];
-	else
+		ofLog(OF_LOG_VERBOSE, "ofxMidi: iOS Midi Networking enabled");
+	}
+	else {
 		[midi enableNetwork:NO];
+		ofLog(OF_LOG_VERBOSE, "ofxMidi: iOS Midi Networking enabled");
+	}
 }
