@@ -10,6 +10,8 @@
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		300D8A04157E9B96005CB349 /* ofxPGMidiDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 300D8A01157E9B94005CB349 /* ofxPGMidiDelegate.mm */; };
+		300D8A05157E9B96005CB349 /* ofxPGMidiSourceDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 300D8A03157E9B95005CB349 /* ofxPGMidiSourceDelegate.mm */; };
 		3022EC5E1572A5240053CD2B /* ofxPGMidiIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC4B1572A5240053CD2B /* ofxPGMidiIn.mm */; };
 		3022EC5F1572A5240053CD2B /* ofxPGMidiOut.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC4D1572A5240053CD2B /* ofxPGMidiOut.mm */; };
 		3022EC611572A5240053CD2B /* PGMidi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC541572A5240053CD2B /* PGMidi.mm */; };
@@ -17,8 +19,6 @@
 		3022EC631572A5240053CD2B /* PGMidiFind.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022EC581572A5240053CD2B /* PGMidiFind.mm */; };
 		3022EC641572A5240053CD2B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3022EC591572A5240053CD2B /* README.md */; };
 		3022ECD61572EA100053CD2B /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3022ECD41572EA100053CD2B /* ofxBaseMidi.cpp */; };
-		3022ECEE1576E3C10053CD2B /* ofxPGMidiEventDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022ECEB1576E3C10053CD2B /* ofxPGMidiEventDelegate.mm */; };
-		3022ECEF1576E3C10053CD2B /* ofxPGMidiInDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3022ECED1576E3C10053CD2B /* ofxPGMidiInDelegate.mm */; };
 		3048A35A15797C1700F2E232 /* ofxPGMidiContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3048A35915797C1700F2E232 /* ofxPGMidiContext.mm */; };
 		309212AC14F35D3F00194CAF /* Project-ios.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 309212AB14F35D3F00194CAF /* Project-ios.xcconfig */; };
 		309212B714F35D8A00194CAF /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309212B614F35D8A00194CAF /* CoreMIDI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -66,6 +66,10 @@
 		1D6058910D05DD3D006BFB54 /* iOSMidiExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSMidiExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		300D8A00157E9B94005CB349 /* ofxPGMidiDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiDelegate.h; sourceTree = "<group>"; };
+		300D8A01157E9B94005CB349 /* ofxPGMidiDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxPGMidiDelegate.mm; sourceTree = "<group>"; };
+		300D8A02157E9B95005CB349 /* ofxPGMidiSourceDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiSourceDelegate.h; sourceTree = "<group>"; };
+		300D8A03157E9B95005CB349 /* ofxPGMidiSourceDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxPGMidiSourceDelegate.mm; sourceTree = "<group>"; };
 		3022EC4A1572A5240053CD2B /* ofxPGMidiIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiIn.h; sourceTree = "<group>"; };
 		3022EC4B1572A5240053CD2B /* ofxPGMidiIn.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxPGMidiIn.mm; sourceTree = "<group>"; };
 		3022EC4C1572A5240053CD2B /* ofxPGMidiOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiOut.h; sourceTree = "<group>"; };
@@ -82,10 +86,6 @@
 		3022ECD41572EA100053CD2B /* ofxBaseMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseMidi.cpp; sourceTree = "<group>"; };
 		3022ECD51572EA100053CD2B /* ofxBaseMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBaseMidi.h; sourceTree = "<group>"; };
 		3022ECE31572F2A00053CD2B /* ofxPGMidiContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiContext.h; sourceTree = "<group>"; };
-		3022ECEA1576E3C00053CD2B /* ofxPGMidiEventDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiEventDelegate.h; sourceTree = "<group>"; };
-		3022ECEB1576E3C10053CD2B /* ofxPGMidiEventDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxPGMidiEventDelegate.mm; sourceTree = "<group>"; };
-		3022ECEC1576E3C10053CD2B /* ofxPGMidiInDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPGMidiInDelegate.h; sourceTree = "<group>"; };
-		3022ECED1576E3C10053CD2B /* ofxPGMidiInDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxPGMidiInDelegate.mm; sourceTree = "<group>"; };
 		3048A35915797C1700F2E232 /* ofxPGMidiContext.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofxPGMidiContext.mm; sourceTree = "<group>"; };
 		309212AB14F35D3F00194CAF /* Project-ios.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "Project-ios.xcconfig"; sourceTree = "<group>"; };
 		309212B614F35D8A00194CAF /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
@@ -191,14 +191,14 @@
 		3022EC491572A5230053CD2B /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				3022ECEA1576E3C00053CD2B /* ofxPGMidiEventDelegate.h */,
-				3022ECEB1576E3C10053CD2B /* ofxPGMidiEventDelegate.mm */,
+				300D8A00157E9B94005CB349 /* ofxPGMidiDelegate.h */,
+				300D8A01157E9B94005CB349 /* ofxPGMidiDelegate.mm */,
+				300D8A02157E9B95005CB349 /* ofxPGMidiSourceDelegate.h */,
+				300D8A03157E9B95005CB349 /* ofxPGMidiSourceDelegate.mm */,
 				3022ECE31572F2A00053CD2B /* ofxPGMidiContext.h */,
 				3048A35915797C1700F2E232 /* ofxPGMidiContext.mm */,
 				3022EC4A1572A5240053CD2B /* ofxPGMidiIn.h */,
 				3022EC4B1572A5240053CD2B /* ofxPGMidiIn.mm */,
-				3022ECEC1576E3C10053CD2B /* ofxPGMidiInDelegate.h */,
-				3022ECED1576E3C10053CD2B /* ofxPGMidiInDelegate.mm */,
 				3022EC4C1572A5240053CD2B /* ofxPGMidiOut.h */,
 				3022EC4D1572A5240053CD2B /* ofxPGMidiOut.mm */,
 				3022EC4E1572A5240053CD2B /* pgmidi */,
@@ -423,9 +423,9 @@
 				3022EC621572A5240053CD2B /* PGMidiAllSources.mm in Sources */,
 				3022EC631572A5240053CD2B /* PGMidiFind.mm in Sources */,
 				3022ECD61572EA100053CD2B /* ofxBaseMidi.cpp in Sources */,
-				3022ECEE1576E3C10053CD2B /* ofxPGMidiEventDelegate.mm in Sources */,
-				3022ECEF1576E3C10053CD2B /* ofxPGMidiInDelegate.mm in Sources */,
 				3048A35A15797C1700F2E232 /* ofxPGMidiContext.mm in Sources */,
+				300D8A04157E9B96005CB349 /* ofxPGMidiDelegate.mm in Sources */,
+				300D8A05157E9B96005CB349 /* ofxPGMidiSourceDelegate.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

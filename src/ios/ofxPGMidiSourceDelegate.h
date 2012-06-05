@@ -10,7 +10,7 @@
 class ofxPGMidiIn;
 
 /// interface to pgmidi input
-@interface ofxPGMidiInDelegate : NSObject <PGMidiSourceDelegate> {
+@interface ofxPGMidiSourceDelegate : NSObject <PGMidiSourceDelegate> {
 	ofxPGMidiIn * inputPtr;	///< object to send receieved midi messages to
 	bool bIgnoreSysex, bIgnoreTiming, bIgnoreSense;	///< ignore midi types?
 	unsigned long long lastTime;	///< timestamp form last packet

@@ -1,7 +1,7 @@
 #pragma once
 
 #import "PGMidi.h"
-#import "pgmidi/iOSVersionDetection.h"
+#import "ofxPGMidiDelegate.h"
 
 /// global static wrapper around PGMidi Obj-C instance
 class ofxPGMidiContext {
@@ -19,5 +19,6 @@ class ofxPGMidiContext {
 	
 	private:
 
-		static PGMidi * midi;	///< global Obj-C PGMidi instance
+		static NSAutoreleasePool * pool; // for happy garbage collection ...
+		static PGMidi * midi; ///< global Obj-C PGMidi instance
 };

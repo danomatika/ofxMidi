@@ -1,4 +1,4 @@
-#include "ofxPGMidiInDelegate.h"
+#include "ofxPGMidiSourceDelegate.h"
 
 #include "ofMain.h"
 
@@ -22,7 +22,7 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 
 // PG MIDI IN DELEGATE
 // -----------------------------------------------------------------------------
-@implementation ofxPGMidiInDelegate
+@implementation ofxPGMidiSourceDelegate
 
 @synthesize bIgnoreSysex, bIgnoreTiming, bIgnoreSense;
 

@@ -1,17 +1,20 @@
 #include "ofxPGMidiContext.h"
 
+#import "pgmidi/iOSVersionDetection.h"
 #include "ofLog.h"
 
+NSAutoreleasePool * ofxPGMidiContext::pool = nil;
 PGMidi * ofxPGMidiContext::midi = nil;
 
 void ofxPGMidiContext::setup() {
 	if(midi != nil)
 		return;
-//			IF_IOS_HAS_COREMIDI
-//			(
-	midi = [[PGMidi alloc] init];
-	enableNetwork(true);
-//			)
+	IF_IOS_HAS_COREMIDI (
+		pool = [[NSAutoreleasePool alloc] init];
+		midi = [[PGMidi alloc] init];
+		midi.delegate = [[ofxPGMidiDelegate alloc] init];
+		enableNetwork(true);
+	)
 }
 
 PGMidi * ofxPGMidiContext::getMidi() {

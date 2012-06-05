@@ -1,11 +1,11 @@
 #include "ofxPGMidiIn.h"
 
 #import "ofxPGMidiContext.h"
-#import "ofxPGMidiInDelegate.h"
+#import "ofxPGMidiSourceDelegate.h"
 
 // PIMPL wrapper from http://stackoverflow.com/questions/7132755/wrapping-objective-c-in-objective-c-c
 struct ofxPGMidiIn::InputDelegate {
-	ofxPGMidiInDelegate * d; ///< Obj-C input delegate
+	ofxPGMidiSourceDelegate * d; ///< Obj-C input delegate
 };
 
 // -----------------------------------------------------------------------------
@@ -16,7 +16,7 @@ ofxPGMidiIn::ofxPGMidiIn(const string name) : ofxBaseMidiIn(name) {
 	
 	// setup Obj-C interface to PGMidi
 	inputDelegate = new InputDelegate;
-	inputDelegate->d = [[ofxPGMidiInDelegate alloc] init];
+	inputDelegate->d = [[ofxPGMidiSourceDelegate alloc] init];
 	[inputDelegate->d setInputPtr:(void*) this];
 }
 
