@@ -112,7 +112,7 @@ void ofxRtMidiIn::closePort() {
 	if(bVirtual && bOpen) {
 		ofLog(OF_LOG_VERBOSE, "ofxMidiIn: closing virtual port %s", portName.c_str());
 	}
-	else if(portNum > -1) {
+	else if(bOpen && portNum > -1) {
 		ofLog(OF_LOG_VERBOSE, "ofxMidiIn: closing port %i %s", portNum, portName.c_str());
 	}
 	midiin.closePort();

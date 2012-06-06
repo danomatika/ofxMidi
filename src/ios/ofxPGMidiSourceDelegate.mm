@@ -69,7 +69,11 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 				time = mach_absolute_time();
 			}
 			time -= lastTime;
-			delta = AbsoluteToNanos(time) * 0.000001; // convert to ms
+			
+			// set the delta time between individual messages
+			if(!bContinueSysex) {
+				delta = AbsoluteToNanos(time) * 0.000001; // convert to ms
+			}
 		}
 		lastTime = packet->timeStamp;
 		if(lastTime == 0 ) { // this happens when receiving asynchronous sysex messages

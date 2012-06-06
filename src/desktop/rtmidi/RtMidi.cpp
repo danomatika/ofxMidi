@@ -217,7 +217,7 @@ void midiInputCallback( const MIDIPacketList *list, void *procRef, void *srcRef 
     if ( nBytes == 0 ) continue;
 
     // Calculate time stamp.
-    message.timeStamp = 0.0;
+    //message.timeStamp = 0.0;
     if ( data->firstMessage )
       data->firstMessage = false;
     else {
@@ -227,8 +227,10 @@ void midiInputCallback( const MIDIPacketList *list, void *procRef, void *srcRef 
       }
       time -= apiData->lastTime;
       time = AudioConvertHostTimeToNanos( time );
-      message.timeStamp = time * 0.000000001;
-    }
+	  if ( !continueSysex ) {
+		message.timeStamp = time * 0.000000001;
+	  }
+	}
     apiData->lastTime = packet->timeStamp;
     if ( apiData->lastTime == 0 ) { // this happens when receiving asynchronous sysex messages
       apiData->lastTime = AudioGetCurrentHostTime();
