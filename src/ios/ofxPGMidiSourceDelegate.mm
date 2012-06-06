@@ -33,7 +33,7 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 	inputPtr = NULL;
 	
 	lastTime = 0;
-	bFirstPacket = false;
+	bFirstPacket = true;
 	bContinueSysex = false;
 	
 	maxMessageLen = 100; // default RtMidiIn length
@@ -50,7 +50,7 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 	unsigned char statusByte;
 	unsigned short nBytes, curByte, msgSize;
 	unsigned long long time;
-	double delta;
+	double delta = 0.0;
 	
     for(int i = 0; i < packetList->numPackets; ++i) {
        
