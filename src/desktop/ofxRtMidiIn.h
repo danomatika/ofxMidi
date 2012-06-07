@@ -10,11 +10,10 @@ public:
 	ofxRtMidiIn(const string name);
 	virtual ~ofxRtMidiIn();
 	
-	void listPorts();
-	vector<string>& getPortList();
-	int getNumPorts();
-	string getPortName(unsigned int portNumber);
-
+	static void listPorts();
+	static vector<string>& getPortList();
+	static int getNumPorts();
+	static string getPortName(unsigned int portNumber);
 
 	bool openPort(unsigned int portNumber);
 	bool openPort(string deviceName);
@@ -25,7 +24,8 @@ public:
 
 private:
 	
-	RtMidiIn midiin;
+	RtMidiIn midiIn;
+	static RtMidiIn s_midiIn; //< for static calls (a little kludgey, I know)
 	
 	/// static callback for rtmidi
 	static void _midiMessageCallback(double deltatime, vector<unsigned char> *message, void *userData);

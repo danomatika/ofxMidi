@@ -24,10 +24,10 @@ public:
 	ofxMidiIn(const string name="ofxMidiIn Client");
 	virtual ~ofxMidiIn();
 	
-/// \section Port Info
+/// \section Global Port Info
 	
 	/// print the connected output ports
-	void listPorts();
+	static void listPorts();
 	
 	/// get a list of output port names
 	/// 
@@ -36,16 +36,16 @@ public:
 	/// note: this order may change when new devices are added/removed
 	///		  from the system
 	///
-	vector<string>& getPortList();
+	static vector<string>& getPortList();
 	
 	/// get the number of output ports
-	int getNumPorts();
+	static int getNumPorts();
 	
 	/// get the name of an output port by it's number
 	///
 	/// returns "" if number is invalid
 	///
-	string getPortName(unsigned int portNumber);
+	static string getPortName(unsigned int portNumber);
 
 /// \section Connection
 	

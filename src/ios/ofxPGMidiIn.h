@@ -12,10 +12,10 @@ public:
 	ofxPGMidiIn(const string name);
 	virtual ~ofxPGMidiIn();
 	
-	void listPorts();
-	vector<string>& getPortList();
-	int getNumPorts();
-	string getPortName(unsigned int portNumber);
+	static void listPorts();
+	static vector<string>& getPortList();
+	static int getNumPorts();
+	static string getPortName(unsigned int portNumber);
 
 	bool openPort(unsigned int portNumber);
 	bool openPort(string deviceName);

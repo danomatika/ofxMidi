@@ -7,7 +7,8 @@ void testApp::setup() {
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
 	// print input ports to console
-	midiIn.listPorts();
+	midiIn.listPorts(); // via instance
+	//ofxMidiIn::listPorts(); // via static as well
 	
 	// open port by number
 	midiIn.openPort(1);

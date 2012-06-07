@@ -10,13 +10,11 @@ public:
 	/// set the output client name (optional)
 	ofxRtMidiOut(const string name);
 	virtual ~ofxRtMidiOut();
-	
 
-	void listPorts();
-	vector<string>& getPortList();
-	int getNumPorts();
-	string getPortName(unsigned int portNumber);
-	
+	static void listPorts();
+	static vector<string>& getPortList();
+	static int getNumPorts();
+	static string getPortName(unsigned int portNumber);
 
 	bool openPort(unsigned int portNumber);
 	bool openPort(string deviceName);
@@ -27,5 +25,6 @@ private:
 	
 	void sendMessage();
 
-	RtMidiOut midiout;
+	RtMidiOut midiOut;
+	static RtMidiOut s_midiOut; //< for static calls (a little kludgey, I know)
 };

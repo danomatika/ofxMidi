@@ -21,6 +21,7 @@ void ofxPGMidiContext::setup() {
 
 // -----------------------------------------------------------------------------
 PGMidi * ofxPGMidiContext::getMidi() {
+	setup();
 	return midi;
 }
 

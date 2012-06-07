@@ -1,7 +1,7 @@
 #include "testApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup(){
+void testApp::setup() {
 
 	// register touch events
 	ofRegisterTouchEvents(this);
@@ -9,11 +9,11 @@ void testApp::setup(){
 	// initialize the accelerometer
 	ofxAccelerometer.setup();
 	
-	//iPhoneAlerts will be sent to this.
+	// iPhoneAlerts will be sent to this
 	ofxiPhoneAlerts.addListener(this);
 	
-	//If you want a landscape oreintation 
-	//iPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
+	// if you want a landscape oreintation 
+	// iPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
 	
 	// lets see what's going on inside
 	ofSetLogLevel(OF_LOG_VERBOSE);
@@ -36,31 +36,42 @@ void testApp::setup(){
 	//
 	ofxMidi::enableNetworking();
 	
-	// create a set of i/o ports
-	inputs.push_back(new ofxMidiIn);
-	outputs.push_back(new ofxMidiOut);
-	
 	// list the number of available input & output ports
-	inputs[0]->listPorts();
-	outputs[0]->listPorts();
+	ofxMidiIn::listPorts();
+	ofxMidiOut::listPorts();
 	
-	// set this class to receive incoming midi events
-	inputs[0]->addListener(this);
+	// create and open input ports
+	for(int i = 0; i < ofxMidiIn::getNumPorts(); ++i) {
+		
+		// new object
+		inputs.push_back(new ofxMidiIn);
+		
+		// set this class to receive incoming midi events
+		inputs[i]->addListener(this);
+		
+		// open input port via port number
+		inputs[i]->openPort(i);
+	}
 	
-	// set the class to receieve midi device (dis)connection events
+	// create and open output ports
+	for(int i = 0; i < ofxMidiOut::getNumPorts(); ++i) {
+		
+		// new object
+		outputs.push_back(new ofxMidiOut);
+		
+		// open input port via port number
+		outputs[i]->openPort(i);
+	}
+	
+	// set this class to receieve midi device (dis)connection events
 	ofxMidi::setConnectionListener(this);
-	
-	// open the first available ports
-	inputs[0]->openPort();
-	outputs[0]->openPort();
 }
 
 //--------------------------------------------------------------
-void testApp::update(){
-}
+void testApp::update() {}
 
 //--------------------------------------------------------------
-void testApp::draw(){
+void testApp::draw() {
 	
 	ofSetColor(0);
 
@@ -75,14 +86,16 @@ void testApp::draw(){
 	ofDrawBitmapString("Output:", 10, ofGetHeight()-42);
 	if(note > 0) {
 		ofDrawBitmapString("note "+ofToString(note), 10, ofGetHeight()-28);
+		ofRect(80, ofGetHeight()-38, ofMap(note, 0, 127, 0, ofGetWidth()-10), 12);
 	}
 	if(ctl > 0) {
 		ofDrawBitmapString("pan "+ofToString(ctl), 10, ofGetHeight()-14);
+		ofRect(80, ofGetHeight()-24, ofMap(ctl, 0, 127, 0, ofGetWidth()-10), 12);
 	}
 }
 
 //--------------------------------------------------------------
-void testApp::exit(){
+void testApp::exit() {
 
 	// clean up
 	
@@ -99,7 +112,7 @@ void testApp::exit(){
 }
 
 //--------------------------------------------------------------
-void testApp::touchDown(ofTouchEventArgs &touch){
+void testApp::touchDown(ofTouchEventArgs &touch) {
 
 	// send note on
 	note = (int) ofMap(touch.y, ofGetHeight(), 0, 0, 127);
@@ -109,7 +122,7 @@ void testApp::touchDown(ofTouchEventArgs &touch){
 }
 
 //--------------------------------------------------------------
-void testApp::touchMoved(ofTouchEventArgs &touch){
+void testApp::touchMoved(ofTouchEventArgs &touch) {
 
 	// send ctl change
 	ctl = (int) ofMap(touch.x, 0, ofGetWidth(), 0, 127);
@@ -119,7 +132,7 @@ void testApp::touchMoved(ofTouchEventArgs &touch){
 }
 
 //--------------------------------------------------------------
-void testApp::touchUp(ofTouchEventArgs &touch){
+void testApp::touchUp(ofTouchEventArgs &touch) {
 	
 	// send note off
 	for(int i = 0; i < outputs.size(); ++i) {
@@ -130,33 +143,33 @@ void testApp::touchUp(ofTouchEventArgs &touch){
 }
 
 //--------------------------------------------------------------
-void testApp::touchDoubleTap(ofTouchEventArgs &touch){
+void testApp::touchDoubleTap(ofTouchEventArgs &touch) {
 
 }
 
 //--------------------------------------------------------------
-void testApp::lostFocus(){
+void testApp::lostFocus() {
 
 }
 
 //--------------------------------------------------------------
-void testApp::gotFocus(){
+void testApp::gotFocus() {
 
 }
 
 //--------------------------------------------------------------
-void testApp::gotMemoryWarning(){
+void testApp::gotMemoryWarning() {
 
 }
 
 //--------------------------------------------------------------
-void testApp::deviceOrientationChanged(int newOrientation){
+void testApp::deviceOrientationChanged(int newOrientation) {
 
 }
 
 
 //--------------------------------------------------------------
-void testApp::touchCancelled(ofTouchEventArgs& args){
+void testApp::touchCancelled(ofTouchEventArgs& args) {
 
 }
 
@@ -179,17 +192,20 @@ void testApp::midiInputAdded(string name, bool isNetwork) {
 	msg << "ofxMidi: input added: " << name << " network: " << isNetwork;
 	addMessage(msg.str());
 	
+	// create and open a new input port
 	ofxMidiIn * newInput = new ofxMidiIn;
 	newInput->openPort(name);
 	newInput->addListener(this);
 	inputs.push_back(newInput);
 }
 
+//--------------------------------------------------------------
 void testApp::midiInputRemoved(string name, bool isNetwork) {
 	stringstream msg;
 	msg << "ofxMidi: input removed: " << name << " network: " << isNetwork << endl;
 	addMessage(msg.str());
 	
+	// close and remove input port
 	vector<ofxMidiIn*>::iterator iter;
 	for(iter = inputs.begin(); iter != inputs.end(); ++iter) {
 		ofxMidiIn * input = (*iter);
@@ -203,21 +219,25 @@ void testApp::midiInputRemoved(string name, bool isNetwork) {
 	}
 }
 
+//--------------------------------------------------------------
 void testApp::midiOutputAdded(string name, bool isNetwork) {
 	stringstream msg;
 	msg << "ofxMidi: output added: " << name << " network: " << isNetwork << endl;
 	addMessage(msg.str());
 	
+	// create and open new output port
 	ofxMidiOut * newOutput = new ofxMidiOut;
 	newOutput->openPort(name);
 	outputs.push_back(newOutput);
 }
 
+//--------------------------------------------------------------
 void testApp::midiOutputRemoved(string name, bool isNetwork) {
 	stringstream msg;
 	msg << "ofxMidi: output removed: " << name << " network: " << isNetwork << endl;
 	addMessage(msg.str());
 	
+	// close and remove output port
 	vector<ofxMidiOut*>::iterator iter;
 	for(iter = outputs.begin(); iter != outputs.end(); ++iter) {
 		ofxMidiOut * output = (*iter);

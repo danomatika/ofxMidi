@@ -17,11 +17,6 @@ public:
 	ofxBaseMidiIn(const string name);
 	virtual ~ofxBaseMidiIn() {}
 	
-	virtual void listPorts() = 0;
-	virtual vector<string>& getPortList() = 0;
-	virtual int getNumPorts() = 0;
-	virtual string getPortName(unsigned int portNumber) = 0;
-	
 	virtual bool openPort(unsigned int portNumber) = 0;
 	virtual bool openPort(string deviceName) = 0;
 	virtual bool openVirtualPort(string portName) = 0;
@@ -67,11 +62,6 @@ public:
 
 	ofxBaseMidiOut(const string name);
 	virtual ~ofxBaseMidiOut() {}
-	
-	virtual void listPorts() = 0;
-	virtual vector<string>& getPortList() = 0;
-	virtual int getNumPorts() = 0;
-	virtual string getPortName(unsigned int portNumber) = 0;
 	
 	virtual bool openPort(unsigned int portNumber=0) = 0;
 	virtual bool openPort(string deviceName) = 0;

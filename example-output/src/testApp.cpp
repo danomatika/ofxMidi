@@ -8,14 +8,13 @@ void testApp::setup() {
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
 	// print the available output ports to the console
-	midiOut.listPorts();
+	midiOut.listPorts(); // via instance
+	//ofxMidiOut::listPorts(); // via static too
 	
 	// connect
 	midiOut.openPort(0);	// by number
 	//midiOut.openPort("IAC Driver Pure Data In");	// by name
 	//midiOut.openVirtualPort("ofxMidiOut");		// open a virtual port
-	
-	midiOut.listPorts();
 	
 	channel = 1;
 	currentPgm = 0;
@@ -28,8 +27,7 @@ void testApp::setup() {
 }
 
 //--------------------------------------------------------------
-void testApp::update() {
-}
+void testApp::update() {}
 
 //--------------------------------------------------------------
 void testApp::draw() {
@@ -49,6 +47,13 @@ void testApp::draw() {
 		 << "touch: " << touch << endl
 		 << "polytouch: " << polytouch;
 	ofDrawBitmapString(text.str(), 20, 20);
+}
+
+//--------------------------------------------------------------
+void testApp::exit() {
+	
+	// clean up
+	midiOut.closePort();
 }
 
 //--------------------------------------------------------------
