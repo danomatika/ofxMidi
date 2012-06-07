@@ -1628,8 +1628,10 @@ extern "C" void *irixMidiHandler( void *ptr )
       continue;
     }
 
-    message.timeStamp = event.stamp * 0.000000001;
-
+	if ( !continueSysex ) {
+      message.timeStamp = event.stamp * 0.000000001;
+	}
+	
     size = 0;
     status = event.msg[0];
     if ( !(status & 0x80) ) continue;
