@@ -2,47 +2,45 @@
 
 #include "ofMain.h"
 
+#include "../ofxMidi.h"
+
 // -----------------------------------------------------------------------------
 @implementation ofxPGMidiDelegate
 
 // -----------------------------------------------------------------------------
 - (id) init {
 	self = [super init];
+	listenerPtr = NULL;
 	return self;
 }
 
 // -----------------------------------------------------------------------------
 - (void) midi:(PGMidi*)midi sourceAdded:(PGMidiSource *)source {
-	//source.delegate = self;
-	stringstream msg;
-	msg << "source added: " << [source.name UTF8String];
-	//app->addMessage(msg.str());
-	cout << msg << endl;
+	if(listenerPtr)
+		listenerPtr->midiInputAdded([source.name UTF8String], source.isNetworkSession);
 }
 
 // -----------------------------------------------------------------------------
 - (void) midi:(PGMidi*)midi sourceRemoved:(PGMidiSource *)source {
-	//source.delegate = nil;
-	stringstream msg;
-	msg << "source removed: " << [source.name UTF8String];
-	//app->addMessage(msg.str());
-	cout << msg << endl;
+	if(listenerPtr)
+		listenerPtr->midiInputRemoved([source.name UTF8String], source.isNetworkSession);
 }
 
 // -----------------------------------------------------------------------------
 - (void) midi:(PGMidi*)midi destinationAdded:(PGMidiDestination *)destination {
-	stringstream msg;
-	msg << "dest added: " << [destination.name UTF8String];
-	//app->addMessage(msg.str());
-	cout << msg << endl;
+	if(listenerPtr)
+		listenerPtr->midiOutputAdded([destination.name UTF8String], destination.isNetworkSession);
 }
 
 // -----------------------------------------------------------------------------
 - (void) midi:(PGMidi*)midi destinationRemoved:(PGMidiDestination *)destination {
-	stringstream msg;
-	msg << "dest removed: " << [destination.name UTF8String];
-	cout << msg << endl;
-	//input->addMessage(msg.str());
+	if(listenerPtr)
+		listenerPtr->midiOutputRemoved([destination.name UTF8String], destination.isNetworkSession);
+}
+
+// -----------------------------------------------------------------------------
+- (void) setListenerPtr:(void *)p {
+	listenerPtr = (ofxMidiConnectionListener*) p;
 }
 
 @end

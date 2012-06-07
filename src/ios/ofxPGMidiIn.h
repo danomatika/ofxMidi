@@ -2,6 +2,9 @@
 
 #include "../ofxBaseMidi.h"
 
+class ofxMidiConnectionListener;
+
+// reference http://syntheticbits.com/blog/?p=878
 class ofxPGMidiIn : public ofxBaseMidiIn {
 
 public:
@@ -23,11 +26,14 @@ public:
 
 	/// wrapper around manageNewMessage
 	void messageReceived(double deltatime, vector<unsigned char> *message);
+	
+	// iOS specific global stuff,
+	// easier to route through here thanks to Obj-C/C++ mix
+	static void setConnectionListener(ofxMidiConnectionListener * listener);
+	static void clearConnectionListener();
+	static void enableNetworking();
 
 private:
-
-	/// parses and sends received messages to listeners
-	///void manageNewMessage(double deltatime, vector<unsigned char> *message);
 	
 	struct InputDelegate; // forward declaration for Obj-C wrapper
 	InputDelegate * inputDelegate;	///< Obj-C midi input interface

@@ -10,8 +10,8 @@ class ofxMidiListener {
 
 public:
 
-	ofxMidiListener(){}
-	virtual ~ofxMidiListener(){}
+	ofxMidiListener() {}
+	virtual ~ofxMidiListener() {}
 	
 	virtual void newMidiMessage(ofxMidiMessage& msg)=0;
 };

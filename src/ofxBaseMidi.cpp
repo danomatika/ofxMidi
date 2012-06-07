@@ -1,6 +1,9 @@
 #include "ofxBaseMidi.h"
 
 // MIDI IN
+
+vector<string> ofxBaseMidiIn::portList;
+
 // -----------------------------------------------------------------------------
 ofxBaseMidiIn::ofxBaseMidiIn(const string name) {
 	portNum = -1;
@@ -99,6 +102,9 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *me
 }
 
 // MIDI OUT
+
+vector<string> ofxBaseMidiOut::portList;
+
 // -----------------------------------------------------------------------------
 ofxBaseMidiOut::ofxBaseMidiOut(const string name) {
 	portNum = -1;

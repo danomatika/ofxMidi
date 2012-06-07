@@ -130,11 +130,11 @@ void ofxPGMidiIn::closePort() {
 	
 	if(bOpen) {
 		ofLog(OF_LOG_VERBOSE, "ofxMidiIn: closing port %i %s", portNum, portName.c_str());
-	}
 	
-	PGMidi * midi = ofxPGMidiContext::getMidi();
-	PGMidiSource * source = [midi.sources objectAtIndex:portNum];
-	source.delegate = nil;
+		PGMidi * midi = ofxPGMidiContext::getMidi();
+		PGMidiSource * source = [midi.sources objectAtIndex:portNum];
+		source.delegate = nil;
+	}
 	
 	portNum = -1;
 	portName = "";
@@ -156,4 +156,19 @@ void ofxPGMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 // -----------------------------------------------------------------------------
 void ofxPGMidiIn::messageReceived(double deltatime, vector<unsigned char> *message) {
 	manageNewMessage(deltatime, message);
+}
+
+// -----------------------------------------------------------------------------
+void ofxPGMidiIn::setConnectionListener(ofxMidiConnectionListener * listener) {
+	ofxPGMidiContext::setConnectionListener(listener);
+}
+
+// -----------------------------------------------------------------------------
+void ofxPGMidiIn::clearConnectionListener() {
+	ofxPGMidiContext::clearConnectionListener();
+}
+
+// -----------------------------------------------------------------------------
+void ofxPGMidiIn::enableNetworking() {
+	ofxPGMidiContext::enableNetwork();
 }

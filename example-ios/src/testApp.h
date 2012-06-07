@@ -8,7 +8,8 @@
 
 #include <deque>
 
-class testApp : public ofxiPhoneApp, public ofxMidiListener {
+class testApp : public ofxiPhoneApp, 
+				public ofxMidiListener, public ofxMidiConnectionListener {
 	
 public:
 	void setup();
@@ -27,12 +28,21 @@ public:
 	void gotMemoryWarning();
 	void deviceOrientationChanged(int newOrientation);
 	
+	// add a message to the display queue
+	void addMessage(string msg);
+	
+	// midi message callback
 	void newMidiMessage(ofxMidiMessage& msg);
 	
-	void addMessage(string msg);
+	// midi device (dis)connection event callbacks
+	void midiInputAdded(string name, bool isNetwork);
+	void midiInputRemoved(string name, bool isNetwork);
+	
+	void midiOutputAdded(string nam, bool isNetwork);
+	void midiOutputRemoved(string name, bool isNetwork);
 
-	ofxMidiIn midiIn;
-	ofxMidiOut midiOut;
+	vector<ofxMidiIn*> inputs;
+	vector<ofxMidiOut*> outputs;
 
 	deque<string> messages;
 	int maxMessages;

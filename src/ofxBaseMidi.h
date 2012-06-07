@@ -48,7 +48,7 @@ protected:
 	int portNum;				//< current port num, -1 if not connected
 	string portName;			//< current port name, "" if not connected
 	
-	vector<string> portList;	//< list of port names
+	static vector<string> portList;	//< list of port names
 	ofEvent<ofxMidiMessage> newMessageEvent;
 	
 	bool bOpen;					//< is the port currently open?
@@ -106,7 +106,7 @@ protected:
 	int portNum;					//< current port num, -1 if not connected
 	string portName;				//< current port name, "" if not connected
 	
-	vector<string> portList;		//< list of port names
+	static vector<string> portList;	//< list of port names
 	vector<unsigned char> message;	//< message byte buffer
 	
 	bool bOpen;						//< is the port currently open?

@@ -73,6 +73,14 @@ void testApp::draw() {
 }
 
 //--------------------------------------------------------------
+void testApp::exit() {
+	
+	// clean up
+	midiIn.closePort();
+	midiIn.removeListener(this);
+}
+
+//--------------------------------------------------------------
 void testApp::newMidiMessage(ofxMidiMessage& msg) {
 
 	// make a copy of the latest message
@@ -81,6 +89,12 @@ void testApp::newMidiMessage(ofxMidiMessage& msg) {
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key) {
+
+	switch(key) {
+		case 'l':
+			midiIn.listPorts();
+			break;
+	}
 }
 
 //--------------------------------------------------------------

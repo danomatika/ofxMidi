@@ -3,10 +3,6 @@
 #import "PGMidi.h"
 #include <vector>
 
-@class PGMidi;
-@class PGMidiSource;
-@class PGMidiSourceDelegate;
-
 class ofxPGMidiIn;
 
 /// interface to pgmidi input
@@ -28,7 +24,7 @@ class ofxPGMidiIn;
 - (void) midiSource:(PGMidiSource *)input midiReceived:(const MIDIPacketList *)packetList;
 
 /// set the pointer to the ofxPGMidiIn object to send messages to
-- (void) setInputPtr:(void *)i;
+- (void) setInputPtr:(void *)p;
 
 @property bool bIgnoreSysex;
 @property bool bIgnoreTiming;

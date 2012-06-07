@@ -178,8 +178,8 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 }
 
 // -----------------------------------------------------------------------------
-- (void) setInputPtr:(void *)i {
-	inputPtr = (ofxPGMidiIn*) i;
+- (void) setInputPtr:(void *)p {
+	inputPtr = (ofxPGMidiIn*) p;
 }
 
 @end
