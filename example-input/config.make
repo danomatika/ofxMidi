@@ -17,7 +17,7 @@ USER_CFLAGS = -shared
 # for example libraries like:
 # USER_LDFLAGS = libs/libawesomelib.a
 
-USER_LDFLAGS = --export-dynamic
+USER_LDFLAGS =
 
 
 # use this to add system libraries for example:
