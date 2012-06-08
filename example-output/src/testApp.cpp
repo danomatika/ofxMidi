@@ -8,18 +8,18 @@ void testApp::setup() {
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
 	// print the available output ports to the console
-	midiOut.listPorts();
+	midiOut.listPorts(); // via instance
+	//ofxMidiOut::listPorts(); // via static too
 	
 	// connect
 	midiOut.openPort(0);	// by number
 	//midiOut.openPort("IAC Driver Pure Data In");	// by name
 	//midiOut.openVirtualPort("ofxMidiOut");		// open a virtual port
 	
-	midiOut.listPorts();
-	
 	channel = 1;
 	currentPgm = 0;
 	note = 0;
+	velocity = 0;
 	pan = 0;
 	bend = 0;
 	touch = 0;
@@ -27,8 +27,7 @@ void testApp::setup() {
 }
 
 //--------------------------------------------------------------
-void testApp::update() {
-}
+void testApp::update() {}
 
 //--------------------------------------------------------------
 void testApp::draw() {
@@ -51,6 +50,13 @@ void testApp::draw() {
 }
 
 //--------------------------------------------------------------
+void testApp::exit() {
+	
+	// clean up
+	midiOut.closePort();
+}
+
+//--------------------------------------------------------------
 void testApp::keyPressed(int key) {
 
 	// send a note on if the key is a letter or a number
@@ -61,6 +67,10 @@ void testApp::keyPressed(int key) {
 		note = ofMap(key, 48, 122, 0, 127);
 		velocity = 64;
 		midiOut.sendNoteOn(channel, note,  velocity);
+	}
+	
+	if(key == 'l') {
+		ofxMidiOut::listPorts();
 	}
 }
 

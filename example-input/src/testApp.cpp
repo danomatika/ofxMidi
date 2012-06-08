@@ -7,9 +7,10 @@ void testApp::setup() {
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
 	// print input ports to console
-	midiIn.listPorts();
+	midiIn.listPorts(); // via instance
+	//ofxMidiIn::listPorts(); // via static as well
 	
-	// open port by number
+	// open port by number (you may need to change this)
 	midiIn.openPort(1);
 	//midiIn.openPort("IAC Pure Data In");	// by name
 	//midiIn.openVirtualPort("ofxMidiIn Input");	// open a virtual port
@@ -66,6 +67,18 @@ void testApp::draw() {
 	else {
 		ofRect(20, 202, ofMap(midiMessage.value, 0, 127, 0, ofGetWidth()-40), 20);
 	}
+	
+	text << "delta: " << midiMessage.deltatime;
+	ofDrawBitmapString(text.str(), 20, 240);
+	text.str(""); // clear
+}
+
+//--------------------------------------------------------------
+void testApp::exit() {
+	
+	// clean up
+	midiIn.closePort();
+	midiIn.removeListener(this);
 }
 
 //--------------------------------------------------------------
@@ -77,6 +90,12 @@ void testApp::newMidiMessage(ofxMidiMessage& msg) {
 
 //--------------------------------------------------------------
 void testApp::keyPressed(int key) {
+
+	switch(key) {
+		case 'l':
+			midiIn.listPorts();
+			break;
+	}
 }
 
 //--------------------------------------------------------------

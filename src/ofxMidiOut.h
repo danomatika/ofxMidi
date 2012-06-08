@@ -1,11 +1,15 @@
 #pragma once
 
-#include "ofMain.h"
+#include "ofxBaseMidi.h"
 
-#include "RtMidi.h"
-#include "ofxMidiConstants.h"
-#include "ofxMidiMessage.h"
-#include "ofxMidiTypes.h"
+// choose the midi backend
+#ifdef TARGET_OF_IPHONE
+	#include "ios/ofxPGMidiOut.h"
+	#define OFX_MIDI_OUT_TYPE ofxPGMidiOut
+#else // OSX, Win, Linux
+	#include "desktop/ofxRtMidiOut.h"
+	#define OFX_MIDI_OUT_TYPE ofxRtMidiOut
+#endif
 
 ///
 /// a midi output port
@@ -20,10 +24,10 @@ public:
 	ofxMidiOut(const string name="ofxMidiOut Client");
 	virtual ~ofxMidiOut();
 	
-/// \section Port Info
+/// \section Global Port Info
 	
 	/// print the connected output ports
-	void listPorts();
+	static void listPorts();
 	
 	/// get a list of output port names
 	/// 
@@ -32,16 +36,16 @@ public:
 	/// note: this order may change when new devices are added/removed
 	///		  from the system
 	///
-	vector<string>& getPortList();
+	static vector<string>& getPortList();
 	
 	/// get the number of output ports
-	int getNumPorts();
+	static int getNumPorts();
 	
 	/// get the name of an output port by it's number
 	///
 	/// returns "" if number is invalid
 	///
-	string getPortName(unsigned int portNumber);
+	static string getPortName(unsigned int portNumber);
 	
 /// \section Connection
 	
@@ -127,7 +131,8 @@ public:
 	/// midi events
 	///
 	/// midiout << NoteOn(1, 64, 64) << NoteOff(1, 64);
-	/// midiout << ControlChange(1, 100, 64) << ProgramChange(1, 100) << PitchBend(1, 2000);
+	/// midiout << ControlChange(1, 100, 64) << ProgramChange(1, 100);
+	/// midiout << << PitchBend(1, 2000);
 	/// midiout << Aftertouch(1, 127) << PolyAftertouch(1, 64, 127);
 	///
 	ofxMidiOut& operator<<(const NoteOn& var);
@@ -144,7 +149,8 @@ public:
 	///
 	/// build a raw midi byte message and send it with FinishMidi()
 	///
-	/// note: other midi messages cannot be sent while the stream is in progress
+	/// note: other midi messages (except raw miid bytes) cannot be sent while
+	///       the stream is in progress
 	///
 	ofxMidiOut& operator<<(const StartMidi& var);
 	ofxMidiOut& operator<<(const FinishMidi& var);
@@ -152,16 +158,5 @@ public:
 	
 private:
 	
-	void sendMessage();
-
-	RtMidiOut midiout;
-	int portNum;					//< current port num, -1 if not connected
-	string portName;				//< current port name, "" if not connected
-	
-	vector<string> portList;		//< list of port names
-	vector<unsigned char> message;	//< message byte buffer
-	
-	bool bOpen;						//< is the port currently open?
-	bool bMsgInProgress;			//< used with byte stream
-	bool bVirtual;					//< are we connected to a virtual port?
+	ofPtr<ofxBaseMidiOut> midiOut;
 };

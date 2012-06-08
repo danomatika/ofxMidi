@@ -7,6 +7,12 @@
     <ClCompile Include="src\testApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.cpp">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidi.cpp">
+      <Filter>addons\ofxMidi\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.cpp">
       <Filter>addons\ofxMidi\src</Filter>
     </ClCompile>
@@ -16,13 +22,22 @@
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.cpp">
       <Filter>addons\ofxMidi\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.cpp">
-      <Filter>addons\ofxMidi\src\rtmidi</Filter>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.cpp">
+      <Filter>addons\ofxMidi\src\desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.cpp">
+      <Filter>addons\ofxMidi\src\desktop</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\rtmidi\RtMidi.cpp">
+      <Filter>addons\ofxMidi\src\desktop\rtmidi</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\testApp.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.h">
+      <Filter>addons\ofxMidi\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidi.h">
       <Filter>addons\ofxMidi\src</Filter>
@@ -42,11 +57,17 @@
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiTypes.h">
       <Filter>addons\ofxMidi\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxMidi\src\rtmidi\RtError.h">
-      <Filter>addons\ofxMidi\src\rtmidi</Filter>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.h">
+      <Filter>addons\ofxMidi\src\desktop</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.h">
-      <Filter>addons\ofxMidi\src\rtmidi</Filter>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.h">
+      <Filter>addons\ofxMidi\src\desktop</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\rtmidi\RtError.h">
+      <Filter>addons\ofxMidi\src\desktop\rtmidi</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\rtmidi\RtMidi.h">
+      <Filter>addons\ofxMidi\src\desktop\rtmidi</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -59,11 +80,14 @@
     <Filter Include="addons\ofxMidi\src">
       <UniqueIdentifier>{e41bfa45-f87a-4ebe-804f-bc453c698d5b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxMidi\src\rtmidi">
-      <UniqueIdentifier>{efbcf97e-58ae-4cfd-9d1f-db1ab5c0dd3e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{221b9df8-96e9-434c-b5fc-1739e3daaf8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMidi\src\desktop">
+      <UniqueIdentifier>{c96e838e-90a5-46fd-ae6f-f6fddd3d6fcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxMidi\src\desktop\rtmidi">
+      <UniqueIdentifier>{8a922cf6-3faa-4a7e-8ae1-323544734396}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

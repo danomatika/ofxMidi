@@ -26,14 +26,14 @@ curl http://www.music.mcgill.ca/~gary/rtmidi/release/rtmidi-$VER.tar.gz -O
 tar -xvf rtmidi-$VER.tar.gz
 
 # create destination dir
-mkdir -p ../src/rtmidi
+mkdir -p ../src/desktop/rtmidi
 
 # copy license
-cp -v rtmidi-$VER/readme ../src/rtmidi/readme
+cp -v rtmidi-$VER/readme ../src/desktop/rtmidi
 
 # copy sources
-cp -v rtmidi-$VER/*.h ../src/rtmidi
-cp -v rtmidi-$VER/*.cpp ../src/rtmidi
+cp -v rtmidi-$VER/*.h ../src/desktop/rtmidi
+cp -v rtmidi-$VER/*.cpp ../src/desktop/rtmidi
 
 # cleanup
 rm -rfv rtmidi-$VER rtmidi-$VER.tar.gz

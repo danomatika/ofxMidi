@@ -6,6 +6,7 @@
 
 #include "ofConstants.h"
 
+// for rtmidi
 #ifdef TARGET_LINUX
 	#define __LINUX_ALSASEQ__
 #elif defined(TARGET_WIN32)
