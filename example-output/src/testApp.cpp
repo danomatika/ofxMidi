@@ -68,6 +68,10 @@ void testApp::keyPressed(int key) {
 		velocity = 64;
 		midiOut.sendNoteOn(channel, note,  velocity);
 	}
+	
+	if(key == 'l') {
+		ofxMidiOut::listPorts();
+	}
 }
 
 //--------------------------------------------------------------

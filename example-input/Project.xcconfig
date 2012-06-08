@@ -12,7 +12,7 @@ OF_PATH = ../../..
 ADDONS_PATH = $(OF_PATH)/addons
 
 // ofxMidi
-OFX_MIDI_HEADERS = $(ADDONS_PATH)/ofxMidi/src $(ADDONS_PATH)/ofxMidi/src/rtmidi
+OFX_MIDI_HEADERS = $(ADDONS_PATH)/ofxMidi/src $(ADDONS_PATH)/ofxMidi/src/desktop/rtmidi
 
 // all addons
 OF_ADDON_HEADERS = $(OFX_MIDI_HEADERS)
