@@ -6,9 +6,7 @@ ofxMidiOut::ofxMidiOut(const string name) {
 }
 
 // -----------------------------------------------------------------------------
-ofxMidiOut::~ofxMidiOut() {
-	closePort();
-}
+ofxMidiOut::~ofxMidiOut() {}
 
 // -----------------------------------------------------------------------------
 void ofxMidiOut::listPorts() {

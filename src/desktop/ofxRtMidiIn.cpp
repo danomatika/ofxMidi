@@ -1,6 +1,6 @@
 #include "ofxRtMidiIn.h"
 
-RtMidiIn ofxRtMidiIn::s_midiIn;
+RtMidiIn ofxRtMidiIn::s_midiIn("ofxMidi Client");
 
 // -----------------------------------------------------------------------------
 ofxRtMidiIn::ofxRtMidiIn(const string name) :
@@ -53,7 +53,7 @@ bool ofxRtMidiIn::openPort(unsigned int portNumber) {
 	try {
 		closePort();
 		midiIn.setCallback(&_midiMessageCallback, this);
-		midiIn.openPort(portNumber);
+		midiIn.openPort(portNumber, "ofxMidi Input "+ofToString(portNumber));
 	}
 	catch(RtError& err) {
 		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't open port %i: %s", portNumber, err.what());
@@ -105,7 +105,7 @@ bool ofxRtMidiIn::openVirtualPort(string portName) {
 	this->portName = portName;
 	bOpen = true;
 	bVirtual = true;
-	ofLog(OF_LOG_VERBOSE, "ofxMidiOut: opened virtual port %s", portName.c_str());
+	ofLog(OF_LOG_VERBOSE, "ofxMidiIn: opened virtual port %s", portName.c_str());
 	return true;
 }
 

@@ -34,6 +34,9 @@
 		<Unit filename="../../../addons/ofxMidi/src/desktop/rtmidi/RtError.h" />
 		<Unit filename="../../../addons/ofxMidi/src/desktop/rtmidi/RtMidi.cpp" />
 		<Unit filename="../../../addons/ofxMidi/src/desktop/rtmidi/RtMidi.h" />
+		<Unit filename="../../../addons/ofxMidi/src/ofxBaseMidi.cpp" />
+		<Unit filename="../../../addons/ofxMidi/src/ofxBaseMidi.h" />
+		<Unit filename="../../../addons/ofxMidi/src/ofxMidi.cpp" />
 		<Unit filename="../../../addons/ofxMidi/src/ofxMidi.h" />
 		<Unit filename="../../../addons/ofxMidi/src/ofxMidiConstants.h" />
 		<Unit filename="../../../addons/ofxMidi/src/ofxMidiIn.cpp" />

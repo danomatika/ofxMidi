@@ -1,6 +1,6 @@
 #include "ofxRtMidiOut.h"
 
-RtMidiOut ofxRtMidiOut::s_midiOut;
+RtMidiOut ofxRtMidiOut::s_midiOut("ofxMidi Client");
 
 // -----------------------------------------------------------------------------
 ofxRtMidiOut::ofxRtMidiOut(const string name) :
@@ -52,7 +52,7 @@ bool ofxRtMidiOut::openPort(unsigned int portNumber) {
 	// handle rtmidi exceptions
 	try {
 		closePort();
-		midiOut.openPort(portNumber);
+		midiOut.openPort(portNumber, "ofxMidi Output "+ofToString(portNumber));
 	}
 	catch(RtError& err) {
 		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't open port %i: %s", portNumber, err.what());
