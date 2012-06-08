@@ -20,7 +20,7 @@ ofxMidi provides [Music Instrument Digial Interface](http://en.wikipedia.org/wik
 * ofxMidiMessage: a received midi message
 * ofxMidiOut: a single midi output port, includes a stream << interface
 
-This project utilizes [RtMidi](http://www.music.mcgill.ca/~gary/rtmidi/) for the backend and currently supports Mac, Windows, Linux, and iOS.
+This project utilizes [RtMidi](http://www.music.mcgill.ca/~gary/rtmidi/) for Mac, Windows, & Linux and [PGMidi](https://github.com/petegoodliffe/PGMidi) on iOS.
 
 Installation
 ------------
