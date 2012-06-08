@@ -10,8 +10,8 @@ class ofxMidiListener {
 
 public:
 
-	ofxMidiListener(){}
-	virtual ~ofxMidiListener(){}
+	ofxMidiListener() {}
+	virtual ~ofxMidiListener() {}
 	
 	virtual void newMidiMessage(ofxMidiMessage& msg)=0;
 };
@@ -78,6 +78,7 @@ public:
 	string toString();
 
 	/// get a midi status byte as a string
+	/// ie "Note On", "Note Off", "Control Change", etc
 	static string getStatusString(MidiStatus status);
 };
 

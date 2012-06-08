@@ -1,13 +1,18 @@
 #pragma once
 
-#include "ofMain.h"
+#include "ofxBaseMidi.h"
 
-#include "RtMidi.h"
-#include "ofxMidiConstants.h"
-#include "ofxMidiMessage.h"
+// choose the midi backend
+#ifdef TARGET_OF_IPHONE
+	#include "ios/ofxPGMidiIn.h"
+	#define OFX_MIDI_IN_TYPE ofxPGMidiIn
+#else // OSX, Win, Linux
+	#include "desktop/ofxRtMidiIn.h"
+	#define OFX_MIDI_IN_TYPE ofxRtMidiIn
+#endif
 
 ///
-/// a midi output port
+/// a midi input port
 ///
 /// create multiple instances to connect to multiple ports
 ///
@@ -19,10 +24,10 @@ public:
 	ofxMidiIn(const string name="ofxMidiIn Client");
 	virtual ~ofxMidiIn();
 	
-/// \section Port Info
+/// \section Global Port Info
 	
 	/// print the connected output ports
-	void listPorts();
+	static void listPorts();
 	
 	/// get a list of output port names
 	/// 
@@ -31,16 +36,16 @@ public:
 	/// note: this order may change when new devices are added/removed
 	///		  from the system
 	///
-	vector<string>& getPortList();
+	static vector<string>& getPortList();
 	
 	/// get the number of output ports
-	int getNumPorts();
+	static int getNumPorts();
 	
 	/// get the name of an output port by it's number
 	///
 	/// returns "" if number is invalid
 	///
-	string getPortName(unsigned int portNumber);
+	static string getPortName(unsigned int portNumber);
 
 /// \section Connection
 	
@@ -109,20 +114,5 @@ public:
 
 private:
 
-	/// parses and sends received messages to listeners
-	void manageNewMessage(double deltatime, vector<unsigned char> *message);
-	
-	RtMidiIn midiin;
-	int portNum;				//< current port num, -1 if not connected
-	string portName;			//< current port name, "" if not connected
-	
-	vector<string> portList;	//< list of port names
-	ofEvent<ofxMidiMessage> newMessageEvent;
-	
-	bool bOpen;					//< is the port currently open?
-	bool bVerbose;				//< print incoming bytes?
-	bool bVirtual;				//< are we connected to a virtual port?
-	
-	/// static callback for rtmidi
-	static void _midiMessageCallback(double deltatime, vector< unsigned char > *message, void *userData);
+	ofPtr<ofxBaseMidiIn> midiIn;
 };

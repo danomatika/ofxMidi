@@ -1,19 +1,19 @@
 
 #include "ofxMidiMessage.h"
 
-// --------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 ofxMidiMessage::ofxMidiMessage() {
 	clear();
 }
 
-// --------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 ofxMidiMessage::ofxMidiMessage(vector<unsigned char>* rawBytes) {
 	clear();
 	for(unsigned int i = 0; i < rawBytes->size(); ++i)
 		bytes.push_back(rawBytes->at(i));
 }
 
-// --------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 ofxMidiMessage::ofxMidiMessage(const ofxMidiMessage& from) {
 	status = from.status;
 	channel = from.channel;
@@ -31,7 +31,7 @@ ofxMidiMessage::ofxMidiMessage(const ofxMidiMessage& from) {
 		bytes.push_back(from.bytes[i]);
 }
 
-// --------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 ofxMidiMessage& ofxMidiMessage::operator=(const ofxMidiMessage& from) {
 	status = from.status;
 	channel = from.channel;
@@ -50,7 +50,7 @@ ofxMidiMessage& ofxMidiMessage::operator=(const ofxMidiMessage& from) {
 	return *this;
 }
 
-// --------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 void ofxMidiMessage::clear() {
 	status = MIDI_UNKNOWN;
 	channel = 0;
@@ -64,7 +64,7 @@ void ofxMidiMessage::clear() {
 	bytes.clear();
 }
 
-// --------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 string ofxMidiMessage::toString() {
 	stringstream stream;
 	stream << portName << ": " << getStatusString(status) << " "
@@ -78,7 +78,7 @@ string ofxMidiMessage::toString() {
 	return stream.str();
 }
 
-// --------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 string ofxMidiMessage::getStatusString(MidiStatus status) {
 	switch(status) {
 		case MIDI_NOTE_OFF:
