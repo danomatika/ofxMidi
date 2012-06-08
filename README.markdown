@@ -20,7 +20,7 @@ ofxMidi provides [Music Instrument Digial Interface](http://en.wikipedia.org/wik
 * ofxMidiMessage: a received midi message
 * ofxMidiOut: a single midi output port, includes a stream << interface
 
-This project utilizes [RtMidi](http://www.music.mcgill.ca/~gary/rtmidi/) for the backend and currently supports Mac, Windows, and Linux. iOS support is in the works.
+This project utilizes [RtMidi](http://www.music.mcgill.ca/~gary/rtmidi/) for the backend and currently supports Mac, Windows, Linux, and iOS.
 
 Installation
 ------------
@@ -34,7 +34,18 @@ git clone git://github.com/chrisoshea/ofxMidi.git
 
 The addon should sit in `openFrameworks/addons/ofxMidi/`.
 
-### Midi Routing on Windows
+Midi Routing
+------------
+
+### Mac OSX
+
+Checkout a useful app for midi port routing called [MIDI Patchbay](http://notahat.com/midi_patchbay).
+
+### Linux
+
+Check out the Alsa utility apps aconnect & aconnectgui as well as the qjackctl gui for midi port routing control.
+
+### Windows
 
 Windows dosen't come with a virtual MIDI routing system like Linux (ALSA) and OSX (CoreMIDI).
 
@@ -108,6 +119,8 @@ Adding ofxMidi to an Existing Project
 
 * create a new group "ofxMidi"
 * drag these directories from ofxMidi into this new group: `ofxMidi/src`
+	* if building for OSX, delete the src/ios folder references
+	* if building for iOS, delete the src/desktop folder references
 * add the CoreMIDI framework to your project
 	* Xcode 3
 		* right click on your project in the groups & files sidebar
@@ -140,7 +153,7 @@ ofxMidi/src
 * add the following search paths:
 <pre>
 ..\\..\\..\addons\ofxMidi\src
-..\\..\\..\addons\ofxMidi\src\desktop\srtmidi
+..\\..\\..\addons\ofxMidi\src\desktop\rtmidi
 </pre>
 	* Codeblocks
 		* right click on the project in the project tree and select Build Options...
@@ -160,9 +173,23 @@ Create an account, clone or fork the repo, then request a push/merge. Please use
 
 If you find any bugs or suggestions please log them to GitHub as well.
 
-### Updating RtMidi
+### Adding a Midi Backend
 
-RtMidi can be updated by running the `update_rtmidi.sh` shell script in the scripts folder. Edit the version setting in the script header and run the script to download and place the RtMidi sources into `src/rtmidi`.
+If you want to add a new midi backend (Android, Jack, etc), you'll need two classes derived from ofxBaseMidiIn & ofxBaseMidiOut.
+
+Place your source files in a new folder named after your platform/library and add new include #ifdef flags to ofxMidiIn.h & ofxMidiIn.cpp.
+
+Last, you'll need to add specific #ifdef flags to the static port info ofxMidiIn/Out functions (listPorts, getPortName, etc).
+
+### Updating Midi Libraries
+
+RtMidi & PGMidi can be updated by running the `update_rtmidi.sh` or `update_pgmidi.sh` shell scripts in the scripts folder.
+
+For RtMidi, edit the version setting in the script header and run the script to download and place the RtMidi sources into `src/desktop/rtmidi`.
+
+PGMidi sources are placed in `src/ios/pgmidi`.
+
+#### RtMidi.cpp include
 
 Next, make sure to add the following include to `RtMidi.cpp` at around line 38 or there will be link errors:
 <pre>
