@@ -6,7 +6,7 @@
 		<Option makefile="makefile" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="addons\;src\;addons\ofxMidi\;addons\ofxMidi\src\;addons\ofxMidi\src\rtmidi\;" />
+		<Option virtualFolders="addons\;src\;addons\ofxMidi\;addons\ofxMidi\src\;addons\ofxMidi\src\desktop\;addons\ofxMidi\src\desktop\rtmidi\;" />
 		<Build>
 			<Target title="release">
 				<Option output="bin\$(PROJECT_NAME)" prefix_auto="1" extension_auto="1" />
@@ -68,7 +68,7 @@
 			<Add directory="..\..\..\libs\tess2\include" />
 			<Add directory="..\..\..\libs\cairo\include\cairo" />
 			<Add directory="..\..\..\addons\ofxMidi\src" />
-			<Add directory="..\..\..\addons\ofxMidi\src\rtmidi" />
+			<Add directory="..\..\..\addons\ofxMidi\src\desktop\rtmidi" />
 		</Compiler>
 		<Linker>
 			<Add library="..\..\..\libs\FreeImage\lib\win_cb\FreeImage.lib" />
@@ -108,6 +108,36 @@
 			<Add after='cmd /c if not exist &quot;$(PROJECT_DIR)bin/data&quot; mkdir &quot;$(PROJECT_DIR)bin/data&quot;' />
 			<Mode after="always" />
 		</ExtraCommands>
+		<Unit filename="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.cpp">
+			<Option virtualFolder="addons\ofxMidi\src\desktop\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.h">
+			<Option virtualFolder="addons\ofxMidi\src\desktop\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.cpp">
+			<Option virtualFolder="addons\ofxMidi\src\desktop\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.h">
+			<Option virtualFolder="addons\ofxMidi\src\desktop\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\desktop\rtmidi\RtError.h">
+			<Option virtualFolder="addons\ofxMidi\src\desktop\rtmidi\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\desktop\rtmidi\RtMidi.cpp">
+			<Option virtualFolder="addons\ofxMidi\src\desktop\rtmidi\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\desktop\rtmidi\RtMidi.h">
+			<Option virtualFolder="addons\ofxMidi\src\desktop\rtmidi\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxBaseMidi.cpp">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxBaseMidi.h">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
+		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidi.cpp">
+			<Option virtualFolder="addons\ofxMidi\src\" />
+		</Unit>
 		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidi.h">
 			<Option virtualFolder="addons\ofxMidi\src\" />
 		</Unit>
@@ -134,15 +164,6 @@
 		</Unit>
 		<Unit filename="..\..\..\addons\ofxMidi\src\ofxMidiTypes.h">
 			<Option virtualFolder="addons\ofxMidi\src\" />
-		</Unit>
-		<Unit filename="..\..\..\addons\ofxMidi\src\rtmidi\RtError.h">
-			<Option virtualFolder="addons\ofxMidi\src\rtmidi\" />
-		</Unit>
-		<Unit filename="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.cpp">
-			<Option virtualFolder="addons\ofxMidi\src\rtmidi\" />
-		</Unit>
-		<Unit filename="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.h">
-			<Option virtualFolder="addons\ofxMidi\src\rtmidi\" />
 		</Unit>
 		<Unit filename="src\main.cpp">
 			<Option virtualFolder="src" />

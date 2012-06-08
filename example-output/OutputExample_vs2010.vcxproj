@@ -51,7 +51,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\cairo\include;..\..\..\libs\cairo\include\cairo;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\..\..\libs\openFrameworks;..\..\..\libs\openFrameworks\graphics;..\..\..\libs\openFrameworks\app;..\..\..\libs\openFrameworks\sound;..\..\..\libs\openFrameworks\utils;..\..\..\libs\openFrameworks\communication;..\..\..\libs\openFrameworks\video;..\..\..\libs\openFrameworks\math;..\..\..\libs\openFrameworks\types;..\..\..\libs\openFrameworks\events;..\..\..\libs\glut\include;..\..\..\libs\rtAudio\include;..\..\..\libs\quicktime\include;..\..\..\libs\freetype\include;..\..\..\libs\freetype\include\freetype2;..\..\..\libs\freeImage\include;..\..\..\libs\cairo\include;..\..\..\libs\cairo\include\cairo;..\..\..\libs\fmodex\include;..\..\..\libs\videoInput\include;..\..\..\libs\glew\include\;..\..\..\libs\glu\include;..\..\..\libs\poco\include;..\..\..\addons;..\..\..\libs\openFrameworks\gl;..\..\..\libs\openFrameworks\3d;..\..\..\libs\tess2\include;..\..\..\addons\ofxMidi\src;..\..\..\addons\ofxMidi\src\desktop\rtmidi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;POCO_STATIC;CAIRO_WIN32_STATIC_BUILD;DISABLE_SOME_FLOATING_POINT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -117,22 +117,29 @@ if not exist "$(ProjectDir)\bin\data" mkdir  "$(ProjectDir)\bin\data"
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\desktop\rtmidi\RtMidi.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidi.cpp" />
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.cpp" />
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.cpp" />
     <ClCompile Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\testApp.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiIn.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\ofxRtMidiOut.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\rtmidi\RtError.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\desktop\rtmidi\RtMidi.h" />
+    <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxBaseMidi.h" />
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidi.h" />
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiConstants.h" />
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiIn.h" />
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiMessage.h" />
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiOut.h" />
     <ClInclude Include="..\..\..\addons\ofxMidi\src\ofxMidiTypes.h" />
-    <ClInclude Include="..\..\..\addons\ofxMidi\src\rtmidi\RtError.h" />
-    <ClInclude Include="..\..\..\addons\ofxMidi\src\rtmidi\RtMidi.h" />
     <ClInclude Include="src\testApp.h" />
   </ItemGroup>
   <ItemGroup>

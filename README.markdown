@@ -121,7 +121,7 @@ Adding ofxMidi to an Existing Project
 * add the following directories to your search path in your project's Project.xconfig file (See the Project.xconfig of the example project.):
 <pre>
 ../../../addons/ofxMidi/src
-../../../addons/ofxMidi/src/rtmidi
+../../../addons/ofxMidi/src/desktop/rtmidi
 </pre>
 
 ### Linux Makefiles/CodeBlocks
@@ -140,7 +140,7 @@ ofxMidi/src
 * add the following search paths:
 <pre>
 ..\\..\\..\addons\ofxMidi\src
-..\\..\\..\addons\ofxMidi\src\rtmidi
+..\\..\\..\addons\ofxMidi\src\desktop\srtmidi
 </pre>
 	* Codeblocks
 		* right click on the project in the project tree and select Build Options...
