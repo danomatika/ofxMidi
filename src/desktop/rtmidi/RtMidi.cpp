@@ -873,6 +873,10 @@ static snd_seq_t *s_seq = NULL;
 // keep track of how many ports are open
 static unsigned int s_numPorts = 0;
 
+// the client name to use when creating the sequencer
+// currently set on the first call to createSeq
+static string s_clientName = "RtMidi Client";
+
 // A structure to hold variables related to the ALSA API
 // implementation.
 struct AlsaMidiData {
@@ -1065,29 +1069,35 @@ extern "C" void *alsaMidiHandler( void *ptr )
   return 0;
 }
 
-snd_seq_t* createSeq(const std::string& clientName) {
+// Create on the first port.
+snd_seq_t* createSeq(const std::string& clientName="") {
 
   // Set up the ALSA sequencer client.
-  if(s_seq == NULL) {
-    int result = snd_seq_open(&s_seq, "default", SND_SEQ_OPEN_DUPLEX, SND_SEQ_NONBLOCK);
+  if ( s_seq == NULL ) {
+    int result = snd_seq_open( &s_seq, "default", SND_SEQ_OPEN_DUPLEX, SND_SEQ_NONBLOCK );
     if ( result < 0 ) {
       s_seq = NULL;
 	}
 	else {
-	  // Increase port count.
-	  s_numPorts++;
 	  
-	  // Set client name.
-      snd_seq_set_client_name( s_seq, clientName.c_str() );
+	  // Set client name, use current name if given string is empty.
+	  if ( clientName != "" ) {
+	    s_clientName = clientName;
+	  }
+      snd_seq_set_client_name( s_seq, s_clientName.c_str() );
 	}
   }
+  
+  // Increase port count.
+  s_numPorts++;
   
   return s_seq;
 }
 
+// Free only when the last port is closed.
 void freeSeq() {
   s_numPorts--;
-  if(s_numPorts == 0) {
+  if ( s_numPorts == 0 && s_seq != NULL ) {
     snd_seq_close( s_seq );
     s_seq = NULL;
   }
