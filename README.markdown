@@ -25,7 +25,7 @@ This project utilizes [RtMidi](http://www.music.mcgill.ca/~gary/rtmidi/) for Mac
 Installation
 ------------
 
-To use ofxMidi, first you need to download and install OpenFrameworks. ofxMidi is currently developed against the latest version of Open Frameworks on github (007).
+To use ofxMidi, first you need to download and install OpenFrameworks. ofxMidi is currently developed against the current stable version of Open Frameworks on github.
 
 To get a copy of the repository you can download the source from [http://github.com/chrisoshea/ofxMidi/zipball/master](http://github.com/chrisoshea/ofxMidi/zipball/master) or, alternatively, you can use git clone:
 <pre>
@@ -33,6 +33,17 @@ git clone git://github.com/chrisoshea/ofxMidi.git
 </pre>
 
 The addon should sit in `openFrameworks/addons/ofxMidi/`.
+
+#### Which version to use?
+
+If you are using a stable version (007, ...) of OpenFrameworks then you want to use a git tag of ofxMidi for that version. You can select the tag in the Github "Current Branch" menu or clone and check it out using git.
+
+For example, the following commands will clone ofxMidi and switch to the OF 007 tagged version:
+<pre>
+git clone git://github.com/chrisoshea/ofxMidi.git
+cd ofxPd
+git checkout 007
+</pre>
 
 Midi Routing
 ------------
