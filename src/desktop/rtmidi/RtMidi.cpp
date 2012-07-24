@@ -941,7 +941,17 @@ void sysexCompletionProc( MIDISysexSendRequest * sreq )
  sysexBuffer = 0;
 }
 
-void MidiOutCore :: sendMessage( std::vector<unsigned char> *message )
+void MidiOutCore :: sendMessage( std::vector<unsigned char> *message, unsigned int deltaTime ) {
+
+  MIDITimeStamp timeStamp = AudioGetCurrentHostTime();
+  if ( deltaTime > 0 )
+  {
+	timeStamp += deltaTime;
+  }
+  sendMessageAtTime( message, timeStamp );
+}
+
+void MidiOutCore :: sendMessageAtTime( std::vector<unsigned char> *message, unsigned long long timeStamp )
 {
   // We use the MIDISendSysex() function to asynchronously send sysex
   // messages.  Otherwise, we use a single CoreMidi MIDIPacket.
@@ -954,7 +964,6 @@ void MidiOutCore :: sendMessage( std::vector<unsigned char> *message )
 
   //  unsigned int packetBytes, bytesLeft = nBytes;
   //  unsigned int messageIndex = 0;
-  MIDITimeStamp timeStamp = AudioGetCurrentHostTime();
   CoreMidiData *data = static_cast<CoreMidiData *> (apiData_);
   OSStatus result;
 

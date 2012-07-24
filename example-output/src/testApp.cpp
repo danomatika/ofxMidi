@@ -1,5 +1,7 @@
 #include "testApp.h"
 
+#include "Poco/TimeStamp.h"
+
 //--------------------------------------------------------------
 void testApp::setup() {
 
@@ -179,6 +181,38 @@ void testApp::keyReleased(int key) {
 			// send with the byte stream interface, noteoff for note 60
 			midiOut << StartMidi() << 0x80 << 0x3C << 0x40 << FinishMidi();
 			break;
+			
+		// test sending with delta times
+		case '`': {
+			vector<unsigned char> someBytes;
+			someBytes.push_back(0x90);
+			someBytes.push_back(0x3C);
+			someBytes.push_back(0x40);
+			midiOut.sendMidiBytes(someBytes);
+			someBytes.clear();
+			someBytes.push_back(0x90);
+			someBytes.push_back(0x3C);
+			someBytes.push_back(0x00);
+			midiOut.sendMidiBytes(someBytes, 2000000000); // should be 2 s
+			break;
+		}
+
+#ifdef TARGET_OSX
+		// test sending with explicit timestamp
+		case '+': {
+			vector<unsigned char> someBytes;
+			someBytes.push_back(0x90);
+			someBytes.push_back(0x3C);
+			someBytes.push_back(0x40);
+			midiOut.sendMidiBytes(someBytes);
+			someBytes.clear();
+			someBytes.push_back(0x90);
+			someBytes.push_back(0x3C);
+			someBytes.push_back(0x00);			
+			midiOut.sendMidiBytesAtTime(someBytes, AudioGetCurrentHostTime() + 2000000000); // should be 2 s
+			break;
+		}
+#endif
 
 		default:
     

@@ -265,8 +265,8 @@ void ofxBaseMidiOut::sendMidiByte(unsigned char byte) {
 	}
 }
 
-//----------------------------------------------------------
-void ofxBaseMidiOut::sendMidiBytes(vector<unsigned char>& bytes) {
+// -----------------------------------------------------------------------------
+void ofxBaseMidiOut::sendMidiBytes(vector<unsigned char>& bytes, unsigned int deltatime) {
 
 	// don't flush if a byte stream is in progress
 	if(bMsgInProgress) {
@@ -279,11 +279,30 @@ void ofxBaseMidiOut::sendMidiBytes(vector<unsigned char>& bytes) {
 		for(unsigned int i = 0; i < bytes.size(); ++i) {
 			message.push_back(bytes[i]);
 		}
-		sendMessage();
+		sendMessage(deltatime);
 	}
 }
 
-//----------------------------------------------------------
+// -----------------------------------------------------------------------------
+void ofxBaseMidiOut::sendMidiBytesAtTime(vector<unsigned char>& bytes, unsigned long long timestamp) {
+	
+	// don't flush if a byte stream is in progress
+	if(bMsgInProgress) {
+		for(unsigned int i = 0; i < bytes.size(); ++i) {
+			message.push_back(bytes[i]);
+		}
+	}
+	else {
+		message.clear();
+		for(unsigned int i = 0; i < bytes.size(); ++i) {
+			message.push_back(bytes[i]);
+		}
+		sendMessageAtTime(timestamp);
+	}
+}
+
+
+// -----------------------------------------------------------------------------
 void ofxBaseMidiOut::startMidiStream() {
 	if(bMsgInProgress) {
 		ofLog(OF_LOG_WARNING, "ofxMidiOut: calling StartMidi when byte stream in progress");

@@ -304,7 +304,8 @@ class RtMidiOut : public RtMidi
       An exception is thrown if an error occurs during output or an
       output connection was not previously established.
   */
-  void sendMessage( std::vector<unsigned char> *message );
+  void sendMessage( std::vector<unsigned char> *message, unsigned int deltaTime = 0 );
+  void sendMessageAtTime( std::vector<unsigned char> *message, unsigned long long timeStamp );
 
  protected:
   void openMidiApi( RtMidi::Api api, const std::string clientName );
@@ -407,7 +408,8 @@ class MidiOutApi
   virtual void closePort( void ) = 0;
   virtual unsigned int getPortCount( void ) = 0;
   virtual std::string getPortName( unsigned int portNumber ) = 0;
-  virtual void sendMessage( std::vector<unsigned char> *message ) = 0;
+  virtual void sendMessage( std::vector<unsigned char> *message, unsigned int deltaTime ) = 0;
+  virtual void sendMessageAtTime( std::vector<unsigned char> *message, unsigned long long timeStamp ) = 0;
 
  protected:
   virtual void initialize( const std::string& clientName ) = 0;
@@ -440,7 +442,8 @@ inline void RtMidiOut :: openVirtualPort( const std::string portName ) { return 
 inline void RtMidiOut :: closePort( void ) { return rtapi_->closePort(); }
 inline unsigned int RtMidiOut :: getPortCount( void ) { return rtapi_->getPortCount(); }
 inline std::string RtMidiOut :: getPortName( unsigned int portNumber ) { return rtapi_->getPortName( portNumber ); }
-inline void RtMidiOut :: sendMessage( std::vector<unsigned char> *message ) { return rtapi_->sendMessage( message ); }
+inline void RtMidiOut :: sendMessage( std::vector<unsigned char> *message, unsigned int delta ) { return rtapi_->sendMessage( message, delta ); }
+inline void RtMidiOut :: sendMessageAtTime( std::vector<unsigned char> *message, unsigned long long timeStamp ) { return rtapi_->sendMessageAtTime( message, timeStamp ); }
 
 // **************************************************************** //
 //
@@ -481,7 +484,8 @@ class MidiOutCore: public MidiOutApi
   void closePort( void );
   unsigned int getPortCount( void );
   std::string getPortName( unsigned int portNumber );
-  void sendMessage( std::vector<unsigned char> *message );
+  void sendMessage( std::vector<unsigned char> *message, unsigned int delta );
+  void sendMessageAtTime( std::vector<unsigned char> *message, unsigned long long timeStamp );
 
  protected:
   void initialize( const std::string& clientName );
@@ -518,7 +522,8 @@ class MidiOutJack: public MidiOutApi
   void closePort( void );
   unsigned int getPortCount( void );
   std::string getPortName( unsigned int portNumber );
-  void sendMessage( std::vector<unsigned char> *message );
+  void sendMessage( std::vector<unsigned char> *message, unsigned int deltaTime );
+  void sendMessageAtTime( std::vector<unsigned char> *message, unsigned long long timeStamp );
 
  protected:
   void initialize( const std::string& clientName );
@@ -555,7 +560,8 @@ class MidiOutAlsa: public MidiOutApi
   void closePort( void );
   unsigned int getPortCount( void );
   std::string getPortName( unsigned int portNumber );
-  void sendMessage( std::vector<unsigned char> *message );
+  void sendMessage( std::vector<unsigned char> *message, unsigned int deltaTime );
+  void sendMessageAtTime( std::vector<unsigned char> *message, unsigned long long timeStamp );
 
  protected:
   void initialize( const std::string& clientName );
@@ -592,7 +598,7 @@ class MidiOutWinMM: public MidiOutApi
   void closePort( void );
   unsigned int getPortCount( void );
   std::string getPortName( unsigned int portNumber );
-  void sendMessage( std::vector<unsigned char> *message );
+  void sendMessage( std::vector<unsigned char> *message, unsigned int deltaTime );
 
  protected:
   void initialize( const std::string& clientName );
@@ -629,7 +635,8 @@ class MidiOutWinKS: public MidiOutApi
   void closePort( void );
   unsigned int getPortCount( void );
   std::string getPortName( unsigned int portNumber );
-  void sendMessage( std::vector<unsigned char> *message );
+  void sendMessage( std::vector<unsigned char> *message, unsigned int deltaTime );
+  void sendMessageAtTime( std::vector<unsigned char> *message, unsigned long long timeStamp );
 
  protected:
   void initialize( const std::string& clientName );
@@ -664,7 +671,8 @@ class MidiOutDummy: public MidiOutApi
   void closePort( void ) {};
   unsigned int getPortCount( void ) { return 0; };
   std::string getPortName( unsigned int portNumber ) { return ""; };
-  void sendMessage( std::vector<unsigned char> *message ) {};
+  void sendMessage( std::vector<unsigned char> *message, unsigned int deltaTime ) {};
+  void sendMessageAtTime( std::vector<unsigned char> *message, unsigned long long timeStamp ) {};
 
  protected:
   void initialize( const std::string& clientName ) {};
