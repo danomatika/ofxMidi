@@ -7,8 +7,8 @@
 	#include "ios/ofxPGMidiOut.h"
 	#define OFX_MIDI_OUT_TYPE ofxPGMidiOut
 #else // OSX, Win, Linux
-	#include "desktop/ofxRtMidiOut.h"
-	#define OFX_MIDI_OUT_TYPE ofxRtMidiOut
+	#include "desktop/ofxPortMidiOut.h"
+	#define OFX_MIDI_OUT_TYPE ofxPortMidiOut
 #endif
 
 ///

@@ -120,21 +120,21 @@ void testApp::keyReleased(int key) {
 			//       since it sends only one byte at a time, instead of all
 			//       at once
 			//
-			midiOut.sendMidiByte(MIDI_SYSEX);
-			midiOut.sendMidiByte(0x47);	// akai manufacturer code
-			midiOut.sendMidiByte(0x00); // channel 0
-			midiOut.sendMidiByte(0x42); // MULTI
-			midiOut.sendMidiByte(0x48); // using an Akai S2000
-			midiOut.sendMidiByte(0x00); // Part 1
-			midiOut.sendMidiByte(0x00);	// transpose
-			midiOut.sendMidiByte(0x01); // Access Multi Parts
-			midiOut.sendMidiByte(0x4B); // offset
-			midiOut.sendMidiByte(0x00);	// offset
-			midiOut.sendMidiByte(0x01); // Field size = 1
-			midiOut.sendMidiByte(0x00); // Field size = 1
-			midiOut.sendMidiByte(0x04); // pitch value = 4
-			midiOut.sendMidiByte(0x00); // offset
-			midiOut.sendMidiByte(MIDI_SYSEX_END);
+//			midiOut.sendMidiByte(MIDI_SYSEX);
+//			midiOut.sendMidiByte(0x47);	// akai manufacturer code
+//			midiOut.sendMidiByte(0x00); // channel 0
+//			midiOut.sendMidiByte(0x42); // MULTI
+//			midiOut.sendMidiByte(0x48); // using an Akai S2000
+//			midiOut.sendMidiByte(0x00); // Part 1
+//			midiOut.sendMidiByte(0x00);	// transpose
+//			midiOut.sendMidiByte(0x01); // Access Multi Parts
+//			midiOut.sendMidiByte(0x4B); // offset
+//			midiOut.sendMidiByte(0x00);	// offset
+//			midiOut.sendMidiByte(0x01); // Field size = 1
+//			midiOut.sendMidiByte(0x00); // Field size = 1
+//			midiOut.sendMidiByte(0x04); // pitch value = 4
+//			midiOut.sendMidiByte(0x00); // offset
+//			midiOut.sendMidiByte(MIDI_SYSEX_END);
 			
 			// send again using a vector
 			//

@@ -27,15 +27,14 @@ cp -v portmidi/CHANGELOG.txt ../libs/portmidi
 cp -Rv portmidi/pm_common/*.h ../libs/portmidi
 cp -Rv portmidi/pm_common/*.c ../libs/portmidi
 
-cp -Rv portmidi/pm_mac/pmmac.h ../libs/portmidi/mac
-cp -Rv portmidi/pm_mac/pmmac.c ../libs/portmidi/mac
-cp -Rv portmidi/pm_mac/pmmacosxcm.h ../libs/portmidi/mac
-cp -Rv portmidi/pm_mac/pmmacosxcm.c ../libs/portmidi/mac
+cp -Rv portmidi/pm_mac/*.h ../libs/portmidi/mac
+cp -Rv portmidi/pm_mac/*.c ../libs/portmidi/mac
 
 cp -Rv portmidi/pm_linux/pmlinux.h ../libs/portmidi/linux
 cp -Rv portmidi/pm_linux/pmlinux.c ../libs/portmidi/linux
 cp -Rv portmidi/pm_linux/pmlinuxalsa.h ../libs/portmidi/linux
 cp -Rv portmidi/pm_linux/pmlinuxalsa.c ../libs/portmidi/linux
+cp -Rv portmidi/pm_linux/finddefault.c ../libs/portmidi/linux
 
 cp -Rv portmidi/pm_win/pmwin.c ../libs/portmidi/win
 cp -Rv portmidi/pm_win/pmwinmm.h ../libs/portmidi/win
@@ -43,7 +42,7 @@ cp -Rv portmidi/pm_win/pmwinmm.c ../libs/portmidi/win
 
 cp -Rv portmidi/porttime/porttime.h ../libs/portmidi
 cp -Rv portmidi/porttime/ptmacosx_cf.c ../libs/portmidi/mac
-cp -Rv portmidi/porttime/ptmacosx_mach.c ../libs/portmidi/mac
+#cp -Rv portmidi/porttime/ptmacosx_mach.c ../libs/portmidi/mac
 cp -Rv portmidi/porttime/ptlinux.c ../libs/portmidi/linux
 cp -Rv portmidi/porttime/ptwinmm.c ../libs/portmidi/win
 

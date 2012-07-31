@@ -13,7 +13,7 @@ void ofxMidiOut::listPorts() {
 	#ifdef TARGET_OF_IPHONE
 		ofxPGMidiOut::listPorts();
 	#else
-		ofxRtMidiOut::listPorts();
+		ofxPortMidiOut::listPorts();
 	#endif
 }
 
@@ -22,7 +22,7 @@ vector<string>& ofxMidiOut::getPortList() {
 	#ifdef TARGET_OF_IPHONE
 		return ofxPGMidiOut::getPortList();
 	#else
-		return ofxRtMidiOut::getPortList();
+		return ofxPortMidiOut::getPortList();
 	#endif
 }
 
@@ -31,7 +31,7 @@ int ofxMidiOut::getNumPorts() {
 	#ifdef TARGET_OF_IPHONE
 		return ofxPGMidiOut::getNumPorts();
 	#else
-		return ofxRtMidiOut::getNumPorts();
+		return ofxPortMidiOut::getNumPorts();
 	#endif
 }
 
@@ -40,7 +40,7 @@ string ofxMidiOut::getPortName(unsigned int portNumber) {
 	#ifdef TARGET_OF_IPHONE
 		return ofxPGMidiOut::getPortName(portNumber);
 	#else
-		return ofxRtMidiOut::getPortName(portNumber);
+		return ofxPortMidiOut::getPortName(portNumber);
 	#endif
 }
 

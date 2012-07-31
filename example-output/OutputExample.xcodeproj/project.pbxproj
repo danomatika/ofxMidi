@@ -15,6 +15,15 @@
 		306D312C14F09AFE0009AEF1 /* ofxMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306D312014F09AFE0009AEF1 /* ofxMidiIn.cpp */; };
 		306D312D14F09AFE0009AEF1 /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306D312214F09AFE0009AEF1 /* ofxMidiMessage.cpp */; };
 		306D312E14F09AFE0009AEF1 /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 306D312414F09AFE0009AEF1 /* ofxMidiOut.cpp */; };
+		30BC048B15C7840E00CEB47C /* pmmac.c in Sources */ = {isa = PBXBuildFile; fileRef = 30BC047615C7840E00CEB47C /* pmmac.c */; };
+		30BC048C15C7840E00CEB47C /* pmmacosxcm.c in Sources */ = {isa = PBXBuildFile; fileRef = 30BC047815C7840E00CEB47C /* pmmacosxcm.c */; };
+		30BC048D15C7840E00CEB47C /* ptmacosx_cf.c in Sources */ = {isa = PBXBuildFile; fileRef = 30BC047A15C7840E00CEB47C /* ptmacosx_cf.c */; };
+		30BC048F15C7840E00CEB47C /* pmutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 30BC047D15C7840E00CEB47C /* pmutil.c */; };
+		30BC049015C7840E00CEB47C /* portmidi.c in Sources */ = {isa = PBXBuildFile; fileRef = 30BC047F15C7840E00CEB47C /* portmidi.c */; };
+		30BC04A215C7851200CEB47C /* ofxPortMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30BC049E15C7851200CEB47C /* ofxPortMidiIn.cpp */; };
+		30BC04A315C7851200CEB47C /* ofxPortMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30BC04A015C7851200CEB47C /* ofxPortMidiOut.cpp */; };
+		30BC04A615C79E2C00CEB47C /* finddefault.c in Sources */ = {isa = PBXBuildFile; fileRef = 30BC04A515C79E2C00CEB47C /* finddefault.c */; };
+		30BC04A915C79E8200CEB47C /* readbinaryplist.c in Sources */ = {isa = PBXBuildFile; fileRef = 30BC04A715C79E8200CEB47C /* readbinaryplist.c */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -85,6 +94,28 @@
 		306D312414F09AFE0009AEF1 /* ofxMidiOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidiOut.cpp; sourceTree = "<group>"; };
 		306D312514F09AFE0009AEF1 /* ofxMidiOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMidiOut.h; sourceTree = "<group>"; };
 		306D312614F09AFE0009AEF1 /* ofxMidiTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxMidiTypes.h; sourceTree = "<group>"; };
+		30BC046D15C7840E00CEB47C /* CHANGELOG.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CHANGELOG.txt; sourceTree = "<group>"; };
+		30BC046E15C7840E00CEB47C /* license.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = license.txt; sourceTree = "<group>"; };
+		30BC047615C7840E00CEB47C /* pmmac.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmmac.c; sourceTree = "<group>"; };
+		30BC047715C7840E00CEB47C /* pmmac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmmac.h; sourceTree = "<group>"; };
+		30BC047815C7840E00CEB47C /* pmmacosxcm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmmacosxcm.c; sourceTree = "<group>"; };
+		30BC047915C7840E00CEB47C /* pmmacosxcm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmmacosxcm.h; sourceTree = "<group>"; };
+		30BC047A15C7840E00CEB47C /* ptmacosx_cf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ptmacosx_cf.c; sourceTree = "<group>"; };
+		30BC047C15C7840E00CEB47C /* pminternal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pminternal.h; sourceTree = "<group>"; };
+		30BC047D15C7840E00CEB47C /* pmutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmutil.c; sourceTree = "<group>"; };
+		30BC047E15C7840E00CEB47C /* pmutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pmutil.h; sourceTree = "<group>"; };
+		30BC047F15C7840E00CEB47C /* portmidi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = portmidi.c; sourceTree = "<group>"; };
+		30BC048015C7840E00CEB47C /* portmidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = portmidi.h; sourceTree = "<group>"; };
+		30BC048115C7840E00CEB47C /* porttime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = porttime.h; sourceTree = "<group>"; };
+		30BC048215C7840E00CEB47C /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		30BC049E15C7851200CEB47C /* ofxPortMidiIn.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPortMidiIn.cpp; sourceTree = "<group>"; };
+		30BC049F15C7851200CEB47C /* ofxPortMidiIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPortMidiIn.h; sourceTree = "<group>"; };
+		30BC04A015C7851200CEB47C /* ofxPortMidiOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPortMidiOut.cpp; sourceTree = "<group>"; };
+		30BC04A115C7851200CEB47C /* ofxPortMidiOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPortMidiOut.h; sourceTree = "<group>"; };
+		30BC04A415C78BAD00CEB47C /* ofxPortMidiContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPortMidiContext.h; sourceTree = "<group>"; };
+		30BC04A515C79E2C00CEB47C /* finddefault.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = finddefault.c; sourceTree = "<group>"; };
+		30BC04A715C79E8200CEB47C /* readbinaryplist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = readbinaryplist.c; sourceTree = "<group>"; };
+		30BC04A815C79E8200CEB47C /* readbinaryplist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = readbinaryplist.h; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -137,6 +168,7 @@
 		270A243014121F2F0073405C /* ofxMidi */ = {
 			isa = PBXGroup;
 			children = (
+				30BC046B15C7840E00CEB47C /* libs */,
 				306D311D14F09AFE0009AEF1 /* src */,
 			);
 			name = ofxMidi;
@@ -145,6 +177,11 @@
 		3022ECBB1572E19F0053CD2B /* desktop */ = {
 			isa = PBXGroup;
 			children = (
+				30BC04A415C78BAD00CEB47C /* ofxPortMidiContext.h */,
+				30BC049E15C7851200CEB47C /* ofxPortMidiIn.cpp */,
+				30BC049F15C7851200CEB47C /* ofxPortMidiIn.h */,
+				30BC04A015C7851200CEB47C /* ofxPortMidiOut.cpp */,
+				30BC04A115C7851200CEB47C /* ofxPortMidiOut.h */,
 				3022ECBC1572E19F0053CD2B /* ofxRtMidiIn.cpp */,
 				3022ECBD1572E19F0053CD2B /* ofxRtMidiIn.h */,
 				3022ECBE1572E19F0053CD2B /* ofxRtMidiOut.cpp */,
@@ -183,6 +220,47 @@
 			);
 			name = src;
 			path = ../../../addons/ofxMidi/src;
+			sourceTree = "<group>";
+		};
+		30BC046B15C7840E00CEB47C /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				30BC046C15C7840E00CEB47C /* portmidi */,
+			);
+			name = libs;
+			path = ../libs;
+			sourceTree = "<group>";
+		};
+		30BC046C15C7840E00CEB47C /* portmidi */ = {
+			isa = PBXGroup;
+			children = (
+				30BC046D15C7840E00CEB47C /* CHANGELOG.txt */,
+				30BC046E15C7840E00CEB47C /* license.txt */,
+				30BC047515C7840E00CEB47C /* mac */,
+				30BC047C15C7840E00CEB47C /* pminternal.h */,
+				30BC047D15C7840E00CEB47C /* pmutil.c */,
+				30BC047E15C7840E00CEB47C /* pmutil.h */,
+				30BC047F15C7840E00CEB47C /* portmidi.c */,
+				30BC048015C7840E00CEB47C /* portmidi.h */,
+				30BC048115C7840E00CEB47C /* porttime.h */,
+				30BC048215C7840E00CEB47C /* README.txt */,
+			);
+			path = portmidi;
+			sourceTree = "<group>";
+		};
+		30BC047515C7840E00CEB47C /* mac */ = {
+			isa = PBXGroup;
+			children = (
+				30BC04A515C79E2C00CEB47C /* finddefault.c */,
+				30BC047615C7840E00CEB47C /* pmmac.c */,
+				30BC047715C7840E00CEB47C /* pmmac.h */,
+				30BC047815C7840E00CEB47C /* pmmacosxcm.c */,
+				30BC047915C7840E00CEB47C /* pmmacosxcm.h */,
+				30BC047A15C7840E00CEB47C /* ptmacosx_cf.c */,
+				30BC04A715C79E8200CEB47C /* readbinaryplist.c */,
+				30BC04A815C79E8200CEB47C /* readbinaryplist.h */,
+			);
+			path = mac;
 			sourceTree = "<group>";
 		};
 		BB4B014C10F69532006C3DED /* addons */ = {
@@ -363,6 +441,15 @@
 				3022ECC61572E19F0053CD2B /* ofxRtMidiOut.cpp in Sources */,
 				3022ECC71572E19F0053CD2B /* RtMidi.cpp in Sources */,
 				3022ECCA1572E1AA0053CD2B /* ofxBaseMidi.cpp in Sources */,
+				30BC048B15C7840E00CEB47C /* pmmac.c in Sources */,
+				30BC048C15C7840E00CEB47C /* pmmacosxcm.c in Sources */,
+				30BC048D15C7840E00CEB47C /* ptmacosx_cf.c in Sources */,
+				30BC048F15C7840E00CEB47C /* pmutil.c in Sources */,
+				30BC049015C7840E00CEB47C /* portmidi.c in Sources */,
+				30BC04A215C7851200CEB47C /* ofxPortMidiIn.cpp in Sources */,
+				30BC04A315C7851200CEB47C /* ofxPortMidiOut.cpp in Sources */,
+				30BC04A615C79E2C00CEB47C /* finddefault.c in Sources */,
+				30BC04A915C79E8200CEB47C /* readbinaryplist.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
