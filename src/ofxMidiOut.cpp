@@ -129,8 +129,13 @@ void ofxMidiOut::sendMidiByte(unsigned char byte) {
 }
 
 //----------------------------------------------------------
-void ofxMidiOut::sendMidiBytes(vector<unsigned char>& bytes) {
-	midiOut->sendMidiBytes(bytes);
+void ofxMidiOut::sendMidiBytes(vector<unsigned char>& bytes, unsigned int deltatime) {
+	midiOut->sendMidiBytes(bytes, deltatime);
+}
+
+//----------------------------------------------------------
+void ofxMidiOut::sendMidiBytesAtTime(vector<unsigned char>& bytes, unsigned long long timestamp) {
+	midiOut->sendMidiBytesAtTime(bytes, timestamp);
 }
 
 //----------------------------------------------------------

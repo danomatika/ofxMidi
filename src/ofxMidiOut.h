@@ -123,7 +123,8 @@ public:
 	/// raw midi bytes
 	///
 	void sendMidiByte(unsigned char byte);
-	void sendMidiBytes(vector<unsigned char>& bytes);
+	void sendMidiBytes(vector<unsigned char>& bytes, unsigned int deltatime=0);
+	void sendMidiBytesAtTime(vector<unsigned char>& bytes, unsigned long long timestamp);
 	
 /// \section Sending Stream Interface
 	

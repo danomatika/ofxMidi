@@ -23,7 +23,8 @@ public:
 	
 private:
 	
-	void sendMessage();
+	void sendMessage(unsigned int deltatime);
+	void sendMessageAtTime(unsigned long long timestamp);
 
 	RtMidiOut midiOut;
 	static RtMidiOut s_midiOut; //< for static calls (a little kludgey, I know)

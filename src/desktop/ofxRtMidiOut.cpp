@@ -1,10 +1,10 @@
 #include "ofxRtMidiOut.h"
 
-RtMidiOut ofxRtMidiOut::s_midiOut("ofxMidi Client");
+RtMidiOut ofxRtMidiOut::s_midiOut(RtMidi::UNSPECIFIED, "ofxMidi Client");
 
 // -----------------------------------------------------------------------------
 ofxRtMidiOut::ofxRtMidiOut(const string name) :
-	ofxBaseMidiOut(name), midiOut(name) {}
+	ofxBaseMidiOut(name), midiOut(RtMidi::UNSPECIFIED, name) {}
 
 // -----------------------------------------------------------------------------
 ofxRtMidiOut::~ofxRtMidiOut() {
@@ -125,10 +125,22 @@ void ofxRtMidiOut::closePort() {
 
 // PRIVATE
 // -----------------------------------------------------------------------------
-void ofxRtMidiOut::sendMessage() {
+void ofxRtMidiOut::sendMessage(unsigned int deltatime) {
 	// handle rtmidi exceptions
 	try {
-		midiOut.sendMessage(&message);
+		midiOut.sendMessage(&message, deltatime);
+	}
+	catch(RtError& err) {
+		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't send message: %s", err.what());
+	}
+	bMsgInProgress = false;
+}
+
+// -----------------------------------------------------------------------------
+void ofxRtMidiOut::sendMessageAtTime(unsigned long long timestamp) {
+	// handle rtmidi exceptions
+	try {
+		midiOut.sendMessageAtTime(&message, timestamp);
 	}
 	catch(RtError& err) {
 		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't send message: %s", err.what());

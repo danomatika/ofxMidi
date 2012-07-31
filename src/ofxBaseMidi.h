@@ -83,15 +83,19 @@ public:
 	void sendPolyAftertouch(int channel, int pitch, int value);
 	
 	void sendMidiByte(unsigned char byte);
-	void sendMidiBytes(vector<unsigned char>& bytes);
+	void sendMidiBytes(vector<unsigned char>& bytes, unsigned int deltatime);
+	void sendMidiBytesAtTime(vector<unsigned char>& bytes, unsigned long long timestamp);
 	
 	void startMidiStream();
 	void finishMidiStream();
 	
 protected:
 	
-	/// sends current message
-	virtual void sendMessage() = 0;
+	/// sends current message with optional delta time
+	virtual void sendMessage(unsigned int deltatime=0) = 0;
+	
+	/// sends current message with a timestamp
+	virtual void sendMessageAtTime(unsigned long long timestamp) = 0;
 	
 	int portNum;					//< current port num, -1 if not connected
 	string portName;				//< current port name, "" if not connected
