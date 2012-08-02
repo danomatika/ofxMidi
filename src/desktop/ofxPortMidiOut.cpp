@@ -1,7 +1,5 @@
 #include "ofxPortMidiOut.h"
 
-#include "porttime.h"
-
 #include "ofxPortMidiContext.h"
 #include "../ofxMidiConstants.h"
 
@@ -21,7 +19,7 @@ ofxPortMidiOut::~ofxPortMidiOut() {
 // TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxPortMidiOut::listPorts() {
 	int numDev = Pm_CountDevices();
-	cout << "ofxMidiOut: " << numDev << " ports available" << endl;
+	cout << "ofxMidiOut: " << numDev-ofxPortMidiContext::numInputs() << " ports available" << endl;
 	for(int i = 0; i < numDev; ++i) {
 		const PmDeviceInfo *devInfo = Pm_GetDeviceInfo(i);
 		if(devInfo->output)
@@ -65,7 +63,7 @@ string ofxPortMidiOut::getPortName(unsigned int portNumber) {
 bool ofxPortMidiOut::openPort(unsigned int portNumber) {	
 	closePort();
 	PmError error = Pm_OpenOutput(&stream, (int) portNumber+ofxPortMidiContext::numInputs(),
-		NULL, 256, (PmTimestamp (*)(void *)) Pt_Time, NULL, 0); // latency
+		NULL, 256, NULL, NULL, 1);//(PmTimestamp (*)(void *)) Pt_Time, NULL, 1); // latency
 	if(error != pmNoError) {
 		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't open port %i: %s", portNumber, Pm_GetErrorText(error));
 		return false;
@@ -144,8 +142,12 @@ void ofxPortMidiOut::closePort() {
 
 // PRIVATE
 // -----------------------------------------------------------------------------
+void ofxPortMidiOut::sendMessage(unsigned int deltatime) {
+	sendMessageAtTime(Pt_Time() + deltatime);
+}
+
 // derived from RtMidi RtMidiOut::sendMessage
-void ofxPortMidiOut::sendMessage() {
+void ofxPortMidiOut::sendMessageAtTime(unsigned long long timestamp) {
 	
 	if(message.size() == 0) {
 		ofLog(OF_LOG_WARNING, "ofxMidiOut: cannot send, message is empty");
@@ -162,7 +164,7 @@ void ofxPortMidiOut::sendMessage() {
 	else {
 		PmEvent event;
 		event.message = 0;
-		event.timestamp = Pt_Time();
+		event.timestamp = (unsigned int) timestamp;
 		switch(message.size()) {
 		
 			case 1:

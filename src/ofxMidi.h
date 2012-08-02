@@ -23,6 +23,10 @@ class ofxMidi {
 	
 public:
 
+	/// get the current timestamp in ms
+	/// useful for specifying exact delivery times
+	static unsigned int getTime();
+
 /// \section iOS Specific
 	
 	/// set a listener to receieve device (dis)connection events

@@ -24,6 +24,8 @@
 		30BC04A315C7851200CEB47C /* ofxPortMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30BC04A015C7851200CEB47C /* ofxPortMidiOut.cpp */; };
 		30BC04A615C79E2C00CEB47C /* finddefault.c in Sources */ = {isa = PBXBuildFile; fileRef = 30BC04A515C79E2C00CEB47C /* finddefault.c */; };
 		30BC04A915C79E8200CEB47C /* readbinaryplist.c in Sources */ = {isa = PBXBuildFile; fileRef = 30BC04A715C79E8200CEB47C /* readbinaryplist.c */; };
+		30BC04AB15C831E400CEB47C /* ofxMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30BC04AA15C831E200CEB47C /* ofxMidi.cpp */; };
+		30BC04AD15C8339500CEB47C /* ofxPortMidiContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 30BC04AC15C8339500CEB47C /* ofxPortMidiContext.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -116,6 +118,8 @@
 		30BC04A515C79E2C00CEB47C /* finddefault.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = finddefault.c; sourceTree = "<group>"; };
 		30BC04A715C79E8200CEB47C /* readbinaryplist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = readbinaryplist.c; sourceTree = "<group>"; };
 		30BC04A815C79E8200CEB47C /* readbinaryplist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = readbinaryplist.h; sourceTree = "<group>"; };
+		30BC04AA15C831E200CEB47C /* ofxMidi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxMidi.cpp; sourceTree = "<group>"; };
+		30BC04AC15C8339500CEB47C /* ofxPortMidiContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPortMidiContext.cpp; sourceTree = "<group>"; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
 		E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = openFrameworksLib.xcodeproj; path = ../../../libs/openFrameworksCompiled/project/osx/openFrameworksLib.xcodeproj; sourceTree = SOURCE_ROOT; };
 		E45BE9710E8CC7DD009D7055 /* AGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AGL.framework; path = /System/Library/Frameworks/AGL.framework; sourceTree = "<absolute>"; };
@@ -177,6 +181,7 @@
 		3022ECBB1572E19F0053CD2B /* desktop */ = {
 			isa = PBXGroup;
 			children = (
+				30BC04AC15C8339500CEB47C /* ofxPortMidiContext.cpp */,
 				30BC04A415C78BAD00CEB47C /* ofxPortMidiContext.h */,
 				30BC049E15C7851200CEB47C /* ofxPortMidiIn.cpp */,
 				30BC049F15C7851200CEB47C /* ofxPortMidiIn.h */,
@@ -209,6 +214,7 @@
 				3022ECC81572E1AA0053CD2B /* ofxBaseMidi.cpp */,
 				3022ECC91572E1AA0053CD2B /* ofxBaseMidi.h */,
 				306D311E14F09AFE0009AEF1 /* ofxMidi.h */,
+				30BC04AA15C831E200CEB47C /* ofxMidi.cpp */,
 				306D311F14F09AFE0009AEF1 /* ofxMidiConstants.h */,
 				306D312014F09AFE0009AEF1 /* ofxMidiIn.cpp */,
 				306D312114F09AFE0009AEF1 /* ofxMidiIn.h */,
@@ -450,6 +456,8 @@
 				30BC04A315C7851200CEB47C /* ofxPortMidiOut.cpp in Sources */,
 				30BC04A615C79E2C00CEB47C /* finddefault.c in Sources */,
 				30BC04A915C79E8200CEB47C /* readbinaryplist.c in Sources */,
+				30BC04AB15C831E400CEB47C /* ofxMidi.cpp in Sources */,
+				30BC04AD15C8339500CEB47C /* ofxPortMidiContext.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

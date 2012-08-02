@@ -1,10 +1,10 @@
 #include "ofxPortMidiIn.h"
 
-RtMidiIn ofxPortMidiIn::s_midiIn("ofxMidi Client");
+RtMidiIn ofxPortMidiIn::s_midiIn(RtMidi::UNSPECIFIED, "ofxMidi Client");
 
 // -----------------------------------------------------------------------------
 ofxPortMidiIn::ofxPortMidiIn(const string name) :
-	ofxBaseMidiIn(name), midiIn(name) {}
+	ofxBaseMidiIn(name), midiIn(RtMidi::UNSPECIFIED, name) {}
 
 // -----------------------------------------------------------------------------
 ofxPortMidiIn::~ofxPortMidiIn() {

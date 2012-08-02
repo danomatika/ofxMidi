@@ -1,7 +1,5 @@
 #pragma once
 
-#include "RtMidi.h"
-#include "portmidi.h"
 #include "../ofxBaseMidi.h"
 
 class ofxPortMidiOut : public ofxBaseMidiOut {
@@ -24,7 +22,8 @@ public:
 	
 private:
 	
-	void sendMessage();
+	void sendMessage(unsigned int deltatime);
+	void sendMessageAtTime(unsigned long long timestamp);
 
-	PmStream *stream;
+	void *stream; /// PmStream pointer
 };

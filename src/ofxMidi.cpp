@@ -1,9 +1,11 @@
 
 #include "ofxMidi.h"
 
-// choose the midi backend
+// the midi backend
 #ifdef TARGET_OF_IPHONE
 	#include "ios/ofxPGMidiIn.h"
+#else
+	#include "desktop/ofxPortMidiContext.h"
 #endif
 
 // -----------------------------------------------------------------------------
@@ -22,6 +24,15 @@ void ofxMidiConnectionListener::midiOutputAdded(string name, bool isNetwork) {
 
 void ofxMidiConnectionListener::midiOutputRemoved(string name, bool isNetwork) {
 	cout << "ofxMidi: output removed: " << name << " network: " << isNetwork << endl;
+}
+
+// -----------------------------------------------------------------------------
+unsigned int ofxMidi::getTime() {
+	//#ifdef TARGET_OS_IPHONE
+	//	return 0;
+	//#else
+		return ofxPortMidiContext::getTime();
+	//#endif
 }
 
 // -----------------------------------------------------------------------------

@@ -193,7 +193,7 @@ void testApp::keyReleased(int key) {
 			someBytes.push_back(0x90);
 			someBytes.push_back(0x3C);
 			someBytes.push_back(0x00);
-			midiOut.sendMidiBytes(someBytes, 2000000000); // should be 2 s
+			midiOut.sendMidiBytes(someBytes, 2000); // should be 2 s
 			break;
 		}
 
@@ -209,7 +209,9 @@ void testApp::keyReleased(int key) {
 			someBytes.push_back(0x90);
 			someBytes.push_back(0x3C);
 			someBytes.push_back(0x00);			
-			midiOut.sendMidiBytesAtTime(someBytes, AudioGetCurrentHostTime() + 2000000000); // should be 2 s
+			midiOut.sendMidiBytesAtTime(someBytes, ofxMidi::getTime() + 2000);
+			//midiOut.sendMidiBytesAtTime(someBytes, (AudioGetCurrentHostTime() + 2000000000)/1000000); // should be 2 s
+			cout << "current time: " << ofxMidi::getTime() << endl;
 			break;
 		}
 #endif
