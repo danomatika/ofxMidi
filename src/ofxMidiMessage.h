@@ -1,6 +1,7 @@
 #pragma once
 
-#include "ofMain.h"
+#include "ofConstants.h"
+#include "ofEvents.h"
 #include "ofxMidiConstants.h"
 
 class ofxMidiMessage;

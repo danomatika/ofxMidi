@@ -120,6 +120,6 @@ string ofxMidiMessage::getStatusString(MidiStatus status) {
 		case MIDI_SYSTEM_RESET:
 			return "System Reset";
 		default:
-			return "Unkown";
+			return "Unknown";
 	}
 }
