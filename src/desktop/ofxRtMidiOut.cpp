@@ -1,10 +1,10 @@
 #include "ofxRtMidiOut.h"
 
-RtMidiOut ofxRtMidiOut::s_midiOut("ofxMidi Client");
+RtMidiOut ofxRtMidiOut::s_midiOut(RtMidi::UNSPECIFIED, "ofxMidi Client");
 
 // -----------------------------------------------------------------------------
 ofxRtMidiOut::ofxRtMidiOut(const string name) :
-	ofxBaseMidiOut(name), midiOut(name) {}
+	ofxBaseMidiOut(name), midiOut(RtMidi::UNSPECIFIED, name) {}
 
 // -----------------------------------------------------------------------------
 ofxRtMidiOut::~ofxRtMidiOut() {
