@@ -49,6 +49,8 @@
 #include <string>
 #include <vector>
 
+#include "ofConstants.h"
+
 class RtMidi
 {
  public:
