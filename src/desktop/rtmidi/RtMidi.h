@@ -49,7 +49,7 @@
 #include <string>
 #include <vector>
 
-#include "ofConstants.h"
+#include "ofxMidiConstants.h"
 
 class RtMidi
 {

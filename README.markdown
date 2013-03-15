@@ -200,10 +200,10 @@ For RtMidi, edit the version setting in the script header and run the script to 
 
 PGMidi sources are placed in `src/ios/pgmidi`.
 
-#### RtMidi.cpp include
+#### RtMidi.h include
 
-Next, make sure to add the following include to `RtMidi.cpp` at around line 38 or there will be link errors:
+Next, make sure to add the following include to `RtMidi.h` at around line 52 or the MIDI api may not be specified and RtMidi will use the default dummy driver:
 <pre>
-#include "ofxConstants.h"
+#include "ofxMidiConstants.h"
 </pre>
 
