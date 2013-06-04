@@ -1,7 +1,6 @@
 #include "ofxRtMidiIn.h"
 
 ofPtr<RtMidiIn> ofxRtMidiIn::s_midiIn;
-//RtMidiIn ofxRtMidiIn::s_midiIn(RtMidi::UNSPECIFIED, "ofxMidi Client");
 
 // -----------------------------------------------------------------------------
 ofxRtMidiIn::ofxRtMidiIn(const string name) :
