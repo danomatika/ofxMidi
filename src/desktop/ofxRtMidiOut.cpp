@@ -5,9 +5,6 @@ ofPtr<RtMidiOut> ofxRtMidiOut::s_midiOut;
 // -----------------------------------------------------------------------------
 ofxRtMidiOut::ofxRtMidiOut(const string name) :
 	ofxBaseMidiOut(name), midiOut(RtMidi::UNSPECIFIED, name) {
-	if(s_midiOut == NULL) {
-		s_midiOut = ofPtr<RtMidiOut>(new RtMidiOut(RtMidi::UNSPECIFIED, "ofxMidi Client"));
-	}
 }
 
 // -----------------------------------------------------------------------------
@@ -18,6 +15,9 @@ ofxRtMidiOut::~ofxRtMidiOut() {
 // -----------------------------------------------------------------------------
 // TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxRtMidiOut::listPorts() {
+	if(s_midiOut == NULL) {
+		s_midiOut = ofPtr<RtMidiOut>(new RtMidiOut(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+	}
 	cout << "ofxMidiOut: " << s_midiOut->getPortCount() << " ports available" << endl;
 	for(unsigned int i = 0; i < s_midiOut->getPortCount(); ++i){
 		cout << "ofxMidiOut: " <<  i << ": " << s_midiOut->getPortName(i) << endl;
@@ -26,6 +26,9 @@ void ofxRtMidiOut::listPorts() {
 
 // -----------------------------------------------------------------------------
 vector<string>& ofxRtMidiOut::getPortList() {
+	if(s_midiOut == NULL) {
+		s_midiOut = ofPtr<RtMidiOut>(new RtMidiOut(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+	}
 	portList.clear();
 	for(unsigned int i = 0; i < s_midiOut->getPortCount(); ++i) {
 		portList.push_back(s_midiOut->getPortName(i));
@@ -35,11 +38,17 @@ vector<string>& ofxRtMidiOut::getPortList() {
 
 // -----------------------------------------------------------------------------
 int ofxRtMidiOut::getNumPorts() {
+	if(s_midiOut == NULL) {
+		s_midiOut = ofPtr<RtMidiOut>(new RtMidiOut(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+	}
 	return s_midiOut->getPortCount();
 }
 
 // -----------------------------------------------------------------------------
 string ofxRtMidiOut::getPortName(unsigned int portNumber) {
+	if(s_midiOut == NULL) {
+		s_midiOut = ofPtr<RtMidiOut>(new RtMidiOut(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+	}
 	// handle rtmidi exceptions
 	try {
 		return s_midiOut->getPortName(portNumber);

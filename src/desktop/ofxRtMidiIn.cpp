@@ -5,9 +5,6 @@ ofPtr<RtMidiIn> ofxRtMidiIn::s_midiIn;
 // -----------------------------------------------------------------------------
 ofxRtMidiIn::ofxRtMidiIn(const string name) :
 	ofxBaseMidiIn(name), midiIn(RtMidi::UNSPECIFIED, name) {
-	if(s_midiIn == NULL) {
-		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
-	}
 }
 
 // -----------------------------------------------------------------------------
@@ -18,6 +15,9 @@ ofxRtMidiIn::~ofxRtMidiIn() {
 // -----------------------------------------------------------------------------
 // TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxRtMidiIn::listPorts() {
+	if(s_midiIn == NULL) {
+		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+	}
 	cout << "ofxMidiIn: " << s_midiIn->getPortCount() << " ports available" << endl;
 	for(unsigned int i = 0; i < s_midiIn->getPortCount(); ++i){
 		cout << "ofxMidiIn: " <<  i << ": " << s_midiIn->getPortName(i) << endl;
@@ -26,6 +26,9 @@ void ofxRtMidiIn::listPorts() {
 
 // -----------------------------------------------------------------------------
 vector<string>& ofxRtMidiIn::getPortList() {
+	if(s_midiIn == NULL) {
+		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+	}
 	portList.clear();
 	for(unsigned int i=0; i < s_midiIn->getPortCount(); ++i) {
 		portList.push_back(s_midiIn->getPortName(i));
@@ -35,11 +38,17 @@ vector<string>& ofxRtMidiIn::getPortList() {
 
 // -----------------------------------------------------------------------------
 int ofxRtMidiIn::getNumPorts() {
+	if(s_midiIn == NULL) {
+		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+	}
 	return s_midiIn->getPortCount();
 }
 
 // -----------------------------------------------------------------------------
 string ofxRtMidiIn::getPortName(unsigned int portNumber) {
+	if(s_midiIn == NULL) {
+		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+	}
 	// handle rtmidi exceptions
 	try {
 		return s_midiIn->getPortName(portNumber);
