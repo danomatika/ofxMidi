@@ -13,14 +13,13 @@ ofxRtMidiIn::~ofxRtMidiIn() {
 }
 
 // -----------------------------------------------------------------------------
-// TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxRtMidiIn::listPorts() {
 	if(s_midiIn == NULL) {
 		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
 	}
-	cout << "ofxMidiIn: " << s_midiIn->getPortCount() << " ports available" << endl;
+	ofLogNotice("ofxMidiIn") << s_midiIn->getPortCount() << " ports available";
 	for(unsigned int i = 0; i < s_midiIn->getPortCount(); ++i){
-		cout << "ofxMidiIn: " <<  i << ": " << s_midiIn->getPortName(i) << endl;
+		ofLogNotice("ofxMidiIn") <<  i << ": " << s_midiIn->getPortName(i);
 	}
 }
 
@@ -54,8 +53,7 @@ string ofxRtMidiIn::getPortName(unsigned int portNumber) {
 		return s_midiIn->getPortName(portNumber);
 	}
 	catch(RtError& err) {
-		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't get name for port %i: %s",
-			portNumber, err.what());
+		ofLogError("ofxMidiIn") << "couldn't get name for port " << portNumber << ": " << err.what();
 	}
 	return "";
 }
@@ -69,14 +67,13 @@ bool ofxRtMidiIn::openPort(unsigned int portNumber) {
 		midiIn.openPort(portNumber, "ofxMidi Input "+ofToString(portNumber));
 	}
 	catch(RtError& err) {
-		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't open port %i: %s", portNumber, err.what());
+		ofLogError("ofxMidiIn") << "couldn't get open port " << portNumber << ": " << err.what();
 		return false;
 	}
 	portNum = portNumber;
 	portName = midiIn.getPortName(portNumber);
 	bOpen = true;
-	ofLog(OF_LOG_VERBOSE, "ofxMidiIn: opened port %i %s",
-		portNum, portName.c_str());
+	ofLogVerbose("ofxMidiIn") << "opened port " << portNumber << " " << portName;
 	return true;
 }
 
@@ -95,7 +92,7 @@ bool ofxRtMidiIn::openPort(string deviceName) {
 	
 	// bail if not found
 	if(port == -1) {
-		ofLog(OF_LOG_ERROR, "ofxMidiIn: port \"%s\" is not available", deviceName.c_str());
+		ofLogError("ofxMidiIn") << "port \"" << deviceName << "\" is not available";
 		return false;
 	} 
 	
@@ -111,24 +108,23 @@ bool ofxRtMidiIn::openVirtualPort(string portName) {
 		midiIn.openVirtualPort(portName);
 	}
 	catch(RtError& err) {
-		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't open virtual port \"%s\": %s",
-			portName.c_str(), err.what());
+		ofLogError("ofxMidiIn") << "couldn't open virtual port \"" << portName << "\": " << err.what();
 		return false;
 	}
 	this->portName = portName;
 	bOpen = true;
 	bVirtual = true;
-	ofLog(OF_LOG_VERBOSE, "ofxMidiIn: opened virtual port %s", portName.c_str());
+	ofLogVerbose("ofxMidiIn") << "opened virtual port " << portName;
 	return true;
 }
 
 // -----------------------------------------------------------------------------
 void ofxRtMidiIn::closePort() {
 	if(bVirtual && bOpen) {
-		ofLog(OF_LOG_VERBOSE, "ofxMidiIn: closing virtual port %s", portName.c_str());
+		ofLogVerbose("ofxMidiIn") << "closing virtual port " << portName;
 	}
 	else if(bOpen && portNum > -1) {
-		ofLog(OF_LOG_VERBOSE, "ofxMidiIn: closing port %i %s", portNum, portName.c_str());
+		ofLogVerbose("ofxMidiIn") << "closing port " << portNum << " " << portName;
 	}
 	midiIn.closePort();
 	if(bOpen)
@@ -142,8 +138,8 @@ void ofxRtMidiIn::closePort() {
 // -----------------------------------------------------------------------------
 void ofxRtMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 	midiIn.ignoreTypes(midiSysex, midiTiming, midiSense);
-	ofLog(OF_LOG_VERBOSE, "ofxMidiIn: ignore types on %s: sysex: %d timing: %d sense: %d",
-			portName.c_str(), midiSysex, midiTiming, midiSense);
+	ofLogVerbose("ofxMidiIn") <<"ignore types on " << portName << ": sysex: " << midiSysex
+		<< " timing: " << midiTiming << " sense: " << midiSense;
 }
 // -----------------------------------------------------------------------------
 void ofxRtMidiIn::_midiMessageCallback(double deltatime, vector<unsigned char> *message, void *userData) {

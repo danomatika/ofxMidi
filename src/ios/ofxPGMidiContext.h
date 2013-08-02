@@ -19,7 +19,7 @@ class ofxPGMidiContext {
 		static void clearConnectionListener();
 		
 		/// enable the iOS CoreMidi network interface? 
-		static void enableNetwork();
+		static void enableNetwork(bool enable=true);
 	
 	private:
 

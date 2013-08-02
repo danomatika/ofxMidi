@@ -49,7 +49,6 @@ void ofxBaseMidiIn::setVerbose(bool verbose) {
 
 // PRIVATE
 // -----------------------------------------------------------------------------
-// TODO: replace cout with ofLogNotice, etc?
 void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *message) {
 			
 	// parse message and fill event
@@ -94,7 +93,7 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *me
 	}
 	
 	if(bVerbose) {
-		cout << midiMessage.toString() << endl;
+		ofLogVerbose("ofxMidiIn") << midiMessage.toString();
 	}
 	
 	// send event to listeners
@@ -138,7 +137,7 @@ bool ofxBaseMidiOut::isVirtual() {
 void ofxBaseMidiOut::sendNoteOn(int channel, int pitch, int velocity) {
 	
 	if(bMsgInProgress) {
-		ofLog(OF_LOG_WARNING, "ofxMidiOut: cannot send note on, byte stream in progress");
+		ofLogWarning("ofxMidiOut") << "cannot send note on, byte stream in progress";
 		return;
 	}
 
@@ -153,7 +152,7 @@ void ofxBaseMidiOut::sendNoteOn(int channel, int pitch, int velocity) {
 void ofxBaseMidiOut::sendNoteOff(int channel, int pitch, int velocity) {
 
 	if(bMsgInProgress) {
-		ofLog(OF_LOG_WARNING, "ofxMidiOut: cannot send note off, byte stream in progress");
+		ofLogWarning("ofxMidiOut") << "cannot send note off, byte stream in progress";
 		return;
 	}
 
@@ -168,7 +167,7 @@ void ofxBaseMidiOut::sendNoteOff(int channel, int pitch, int velocity) {
 void ofxBaseMidiOut::sendControlChange(int channel, int control, int value) {
 
 	if(bMsgInProgress) {
-		ofLog(OF_LOG_WARNING, "ofxMidiOut: cannot send note ctrl change, byte stream in progress");
+		ofLogWarning("ofxMidiOut") << "cannot send note ctrl change, byte stream in progress";
 		return;
 	}
 	
@@ -183,7 +182,7 @@ void ofxBaseMidiOut::sendControlChange(int channel, int control, int value) {
 void ofxBaseMidiOut::sendProgramChange(int channel, int value) {
 
 	if(bMsgInProgress) {
-		ofLog(OF_LOG_WARNING, "ofxMidiOut: cannot send pgm change, byte stream in progress");
+		ofLogWarning("ofxMidiOut") << "cannot send pgm change, byte stream in progress";
 		return;
 	}
 
@@ -197,7 +196,7 @@ void ofxBaseMidiOut::sendProgramChange(int channel, int value) {
 void ofxBaseMidiOut::sendPitchBend(int channel, int value) {
 
 	if(bMsgInProgress) {
-		ofLog(OF_LOG_WARNING, "ofxMidiOut: cannot send pitch bend, byte stream in progress");
+		ofLogWarning("ofxMidiOut") << "cannot send pitch bend, byte stream in progress";
 		return;
 	}
 
@@ -211,7 +210,7 @@ void ofxBaseMidiOut::sendPitchBend(int channel, int value) {
 void ofxBaseMidiOut::sendPitchBend(int channel, unsigned char lsb, unsigned char msb) {
 	
 	if(bMsgInProgress) {
-		ofLog(OF_LOG_WARNING, "ofxMidiOut: cannot send pitch bend, byte stream in progress");
+		ofLogWarning("ofxMidiOut") << "cannot send pitch bend, byte stream in progress";
 		return;
 	}
 	
@@ -226,7 +225,7 @@ void ofxBaseMidiOut::sendPitchBend(int channel, unsigned char lsb, unsigned char
 void ofxBaseMidiOut::sendAftertouch(int channel, int value) {
 
 	if(bMsgInProgress) {
-		ofLog(OF_LOG_WARNING, "ofxMidiOut: cannot send aftertouch, byte stream in progress");
+		ofLogWarning("ofxMidiOut") << "cannot send aftertouch, byte stream in progress";
 		return;
 	}
 
@@ -240,7 +239,7 @@ void ofxBaseMidiOut::sendAftertouch(int channel, int value) {
 void ofxBaseMidiOut::sendPolyAftertouch(int channel, int pitch, int value) {
 
 	if(bMsgInProgress) {
-		ofLog(OF_LOG_WARNING, "ofxMidiOut: cannot send poly aftertouch, byte stream in progress");
+		ofLogWarning("ofxMidiOut") << "cannot send poly aftertouch, byte stream in progress";
 		return;
 	}
 
@@ -286,7 +285,7 @@ void ofxBaseMidiOut::sendMidiBytes(vector<unsigned char>& bytes) {
 //----------------------------------------------------------
 void ofxBaseMidiOut::startMidiStream() {
 	if(bMsgInProgress) {
-		ofLog(OF_LOG_WARNING, "ofxMidiOut: calling StartMidi when byte stream in progress");
+		ofLogWarning("ofxMidiOut") << "calling StartMidi when byte stream in progress";
 		return;
 	}
     message.clear();
@@ -296,7 +295,7 @@ void ofxBaseMidiOut::startMidiStream() {
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::finishMidiStream() {
     if(!bMsgInProgress) {
-    	ofLog(OF_LOG_WARNING, "ofxMidiOut: can not finish midi byte stream, stream not in progress");
+    	ofLogWarning("ofxMidiOut") << "can not finish midi byte stream, stream not in progress";
 		return;
 	}
 	sendMessage();

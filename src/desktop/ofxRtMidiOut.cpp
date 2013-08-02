@@ -13,14 +13,13 @@ ofxRtMidiOut::~ofxRtMidiOut() {
 }
 
 // -----------------------------------------------------------------------------
-// TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxRtMidiOut::listPorts() {
 	if(s_midiOut == NULL) {
 		s_midiOut = ofPtr<RtMidiOut>(new RtMidiOut(RtMidi::UNSPECIFIED, "ofxMidi Client"));
 	}
-	cout << "ofxMidiOut: " << s_midiOut->getPortCount() << " ports available" << endl;
+	ofLogNotice("ofxMidiOut") << s_midiOut->getPortCount() << " ports available";
 	for(unsigned int i = 0; i < s_midiOut->getPortCount(); ++i){
-		cout << "ofxMidiOut: " <<  i << ": " << s_midiOut->getPortName(i) << endl;
+		ofLogNotice("ofxMidiOut") <<  i << ": " << s_midiOut->getPortName(i);
 	}
 }
 
@@ -54,8 +53,7 @@ string ofxRtMidiOut::getPortName(unsigned int portNumber) {
 		return s_midiOut->getPortName(portNumber);
 	}
 	catch(RtError& err) {
-		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't get name for port %i: %s",
-			portNumber, err.what());
+		ofLogError("ofxMidiOut") << "couldn't get name for port " << portNumber << ": " << err.what();
 	}
 	return "";
 }
@@ -68,13 +66,13 @@ bool ofxRtMidiOut::openPort(unsigned int portNumber) {
 		midiOut.openPort(portNumber, "ofxMidi Output "+ofToString(portNumber));
 	}
 	catch(RtError& err) {
-		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't open port %i: %s", portNumber, err.what());
+		ofLogError("ofxMidiOut") << "couldn't open port " << portNumber << ": " << err.what();
 		return false;
 	}
 	portNum = portNumber;
 	portName = midiOut.getPortName(portNumber);
 	bOpen = true;
-	ofLog(OF_LOG_VERBOSE, "ofxMidiOut: opened port %i %s", portNum, portName.c_str());
+	ofLogVerbose("ofxMidiOut") << "opened port " << portNum << " " <<  portName;
 	return true;
 }
 
@@ -93,7 +91,7 @@ bool ofxRtMidiOut::openPort(string deviceName) {
 	
 	// bail if not found
 	if(port == -1) {
-		ofLog(OF_LOG_ERROR, "ofxMidiOut: port \"%s\" is not available", deviceName.c_str());
+		ofLogError("ofxMidiOut") << "port \"" << deviceName << "\" is not available";
 		return false;
 	} 
 	
@@ -108,25 +106,24 @@ bool ofxRtMidiOut::openVirtualPort(string portName) {
 		midiOut.openVirtualPort(portName);
 	}
 	catch(RtError& err) {
-		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't open virtual port \"%s\": %s",
-			portName.c_str(), err.what());
+		ofLogError("ofxMidiOut") << "couldn't open virtual port \"" << portName << "\": " << err.what();
 		return false;
 	}
 	
 	this->portName = portName;
 	bOpen = true;
 	bVirtual = true;
-	ofLog(OF_LOG_VERBOSE, "ofxMidiOut: opened virtual port %s", portName.c_str());
+	ofLogVerbose("ofxMidiOut") << "opened virtual port " << portName;
 	return true;
 }
 
 // -----------------------------------------------------------------------------
 void ofxRtMidiOut::closePort() {
 	if(bVirtual && bOpen) {
-		ofLog(OF_LOG_VERBOSE, "ofxMidiOut: closing virtual port %s", portName.c_str());
+		ofLogVerbose("ofxMidiOut") << "closing virtual port " << portName;
 	}
 	else if(bOpen && portNum > -1) {
-		ofLog(OF_LOG_VERBOSE, "ofxMidiOut: closing port %i %s", portNum, portName.c_str());
+		ofLogVerbose("ofxMidiOut") << "closing port " << portNum << " " << portName;
 	}
 	midiOut.closePort();
 	portNum = -1;
@@ -144,7 +141,7 @@ void ofxRtMidiOut::sendMessage() {
 		midiOut.sendMessage(&message);
 	}
 	catch(RtError& err) {
-		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't send message: %s", err.what());
+		ofLogError("ofxMidiOut") << "couldn't send message: " << err.what();
 	}
 	bMsgInProgress = false;
 }

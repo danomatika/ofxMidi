@@ -27,14 +27,13 @@ ofxPGMidiIn::~ofxPGMidiIn() {
 }
 
 // -----------------------------------------------------------------------------
-// TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxPGMidiIn::listPorts() {
 	PGMidi * midi = ofxPGMidiContext::getMidi();
 	int count = [midi.sources count];
-	cout << "ofxMidiIn: " << count << " ports available" << endl;
+	ofLogNotice("ofxMidiIn") << count << " ports available";
 	for(NSUInteger i = 0; i < count; ++i) {
 			PGMidiSource * source = [midi.sources objectAtIndex:i];
-			cout << "ofxMidiIn: " << i << ": " << [source.name UTF8String] << endl;
+			ofLogNotice("ofxMidiIn") << i << ": " << [source.name UTF8String];
 	}
 }
 
@@ -64,8 +63,8 @@ string ofxPGMidiIn::getPortName(unsigned int portNumber) {
 		return [source.name UTF8String];
 	}
 	@catch(NSException * ex) {
-		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't get name for port %i: %s: %s",
-			portNumber, [ex.name UTF8String], [ex.reason UTF8String]);
+		ofLogError("ofxMidiIn") << "couldn't get name for port " << portNumber
+			<< " " << [ex.name UTF8String] << ": " << [ex.reason UTF8String];
 	}
 	return "";
 }
@@ -81,16 +80,15 @@ bool ofxPGMidiIn::openPort(unsigned int portNumber) {
 		source = [midi.sources objectAtIndex:portNumber]; 
 	}
 	@catch(NSException * ex) {
-		ofLog(OF_LOG_ERROR, "ofxMidiIn: couldn't open port %i: %s: %s",
-			portNumber, [ex.name UTF8String], [ex.reason UTF8String]);
+		ofLogError("ofxMidiIn") << "couldn't open port " << portNumber
+			<< " " << [ex.name UTF8String] << ": " << [ex.reason UTF8String];
 		return false;
 	}
-	source.delegate = inputDelegate->d;
+	[source addDelegate:inputDelegate->d];
 	portNum = portNumber;
 	portName = [source.name UTF8String];
 	bOpen = true;
-	ofLog(OF_LOG_VERBOSE, "ofxMidiIn: opened port %i %s",
-		portNum, portName.c_str());
+	ofLogVerbose("ofxMidiIn") << "opened port " << portNum << " " << portName;
 	return true;
 }
 
@@ -111,7 +109,7 @@ bool ofxPGMidiIn::openPort(string deviceName) {
 	
 	// bail if not found
 	if(port == -1) {
-		ofLog(OF_LOG_ERROR, "ofxMidiIn: port \"%s\" is not available", deviceName.c_str());
+		ofLogError("ofxMidiIn") << "port \"" << deviceName << "\" is not available";;
 		return false;
 	} 
 	
@@ -120,8 +118,8 @@ bool ofxPGMidiIn::openPort(string deviceName) {
 
 // -----------------------------------------------------------------------------
 bool ofxPGMidiIn::openVirtualPort(string portName) {
-	ofLog(OF_LOG_WARNING, "ofxMidiIn: couldn't open virtual port \"%s\"", portName.c_str());
-	ofLog(OF_LOG_WARNING, "ofxMidiIn: virtual ports are currently not supported on iOS");
+	ofLogWarning("ofxMidiIn") << "couldn't open virtual port \"" << portName << "\"";
+	ofLogWarning("ofxMidiIn") << "virtual ports are currently not supported on iOS";
 	return false;
 }
 
@@ -129,11 +127,11 @@ bool ofxPGMidiIn::openVirtualPort(string portName) {
 void ofxPGMidiIn::closePort() {
 	
 	if(bOpen) {
-		ofLog(OF_LOG_VERBOSE, "ofxMidiIn: closing port %i %s", portNum, portName.c_str());
+		ofLogVerbose("ofxMidiIn") << "closing port " << portNum << " " << portName;
 	
 		PGMidi * midi = ofxPGMidiContext::getMidi();
 		PGMidiSource * source = [midi.sources objectAtIndex:portNum];
-		source.delegate = nil;
+		[source removeDelegate:inputDelegate->d];
 	}
 	
 	portNum = -1;
@@ -149,8 +147,8 @@ void ofxPGMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 	inputDelegate->d.bIgnoreTiming = midiTiming;
 	inputDelegate->d.bIgnoreSense = midiSense;
 	
-	ofLog(OF_LOG_VERBOSE, "ofxPGMidiIn: ignore types on %s: sysex: %d timing: %d sense: %d",
-			portName.c_str(), midiSysex, midiTiming, midiSense);
+	ofLogVerbose("ofxMidiIn") << "ignore types on " << portName << ": sysex: " << midiSysex
+		<< " timing: " << midiTiming << " sense: " << midiSense;
 }
 
 // -----------------------------------------------------------------------------

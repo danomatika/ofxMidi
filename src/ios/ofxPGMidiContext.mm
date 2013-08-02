@@ -36,7 +36,13 @@ void ofxPGMidiContext::clearConnectionListener() {
 }
 
 // -----------------------------------------------------------------------------
-void ofxPGMidiContext::enableNetwork() {
-	[midi enableNetwork:YES];
-	ofLog(OF_LOG_VERBOSE, "ofxMidi: iOS Midi Networking enabled");
+void ofxPGMidiContext::enableNetwork(bool enable) {
+	if(enable) {
+		midi.networkEnabled = YES;
+		ofLogVerbose("ofxMidi") << "iOS Midi Networking enabled";
+	}
+	else {
+		midi.networkEnabled = NO;
+		ofLogVerbose("ofxMidi") << "iOS Midi Networking disabled";
+	}
 }

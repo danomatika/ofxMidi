@@ -7,21 +7,20 @@
 #endif
 
 // -----------------------------------------------------------------------------
-// TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxMidiConnectionListener::midiInputAdded(string name, bool isNetwork) {
-	cout << "ofxMidi: input added: " << name << " network: " << isNetwork << endl;
+	ofLogNotice("ofxMidi") << "input added: " << name << " network: " << isNetwork;
 }
 
 void ofxMidiConnectionListener::midiInputRemoved(string name, bool isNetwork) {
-	cout << "ofxMidi: input removed: " << name << " network: " << isNetwork << endl;
+	ofLogNotice("ofxMidi") << "input removed: " << name << " network: " << isNetwork;
 }
 
 void ofxMidiConnectionListener::midiOutputAdded(string name, bool isNetwork) {
-	cout << "ofxMidi: output added: " << name << " network: " << isNetwork << endl;
+	ofLogNotice("ofxMidi") << "output added: " << name << " network: " << isNetwork;
 }
 
 void ofxMidiConnectionListener::midiOutputRemoved(string name, bool isNetwork) {
-	cout << "ofxMidi: output removed: " << name << " network: " << isNetwork << endl;
+	ofLogNotice("ofxMidi") << "output removed: " << name << " network: " << isNetwork;
 }
 
 // -----------------------------------------------------------------------------

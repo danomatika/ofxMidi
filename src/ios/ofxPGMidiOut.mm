@@ -25,14 +25,13 @@ ofxPGMidiOut::~ofxPGMidiOut() {
 }
 
 // -----------------------------------------------------------------------------
-// TODO: replace cout with ofLogNotice when OF_LOG_NOTICE is the default log level
 void ofxPGMidiOut::listPorts() {
 	PGMidi * midi = ofxPGMidiContext::getMidi();
 	int count = [midi.destinations count]; 
-	cout << "ofxMidiOut: " << count << " ports available" << endl;
+	ofLogNotice("ofxMidiOut") << count << " ports available";
 	for(NSUInteger i = 0; i < count; ++i) {
 			PGMidiDestination * dest = [midi.destinations objectAtIndex:i];
-		cout << "ofxMidiOut: " << i << ": " << [dest.name UTF8String] << endl;
+		ofLogNotice("ofxMidiOut") << i << ": " << [dest.name UTF8String];
 	}
 }
 
@@ -62,8 +61,8 @@ string ofxPGMidiOut::getPortName(unsigned int portNumber) {
 		return [dest.name UTF8String];
 	}
 	@catch(NSException * ex) {
-		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't get name for port %i: %s: %s",
-			portNumber, [ex.name UTF8String], [ex.reason UTF8String]);
+		ofLogError("ofxMidiOut") << "couldn't get name for port " << portNumber
+			<< " " << [ex.name UTF8String] << ": " << [ex.reason UTF8String];
 	}
 	return "";
 }
@@ -79,16 +78,15 @@ bool ofxPGMidiOut::openPort(unsigned int portNumber) {
 		dest = [midi.destinations objectAtIndex:portNumber]; 
 	}
 	@catch(NSException * ex) {
-		ofLog(OF_LOG_ERROR, "ofxMidiOut: couldn't open port %i: %s: %s",
-			portNumber, [ex.name UTF8String], [ex.reason UTF8String]);
+		ofLogError("ofxMidiOut") << "couldn't open port " << portNumber
+			<< " " << [ex.name UTF8String] << ": " << [ex.reason UTF8String];
 		return false;
 	}
 	destination->d = dest;
 	portNum = portNumber;
 	portName = [dest.name UTF8String];
 	bOpen = true;
-	ofLog(OF_LOG_VERBOSE, "ofxMidiOut: opened port %i %s",
-		portNum, portName.c_str());
+	ofLogVerbose("ofxMidiOut") << "opened port " << portNum << " " << portName;
 	return true;
 }
 
@@ -109,7 +107,7 @@ bool ofxPGMidiOut::openPort(string deviceName) {
 	
 	// bail if not found
 	if(port == -1) {
-		ofLog(OF_LOG_ERROR, "ofxMidiOut: port \"%s\" is not available", deviceName.c_str());
+		ofLogError("ofxMidiOut") << "port \"" << deviceName << "\" is not available";
 		return false;
 	} 
 	
@@ -118,8 +116,8 @@ bool ofxPGMidiOut::openPort(string deviceName) {
 
 // -----------------------------------------------------------------------------
 bool ofxPGMidiOut::openVirtualPort(string portName) {
-	ofLog(OF_LOG_WARNING, "ofxMidiOut: couldn't open virtual port \"%s\"", portName.c_str());
-	ofLog(OF_LOG_WARNING, "ofxMidiOut: virtual ports are currently not supported on iOS");
+	ofLogWarning("ofxMidiOut") << "couldn't open virtual port \"" << portName << "\"";
+	ofLogWarning("ofxMidiOut") << "virtual ports are currently not supported on iOS";
 	return false;
 }
 
@@ -127,7 +125,7 @@ bool ofxPGMidiOut::openVirtualPort(string portName) {
 void ofxPGMidiOut::closePort() {
 
 	if(destination->d != nil) {
-		ofLog(OF_LOG_VERBOSE, "ofxMidiOut: closing port %i %s", portNum, portName.c_str());
+		ofLogVerbose("ofxMidiOut") << "closing port " <<  portNum << " " << portName;
 	}
 	destination->d = nil;
 	
