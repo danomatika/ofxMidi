@@ -12,6 +12,9 @@
 
 WD=$(dirname $0)
 
+SRC=PGMidi
+DEST=../libs/pgmidi
+
 ###
 
 # move to this scripts dir
@@ -21,14 +24,14 @@ cd $WD
 git clone git://github.com/petegoodliffe/PGMidi.git
 
 # create destination dir
-mkdir -p ../src/ios/pgmidi
+mkdir -p $DEST
 
 # copy readme/license
-cp -v PGMidi/README.md ../src/ios/pgmidi
+cp -v $SRC/README.md $DEST
 
 # copy sources
-cp -v PGMidi/Sources/PGMidi/* ../src/ios/pgmidi
+cp -v $SRC/Sources/PGMidi/* $DEST
 
 # cleanup
-rm -rfv PGMidi
+rm -rfv $SRC
 

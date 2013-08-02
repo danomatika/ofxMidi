@@ -14,6 +14,9 @@ WD=$(dirname $0)
 
 VER=2.0.1
 
+SRC=rtmidi-$VER
+DEST=../libs/rtmidi
+
 ###
 
 # move to this scripts dir
@@ -26,15 +29,15 @@ curl http://www.music.mcgill.ca/~gary/rtmidi/release/rtmidi-$VER.tar.gz -O
 tar -xvf rtmidi-$VER.tar.gz
 
 # create destination dir
-mkdir -p ../src/desktop/rtmidi
+mkdir -p $DEST
 
 # copy license
-cp -v rtmidi-$VER/readme ../src/desktop/rtmidi
+cp -v $SRC/readme $DEST
 
 # copy sources
-cp -v rtmidi-$VER/*.h ../src/desktop/rtmidi
-cp -v rtmidi-$VER/*.cpp ../src/desktop/rtmidi
+cp -v $SRC/*.h $DEST
+cp -v $SRC/*.cpp $DEST
 
 # cleanup
-rm -rfv rtmidi-$VER rtmidi-$VER.tar.gz
+rm -rfv $SRC rtmidi-$VER.tar.gz
 
