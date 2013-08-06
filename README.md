@@ -3,7 +3,7 @@ ofxMidi
 
 Midi input and output addon for openFrameworks
 
-Copyright (c) [Dan Wilcox](danomatika.com) 2011-present
+Copyright (c) [Dan Wilcox](danomatika.com) 2011-2013<br/>
 (original implementation by Chris O'Shea, Arturo Castro, Kyle McDonald)
 
 BSD Simplified License.
@@ -15,7 +15,7 @@ See Documentation on [Github](https://github.com/chrisoshea/ofxMidi) and the [Op
 
 OpenFrameworks is a cross platform open source toolkit for creative coding in C++.
 
-[http://www.openframeworks.cc/](http://www.openframeworks.cc/)
+[http://www.openframeworks.cc](http://www.openframeworks.cc)
 
 Description
 -----------
@@ -81,11 +81,10 @@ Open the Xcode project, select the project scheme, and hit "Run".
 
 Open the Code::Blocks .workspace and hit F9 to build. Optionally, you can build the example with the Makefile.
 
-To run it, use the terminal:
+To built and run it on the terminal:
 <pre>
 make
-cd bin
-./exampleInput
+make run
 </pre>
 
 ### Windows
@@ -178,7 +177,7 @@ ofxMidi/libs/rtmidi
 DEVELOPING
 ----------
 
-You can help develop ofxMidi on GitHub: [https://github.com/chrisoshea/ofxMidi](https://github.com/chrisoshea/ofxMidi)
+You can help develop ofxMidi on GitHub: [https://github.com/danomatika/ofxMidi](https://github.com/danomatika/ofxMidi)
 
 Create an account, clone or fork the repo, then request a push/merge. Please use the *develop* branch of updates and pull requests.
 
