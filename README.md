@@ -3,7 +3,13 @@ ofxMidi
 
 Midi input and output addon for openFrameworks
 
-By Dan Wilcox (original implementation by Chris O'Shea, Arturo Castro, Kyle McDonald
+Copyright (c) [Dan Wilcox](danomatika.com) 2011-present
+(original implementation by Chris O'Shea, Arturo Castro, Kyle McDonald)
+
+BSD Simplified License.
+
+For information on usage and redistribution, and for a DISCLAIMER OF ALL
+WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 
 See Documentation on [Github](https://github.com/chrisoshea/ofxMidi) and the [OpenFrameworks Forum post](http://forum.openframeworks.cc/index.php/topic,2435.0.html).
 
