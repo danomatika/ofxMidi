@@ -1,7 +1,7 @@
 ofxMidi
 =======
 <p align="center">
-<img src="https://raw.github.com/danomatika/ofxMidi/master/ofxaddons_thumbnail.png"/>
+<img src="https://raw.github.com/danomatika/ofxMidi/master/res/midi_din.png"/>
 </p>
 
 Midi input and output addon for openFrameworks
