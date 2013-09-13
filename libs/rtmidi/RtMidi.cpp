@@ -2133,7 +2133,7 @@ std::string MidiInWinMM :: getPortName( unsigned int portNumber )
   midiInGetDevCaps( portNumber, &deviceCaps, sizeof(MIDIINCAPS));
 
 #if defined( UNICODE ) || defined( _UNICODE )
-  int length = WideCharToMultiByte(CP_UTF8, 0, deviceCaps.szPname, -1, NULL, 0, NULL, NULL);
+  int length = WideCharToMultiByte(CP_UTF8, 0, deviceCaps.szPname, -1, NULL, 0, NULL, NULL) - 1;
   stringName.assign( length, 0 );
   length = WideCharToMultiByte(CP_UTF8, 0, deviceCaps.szPname, wcslen(deviceCaps.szPname), &stringName[0], length, NULL, NULL);
 #else
@@ -2208,7 +2208,7 @@ std::string MidiOutWinMM :: getPortName( unsigned int portNumber )
   midiOutGetDevCaps( portNumber, &deviceCaps, sizeof(MIDIOUTCAPS));
 
 #if defined( UNICODE ) || defined( _UNICODE )
-  int length = WideCharToMultiByte(CP_UTF8, 0, deviceCaps.szPname, -1, NULL, 0, NULL, NULL);
+  int length = WideCharToMultiByte(CP_UTF8, 0, deviceCaps.szPname, -1, NULL, 0, NULL, NULL) - 1;
   stringName.assign( length, 0 );
   length = WideCharToMultiByte(CP_UTF8, 0, deviceCaps.szPname, wcslen(deviceCaps.szPname), &stringName[0], length, NULL, NULL);
 #else
