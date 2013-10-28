@@ -56,6 +56,7 @@ public:
 
 	deque<string> messages;
 	int maxMessages;
+	ofMutex messageMutex; // make sure we don't read from queue while writing
 	
 	int note, ctl;
 	vector<unsigned char> bytes;

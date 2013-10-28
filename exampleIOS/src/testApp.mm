@@ -87,11 +87,13 @@ void testApp::draw() {
 
 	ofDrawBitmapString("Input:", 10, 20);
 	int x = 10, y = 34;
+	messageMutex.lock();
 	deque<string>::iterator iter = messages.begin();
 	for(; iter != messages.end(); ++iter) {
 		ofDrawBitmapString((*iter), x, y);
 		y += 14;
 	}
+	messageMutex.unlock();
 	
 	ofDrawBitmapString("Output:", 10, ofGetHeight()-42);
 	if(note > 0) {
@@ -185,10 +187,12 @@ void testApp::touchCancelled(ofTouchEventArgs& args) {
 
 //--------------------------------------------------------------
 void testApp::addMessage(string msg) {
+	messageMutex.lock();
 	cout << msg << endl;
 	messages.push_back(msg);
 	while(messages.size() > maxMessages)
 		messages.pop_front();
+	messageMutex.unlock();
 }
 
 //--------------------------------------------------------------
