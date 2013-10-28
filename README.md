@@ -144,7 +144,7 @@ Adding ofxMidi to an Existing Project
   * click the + under Linked Frameworks & Libraries
   * search for and select the CoreMIDI.framework from the list
 * add the following directories to your search path in your project's Project.xconfig file (See the Project.xconfig of the example project.):
-<pre>
+  <pre>
 ../../../addons/ofxMidi/src
 ../../../addons/ofxMidi/libs/rtmidi
 </pre>
@@ -152,19 +152,19 @@ Adding ofxMidi to an Existing Project
 ### Linux Makefiles/CodeBlocks
 
 * edit addons.make in your project folder and add the following line to the end of the file: 
-	<pre>ofxMidi</pre>
+	  <pre>ofxMidi</pre>
 
 ### Win Codeblocks & Visual Studio
 
 * add the ofxMidi sources to the project tree
-<pre>
+  <pre>
 ofxMidi/src
 ofxMidi/libs/rtmidi
 </pre>
   * Codeblocks: right click on the project in the project tree and select Add Files Recursively...
   * Visual Studio: drag the ofxMidi/src & ofxMidi/libs/rtmidi folder onto the project tree
 * add the following search paths:
-<pre>
+  <pre>
 ..\\..\\..\addons\ofxMidi\src
 ..\\..\\..\addons\ofxMidi\libs\rtmidi
 </pre>
@@ -176,6 +176,42 @@ ofxMidi/libs/rtmidi
   * right click on the project in the project tree and select Properties
   * set the Configuration to All Configurations
   * Configuration Properties->C/C++->General->Additional Directories
+
+KNOWN ISSUES
+------------
+
+### Using static ofxMidi objects on Linux causes seg faults
+
+Avoid creating static ofxMidiIn / ofxMidiOut objects on Linux as the compiler seems to set creation order so they are created *before* ALSA is ready. This leads to a confirmed seg fault on Ubuntu and probably all other flavors of Linux using ALSA. The midi apis on Windows and OSX do not share this problem. 
+
+Instead create a static ofPtr and initialize it later:
+<pre>
+in .h:
+
+    class MyClass {
+    
+        ...
+
+        static ofPtr<ofxMidiOut> s_midiOut;
+    
+        ...
+
+    }
+
+in .cpp:
+
+    ofPtr<ofxMidiOut> MyClass::s_midiOut;
+    
+    ...
+    
+    // initialize somewhere else
+    void MyClass::setup() {
+	    if(s_midiOut == NULL) {
+	        s_midiOut = ofPtr<ofxMidiOut>(new ofxMidiOut("ofxMidi Client"));
+	    }
+    }
+</pre>
+
 
 DEVELOPING
 ----------

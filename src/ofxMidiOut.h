@@ -26,6 +26,29 @@
 ///
 /// create multiple instances to connect to multiple ports
 ///
+/// *do not* create static instances as this will lead to a crash on Linux,
+/// instead create a static ofPtr and initialize it later:
+///
+/// in .h:
+///    class MyClass {
+///
+///        ...
+///
+///        static ofPtr<ofxMidiOut> s_midiOut;
+///    }
+///
+/// in .cpp:
+///    ofPtr<ofxMidiOut> MyClass::s_midiOut;
+///
+///    ...
+///
+///    // initialize somewhere else
+///    void MyClass::setup() {
+///        if(s_midiOut == NULL) {
+///            s_midiOut = ofPtr<ofxMidiOut>(new ofxMidiOut("ofxMidi Client"));
+///        }
+///    }
+///
 class ofxMidiOut {
 
 public:
