@@ -185,8 +185,8 @@ KNOWN ISSUES
 Avoid creating static ofxMidiIn / ofxMidiOut objects on Linux as the compiler seems to set creation order so they are created *before* ALSA is ready. This leads to a confirmed seg fault on Ubuntu and probably all other flavors of Linux using ALSA. The midi apis on Windows and OSX do not share this problem. 
 
 Instead create a static ofPtr and initialize it later:
-<pre>
-in .h:
+
+    // in .h:
 
     class MyClass {
     
@@ -198,7 +198,7 @@ in .h:
 
     }
 
-in .cpp:
+    // in .cpp:
 
     ofPtr<ofxMidiOut> MyClass::s_midiOut;
     
@@ -210,7 +210,6 @@ in .cpp:
 	        s_midiOut = ofPtr<ofxMidiOut>(new ofxMidiOut("ofxMidi Client"));
 	    }
     }
-</pre>
 
 
 DEVELOPING
