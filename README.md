@@ -97,6 +97,8 @@ An example Visual Studio solution as well as a Codeblocks workspace are included
 Creating a New ofxMidi Project
 ------------------------------
 
+_Note: These instructions are for manually creating a new project. You do not need to follow these steps if you use the ProjecGenerator app, except for Xcode where you currently need to add the CoreMIDI framework._
+
 To develop your own project based on ofxMidi, simply copy the example project and rename it. You probably want to put it in your apps folder, for example, after copying:
 <pre>
 openFrameworks/addons/ofxPd/exampleInput/ => openFrameworks/apps/myApps/exampleInput/
@@ -131,6 +133,8 @@ Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
 
 Adding ofxMidi to an Existing Project
 -------------------------------------
+
+_Note: These instructions are for manually adding ofxMidi to a project. You do not need to follow these steps if you use the ProjecGenerator app to regenerate your project files, except for Xcode where you currently need to add the CoreMIDI framework._
 
 ### Xcode
 

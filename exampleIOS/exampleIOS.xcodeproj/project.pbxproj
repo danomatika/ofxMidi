@@ -1,1649 +1,563 @@
-<?xml version="1.0"?>
-<plist version="1.0">
-	<dict>
-		<key>archiveVersion</key>
-		<string>1</string>
-		<key>classes</key>
-		<dict />
-		<key>objectVersion</key>
-		<string>46</string>
-		<key>objects</key>
-		<dict>
-			<key>a70455a65fa800eaa77e2bc0</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>PGMidiFind.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/libs/pgmidi/PGMidiFind.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>034f4d5ebaa91828536a1ba9</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>PGMidiAllSources.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/libs/pgmidi/PGMidiAllSources.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>bbee862403127aa5d485e254</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>PGMidi.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/libs/pgmidi/PGMidi.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>60cdebcc39a58241e253ef20</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>PGArc.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/libs/pgmidi/PGArc.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>45020a3b9d9c109a16ca0e43</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>0f888bb417e265dd5f5ff334</string>
-					<string>60cdebcc39a58241e253ef20</string>
-					<string>bbee862403127aa5d485e254</string>
-					<string>034f4d5ebaa91828536a1ba9</string>
-					<string>a70455a65fa800eaa77e2bc0</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>pgmidi</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>5a08ccdc8d19e7162de57128</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>45020a3b9d9c109a16ca0e43</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>libs</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>0f888bb417e265dd5f5ff334</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>iOSVersionDetection.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/libs/pgmidi/iOSVersionDetection.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>e16bb73d19dd0713fdcc7986</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxMidiTypes.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxMidiTypes.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>81436e53cc4a77e326f659c3</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxMidiOut.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxMidiOut.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>83d9f930112e0944444124ee</key>
-			<dict>
-				<key>fileRef</key>
-				<string>04f77e5c73a62e2e77c78ec6</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>04f77e5c73a62e2e77c78ec6</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxMidiOut.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxMidiOut.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>bd0e7ac8be205034d5b377a6</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxMidiMessage.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxMidiMessage.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>c6fe64f74f1ea1d98c8f9847</key>
-			<dict>
-				<key>fileRef</key>
-				<string>c0e7eda67edf213fc0e83d17</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>c0e7eda67edf213fc0e83d17</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxMidiMessage.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxMidiMessage.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>b76fa489151dbaf1616df378</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxMidiIn.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxMidiIn.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>0bfc9c20fd7e3c8d5873aa97</key>
-			<dict>
-				<key>fileRef</key>
-				<string>3dd359247f3ed1550d8bb5c9</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>3dd359247f3ed1550d8bb5c9</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxMidiIn.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxMidiIn.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>938214a2795aa8fed29086db</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxMidiConstants.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxMidiConstants.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>05f6cf127d4a621113d4a62f</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxMidi.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxMidi.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>63f9fe1d90234fa6de6f509e</key>
-			<dict>
-				<key>fileRef</key>
-				<string>e238ccde032640e0febfad82</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>e238ccde032640e0febfad82</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxMidi.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxMidi.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>4310befde24ff04febee8086</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxBaseMidi.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxBaseMidi.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>1a86b7721caebc6f1c572c45</key>
-			<dict>
-				<key>fileRef</key>
-				<string>94b3c3c21f92f9310ca90986</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>94b3c3c21f92f9310ca90986</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.cpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxBaseMidi.cpp</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ofxBaseMidi.cpp</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>0d7f7661e98534e5ccf89f07</key>
-			<dict>
-				<key>fileRef</key>
-				<string>235261de16f1fe6990ee1f87</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>235261de16f1fe6990ee1f87</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.objcpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxPGMidiSourceDelegate.mm</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ios/ofxPGMidiSourceDelegate.mm</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>31317daf63909d58058dc81e</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxPGMidiSourceDelegate.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ios/ofxPGMidiSourceDelegate.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>6bafb907a8c8c80501623ccd</key>
-			<dict>
-				<key>fileRef</key>
-				<string>1557e2cdf7e0e68bc79768f0</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>1557e2cdf7e0e68bc79768f0</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.objcpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxPGMidiOut.mm</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ios/ofxPGMidiOut.mm</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>a83c49197f5cc83db6afd84a</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxPGMidiOut.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ios/ofxPGMidiOut.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>d3b9ff32d08e7ff01cba4117</key>
-			<dict>
-				<key>fileRef</key>
-				<string>406bb125dda2264c09f7187d</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>406bb125dda2264c09f7187d</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.objcpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxPGMidiIn.mm</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ios/ofxPGMidiIn.mm</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>6cfe765b0e101938ff5ece21</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxPGMidiIn.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ios/ofxPGMidiIn.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>3b4e4b5aa9647fb99e56f32b</key>
-			<dict>
-				<key>fileRef</key>
-				<string>ca4ab6b52e7cd8e55809fc2e</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>ca4ab6b52e7cd8e55809fc2e</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.objcpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxPGMidiDelegate.mm</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ios/ofxPGMidiDelegate.mm</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>20481ef45bfaeb2c9a623713</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxPGMidiDelegate.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ios/ofxPGMidiDelegate.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>b5e63eb7547183befc4b65a7</key>
-			<dict>
-				<key>fileRef</key>
-				<string>1f34a72f1976ddccf95fab5c</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>1f34a72f1976ddccf95fab5c</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.cpp.objcpp</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxPGMidiContext.mm</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ios/ofxPGMidiContext.mm</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>17d92c09804d6ffa4dc64a3f</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>7d368d8248728521ee1f3c09</string>
-					<string>1f34a72f1976ddccf95fab5c</string>
-					<string>20481ef45bfaeb2c9a623713</string>
-					<string>ca4ab6b52e7cd8e55809fc2e</string>
-					<string>6cfe765b0e101938ff5ece21</string>
-					<string>406bb125dda2264c09f7187d</string>
-					<string>a83c49197f5cc83db6afd84a</string>
-					<string>1557e2cdf7e0e68bc79768f0</string>
-					<string>31317daf63909d58058dc81e</string>
-					<string>235261de16f1fe6990ee1f87</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>ios</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>9cbf51184be294fd9d73043f</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>17d92c09804d6ffa4dc64a3f</string>
-					<string>94b3c3c21f92f9310ca90986</string>
-					<string>4310befde24ff04febee8086</string>
-					<string>e238ccde032640e0febfad82</string>
-					<string>05f6cf127d4a621113d4a62f</string>
-					<string>938214a2795aa8fed29086db</string>
-					<string>3dd359247f3ed1550d8bb5c9</string>
-					<string>b76fa489151dbaf1616df378</string>
-					<string>c0e7eda67edf213fc0e83d17</string>
-					<string>bd0e7ac8be205034d5b377a6</string>
-					<string>04f77e5c73a62e2e77c78ec6</string>
-					<string>81436e53cc4a77e326f659c3</string>
-					<string>e16bb73d19dd0713fdcc7986</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>src</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>2413c01760b1811bed0f502d</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>9cbf51184be294fd9d73043f</string>
-					<string>5a08ccdc8d19e7162de57128</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>ofxMidi</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>7d368d8248728521ee1f3c09</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>fileEncoding</key>
-				<string>30</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>name</key>
-				<string>ofxPGMidiContext.h</string>
-				<key>path</key>
-				<string>../../../addons/ofxMidi/src/ios/ofxPGMidiContext.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>19C28FACFE9D520D11CA2CBB</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>1D6058910D05DD3D006BFB54</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>Products</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>1D30AB110D05D00D00671497</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>Foundation.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/Foundation.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>1D60588D0D05DD3D006BFB54</key>
-			<dict>
-				<key>buildActionMask</key>
-				<string>2147483647</string>
-				<key>files</key>
-				<array>
-					<string>E41D3ED713B38FB500A75A5D</string>
-					<string>E41D3EE613B3906D00A75A5D</string>
-					<string>678E130817951530005B6D19</string>
-					<string>678E130A17951536005B6D19</string>
-					<string>678E130C1795153C005B6D19</string>
-					<string>678E130E17951540005B6D19</string>
-					<string>678E131017951549005B6D19</string>
-				</array>
-				<key>isa</key>
-				<string>PBXResourcesBuildPhase</string>
-				<key>runOnlyForDeploymentPostprocessing</key>
-				<string>0</string>
-			</dict>
-			<key>1D60588E0D05DD3D006BFB54</key>
-			<dict>
-				<key>buildActionMask</key>
-				<string>2147483647</string>
-				<key>files</key>
-				<array>
-					<string>E4D8936E11527B74007E1F53</string>
-					<string>E4D8936F11527B74007E1F53</string>
-					<string>b5e63eb7547183befc4b65a7</string>
-					<string>3b4e4b5aa9647fb99e56f32b</string>
-					<string>d3b9ff32d08e7ff01cba4117</string>
-					<string>6bafb907a8c8c80501623ccd</string>
-					<string>0d7f7661e98534e5ccf89f07</string>
-					<string>1a86b7721caebc6f1c572c45</string>
-					<string>63f9fe1d90234fa6de6f509e</string>
-					<string>0bfc9c20fd7e3c8d5873aa97</string>
-					<string>c6fe64f74f1ea1d98c8f9847</string>
-					<string>83d9f930112e0944444124ee</string>
-				</array>
-				<key>isa</key>
-				<string>PBXSourcesBuildPhase</string>
-				<key>runOnlyForDeploymentPostprocessing</key>
-				<string>0</string>
-			</dict>
-			<key>1D60588F0D05DD3D006BFB54</key>
-			<dict>
-				<key>buildActionMask</key>
-				<string>2147483647</string>
-				<key>files</key>
-				<array>
-					<string>E41D421413B3A95300A75A5D</string>
-					<string>1D60589F0D05DD5A006BFB54</string>
-					<string>1DF5F4E00D08C38300B7A737</string>
-					<string>288765FD0DF74451002DB57D</string>
-					<string>BB16EBD20F2B2A9500518274</string>
-					<string>BB16EBD90F2B2AB500518274</string>
-					<string>BBE5EAB80F49AD8400F28951</string>
-					<string>53F323EB10A20EDB00E0DAE4</string>
-					<string>5326AEA810A23A0500278DE6</string>
-					<string>E4A823A412561BE3002F86A2</string>
-					<string>E41D400B13B39D2100A75A5D</string>
-					<string>E41D400C13B39D2100A75A5D</string>
-					<string>E41D400D13B39D2100A75A5D</string>
-					<string>E41D400E13B39D2100A75A5D</string>
-				</array>
-				<key>isa</key>
-				<string>PBXFrameworksBuildPhase</string>
-				<key>runOnlyForDeploymentPostprocessing</key>
-				<string>0</string>
-			</dict>
-			<key>1D6058900D05DD3D006BFB54</key>
-			<dict>
-				<key>buildConfigurationList</key>
-				<string>1D6058960D05DD3E006BFB54</string>
-				<key>buildPhases</key>
-				<array>
-					<string>1D60588D0D05DD3D006BFB54</string>
-					<string>1D60588E0D05DD3D006BFB54</string>
-					<string>1D60588F0D05DD3D006BFB54</string>
-					<string>9255DD331112741900D6945E</string>
-				</array>
-				<key>buildRules</key>
-				<array />
-				<key>dependencies</key>
-				<array>
-					<string>E41D410413B3A11300A75A5D</string>
-				</array>
-				<key>isa</key>
-				<string>PBXNativeTarget</string>
-				<key>name</key>
-				<string>exampleIOS</string>
-				<key>productName</key>
-				<string>iPhone</string>
-				<key>productReference</key>
-				<string>1D6058910D05DD3D006BFB54</string>
-				<key>productType</key>
-				<string>com.apple.product-type.application</string>
-			</dict>
-			<key>1D6058910D05DD3D006BFB54</key>
-			<dict>
-				<key>explicitFileType</key>
-				<string>wrapper.application</string>
-				<key>includeInIndex</key>
-				<string>0</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>path</key>
-				<string>exampleIOS.app</string>
-				<key>sourceTree</key>
-				<string>BUILT_PRODUCTS_DIR</string>
-			</dict>
-			<key>1D6058940D05DD3E006BFB54</key>
-			<dict>
-				<key>buildSettings</key>
-				<dict>
-					<key>ALWAYS_SEARCH_USER_PATHS</key>
-					<string>NO</string>
-					<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-					<string>YES</string>
-					<key>GCC_PREFIX_HEADER</key>
-					<string>ofxiOS_Prefix.pch</string>
-					<key>INFOPLIST_FILE</key>
-					<string>ofxiOS-Info.plist</string>
-					<key>PRODUCT_NAME</key>
-					<string>${TARGET_NAME}</string>
-					<key>VALID_ARCHS</key>
-					<string>armv6 armv7</string>
-				</dict>
-				<key>isa</key>
-				<string>XCBuildConfiguration</string>
-				<key>name</key>
-				<string>Debug</string>
-			</dict>
-			<key>1D6058950D05DD3E006BFB54</key>
-			<dict>
-				<key>buildSettings</key>
-				<dict>
-					<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-					<string>YES</string>
-					<key>GCC_PREFIX_HEADER</key>
-					<string>ofxiOS_Prefix.pch</string>
-					<key>INFOPLIST_FILE</key>
-					<string>ofxiOS-Info.plist</string>
-					<key>PRODUCT_NAME</key>
-					<string>${TARGET_NAME}</string>
-					<key>VALID_ARCHS</key>
-					<string>armv6 armv7</string>
-				</dict>
-				<key>isa</key>
-				<string>XCBuildConfiguration</string>
-				<key>name</key>
-				<string>Release</string>
-			</dict>
-			<key>1D6058960D05DD3E006BFB54</key>
-			<dict>
-				<key>buildConfigurations</key>
-				<array>
-					<string>1D6058940D05DD3E006BFB54</string>
-					<string>1D6058950D05DD3E006BFB54</string>
-				</array>
-				<key>defaultConfigurationIsVisible</key>
-				<string>0</string>
-				<key>defaultConfigurationName</key>
-				<string>Release</string>
-				<key>isa</key>
-				<string>XCConfigurationList</string>
-			</dict>
-			<key>1D60589F0D05DD5A006BFB54</key>
-			<dict>
-				<key>fileRef</key>
-				<string>1D30AB110D05D00D00671497</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>1DF5F4DF0D08C38300B7A737</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>UIKit.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/UIKit.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>1DF5F4E00D08C38300B7A737</key>
-			<dict>
-				<key>fileRef</key>
-				<string>1DF5F4DF0D08C38300B7A737</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>288765FC0DF74451002DB57D</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>CoreGraphics.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/CoreGraphics.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>288765FD0DF74451002DB57D</key>
-			<dict>
-				<key>fileRef</key>
-				<string>288765FC0DF74451002DB57D</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>29B97313FDCFA39411CA2CEA</key>
-			<dict>
-				<key>attributes</key>
-				<dict>
-					<key>LastUpgradeCheck</key>
-					<string>0460</string>
-				</dict>
-				<key>buildConfigurationList</key>
-				<string>C01FCF4E08A954540054247B</string>
-				<key>compatibilityVersion</key>
-				<string>Xcode 3.2</string>
-				<key>developmentRegion</key>
-				<string>English</string>
-				<key>hasScannedForEncodings</key>
-				<string>1</string>
-				<key>isa</key>
-				<string>PBXProject</string>
-				<key>knownRegions</key>
-				<array>
-					<string>English</string>
-					<string>Japanese</string>
-					<string>French</string>
-					<string>German</string>
-				</array>
-				<key>mainGroup</key>
-				<string>29B97314FDCFA39411CA2CEA</string>
-				<key>projectDirPath</key>
-				<string />
-				<key>projectReferences</key>
-				<array>
-					<dict>
-						<key>ProductGroup</key>
-						<string>E41D40FE13B3A0D800A75A5D</string>
-						<key>ProjectRef</key>
-						<string>E41D40FD13B3A0D800A75A5D</string>
-					</dict>
-				</array>
-				<key>projectRoot</key>
-				<string />
-				<key>targets</key>
-				<array>
-					<string>1D6058900D05DD3D006BFB54</string>
-				</array>
-			</dict>
-			<key>29B97314FDCFA39411CA2CEA</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>678E130917951536005B6D19</string>
-					<string>678E130717951530005B6D19</string>
-					<string>678E130B1795153C005B6D19</string>
-					<string>678E130D17951540005B6D19</string>
-					<string>678E130F17951549005B6D19</string>
-					<string>E4D8936A11527B74007E1F53</string>
-					<string>BB24E1F710DAA51900E9C588</string>
-					<string>BB16F26B0F2B646B00518274</string>
-					<string>BB16E9930F2B1E5900518274</string>
-					<string>19C28FACFE9D520D11CA2CBB</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>CustomTemplate</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>29B97323FDCFA39411CA2CEA</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>E41D400613B39D2100A75A5D</string>
-					<string>E41D400713B39D2100A75A5D</string>
-					<string>E41D400813B39D2100A75A5D</string>
-					<string>E41D400913B39D2100A75A5D</string>
-					<string>53F323EA10A20EDB00E0DAE4</string>
-					<string>E4A823A312561BE3002F86A2</string>
-					<string>BBE5EAB70F49AD8400F28951</string>
-					<string>BB16EBD80F2B2AB500518274</string>
-					<string>BB16EBD10F2B2A9500518274</string>
-					<string>1DF5F4DF0D08C38300B7A737</string>
-					<string>1D30AB110D05D00D00671497</string>
-					<string>288765FC0DF74451002DB57D</string>
-					<string>5326AEA710A23A0500278DE6</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>core frameworks</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>32CA4F630368D1EE00C91783</key>
-			<dict>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>path</key>
-				<string>ofxiOS_Prefix.pch</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>5326AEA710A23A0500278DE6</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>CoreLocation.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/CoreLocation.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>5326AEA810A23A0500278DE6</key>
-			<dict>
-				<key>fileRef</key>
-				<string>5326AEA710A23A0500278DE6</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>53F323EA10A20EDB00E0DAE4</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>OpenAL.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/OpenAL.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>53F323EB10A20EDB00E0DAE4</key>
-			<dict>
-				<key>fileRef</key>
-				<string>53F323EA10A20EDB00E0DAE4</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>678E130717951530005B6D19</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>image.png</string>
-				<key>name</key>
-				<string>Icon@2x.png</string>
-				<key>path</key>
-				<string>bin/data/Icon@2x.png</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>678E130817951530005B6D19</key>
-			<dict>
-				<key>fileRef</key>
-				<string>678E130717951530005B6D19</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>678E130917951536005B6D19</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>image.png</string>
-				<key>name</key>
-				<string>Icon.png</string>
-				<key>path</key>
-				<string>bin/data/Icon.png</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>678E130A17951536005B6D19</key>
-			<dict>
-				<key>fileRef</key>
-				<string>678E130917951536005B6D19</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>678E130B1795153C005B6D19</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>image.png</string>
-				<key>name</key>
-				<string>Default.png</string>
-				<key>path</key>
-				<string>bin/data/Default.png</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>678E130C1795153C005B6D19</key>
-			<dict>
-				<key>fileRef</key>
-				<string>678E130B1795153C005B6D19</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>678E130D17951540005B6D19</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>image.png</string>
-				<key>name</key>
-				<string>Default@2x.png</string>
-				<key>path</key>
-				<string>bin/data/Default@2x.png</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>678E130E17951540005B6D19</key>
-			<dict>
-				<key>fileRef</key>
-				<string>678E130D17951540005B6D19</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>678E130F17951549005B6D19</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>image.png</string>
-				<key>name</key>
-				<string>Default-568h@2x~iphone.png</string>
-				<key>path</key>
-				<string>bin/data/Default-568h@2x~iphone.png</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>678E131017951549005B6D19</key>
-			<dict>
-				<key>fileRef</key>
-				<string>678E130F17951549005B6D19</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>9255DD331112741900D6945E</key>
-			<dict>
-				<key>buildActionMask</key>
-				<string>2147483647</string>
-				<key>files</key>
-				<array />
-				<key>inputPaths</key>
-				<array />
-				<key>isa</key>
-				<string>PBXShellScriptBuildPhase</string>
-				<key>outputPaths</key>
-				<array />
-				<key>runOnlyForDeploymentPostprocessing</key>
-				<string>0</string>
-				<key>shellPath</key>
-				<string>/bin/sh</string>
-				<key>shellScript</key>
-				<string>cp -rf bin/data/ "$TARGET_BUILD_DIR/$PRODUCT_NAME.app"
-</string>
-			</dict>
-			<key>BB16E9930F2B1E5900518274</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>BBE5E94E0F497BD800F28951</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>libs</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>BB16EBD10F2B2A9500518274</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>OpenGLES.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/OpenGLES.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>BB16EBD20F2B2A9500518274</key>
-			<dict>
-				<key>fileRef</key>
-				<string>BB16EBD10F2B2A9500518274</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>BB16EBD80F2B2AB500518274</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>QuartzCore.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/QuartzCore.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>BB16EBD90F2B2AB500518274</key>
-			<dict>
-				<key>fileRef</key>
-				<string>BB16EBD80F2B2AB500518274</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>BB16F26B0F2B646B00518274</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>2413c01760b1811bed0f502d</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>addons</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>BB24DDC910DA781C00E9C588</key>
-			<dict>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>text.plist.xml</string>
-				<key>path</key>
-				<string>ofxiOS-Info.plist</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>BB24E1F710DAA51900E9C588</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>E41D40FD13B3A0D800A75A5D</string>
-					<string>32CA4F630368D1EE00C91783</string>
-					<string>BB24DDC910DA781C00E9C588</string>
-					<string>E41D3EE513B3906D00A75A5D</string>
-					<string>E41D3ED613B38FB500A75A5D</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>openFrameworks</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>BBE5E94E0F497BD800F28951</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>29B97323FDCFA39411CA2CEA</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>core</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>BBE5EAB70F49AD8400F28951</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>AudioToolbox.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/AudioToolbox.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>BBE5EAB80F49AD8400F28951</key>
-			<dict>
-				<key>fileRef</key>
-				<string>BBE5EAB70F49AD8400F28951</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>C01FCF4E08A954540054247B</key>
-			<dict>
-				<key>buildConfigurations</key>
-				<array>
-					<string>C01FCF4F08A954540054247B</string>
-					<string>C01FCF5008A954540054247B</string>
-				</array>
-				<key>defaultConfigurationIsVisible</key>
-				<string>0</string>
-				<key>defaultConfigurationName</key>
-				<string>Release</string>
-				<key>isa</key>
-				<string>XCConfigurationList</string>
-			</dict>
-			<key>C01FCF4F08A954540054247B</key>
-			<dict>
-				<key>baseConfigurationReference</key>
-				<string>E41D3ED613B38FB500A75A5D</string>
-				<key>buildSettings</key>
-				<dict>
-					<key>HEADER_SEARCH_PATHS</key>
-					<array>
-						<string>$(OF_CORE_HEADERS)</string>
-						<string>../../../addons/ofxMidi/libs</string>
-						<string>../../../addons/ofxMidi/libs/pgmidi</string>
-						<string>../../../addons/ofxMidi/libs/portmidi</string>
-						<string>../../../addons/ofxMidi/libs/rtmidi</string>
-						<string>../../../addons/ofxMidi/src</string>
-						<string>../../../addons/ofxMidi/src/desktop</string>
-						<string>../../../addons/ofxMidi/src/ios</string>
-						<string>src</string>
-					</array>
-					<key>ALWAYS_SEARCH_USER_PATHS</key>
-					<string>YES</string>
-					<key>ARCHS</key>
-					<string>$(ARCHS_STANDARD_32_BIT)</string>
-					<key>CODE_SIGN_IDENTITY</key>
-					<string />
-					<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-					<string>iPhone Developer</string>
-					<key>COMPRESS_PNG_FILES</key>
-					<string>NO</string>
-					<key>GCC_C_LANGUAGE_STANDARD</key>
-					<string>c99</string>
-					<key>GCC_OPTIMIZATION_LEVEL</key>
-					<string>0</string>
-					<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-					<string>NO</string>
-					<key>GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO</key>
-					<string>NO</string>
-					<key>GCC_WARN_ABOUT_POINTER_SIGNEDNESS</key>
-					<string>NO</string>
-					<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-					<string>YES</string>
-					<key>GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL</key>
-					<string>NO</string>
-					<key>GCC_WARN_PROTOTYPE_CONVERSION</key>
-					<string>NO</string>
-					<key>GCC_WARN_UNUSED_VARIABLE</key>
-					<string>YES</string>
-					<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-					<string>3.1</string>
-					<key>ONLY_ACTIVE_ARCH</key>
-					<string>NO</string>
-					<key>PROVISIONING_PROFILE[sdk=iphoneos*]</key>
-					<string />
-					<key>SDKROOT</key>
-					<string>iphoneos</string>
-					<key>TARGETED_DEVICE_FAMILY</key>
-					<string>1</string>
-					<key>WARNING_LDFLAGS</key>
-					<string>-no_arch_warnings</string>
-				</dict>
-				<key>isa</key>
-				<string>XCBuildConfiguration</string>
-				<key>name</key>
-				<string>Debug</string>
-			</dict>
-			<key>C01FCF5008A954540054247B</key>
-			<dict>
-				<key>baseConfigurationReference</key>
-				<string>E41D3ED613B38FB500A75A5D</string>
-				<key>buildSettings</key>
-				<dict>
-					<key>HEADER_SEARCH_PATHS</key>
-					<array>
-						<string>$(OF_CORE_HEADERS)</string>
-						<string>../../../addons/ofxMidi/libs</string>
-						<string>../../../addons/ofxMidi/libs/pgmidi</string>
-						<string>../../../addons/ofxMidi/libs/portmidi</string>
-						<string>../../../addons/ofxMidi/libs/rtmidi</string>
-						<string>../../../addons/ofxMidi/src</string>
-						<string>../../../addons/ofxMidi/src/desktop</string>
-						<string>../../../addons/ofxMidi/src/ios</string>
-						<string>src</string>
-					</array>
-					<key>ALWAYS_SEARCH_USER_PATHS</key>
-					<string>YES</string>
-					<key>ARCHS</key>
-					<string>$(ARCHS_STANDARD_32_BIT)</string>
-					<key>CODE_SIGN_IDENTITY</key>
-					<string />
-					<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-					<string>iPhone Developer</string>
-					<key>COMPRESS_PNG_FILES</key>
-					<string>NO</string>
-					<key>GCC_C_LANGUAGE_STANDARD</key>
-					<string>c99</string>
-					<key>GCC_DYNAMIC_NO_PIC</key>
-					<string>YES</string>
-					<key>GCC_GENERATE_DEBUGGING_SYMBOLS</key>
-					<string>NO</string>
-					<key>GCC_OPTIMIZATION_LEVEL</key>
-					<string>3</string>
-					<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-					<string>NO</string>
-					<key>GCC_THUMB_SUPPORT</key>
-					<string>NO</string>
-					<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-					<string>YES</string>
-					<key>GCC_WARN_UNUSED_VARIABLE</key>
-					<string>YES</string>
-					<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-					<string>3.1</string>
-					<key>ONLY_ACTIVE_ARCH</key>
-					<string>NO</string>
-					<key>SDKROOT</key>
-					<string>iphoneos</string>
-					<key>TARGETED_DEVICE_FAMILY</key>
-					<string>1</string>
-					<key>WARNING_LDFLAGS</key>
-					<string>-no_arch_warnings</string>
-				</dict>
-				<key>isa</key>
-				<string>XCBuildConfiguration</string>
-				<key>name</key>
-				<string>Release</string>
-			</dict>
-			<key>E41D3ED613B38FB500A75A5D</key>
-			<dict>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>text.xcconfig</string>
-				<key>path</key>
-				<string>Project.xcconfig</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>E41D3ED713B38FB500A75A5D</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E41D3ED613B38FB500A75A5D</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E41D3EE513B3906D00A75A5D</key>
-			<dict>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>text.xcconfig</string>
-				<key>name</key>
-				<string>CoreOF.xcconfig</string>
-				<key>path</key>
-				<string>../../../libs/openFrameworksCompiled/project/ios/CoreOF.xcconfig</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>E41D3EE613B3906D00A75A5D</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E41D3EE513B3906D00A75A5D</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E41D400613B39D2100A75A5D</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>AVFoundation.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/AVFoundation.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>E41D400713B39D2100A75A5D</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>CoreMedia.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/CoreMedia.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>E41D400813B39D2100A75A5D</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>CoreVideo.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/CoreVideo.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>E41D400913B39D2100A75A5D</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>MapKit.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/MapKit.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>E41D400B13B39D2100A75A5D</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E41D400613B39D2100A75A5D</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E41D400C13B39D2100A75A5D</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E41D400713B39D2100A75A5D</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E41D400D13B39D2100A75A5D</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E41D400813B39D2100A75A5D</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E41D400E13B39D2100A75A5D</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E41D400913B39D2100A75A5D</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E41D40FD13B3A0D800A75A5D</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.pb-project</string>
-				<key>name</key>
-				<string>iOS+OFLib.xcodeproj</string>
-				<key>path</key>
-				<string>../../../libs/openFrameworksCompiled/project/ios/iOS+OFLib.xcodeproj</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>E41D40FE13B3A0D800A75A5D</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>E41D410213B3A0D800A75A5D</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>name</key>
-				<string>Products</string>
-				<key>sourceTree</key>
-				<string>&lt;group&gt;</string>
-			</dict>
-			<key>E41D410113B3A0D800A75A5D</key>
-			<dict>
-				<key>containerPortal</key>
-				<string>E41D40FD13B3A0D800A75A5D</string>
-				<key>isa</key>
-				<string>PBXContainerItemProxy</string>
-				<key>proxyType</key>
-				<string>2</string>
-				<key>remoteGlobalIDString</key>
-				<string>BB24DED610DA7A3F00E9C588</string>
-				<key>remoteInfo</key>
-				<string>iPhone+OF Static Library</string>
-			</dict>
-			<key>E41D410213B3A0D800A75A5D</key>
-			<dict>
-				<key>fileType</key>
-				<string>archive.ar</string>
-				<key>isa</key>
-				<string>PBXReferenceProxy</string>
-				<key>path</key>
-				<string>libofxiPhone_iphoneos_Debug.a</string>
-				<key>remoteRef</key>
-				<string>E41D410113B3A0D800A75A5D</string>
-				<key>sourceTree</key>
-				<string>BUILT_PRODUCTS_DIR</string>
-			</dict>
-			<key>E41D410313B3A11300A75A5D</key>
-			<dict>
-				<key>containerPortal</key>
-				<string>E41D40FD13B3A0D800A75A5D</string>
-				<key>isa</key>
-				<string>PBXContainerItemProxy</string>
-				<key>proxyType</key>
-				<string>1</string>
-				<key>remoteGlobalIDString</key>
-				<string>BB24DE5C10DA7A3F00E9C588</string>
-				<key>remoteInfo</key>
-				<string>iPhone+OF Static Library</string>
-			</dict>
-			<key>E41D410413B3A11300A75A5D</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXTargetDependency</string>
-				<key>name</key>
-				<string>iPhone+OF Static Library</string>
-				<key>targetProxy</key>
-				<string>E41D410313B3A11300A75A5D</string>
-			</dict>
-			<key>E41D421413B3A95300A75A5D</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E41D410213B3A0D800A75A5D</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E4A823A312561BE3002F86A2</key>
-			<dict>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>wrapper.framework</string>
-				<key>name</key>
-				<string>CoreGraphics.framework</string>
-				<key>path</key>
-				<string>System/Library/Frameworks/CoreGraphics.framework</string>
-				<key>sourceTree</key>
-				<string>SDKROOT</string>
-			</dict>
-			<key>E4A823A412561BE3002F86A2</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E4A823A312561BE3002F86A2</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E4D8936A11527B74007E1F53</key>
-			<dict>
-				<key>children</key>
-				<array>
-					<string>E4D8936B11527B74007E1F53</string>
-					<string>E4D8936D11527B74007E1F53</string>
-					<string>E4D8936C11527B74007E1F53</string>
-				</array>
-				<key>isa</key>
-				<string>PBXGroup</string>
-				<key>path</key>
-				<string>src</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>E4D8936B11527B74007E1F53</key>
-			<dict>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>sourcecode.cpp.objcpp</string>
-				<key>name</key>
-				<string>main.mm</string>
-				<key>path</key>
-				<string>src/main.mm</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>E4D8936C11527B74007E1F53</key>
-			<dict>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>sourcecode.c.h</string>
-				<key>name</key>
-				<string>testApp.h</string>
-				<key>path</key>
-				<string>src/testApp.h</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>E4D8936D11527B74007E1F53</key>
-			<dict>
-				<key>fileEncoding</key>
-				<string>4</string>
-				<key>isa</key>
-				<string>PBXFileReference</string>
-				<key>lastKnownFileType</key>
-				<string>sourcecode.cpp.objcpp</string>
-				<key>name</key>
-				<string>testApp.mm</string>
-				<key>path</key>
-				<string>src/testApp.mm</string>
-				<key>sourceTree</key>
-				<string>SOURCE_ROOT</string>
-			</dict>
-			<key>E4D8936E11527B74007E1F53</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E4D8936B11527B74007E1F53</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-			<key>E4D8936F11527B74007E1F53</key>
-			<dict>
-				<key>fileRef</key>
-				<string>E4D8936D11527B74007E1F53</string>
-				<key>isa</key>
-				<string>PBXBuildFile</string>
-			</dict>
-		</dict>
-		<key>rootObject</key>
-		<string>29B97313FDCFA39411CA2CEA</string>
-	</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0bfc9c20fd7e3c8d5873aa97 /* ofxMidiIn.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 3dd359247f3ed1550d8bb5c9 /* ofxMidiIn.cpp */; };
+		0d7f7661e98534e5ccf89f07 /* ofxPGMidiSourceDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 235261de16f1fe6990ee1f87 /* ofxPGMidiSourceDelegate.mm */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		1a86b7721caebc6f1c572c45 /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94b3c3c21f92f9310ca90986 /* ofxBaseMidi.cpp */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		30B8B9F0181EEFDA0055C45D /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B8B9EF181EEFDA0055C45D /* CoreMIDI.framework */; };
+		3b4e4b5aa9647fb99e56f32b /* ofxPGMidiDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = ca4ab6b52e7cd8e55809fc2e /* ofxPGMidiDelegate.mm */; };
+		5326AEA810A23A0500278DE6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5326AEA710A23A0500278DE6 /* CoreLocation.framework */; };
+		53F323EB10A20EDB00E0DAE4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */; };
+		63f9fe1d90234fa6de6f509e /* ofxMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = e238ccde032640e0febfad82 /* ofxMidi.cpp */; };
+		678E130817951530005B6D19 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 678E130717951530005B6D19 /* Icon@2x.png */; };
+		678E130A17951536005B6D19 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 678E130917951536005B6D19 /* Icon.png */; };
+		678E130C1795153C005B6D19 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 678E130B1795153C005B6D19 /* Default.png */; };
+		678E130E17951540005B6D19 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 678E130D17951540005B6D19 /* Default@2x.png */; };
+		678E131017951549005B6D19 /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 678E130F17951549005B6D19 /* Default-568h@2x~iphone.png */; };
+		6bafb907a8c8c80501623ccd /* ofxPGMidiOut.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1557e2cdf7e0e68bc79768f0 /* ofxPGMidiOut.mm */; };
+		83d9f930112e0944444124ee /* ofxMidiOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 04f77e5c73a62e2e77c78ec6 /* ofxMidiOut.cpp */; };
+		BB16EBD20F2B2A9500518274 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB16EBD10F2B2A9500518274 /* OpenGLES.framework */; };
+		BB16EBD90F2B2AB500518274 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB16EBD80F2B2AB500518274 /* QuartzCore.framework */; };
+		BBE5EAB80F49AD8400F28951 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE5EAB70F49AD8400F28951 /* AudioToolbox.framework */; };
+		E41D3ED713B38FB500A75A5D /* Project.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E41D3ED613B38FB500A75A5D /* Project.xcconfig */; };
+		E41D3EE613B3906D00A75A5D /* CoreOF.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E41D3EE513B3906D00A75A5D /* CoreOF.xcconfig */; };
+		E41D400B13B39D2100A75A5D /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D400613B39D2100A75A5D /* AVFoundation.framework */; };
+		E41D400C13B39D2100A75A5D /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D400713B39D2100A75A5D /* CoreMedia.framework */; };
+		E41D400D13B39D2100A75A5D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D400813B39D2100A75A5D /* CoreVideo.framework */; };
+		E41D400E13B39D2100A75A5D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D400913B39D2100A75A5D /* MapKit.framework */; };
+		E41D421413B3A95300A75A5D /* libofxiOS_iphoneos_Debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D410213B3A0D800A75A5D /* libofxiOS_iphoneos_Debug.a */; };
+		E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A823A312561BE3002F86A2 /* CoreGraphics.framework */; };
+		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
+		E4D8936F11527B74007E1F53 /* testApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* testApp.mm */; };
+		b5e63eb7547183befc4b65a7 /* ofxPGMidiContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1f34a72f1976ddccf95fab5c /* ofxPGMidiContext.mm */; };
+		c6fe64f74f1ea1d98c8f9847 /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = c0e7eda67edf213fc0e83d17 /* ofxMidiMessage.cpp */; };
+		d3b9ff32d08e7ff01cba4117 /* ofxPGMidiIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 406bb125dda2264c09f7187d /* ofxPGMidiIn.mm */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E41D410113B3A0D800A75A5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E41D40FD13B3A0D800A75A5D /* iOS+OFLib.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BB24DED610DA7A3F00E9C588;
+			remoteInfo = "iPhone+OF Static Library";
+		};
+		E41D410313B3A11300A75A5D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E41D40FD13B3A0D800A75A5D /* iOS+OFLib.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BB24DE5C10DA7A3F00E9C588;
+			remoteInfo = "iPhone+OF Static Library";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		034f4d5ebaa91828536a1ba9 /* PGMidiAllSources.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PGMidiAllSources.h; path = ../../../addons/ofxMidi/libs/pgmidi/PGMidiAllSources.h; sourceTree = SOURCE_ROOT; };
+		04f77e5c73a62e2e77c78ec6 /* ofxMidiOut.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiOut.cpp; path = ../../../addons/ofxMidi/src/ofxMidiOut.cpp; sourceTree = SOURCE_ROOT; };
+		05f6cf127d4a621113d4a62f /* ofxMidi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidi.h; path = ../../../addons/ofxMidi/src/ofxMidi.h; sourceTree = SOURCE_ROOT; };
+		0f888bb417e265dd5f5ff334 /* iOSVersionDetection.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = iOSVersionDetection.h; path = ../../../addons/ofxMidi/libs/pgmidi/iOSVersionDetection.h; sourceTree = SOURCE_ROOT; };
+		1557e2cdf7e0e68bc79768f0 /* ofxPGMidiOut.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = ofxPGMidiOut.mm; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiOut.mm; sourceTree = SOURCE_ROOT; };
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* exampleIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = exampleIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1f34a72f1976ddccf95fab5c /* ofxPGMidiContext.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = ofxPGMidiContext.mm; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiContext.mm; sourceTree = SOURCE_ROOT; };
+		20481ef45bfaeb2c9a623713 /* ofxPGMidiDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPGMidiDelegate.h; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiDelegate.h; sourceTree = SOURCE_ROOT; };
+		235261de16f1fe6990ee1f87 /* ofxPGMidiSourceDelegate.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = ofxPGMidiSourceDelegate.mm; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiSourceDelegate.mm; sourceTree = SOURCE_ROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		30B8B9EF181EEFDA0055C45D /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		31317daf63909d58058dc81e /* ofxPGMidiSourceDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPGMidiSourceDelegate.h; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiSourceDelegate.h; sourceTree = SOURCE_ROOT; };
+		32CA4F630368D1EE00C91783 /* ofxiOS_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxiOS_Prefix.pch; sourceTree = "<group>"; };
+		3dd359247f3ed1550d8bb5c9 /* ofxMidiIn.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiIn.cpp; path = ../../../addons/ofxMidi/src/ofxMidiIn.cpp; sourceTree = SOURCE_ROOT; };
+		406bb125dda2264c09f7187d /* ofxPGMidiIn.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = ofxPGMidiIn.mm; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiIn.mm; sourceTree = SOURCE_ROOT; };
+		4310befde24ff04febee8086 /* ofxBaseMidi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxBaseMidi.h; path = ../../../addons/ofxMidi/src/ofxBaseMidi.h; sourceTree = SOURCE_ROOT; };
+		5326AEA710A23A0500278DE6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
+		60cdebcc39a58241e253ef20 /* PGArc.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PGArc.h; path = ../../../addons/ofxMidi/libs/pgmidi/PGArc.h; sourceTree = SOURCE_ROOT; };
+		678E130717951530005B6D19 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "bin/data/Icon@2x.png"; sourceTree = "<group>"; };
+		678E130917951536005B6D19 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = bin/data/Icon.png; sourceTree = "<group>"; };
+		678E130B1795153C005B6D19 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = bin/data/Default.png; sourceTree = "<group>"; };
+		678E130D17951540005B6D19 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "bin/data/Default@2x.png"; sourceTree = "<group>"; };
+		678E130F17951549005B6D19 /* Default-568h@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x~iphone.png"; path = "bin/data/Default-568h@2x~iphone.png"; sourceTree = "<group>"; };
+		6cfe765b0e101938ff5ece21 /* ofxPGMidiIn.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPGMidiIn.h; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiIn.h; sourceTree = SOURCE_ROOT; };
+		7d368d8248728521ee1f3c09 /* ofxPGMidiContext.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPGMidiContext.h; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiContext.h; sourceTree = SOURCE_ROOT; };
+		81436e53cc4a77e326f659c3 /* ofxMidiOut.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidiOut.h; path = ../../../addons/ofxMidi/src/ofxMidiOut.h; sourceTree = SOURCE_ROOT; };
+		938214a2795aa8fed29086db /* ofxMidiConstants.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidiConstants.h; path = ../../../addons/ofxMidi/src/ofxMidiConstants.h; sourceTree = SOURCE_ROOT; };
+		94b3c3c21f92f9310ca90986 /* ofxBaseMidi.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBaseMidi.cpp; path = ../../../addons/ofxMidi/src/ofxBaseMidi.cpp; sourceTree = SOURCE_ROOT; };
+		BB16EBD10F2B2A9500518274 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		BB16EBD80F2B2AB500518274 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BB24DDC910DA781C00E9C588 /* ofxiOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "ofxiOS-Info.plist"; sourceTree = "<group>"; };
+		BBE5EAB70F49AD8400F28951 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		E41D3ED613B38FB500A75A5D /* Project.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		E41D3EE513B3906D00A75A5D /* CoreOF.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = CoreOF.xcconfig; path = ../../../libs/openFrameworksCompiled/project/ios/CoreOF.xcconfig; sourceTree = SOURCE_ROOT; };
+		E41D400613B39D2100A75A5D /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E41D400713B39D2100A75A5D /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		E41D400813B39D2100A75A5D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		E41D400913B39D2100A75A5D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		E41D40FD13B3A0D800A75A5D /* iOS+OFLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "iOS+OFLib.xcodeproj"; path = "../../../libs/openFrameworksCompiled/project/ios/iOS+OFLib.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		E4A823A312561BE3002F86A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		E4D8936B11527B74007E1F53 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = src/main.mm; sourceTree = SOURCE_ROOT; };
+		E4D8936C11527B74007E1F53 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
+		E4D8936D11527B74007E1F53 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = testApp.mm; path = src/testApp.mm; sourceTree = SOURCE_ROOT; };
+		a70455a65fa800eaa77e2bc0 /* PGMidiFind.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PGMidiFind.h; path = ../../../addons/ofxMidi/libs/pgmidi/PGMidiFind.h; sourceTree = SOURCE_ROOT; };
+		a83c49197f5cc83db6afd84a /* ofxPGMidiOut.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPGMidiOut.h; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiOut.h; sourceTree = SOURCE_ROOT; };
+		b76fa489151dbaf1616df378 /* ofxMidiIn.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidiIn.h; path = ../../../addons/ofxMidi/src/ofxMidiIn.h; sourceTree = SOURCE_ROOT; };
+		bbee862403127aa5d485e254 /* PGMidi.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PGMidi.h; path = ../../../addons/ofxMidi/libs/pgmidi/PGMidi.h; sourceTree = SOURCE_ROOT; };
+		bd0e7ac8be205034d5b377a6 /* ofxMidiMessage.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidiMessage.h; path = ../../../addons/ofxMidi/src/ofxMidiMessage.h; sourceTree = SOURCE_ROOT; };
+		c0e7eda67edf213fc0e83d17 /* ofxMidiMessage.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidiMessage.cpp; path = ../../../addons/ofxMidi/src/ofxMidiMessage.cpp; sourceTree = SOURCE_ROOT; };
+		ca4ab6b52e7cd8e55809fc2e /* ofxPGMidiDelegate.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = ofxPGMidiDelegate.mm; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiDelegate.mm; sourceTree = SOURCE_ROOT; };
+		e16bb73d19dd0713fdcc7986 /* ofxMidiTypes.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidiTypes.h; path = ../../../addons/ofxMidi/src/ofxMidiTypes.h; sourceTree = SOURCE_ROOT; };
+		e238ccde032640e0febfad82 /* ofxMidi.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxMidi.cpp; path = ../../../addons/ofxMidi/src/ofxMidi.cpp; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				30B8B9F0181EEFDA0055C45D /* CoreMIDI.framework in Frameworks */,
+				E41D421413B3A95300A75A5D /* libofxiOS_iphoneos_Debug.a in Frameworks */,
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				BB16EBD20F2B2A9500518274 /* OpenGLES.framework in Frameworks */,
+				BB16EBD90F2B2AB500518274 /* QuartzCore.framework in Frameworks */,
+				BBE5EAB80F49AD8400F28951 /* AudioToolbox.framework in Frameworks */,
+				53F323EB10A20EDB00E0DAE4 /* OpenAL.framework in Frameworks */,
+				5326AEA810A23A0500278DE6 /* CoreLocation.framework in Frameworks */,
+				E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */,
+				E41D400B13B39D2100A75A5D /* AVFoundation.framework in Frameworks */,
+				E41D400C13B39D2100A75A5D /* CoreMedia.framework in Frameworks */,
+				E41D400D13B39D2100A75A5D /* CoreVideo.framework in Frameworks */,
+				E41D400E13B39D2100A75A5D /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		17d92c09804d6ffa4dc64a3f /* ios */ = {
+			isa = PBXGroup;
+			children = (
+				7d368d8248728521ee1f3c09 /* ofxPGMidiContext.h */,
+				1f34a72f1976ddccf95fab5c /* ofxPGMidiContext.mm */,
+				20481ef45bfaeb2c9a623713 /* ofxPGMidiDelegate.h */,
+				ca4ab6b52e7cd8e55809fc2e /* ofxPGMidiDelegate.mm */,
+				6cfe765b0e101938ff5ece21 /* ofxPGMidiIn.h */,
+				406bb125dda2264c09f7187d /* ofxPGMidiIn.mm */,
+				a83c49197f5cc83db6afd84a /* ofxPGMidiOut.h */,
+				1557e2cdf7e0e68bc79768f0 /* ofxPGMidiOut.mm */,
+				31317daf63909d58058dc81e /* ofxPGMidiSourceDelegate.h */,
+				235261de16f1fe6990ee1f87 /* ofxPGMidiSourceDelegate.mm */,
+			);
+			name = ios;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* exampleIOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2413c01760b1811bed0f502d /* ofxMidi */ = {
+			isa = PBXGroup;
+			children = (
+				9cbf51184be294fd9d73043f /* src */,
+				5a08ccdc8d19e7162de57128 /* libs */,
+			);
+			name = ofxMidi;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				30B8B9EF181EEFDA0055C45D /* CoreMIDI.framework */,
+				678E130917951536005B6D19 /* Icon.png */,
+				678E130717951530005B6D19 /* Icon@2x.png */,
+				678E130B1795153C005B6D19 /* Default.png */,
+				678E130D17951540005B6D19 /* Default@2x.png */,
+				678E130F17951549005B6D19 /* Default-568h@2x~iphone.png */,
+				E4D8936A11527B74007E1F53 /* src */,
+				BB24E1F710DAA51900E9C588 /* openFrameworks */,
+				BB16F26B0F2B646B00518274 /* addons */,
+				BB16E9930F2B1E5900518274 /* libs */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* core frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E41D400613B39D2100A75A5D /* AVFoundation.framework */,
+				E41D400713B39D2100A75A5D /* CoreMedia.framework */,
+				E41D400813B39D2100A75A5D /* CoreVideo.framework */,
+				E41D400913B39D2100A75A5D /* MapKit.framework */,
+				53F323EA10A20EDB00E0DAE4 /* OpenAL.framework */,
+				E4A823A312561BE3002F86A2 /* CoreGraphics.framework */,
+				BBE5EAB70F49AD8400F28951 /* AudioToolbox.framework */,
+				BB16EBD80F2B2AB500518274 /* QuartzCore.framework */,
+				BB16EBD10F2B2A9500518274 /* OpenGLES.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+				5326AEA710A23A0500278DE6 /* CoreLocation.framework */,
+			);
+			name = "core frameworks";
+			sourceTree = "<group>";
+		};
+		45020a3b9d9c109a16ca0e43 /* pgmidi */ = {
+			isa = PBXGroup;
+			children = (
+				0f888bb417e265dd5f5ff334 /* iOSVersionDetection.h */,
+				60cdebcc39a58241e253ef20 /* PGArc.h */,
+				bbee862403127aa5d485e254 /* PGMidi.h */,
+				034f4d5ebaa91828536a1ba9 /* PGMidiAllSources.h */,
+				a70455a65fa800eaa77e2bc0 /* PGMidiFind.h */,
+			);
+			name = pgmidi;
+			sourceTree = "<group>";
+		};
+		5a08ccdc8d19e7162de57128 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				45020a3b9d9c109a16ca0e43 /* pgmidi */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		9cbf51184be294fd9d73043f /* src */ = {
+			isa = PBXGroup;
+			children = (
+				17d92c09804d6ffa4dc64a3f /* ios */,
+				94b3c3c21f92f9310ca90986 /* ofxBaseMidi.cpp */,
+				4310befde24ff04febee8086 /* ofxBaseMidi.h */,
+				e238ccde032640e0febfad82 /* ofxMidi.cpp */,
+				05f6cf127d4a621113d4a62f /* ofxMidi.h */,
+				938214a2795aa8fed29086db /* ofxMidiConstants.h */,
+				3dd359247f3ed1550d8bb5c9 /* ofxMidiIn.cpp */,
+				b76fa489151dbaf1616df378 /* ofxMidiIn.h */,
+				c0e7eda67edf213fc0e83d17 /* ofxMidiMessage.cpp */,
+				bd0e7ac8be205034d5b377a6 /* ofxMidiMessage.h */,
+				04f77e5c73a62e2e77c78ec6 /* ofxMidiOut.cpp */,
+				81436e53cc4a77e326f659c3 /* ofxMidiOut.h */,
+				e16bb73d19dd0713fdcc7986 /* ofxMidiTypes.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		BB16E9930F2B1E5900518274 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				BBE5E94E0F497BD800F28951 /* core */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		BB16F26B0F2B646B00518274 /* addons */ = {
+			isa = PBXGroup;
+			children = (
+				2413c01760b1811bed0f502d /* ofxMidi */,
+			);
+			name = addons;
+			sourceTree = "<group>";
+		};
+		BB24E1F710DAA51900E9C588 /* openFrameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E41D40FD13B3A0D800A75A5D /* iOS+OFLib.xcodeproj */,
+				32CA4F630368D1EE00C91783 /* ofxiOS_Prefix.pch */,
+				BB24DDC910DA781C00E9C588 /* ofxiOS-Info.plist */,
+				E41D3EE513B3906D00A75A5D /* CoreOF.xcconfig */,
+				E41D3ED613B38FB500A75A5D /* Project.xcconfig */,
+			);
+			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		BBE5E94E0F497BD800F28951 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				29B97323FDCFA39411CA2CEA /* core frameworks */,
+			);
+			name = core;
+			sourceTree = "<group>";
+		};
+		E41D40FE13B3A0D800A75A5D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E41D410213B3A0D800A75A5D /* libofxiOS_iphoneos_Debug.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E4D8936A11527B74007E1F53 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				E4D8936B11527B74007E1F53 /* main.mm */,
+				E4D8936D11527B74007E1F53 /* testApp.mm */,
+				E4D8936C11527B74007E1F53 /* testApp.h */,
+			);
+			path = src;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* exampleIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "exampleIOS" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+				9255DD331112741900D6945E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E41D410413B3A11300A75A5D /* PBXTargetDependency */,
+			);
+			name = exampleIOS;
+			productName = iPhone;
+			productReference = 1D6058910D05DD3D006BFB54 /* exampleIOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+			};
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "exampleIOS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = E41D40FE13B3A0D800A75A5D /* Products */;
+					ProjectRef = E41D40FD13B3A0D800A75A5D /* iOS+OFLib.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* exampleIOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		E41D410213B3A0D800A75A5D /* libofxiOS_iphoneos_Debug.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libofxiOS_iphoneos_Debug.a;
+			remoteRef = E41D410113B3A0D800A75A5D /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E41D3ED713B38FB500A75A5D /* Project.xcconfig in Resources */,
+				E41D3EE613B3906D00A75A5D /* CoreOF.xcconfig in Resources */,
+				678E130817951530005B6D19 /* Icon@2x.png in Resources */,
+				678E130A17951536005B6D19 /* Icon.png in Resources */,
+				678E130C1795153C005B6D19 /* Default.png in Resources */,
+				678E130E17951540005B6D19 /* Default@2x.png in Resources */,
+				678E131017951549005B6D19 /* Default-568h@2x~iphone.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9255DD331112741900D6945E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cp -rf bin/data/ \"$TARGET_BUILD_DIR/$PRODUCT_NAME.app\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
+				E4D8936F11527B74007E1F53 /* testApp.mm in Sources */,
+				b5e63eb7547183befc4b65a7 /* ofxPGMidiContext.mm in Sources */,
+				3b4e4b5aa9647fb99e56f32b /* ofxPGMidiDelegate.mm in Sources */,
+				d3b9ff32d08e7ff01cba4117 /* ofxPGMidiIn.mm in Sources */,
+				6bafb907a8c8c80501623ccd /* ofxPGMidiOut.mm in Sources */,
+				0d7f7661e98534e5ccf89f07 /* ofxPGMidiSourceDelegate.mm in Sources */,
+				1a86b7721caebc6f1c572c45 /* ofxBaseMidi.cpp in Sources */,
+				63f9fe1d90234fa6de6f509e /* ofxMidi.cpp in Sources */,
+				0bfc9c20fd7e3c8d5873aa97 /* ofxMidiIn.cpp in Sources */,
+				c6fe64f74f1ea1d98c8f9847 /* ofxMidiMessage.cpp in Sources */,
+				83d9f930112e0944444124ee /* ofxMidiOut.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E41D410413B3A11300A75A5D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "iPhone+OF Static Library";
+			targetProxy = E41D410313B3A11300A75A5D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ofxiOS_Prefix.pch;
+				INFOPLIST_FILE = "ofxiOS-Info.plist";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				VALID_ARCHS = "armv6 armv7";
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = ofxiOS_Prefix.pch;
+				INFOPLIST_FILE = "ofxiOS-Info.plist";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				VALID_ARCHS = "armv6 armv7";
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E41D3ED613B38FB500A75A5D /* Project.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = NO;
+				GCC_WARN_ABOUT_POINTER_SIGNEDNESS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
+				GCC_WARN_PROTOTYPE_CONVERSION = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxMidi/libs,
+					../../../addons/ofxMidi/libs/pgmidi,
+					../../../addons/ofxMidi/libs/portmidi,
+					../../../addons/ofxMidi/libs/rtmidi,
+					../../../addons/ofxMidi/src,
+					../../../addons/ofxMidi/src/desktop,
+					../../../addons/ofxMidi/src/ios,
+					src,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				ONLY_ACTIVE_ARCH = NO;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				WARNING_LDFLAGS = "-no_arch_warnings";
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E41D3ED613B38FB500A75A5D /* Project.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COMPRESS_PNG_FILES = NO;
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(OF_CORE_HEADERS)",
+					../../../addons/ofxMidi/libs,
+					../../../addons/ofxMidi/libs/pgmidi,
+					../../../addons/ofxMidi/libs/portmidi,
+					../../../addons/ofxMidi/libs/rtmidi,
+					../../../addons/ofxMidi/src,
+					../../../addons/ofxMidi/src/desktop,
+					../../../addons/ofxMidi/src/ios,
+					src,
+				);
+				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				WARNING_LDFLAGS = "-no_arch_warnings";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "exampleIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "exampleIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
