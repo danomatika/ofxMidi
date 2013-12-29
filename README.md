@@ -14,7 +14,7 @@ BSD Simplified License.
 For information on usage and redistribution, and for a DISCLAIMER OF ALL
 WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 
-See Documentation on [Github](https://github.com/chrisoshea/ofxMidi) and the [OpenFrameworks Forum post](http://forum.openframeworks.cc/index.php/topic,2435.0.html).
+See Documentation on [Github](https://github.com/danomatika/ofxMidi) and the [OpenFrameworks Forum post](http://forum.openframeworks.cc/index.php/topic,2435.0.html).
 
 OpenFrameworks is a cross platform open source toolkit for creative coding in C++.
 
@@ -36,9 +36,9 @@ Installation
 
 To use ofxMidi, first you need to download and install OpenFrameworks. ofxMidi is currently developed against the current stable version of Open Frameworks on github.
 
-To get a copy of the repository you can download the source from [http://github.com/chrisoshea/ofxMidi/zipball/master](http://github.com/chrisoshea/ofxMidi/zipball/master) or, alternatively, you can use git clone:
+To get a copy of the repository you can download the source from [http://github.com/danomatika/ofxMidi/zipball/master](http://github.com/danomatika/ofxMidi/zipball/master) or, alternatively, you can use git clone:
 <pre>
-git clone git://github.com/chrisoshea/ofxMidi.git
+git clone git://github.com/danomatika/ofxMidi.git
 </pre>
 
 The addon should sit in `openFrameworks/addons/ofxMidi/`.
@@ -49,7 +49,7 @@ If you are using a stable version (007, ...) of OpenFrameworks then you want to 
 
 For example, the following commands will clone ofxMidi and switch to the OF 007 tagged version:
 <pre>
-git clone git://github.com/chrisoshea/ofxMidi.git
+git clone git://github.com/danomatika/ofxMidi.git
 cd ofxPd
 git checkout 007
 </pre>
