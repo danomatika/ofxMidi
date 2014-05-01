@@ -26,7 +26,7 @@ public:
 	
 	bool openPort(unsigned int portNumber);
 	bool openPort(string deviceName);
-	bool openVirtualPort(string portName);	///< currently noop on iOS
+	bool openVirtualPort(string portName); ///< currently noop on iOS
 	void closePort();
 	
 private:

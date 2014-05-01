@@ -23,7 +23,7 @@ void testApp::setup() {
 	// open port by number (you may need to change this)
 	midiIn.openPort(1);
 	//midiIn.openPort("IAC Pure Data In");	// by name
-	//midiIn.openVirtualPort("ofxMidiIn Input");	// open a virtual port
+	//midiIn.openVirtualPort("ofxMidiIn Input"); // open a virtual port
 	
 	// don't ignore sysex, timing, & active sense messages,
 	// these are ignored by default

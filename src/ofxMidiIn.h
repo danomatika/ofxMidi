@@ -141,7 +141,7 @@ public:
 	/// set to verbose = true to print received byte info
 	///
 	/// warning: this will impact performance with large numbers
-	///			 of midi messages
+	///          of midi messages
 	///
 	void setVerbose(bool verbose);
 

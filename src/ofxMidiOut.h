@@ -126,22 +126,22 @@ public:
 	/// midi events
 	///
 	/// number ranges:
-	///		channel			1 - 16
-	///		pitch			0 - 127
-	///		velocity		0 - 127
-	///		control value	0 - 127
-	///		program value	0 - 127
-	///		bend value		0 - 16383
-	///		touch value		0 - 127
+	///     channel         1 - 16
+	///	    pitch           0 - 127
+	///     velocity        0 - 127
+	///     control value   0 - 127
+	///     program value   0 - 127
+	///     bend value      0 - 16383
+	///     touch value     0 - 127
 	///
 	/// note:
-	///		- a noteon with vel = 0 is equivalent to a noteoff
-	///		- send velocity = 64 if not using velocity values
-	///		- most synths don't use the velocity value in a noteoff
-	///		- the lsb & msb for raw pitch bend bytes are 7 bit
+	///     - a noteon with vel = 0 is equivalent to a noteoff
+	///	    - send velocity = 64 if not using velocity values
+	///	    - most synths don't use the velocity value in a noteoff
+	///	    - the lsb & msb for raw pitch bend bytes are 7 bit
 	///
 	/// references:
-	///		http://www.srm.com/qtma/davidsmidispec.html
+	///	    http://www.srm.com/qtma/davidsmidispec.html
 	///
 	void sendNoteOn(int channel, int pitch, int velocity=64);
 	void sendNoteOff(int channel, int pitch, int velocity=64);

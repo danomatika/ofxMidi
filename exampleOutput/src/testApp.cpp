@@ -22,9 +22,9 @@ void testApp::setup() {
 	//ofxMidiOut::listPorts(); // via static too
 	
 	// connect
-	midiOut.openPort(0);	// by number
-	//midiOut.openPort("IAC Driver Pure Data In");	// by name
-	//midiOut.openVirtualPort("ofxMidiOut");		// open a virtual port
+	midiOut.openPort(0); // by number
+	//midiOut.openPort("IAC Driver Pure Data In"); // by name
+	//midiOut.openVirtualPort("ofxMidiOut"); // open a virtual port
 	
 	channel = 1;
 	currentPgm = 0;

@@ -32,9 +32,9 @@ public:
 /// check status type and grab data:
 /// 
 /// if(midiArg.status == MIDI_NOTE_ON) {
-///		cout << "note on " << midiArg.channel
-///			 << midiArg.note << " " << midiArg.velocity
-///			 << endl;
+///     cout << "note on " << midiArg.channel
+///	         << midiArg.note << " " << midiArg.velocity
+///	         << endl;
 /// }
 ///
 /// the message-specific types are only set for the appropriate
@@ -48,14 +48,14 @@ public:
 /// \section Variables
 
 	MidiStatus status;
-	int channel;		//< 1 - 16
+	int channel;        //< 1 - 16
 
 	/// message-specific values,
 	/// converted from raw bytes
-	int pitch;			//< 0 - 127
-	int velocity;		//< 0 - 127
-	int control;		//< 0 - 127
-	int value;			//< depends on message status type
+	int pitch;          //< 0 - 127
+	int velocity;       //< 0 - 127
+	int control;        //< 0 - 127
+	int value;          //< depends on message status type
 	
 	/// raw bytes
 	vector<unsigned char> bytes;

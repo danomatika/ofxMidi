@@ -23,9 +23,9 @@ class ofxPGMidiIn;
 	bool bIgnoreSysex, bIgnoreTiming, bIgnoreSense;	///< ignore midi types?
 	
 	unsigned long long lastTime; ///< timestamp from last packet
-	bool bFirstPacket; ///< is this the first received packet?
-	bool bContinueSysex; ///< is this packet part of a sysex message?
-	unsigned int maxMessageLen; ///< max size of the byte buffer
+	bool bFirstPacket;           ///< is this the first received packet?
+	bool bContinueSysex;         ///< is this packet part of a sysex message?
+	unsigned int maxMessageLen;  ///< max size of the byte buffer
 	
 	std::vector<unsigned char> message;	///< raw byte buffer
 }
