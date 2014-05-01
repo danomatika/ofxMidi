@@ -33,8 +33,8 @@ public:
 /// 
 /// if(midiArg.status == MIDI_NOTE_ON) {
 ///     cout << "note on " << midiArg.channel
-///	         << midiArg.note << " " << midiArg.velocity
-///	         << endl;
+///          << midiArg.note << " " << midiArg.velocity
+///          << endl;
 /// }
 ///
 /// the message-specific types are only set for the appropriate

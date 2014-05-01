@@ -51,13 +51,13 @@ protected:
 	/// parses and sends received raw messages to listeners
 	void manageNewMessage(double deltatime, vector<unsigned char> *message);
 	
-	int portNum; //< current port num, -1 if not connected
+	int portNum;     //< current port num, -1 if not connected
 	string portName; //< current port name, "" if not connected
 	
 	static vector<string> portList; //< list of port names
 	ofEvent<ofxMidiMessage> newMessageEvent;
 	
-	bool bOpen; //< is the port currently open?
+	bool bOpen;    //< is the port currently open?
 	bool bVerbose; //< print incoming bytes?
 	bool bVirtual; //< are we connected to a virtual port?
 };

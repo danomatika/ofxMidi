@@ -13,7 +13,7 @@
 /// /section  stream interface midi objects
 /// ref: http://www.gweep.net/~prefect/eng/reference/protocol/midispec.html
 
-/// send a note on event (also set vel = 0 for noteoff)
+/// send a note on event (also set velocity = 0 for noteoff)
 struct NoteOn {
 
 	const int channel;  ///< channel 1 - 16
@@ -24,7 +24,7 @@ struct NoteOn {
 		channel(channel), pitch(pitch), velocity(velocity) {}
 };
 
-/// send a note off event (velocity is usually ignored
+/// send a note off event (velocity is usually ignored)
 struct NoteOff {
 
 	const int channel;  ///< channel 1 - 16
