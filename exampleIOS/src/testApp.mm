@@ -26,7 +26,7 @@ void testApp::setup() {
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
 	// gray background
-	ofBackground(127,127,127);
+	ofBackground(127, 127, 127);
 	
 	maxMessages = 28;
 	messages.push_back("nothing yet ...");
@@ -44,8 +44,8 @@ void testApp::setup() {
 	ofxMidi::enableNetworking();
 	
 	// list the number of available input & output ports
-	ofxMidiIn  :: listPorts();
-	ofxMidiOut :: listPorts();
+	ofxMidiIn::listPorts();
+	ofxMidiOut::listPorts();
 	
 	// create and open input ports
 	for(int i = 0; i < ofxMidiIn::getNumPorts(); ++i) {
