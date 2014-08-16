@@ -20,7 +20,7 @@ void testApp::setup() {
 	ofxiOSAlerts.addListener(this);
 	
 	// if you want a landscape oreintation 
-	// iPhoneSetOrientation(OF_ORIENTATION_90_RIGHT);
+	// ofxiOSSetOrientation(OF_ORIENTATION_90_RIGHT);
 	
 	// lets see what's going on inside
 	ofSetLogLevel(OF_LOG_VERBOSE);
