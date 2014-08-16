@@ -13,17 +13,14 @@
 //--------------------------------------------------------------
 void testApp::setup() {
 
-	// register touch events
-	ofRegisterTouchEvents(this);
-	
 	// initialize the accelerometer
 	ofxAccelerometer.setup();
 	
 	// iPhoneAlerts will be sent to this
-	ofxiPhoneAlerts.addListener(this);
+	ofxiOSAlerts.addListener(this);
 	
 	// if you want a landscape oreintation 
-	// iPhoneSetOrientation(OFXIPHONE_ORIENTATION_LANDSCAPE_RIGHT);
+	// iPhoneSetOrientation(OFXIPHONE_ORIENTATION_90_RIGHT);
 	
 	// lets see what's going on inside
 	ofSetLogLevel(OF_LOG_VERBOSE);
@@ -35,7 +32,7 @@ void testApp::setup() {
 	messages.push_back("nothing yet ...");
 	
 	note = -1;
-	ctl = -1;
+	ctl  = -1;
 	
 	// enables the network midi session between iOS and Mac OSX on a
 	// local wifi network
@@ -47,8 +44,8 @@ void testApp::setup() {
 	ofxMidi::enableNetworking();
 	
 	// list the number of available input & output ports
-	ofxMidiIn::listPorts();
-	ofxMidiOut::listPorts();
+	ofxMidiIn  :: listPorts();
+	ofxMidiOut :: listPorts();
 	
 	// create and open input ports
 	for(int i = 0; i < ofxMidiIn::getNumPorts(); ++i) {
