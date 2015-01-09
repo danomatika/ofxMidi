@@ -62,7 +62,7 @@ string ofxRtMidiOut::getPortName(unsigned int portNumber) {
 	try {
 		return s_midiOut->getPortName(portNumber);
 	}
-	catch(RtError& err) {
+	catch(RtMidiError& err) {
 		ofLogError("ofxMidiOut") << "couldn't get name for port " << portNumber << ": " << err.what();
 	}
 	return "";
@@ -75,7 +75,7 @@ bool ofxRtMidiOut::openPort(unsigned int portNumber) {
 		closePort();
 		midiOut.openPort(portNumber, "ofxMidi Output "+ofToString(portNumber));
 	}
-	catch(RtError& err) {
+	catch(RtMidiError& err) {
 		ofLogError("ofxMidiOut") << "couldn't open port " << portNumber << ": " << err.what();
 		return false;
 	}
@@ -115,7 +115,7 @@ bool ofxRtMidiOut::openVirtualPort(string portName) {
 		closePort();
 		midiOut.openVirtualPort(portName);
 	}
-	catch(RtError& err) {
+	catch(RtMidiError& err) {
 		ofLogError("ofxMidiOut") << "couldn't open virtual port \"" << portName << "\": " << err.what();
 		return false;
 	}
@@ -150,7 +150,7 @@ void ofxRtMidiOut::sendMessage() {
 	try {
 		midiOut.sendMessage(&message);
 	}
-	catch(RtError& err) {
+	catch(RtMidiError& err) {
 		ofLogError("ofxMidiOut") << "couldn't send message: " << err.what();
 	}
 	bMsgInProgress = false;
