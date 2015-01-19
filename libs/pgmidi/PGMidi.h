@@ -3,7 +3,12 @@
 //  PGMidi
 //
 
-#import <UIKit/UIKit.h>
+#if TARGET_IPHONE_SIMULATOR || TARGET_OS_IPHONE
+    #import <UIKit/UIKit.h>
+#else
+    #import <Foundation/Foundation.h>
+#endif
+
 #import <CoreMIDI/CoreMIDI.h>
 
 #import "PGArc.h"
@@ -130,6 +135,8 @@ extern NSString * const PGMidiConnectionKey;
 @property (nonatomic,readonly) PGMidiDestination *virtualSourceDestination;
 @property (nonatomic,retain)   NSString          *virtualEndpointName;
 @property (nonatomic,assign)   BOOL               networkEnabled;
+
+/// Remember to set the UIBackgroundModes plist property for virtual sources to work
 @property (nonatomic,assign)   BOOL               virtualSourceEnabled;
 @property (nonatomic,assign)   BOOL               virtualDestinationEnabled;
 
