@@ -8,10 +8,10 @@
  * See https://github.com/danomatika/ofxMidi for documentation
  *
  */
-#include "testApp.h"
+#include "ofApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup() {
+void ofApp::setup() {
 
 	// initialize the accelerometer
 	ofxAccelerometer.setup();
@@ -75,10 +75,10 @@ void testApp::setup() {
 }
 
 //--------------------------------------------------------------
-void testApp::update() {}
+void ofApp::update() {}
 
 //--------------------------------------------------------------
-void testApp::draw() {
+void ofApp::draw() {
 	
 	ofSetColor(0);
 
@@ -104,7 +104,7 @@ void testApp::draw() {
 }
 
 //--------------------------------------------------------------
-void testApp::exit() {
+void ofApp::exit() {
 
 	// clean up
 	
@@ -121,7 +121,7 @@ void testApp::exit() {
 }
 
 //--------------------------------------------------------------
-void testApp::touchDown(ofTouchEventArgs &touch) {
+void ofApp::touchDown(ofTouchEventArgs &touch) {
 
 	// send note on
 	note = (int) ofMap(touch.y, ofGetHeight(), 0, 0, 127);
@@ -131,7 +131,7 @@ void testApp::touchDown(ofTouchEventArgs &touch) {
 }
 
 //--------------------------------------------------------------
-void testApp::touchMoved(ofTouchEventArgs &touch) {
+void ofApp::touchMoved(ofTouchEventArgs &touch) {
 
 	// send ctl change
 	ctl = (int) ofMap(touch.x, 0, ofGetWidth(), 0, 127);
@@ -141,7 +141,7 @@ void testApp::touchMoved(ofTouchEventArgs &touch) {
 }
 
 //--------------------------------------------------------------
-void testApp::touchUp(ofTouchEventArgs &touch) {
+void ofApp::touchUp(ofTouchEventArgs &touch) {
 	
 	// send note off
 	for(int i = 0; i < outputs.size(); ++i) {
@@ -152,38 +152,38 @@ void testApp::touchUp(ofTouchEventArgs &touch) {
 }
 
 //--------------------------------------------------------------
-void testApp::touchDoubleTap(ofTouchEventArgs &touch) {
+void ofApp::touchDoubleTap(ofTouchEventArgs &touch) {
 
 }
 
 //--------------------------------------------------------------
-void testApp::lostFocus() {
+void ofApp::lostFocus() {
 
 }
 
 //--------------------------------------------------------------
-void testApp::gotFocus() {
+void ofApp::gotFocus() {
 
 }
 
 //--------------------------------------------------------------
-void testApp::gotMemoryWarning() {
+void ofApp::gotMemoryWarning() {
 
 }
 
 //--------------------------------------------------------------
-void testApp::deviceOrientationChanged(int newOrientation) {
+void ofApp::deviceOrientationChanged(int newOrientation) {
 
 }
 
 
 //--------------------------------------------------------------
-void testApp::touchCancelled(ofTouchEventArgs& args) {
+void ofApp::touchCancelled(ofTouchEventArgs& args) {
 
 }
 
 //--------------------------------------------------------------
-void testApp::addMessage(string msg) {
+void ofApp::addMessage(string msg) {
 	messageMutex.lock();
 	cout << msg << endl;
 	messages.push_back(msg);
@@ -193,12 +193,12 @@ void testApp::addMessage(string msg) {
 }
 
 //--------------------------------------------------------------
-void testApp::newMidiMessage(ofxMidiMessage& msg) {
+void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 	addMessage(msg.toString());
 }
 
 //--------------------------------------------------------------
-void testApp::midiInputAdded(string name, bool isNetwork) {
+void ofApp::midiInputAdded(string name, bool isNetwork) {
 	stringstream msg;
 	msg << "ofxMidi: input added: " << name << " network: " << isNetwork;
 	addMessage(msg.str());
@@ -211,7 +211,7 @@ void testApp::midiInputAdded(string name, bool isNetwork) {
 }
 
 //--------------------------------------------------------------
-void testApp::midiInputRemoved(string name, bool isNetwork) {
+void ofApp::midiInputRemoved(string name, bool isNetwork) {
 	stringstream msg;
 	msg << "ofxMidi: input removed: " << name << " network: " << isNetwork << endl;
 	addMessage(msg.str());
@@ -231,7 +231,7 @@ void testApp::midiInputRemoved(string name, bool isNetwork) {
 }
 
 //--------------------------------------------------------------
-void testApp::midiOutputAdded(string name, bool isNetwork) {
+void ofApp::midiOutputAdded(string name, bool isNetwork) {
 	stringstream msg;
 	msg << "ofxMidi: output added: " << name << " network: " << isNetwork << endl;
 	addMessage(msg.str());
@@ -243,7 +243,7 @@ void testApp::midiOutputAdded(string name, bool isNetwork) {
 }
 
 //--------------------------------------------------------------
-void testApp::midiOutputRemoved(string name, bool isNetwork) {
+void ofApp::midiOutputRemoved(string name, bool isNetwork) {
 	stringstream msg;
 	msg << "ofxMidi: output removed: " << name << " network: " << isNetwork << endl;
 	addMessage(msg.str());

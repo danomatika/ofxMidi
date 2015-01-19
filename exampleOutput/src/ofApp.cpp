@@ -8,10 +8,10 @@
  * See https://github.com/danomatika/ofxMidi for documentation
  *
  */
-#include "testApp.h"
+#include "ofApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup() {
+void ofApp::setup() {
 
 	ofSetVerticalSync(true);
 	ofBackground(255);
@@ -37,10 +37,10 @@ void testApp::setup() {
 }
 
 //--------------------------------------------------------------
-void testApp::update() {}
+void ofApp::update() {}
 
 //--------------------------------------------------------------
-void testApp::draw() {
+void ofApp::draw() {
 
 	// let's see something
 	ofSetColor(0);
@@ -60,14 +60,14 @@ void testApp::draw() {
 }
 
 //--------------------------------------------------------------
-void testApp::exit() {
+void ofApp::exit() {
 	
 	// clean up
 	midiOut.closePort();
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key) {
+void ofApp::keyPressed(int key) {
 
 	// send a note on if the key is a letter or a number
 	if(isalnum((unsigned char) key)) {
@@ -85,7 +85,7 @@ void testApp::keyPressed(int key) {
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key) {
+void ofApp::keyReleased(int key) {
 	
 	switch(key) {
 	
@@ -203,11 +203,11 @@ void testApp::keyReleased(int key) {
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y ) {
+void ofApp::mouseMoved(int x, int y ) {
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button) {
+void ofApp::mouseDragged(int x, int y, int button) {
 
 	// x pos controls the pan (ctl = 10)
 	pan = ofMap(x, 0, ofGetWidth(), 0, 127);
@@ -219,9 +219,9 @@ void testApp::mouseDragged(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button) {	
+void ofApp::mousePressed(int x, int y, int button) {	
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased() {
+void ofApp::mouseReleased() {
 }

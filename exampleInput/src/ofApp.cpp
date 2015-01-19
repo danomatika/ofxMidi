@@ -8,10 +8,10 @@
  * See https://github.com/danomatika/ofxMidi for documentation
  *
  */
-#include "testApp.h"
+#include "ofApp.h"
 
 //--------------------------------------------------------------
-void testApp::setup() {
+void ofApp::setup() {
 	ofSetVerticalSync(true);
 	ofBackground(255, 255, 255);
 	ofSetLogLevel(OF_LOG_VERBOSE);
@@ -29,7 +29,7 @@ void testApp::setup() {
 	// these are ignored by default
 	midiIn.ignoreTypes(false, false, false);
 	
-	// add testApp as a listener
+	// add ofApp as a listener
 	midiIn.addListener(this);
 	
 	// print received messages to the console
@@ -37,11 +37,11 @@ void testApp::setup() {
 }
 
 //--------------------------------------------------------------
-void testApp::update() {
+void ofApp::update() {
 }
 
 //--------------------------------------------------------------
-void testApp::draw() {
+void ofApp::draw() {
 	ofSetColor(0);
 	
 	// draw the last recieved message contents to the screen
@@ -84,7 +84,7 @@ void testApp::draw() {
 }
 
 //--------------------------------------------------------------
-void testApp::exit() {
+void ofApp::exit() {
 	
 	// clean up
 	midiIn.closePort();
@@ -92,14 +92,14 @@ void testApp::exit() {
 }
 
 //--------------------------------------------------------------
-void testApp::newMidiMessage(ofxMidiMessage& msg) {
+void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 
 	// make a copy of the latest message
 	midiMessage = msg;
 }
 
 //--------------------------------------------------------------
-void testApp::keyPressed(int key) {
+void ofApp::keyPressed(int key) {
 
 	switch(key) {
 		case 'l':
@@ -109,21 +109,21 @@ void testApp::keyPressed(int key) {
 }
 
 //--------------------------------------------------------------
-void testApp::keyReleased(int key) {
+void ofApp::keyReleased(int key) {
 }
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y) {
+void ofApp::mouseMoved(int x, int y) {
 }
 
 //--------------------------------------------------------------
-void testApp::mouseDragged(int x, int y, int button) {
+void ofApp::mouseDragged(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void testApp::mousePressed(int x, int y, int button) {
+void ofApp::mousePressed(int x, int y, int button) {
 }
 
 //--------------------------------------------------------------
-void testApp::mouseReleased() {
+void ofApp::mouseReleased() {
 }

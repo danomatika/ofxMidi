@@ -13,12 +13,11 @@
 #include "ofMain.h"
 #include "ofxiOS.h"
 #include "ofxiOSExtras.h"
-
 #include "ofxMidi.h"
 
 #include <deque>
 
-class testApp : public ofxiOSApp,
+class ofApp : public ofxiOSApp,
 				public ofxMidiListener, public ofxMidiConnectionListener {
 	
 public:
@@ -61,5 +60,3 @@ public:
 	int note, ctl;
 	vector<unsigned char> bytes;
 };
-
-

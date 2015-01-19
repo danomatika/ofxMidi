@@ -11,10 +11,9 @@
 #pragma once
 
 #include "ofMain.h"
-
 #include "ofxMidi.h"
 
-class testApp : public ofBaseApp, public ofxMidiListener {
+class ofApp : public ofBaseApp, public ofxMidiListener {
 	
 public:
 	

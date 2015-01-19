@@ -140,7 +140,7 @@ android/armeabi-v7a:
 
 osx:
 	# osx/iOS only, any framework that should be included in the project
-	ADDON_FRAMEWORKS += CoreMIDI
+	ADDON_FRAMEWORKS = CoreMIDI
 
 	# when parsing the file system looking for sources exclude this for all or
 	# a specific platform
@@ -154,7 +154,7 @@ osx:
     
 ios:
 	# osx/iOS only, any framework that should be included in the project
-	ADDON_FRAMEWORKS += CoreMIDI
+	ADDON_FRAMEWORKS = CoreMIDI
 
 	# when parsing the file system looking for sources exclude this for all or
 	# a specific platform

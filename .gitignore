@@ -4,6 +4,7 @@
 *.perspectivev3
 *.mode*v3
 xcuserdata
+xcshareddata
 build
 *.app
 *.a

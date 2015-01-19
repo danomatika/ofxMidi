@@ -13,6 +13,10 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		1a86b7721caebc6f1c572c45 /* ofxBaseMidi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94b3c3c21f92f9310ca90986 /* ofxBaseMidi.cpp */; };
 		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		308B30B21A6CE1D6007CEE33 /* ofApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = 308B30B11A6CE1D6007CEE33 /* ofApp.mm */; };
+		308B30B61A6CE28D007CEE33 /* PGMidi.mm in Sources */ = {isa = PBXBuildFile; fileRef = 308B30B31A6CE28D007CEE33 /* PGMidi.mm */; };
+		308B30B71A6CE28D007CEE33 /* PGMidiAllSources.mm in Sources */ = {isa = PBXBuildFile; fileRef = 308B30B41A6CE28D007CEE33 /* PGMidiAllSources.mm */; };
+		308B30B81A6CE28D007CEE33 /* PGMidiFind.mm in Sources */ = {isa = PBXBuildFile; fileRef = 308B30B51A6CE28D007CEE33 /* PGMidiFind.mm */; };
 		30B8B9F0181EEFDA0055C45D /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30B8B9EF181EEFDA0055C45D /* CoreMIDI.framework */; };
 		3b4e4b5aa9647fb99e56f32b /* ofxPGMidiDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = ca4ab6b52e7cd8e55809fc2e /* ofxPGMidiDelegate.mm */; };
 		5326AEA810A23A0500278DE6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5326AEA710A23A0500278DE6 /* CoreLocation.framework */; };
@@ -37,7 +41,6 @@
 		E41D421413B3A95300A75A5D /* libofxiOS_iphoneos_Debug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E41D410213B3A0D800A75A5D /* libofxiOS_iphoneos_Debug.a */; };
 		E4A823A412561BE3002F86A2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4A823A312561BE3002F86A2 /* CoreGraphics.framework */; };
 		E4D8936E11527B74007E1F53 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936B11527B74007E1F53 /* main.mm */; };
-		E4D8936F11527B74007E1F53 /* testApp.mm in Sources */ = {isa = PBXBuildFile; fileRef = E4D8936D11527B74007E1F53 /* testApp.mm */; };
 		b5e63eb7547183befc4b65a7 /* ofxPGMidiContext.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1f34a72f1976ddccf95fab5c /* ofxPGMidiContext.mm */; };
 		c6fe64f74f1ea1d98c8f9847 /* ofxMidiMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = c0e7eda67edf213fc0e83d17 /* ofxMidiMessage.cpp */; };
 		d3b9ff32d08e7ff01cba4117 /* ofxPGMidiIn.mm in Sources */ = {isa = PBXBuildFile; fileRef = 406bb125dda2264c09f7187d /* ofxPGMidiIn.mm */; };
@@ -73,6 +76,11 @@
 		20481ef45bfaeb2c9a623713 /* ofxPGMidiDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPGMidiDelegate.h; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiDelegate.h; sourceTree = SOURCE_ROOT; };
 		235261de16f1fe6990ee1f87 /* ofxPGMidiSourceDelegate.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 30; name = ofxPGMidiSourceDelegate.mm; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiSourceDelegate.mm; sourceTree = SOURCE_ROOT; };
 		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		308B30B01A6CE1D6007CEE33 /* ofApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofApp.h; sourceTree = "<group>"; };
+		308B30B11A6CE1D6007CEE33 /* ofApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ofApp.mm; sourceTree = "<group>"; };
+		308B30B31A6CE28D007CEE33 /* PGMidi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PGMidi.mm; path = ../libs/pgmidi/PGMidi.mm; sourceTree = "<group>"; };
+		308B30B41A6CE28D007CEE33 /* PGMidiAllSources.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PGMidiAllSources.mm; path = ../libs/pgmidi/PGMidiAllSources.mm; sourceTree = "<group>"; };
+		308B30B51A6CE28D007CEE33 /* PGMidiFind.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = PGMidiFind.mm; path = ../libs/pgmidi/PGMidiFind.mm; sourceTree = "<group>"; };
 		30B8B9EF181EEFDA0055C45D /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		31317daf63909d58058dc81e /* ofxPGMidiSourceDelegate.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPGMidiSourceDelegate.h; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiSourceDelegate.h; sourceTree = SOURCE_ROOT; };
 		32CA4F630368D1EE00C91783 /* ofxiOS_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxiOS_Prefix.pch; sourceTree = "<group>"; };
@@ -105,8 +113,6 @@
 		E41D40FD13B3A0D800A75A5D /* iOS+OFLib.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = "iOS+OFLib.xcodeproj"; path = "../../../libs/openFrameworksCompiled/project/ios/iOS+OFLib.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		E4A823A312561BE3002F86A2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		E4D8936B11527B74007E1F53 /* main.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = main.mm; path = src/main.mm; sourceTree = SOURCE_ROOT; };
-		E4D8936C11527B74007E1F53 /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = testApp.h; path = src/testApp.h; sourceTree = SOURCE_ROOT; };
-		E4D8936D11527B74007E1F53 /* testApp.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = testApp.mm; path = src/testApp.mm; sourceTree = SOURCE_ROOT; };
 		a70455a65fa800eaa77e2bc0 /* PGMidiFind.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = PGMidiFind.h; path = ../../../addons/ofxMidi/libs/pgmidi/PGMidiFind.h; sourceTree = SOURCE_ROOT; };
 		a83c49197f5cc83db6afd84a /* ofxPGMidiOut.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxPGMidiOut.h; path = ../../../addons/ofxMidi/src/ios/ofxPGMidiOut.h; sourceTree = SOURCE_ROOT; };
 		b76fa489151dbaf1616df378 /* ofxMidiIn.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = ofxMidiIn.h; path = ../../../addons/ofxMidi/src/ofxMidiIn.h; sourceTree = SOURCE_ROOT; };
@@ -224,6 +230,9 @@
 				bbee862403127aa5d485e254 /* PGMidi.h */,
 				034f4d5ebaa91828536a1ba9 /* PGMidiAllSources.h */,
 				a70455a65fa800eaa77e2bc0 /* PGMidiFind.h */,
+				308B30B31A6CE28D007CEE33 /* PGMidi.mm */,
+				308B30B41A6CE28D007CEE33 /* PGMidiAllSources.mm */,
+				308B30B51A6CE28D007CEE33 /* PGMidiFind.mm */,
 			);
 			name = pgmidi;
 			sourceTree = "<group>";
@@ -304,8 +313,8 @@
 			isa = PBXGroup;
 			children = (
 				E4D8936B11527B74007E1F53 /* main.mm */,
-				E4D8936D11527B74007E1F53 /* testApp.mm */,
-				E4D8936C11527B74007E1F53 /* testApp.h */,
+				308B30B01A6CE1D6007CEE33 /* ofApp.h */,
+				308B30B11A6CE1D6007CEE33 /* ofApp.mm */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -413,8 +422,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				308B30B71A6CE28D007CEE33 /* PGMidiAllSources.mm in Sources */,
 				E4D8936E11527B74007E1F53 /* main.mm in Sources */,
-				E4D8936F11527B74007E1F53 /* testApp.mm in Sources */,
 				b5e63eb7547183befc4b65a7 /* ofxPGMidiContext.mm in Sources */,
 				3b4e4b5aa9647fb99e56f32b /* ofxPGMidiDelegate.mm in Sources */,
 				d3b9ff32d08e7ff01cba4117 /* ofxPGMidiIn.mm in Sources */,
@@ -424,7 +433,10 @@
 				63f9fe1d90234fa6de6f509e /* ofxMidi.cpp in Sources */,
 				0bfc9c20fd7e3c8d5873aa97 /* ofxMidiIn.cpp in Sources */,
 				c6fe64f74f1ea1d98c8f9847 /* ofxMidiMessage.cpp in Sources */,
+				308B30B21A6CE1D6007CEE33 /* ofApp.mm in Sources */,
+				308B30B61A6CE28D007CEE33 /* PGMidi.mm in Sources */,
 				83d9f930112e0944444124ee /* ofxMidiOut.cpp in Sources */,
+				308B30B81A6CE28D007CEE33 /* PGMidiFind.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,7 +503,7 @@
 					../../../addons/ofxMidi/src/ios,
 					src,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = NO;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -528,7 +540,7 @@
 					../../../addons/ofxMidi/src/ios,
 					src,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 3.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
