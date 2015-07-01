@@ -138,8 +138,9 @@ _Note: These instructions are for manually adding ofxMidi to a project. You do n
 
 ### Xcode
 
-* create a new group "ofxMidi"
-* drag these directories from ofxMidi into this new group: `ofxMidi/src`
+* create a new group "ofxMidi" in the "addons" group
+* drag these directories from ofxMidi into this new group: `ofxMidi/src` & `ofxMidi/libs`
+  * in the Add dialog: add to your current project target, uncheck "Copy items if needed" & select "Create groups"
   * if building for OSX, remove the src/ios & libs/pgmidi folder references
   * if building for iOS, remove the src/desktop & libs/rtmidi folder references
 * add the CoreMIDI framework to your project
