@@ -139,9 +139,13 @@ void ofxPGMidiIn::closePort() {
 	if(bOpen) {
 		ofLogVerbose("ofxMidiIn") << "closing port " << portNum << " " << portName;
 	
+		// sometimes the source may already have been removed in PGMidi, so make
+		// sure we have a valid index otherwise the app will crash
 		PGMidi * midi = ofxPGMidiContext::getMidi();
-		PGMidiSource * source = [midi.sources objectAtIndex:portNum];
-		[source removeDelegate:inputDelegate->d];
+		if(portNum < midi.sources.count) {
+			PGMidiSource * source = [midi.sources objectAtIndex:portNum];
+			[source removeDelegate:inputDelegate->d];
+		}
 	}
 	
 	portNum = -1;
