@@ -32,3 +32,25 @@ obj/
 bin/
 build/
 !data/
+
+# example project files
+
+exampleIOS/Project.xcconfig
+exampleIOS/addons.make
+exampleIOS/exampleIOS.xcodeproj
+exampleIOS/ofxiOS-Info.plist
+exampleIOS/ofxiOS_Prefix.pch
+
+exampleInput/Makefile
+exampleInput/Project.xcconfig
+exampleInput/addons.make
+exampleInput/config.make
+exampleInput/exampleInput.xcodeproj
+exampleInput/openFrameworks-Info.plist
+
+exampleOutput/Makefile
+exampleOutput/Project.xcconfig
+exampleOutput/addons.make
+exampleOutput/config.make
+exampleOutput/exampleOutput.xcodeproj
+exampleOutput/openFrameworks-Info.plist
