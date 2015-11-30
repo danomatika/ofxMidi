@@ -37,9 +37,8 @@ Installation
 To use ofxMidi, first you need to download and install OpenFrameworks. ofxMidi is currently developed against the current stable version of Open Frameworks on github.
 
 To get a copy of the repository you can download the source from [http://github.com/danomatika/ofxMidi/zipball/master](http://github.com/danomatika/ofxMidi/zipball/master) or, alternatively, you can use git clone:
-<pre>
-git clone git://github.com/danomatika/ofxMidi.git
-</pre>
+
+    git clone git://github.com/danomatika/ofxMidi.git
 
 The addon should sit in `openFrameworks/addons/ofxMidi/`.
 
@@ -48,11 +47,10 @@ The addon should sit in `openFrameworks/addons/ofxMidi/`.
 If you are using a stable version (007, ...) of OpenFrameworks then you want to use a git tag of ofxMidi for that version. You can select the tag in the Github "Current Branch" menu or clone and check it out using git.
 
 For example, the following commands will clone ofxMidi and switch to the OF 007 tagged version:
-<pre>
-git clone git://github.com/danomatika/ofxMidi.git
-cd ofxPd
-git checkout 007
-</pre>
+
+    git clone git://github.com/danomatika/ofxMidi.git
+    cd ofxPd
+    git checkout 007
 
 Midi Routing
 ------------
@@ -74,7 +72,7 @@ If you want to connect your ofxMidi app to other software (synths, DAWs, etc) ch
 Running the Example Project
 ---------------------------
 
-The example projects are in the ofxMidi/example-input/ or ofxMidi/example-output/ folders.
+The example projects are in the `ofxMidi/exampleInput`, `ofxMidi/exampleOutput`, & `ofxMidi/exampleIOS` folders.
 
 ### OSX
 
@@ -85,10 +83,9 @@ Open the Xcode project, select the project scheme, and hit "Run".
 Open the Code::Blocks .workspace and hit F9 to build. Optionally, you can build the example with the Makefile.
 
 To built and run it on the terminal:
-<pre>
-make
-make run
-</pre>
+
+    make
+    make run
 
 ### Windows
 
@@ -97,23 +94,22 @@ An example Visual Studio solution as well as a Codeblocks workspace are included
 Creating a New ofxMidi Project
 ------------------------------
 
-_Note: These instructions are for manually creating a new project. You do not need to follow these steps if you use the ProjecGenerator app, except for Xcode where you currently need to add the CoreMIDI framework._
+_Note: These instructions are for manually creating a new project. You do not need to follow these steps if you use the ProjecGenerator app._
 
 To develop your own project based on ofxMidi, simply copy the example project and rename it. You probably want to put it in your apps folder, for example, after copying:
-<pre>
-openFrameworks/addons/ofxPd/exampleInput/ => openFrameworks/apps/myApps/exampleInput/
-</pre>
+
+    openFrameworks/addons/ofxPd/exampleInput/ => openFrameworks/apps/myApps/exampleInput/
 
 It must be 3 levels down in the openframeworks folder structure.
 
 Then rename the folder:
-<pre>
-openFrameworks/apps/myApps/myPdProject/
-</pre>
+
+    openFrameworks/apps/myApps/myPdProject/
 
 #### Xcode
 
 Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
+
 * Xcode Menu->Project->Rename
 
 #### Codeblocks (Win & Linux)
@@ -134,7 +130,7 @@ Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
 Adding ofxMidi to an Existing Project
 -------------------------------------
 
-_Note: These instructions are for manually adding ofxMidi to a project. You do not need to follow these steps if you use the ProjecGenerator app to regenerate your project files, except for Xcode where you currently need to add the CoreMIDI framework._
+_Note: These instructions are for manually adding ofxMidi to a project. You do not need to follow these steps if you use the ProjecGenerator app to regenerate your project files._
 
 ### Xcode
 
@@ -149,30 +145,24 @@ _Note: These instructions are for manually adding ofxMidi to a project. You do n
   * click the + under Linked Frameworks & Libraries
   * search for and select the CoreMIDI.framework from the list
 * add the following directories to your search path in your project's Project.xconfig file (See the Project.xconfig of the example project.):
-  <pre>
-../../../addons/ofxMidi/src
-../../../addons/ofxMidi/libs/rtmidi
-</pre>
+    ../../../addons/ofxMidi/src
+    ../../../addons/ofxMidi/libs/rtmidi
 
 ### Linux Makefiles/CodeBlocks
 
 * edit addons.make in your project folder and add the following line to the end of the file: 
-	  <pre>ofxMidi</pre>
+    ofxMidi
 
 ### Win Codeblocks & Visual Studio
 
 * add the ofxMidi sources to the project tree
-  <pre>
-ofxMidi/src
-ofxMidi/libs/rtmidi
-</pre>
+    ofxMidi/src
+    ofxMidi/libs/rtmidi
   * Codeblocks: right click on the project in the project tree and select Add Files Recursively...
   * Visual Studio: drag the ofxMidi/src & ofxMidi/libs/rtmidi folder onto the project tree
 * add the following search paths:
-  <pre>
-..\\..\\..\addons\ofxMidi\src
-..\\..\\..\addons\ofxMidi\libs\rtmidi
-</pre>
+    ..\\..\\..\addons\ofxMidi\src
+    ..\\..\\..\addons\ofxMidi\libs\rtmidi
 * Codeblocks
   * right click on the project in the project tree and select Build Options...
   * select the project name in the tree, not release or debug
@@ -247,4 +237,3 @@ PGMidi sources are placed in `libs/pgmidi`.
 Next, make sure to add the following include to `RtMidi.cpp` at around line 38 or there will be link errors:
 
     #include "ofxConstants.h"
-
