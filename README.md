@@ -145,15 +145,17 @@ _Note: These instructions are for manually adding ofxMidi to a project. You do n
   * click the + under Linked Frameworks & Libraries
   * search for and select the CoreMIDI.framework from the list
 * add the following directories to your search path in your project's Project.xconfig file (See the Project.xconfig of the example project.):
-
-    ../../../addons/ofxMidi/src
-    ../../../addons/ofxMidi/libs/rtmidi
+<pre>
+../../../addons/ofxMidi/src
+../../../addons/ofxMidi/libs/rtmidi
+</pre>
 
 ### Linux Makefiles/CodeBlocks
 
 * edit addons.make in your project folder and add the following line to the end of the file:
-
-    ofxMidi
+<pre>
+ofxMidi
+</pre>
 
 ### Win Codeblocks & Visual Studio
 
@@ -163,10 +165,10 @@ _Note: These instructions are for manually adding ofxMidi to a project. You do n
   * Codeblocks: right click on the project in the project tree and select Add Files Recursively...
   * Visual Studio: drag the ofxMidi/src & ofxMidi/libs/rtmidi folder onto the project tree
 * add the following search paths:
-
-    ..\\..\\..\addons\ofxMidi\src
-    ..\\..\\..\addons\ofxMidi\libs\rtmidi
-
+<pre>
+..\\..\\..\addons\ofxMidi\src
+..\\..\\..\addons\ofxMidi\libs\rtmidi
+</pre>
 * Codeblocks
   * right click on the project in the project tree and select Build Options...
   * select the project name in the tree, not release or debug
