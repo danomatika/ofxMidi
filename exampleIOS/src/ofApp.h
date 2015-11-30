@@ -17,8 +17,7 @@
 
 #include <deque>
 
-class ofApp : public ofxiOSApp,
-				public ofxMidiListener, public ofxMidiConnectionListener {
+class ofApp : public ofxiOSApp, public ofxMidiListener, public ofxMidiConnectionListener {
 	
 public:
 	void setup();

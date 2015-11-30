@@ -46,16 +46,16 @@ void ofApp::draw() {
 	ofSetColor(0);
 	stringstream text;
 	text << "connected to port " << midiOut.getPort() 
-		 << " \"" << midiOut.getName() << "\"" << endl
-		 << "is virtual?: " << midiOut.isVirtual() << endl << endl
-		 << "sending to channel " << channel << endl << endl
-		 << "current program: " << currentPgm << endl << endl
-		 << "note: " << note << endl
-		 << "velocity: " << velocity << endl
-		 << "pan: " << pan << endl
-		 << "bend: " << bend << endl
-		 << "touch: " << touch << endl
-		 << "polytouch: " << polytouch;
+	     << " \"" << midiOut.getName() << "\"" << endl
+	     << "is virtual?: " << midiOut.isVirtual() << endl << endl
+	     << "sending to channel " << channel << endl << endl
+	     << "current program: " << currentPgm << endl << endl
+	     << "note: " << note << endl
+	     << "velocity: " << velocity << endl
+	     << "pan: " << pan << endl
+	     << "bend: " << bend << endl
+	     << "touch: " << touch << endl
+	     << "polytouch: " << polytouch;
 	ofDrawBitmapString(text.str(), 20, 20);
 }
 

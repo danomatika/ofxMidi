@@ -95,11 +95,11 @@ void ofApp::draw() {
 	ofDrawBitmapString("Output:", 10, ofGetHeight()-42);
 	if(note > 0) {
 		ofDrawBitmapString("note "+ofToString(note), 10, ofGetHeight()-28);
-		ofRect(80, ofGetHeight()-38, ofMap(note, 0, 127, 0, ofGetWidth()-10), 12);
+		ofDrawRectangle(80, ofGetHeight()-38, ofMap(note, 0, 127, 0, ofGetWidth()-10), 12);
 	}
 	if(ctl > 0) {
 		ofDrawBitmapString("pan "+ofToString(ctl), 10, ofGetHeight()-14);
-		ofRect(80, ofGetHeight()-24, ofMap(ctl, 0, 127, 0, ofGetWidth()-10), 12);
+		ofDrawRectangle(80, ofGetHeight()-24, ofMap(ctl, 0, 127, 0, ofGetWidth()-10), 12);
 	}
 }
 

@@ -56,26 +56,26 @@ void ofApp::draw() {
 	text << "pitch: " << midiMessage.pitch;
 	ofDrawBitmapString(text.str(), 20, 48);
 	text.str(""); // clear
-	ofRect(20, 58, ofMap(midiMessage.pitch, 0, 127, 0, ofGetWidth()-40), 20);
+	ofDrawRectangle(20, 58, ofMap(midiMessage.pitch, 0, 127, 0, ofGetWidth()-40), 20);
 	
 	text << "velocity: " << midiMessage.velocity;
 	ofDrawBitmapString(text.str(), 20, 96);
 	text.str(""); // clear
-	ofRect(20, 105, ofMap(midiMessage.velocity, 0, 127, 0, ofGetWidth()-40), 20);
+	ofDrawRectangle(20, 105, ofMap(midiMessage.velocity, 0, 127, 0, ofGetWidth()-40), 20);
 	
 	text << "control: " << midiMessage.control;
 	ofDrawBitmapString(text.str(), 20, 144);
 	text.str(""); // clear
-	ofRect(20, 154, ofMap(midiMessage.control, 0, 127, 0, ofGetWidth()-40), 20);
+	ofDrawRectangle(20, 154, ofMap(midiMessage.control, 0, 127, 0, ofGetWidth()-40), 20);
 	
 	text << "value: " << midiMessage.value;
 	ofDrawBitmapString(text.str(), 20, 192);
 	text.str(""); // clear
 	if(midiMessage.status == MIDI_PITCH_BEND) {
-		ofRect(20, 202, ofMap(midiMessage.value, 0, MIDI_MAX_BEND, 0, ofGetWidth()-40), 20);
+		ofDrawRectangle(20, 202, ofMap(midiMessage.value, 0, MIDI_MAX_BEND, 0, ofGetWidth()-40), 20);
 	}
 	else {
-		ofRect(20, 202, ofMap(midiMessage.value, 0, 127, 0, ofGetWidth()-40), 20);
+		ofDrawRectangle(20, 202, ofMap(midiMessage.value, 0, 127, 0, ofGetWidth()-40), 20);
 	}
 	
 	text << "delta: " << midiMessage.deltatime;
