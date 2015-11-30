@@ -90,7 +90,7 @@ linux:
 	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
 	ADDON_INCLUDES_EXCLUDE += src/ios/%
 	
-win_cb:
+msys2:
 	# when parsing the file system looking for sources exclude this for all or
 	# a specific platform
 	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%

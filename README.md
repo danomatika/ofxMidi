@@ -69,10 +69,10 @@ Windows dosen't come with a virtual MIDI routing system like Linux (ALSA) and OS
 
 If you want to connect your ofxMidi app to other software (synths, DAWs, etc) check out [loopMIDI](http://www.tobias-erichsen.de/loopMIDI.html). Run the app and create a few virtual ports which you can then connect to within your software. 
 
-Running the Example Project
----------------------------
+Running an Example Project
+--------------------------
 
-The example projects are in the `ofxMidi/exampleInput`, `ofxMidi/exampleOutput`, & `ofxMidi/exampleIOS` folders.
+The example projects are in the `ofxMidi/midiExampleInput`, `ofxMidi/midiExampleOutput`, & `ofxMidi/midiExampleIOS` folders.
 
 ### OSX
 
@@ -96,9 +96,9 @@ Creating a New ofxMidi Project
 
 _Note: These instructions are for manually creating a new project. You do not need to follow these steps if you use the ProjecGenerator app._
 
-To develop your own project based on ofxMidi, simply copy the example project and rename it. You probably want to put it in your apps folder, for example, after copying:
+To develop your own project based on ofxMidi, simply copy an example project and rename it. You probably want to put it in your apps folder, for example, after copying:
 
-    openFrameworks/addons/ofxPd/exampleInput/ => openFrameworks/apps/myApps/exampleInput/
+    openFrameworks/addons/ofxPd/midiExampleInput/ => openFrameworks/apps/myApps/midiExampleInput/
 
 It must be 3 levels down in the openframeworks folder structure.
 
