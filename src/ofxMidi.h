@@ -33,6 +33,16 @@ class ofxMidi {
 	
 public:
 
+/// \section Util
+
+	/// convert midi note to frequency in Hz
+	/// ala the [mtof] object in Max & Pure Data
+	static float mtof(float note);
+
+	/// convert a frequency in Hz to a MIDI note
+	/// ala the [ftom] object in Max & Pure Data
+	static float ftom(float frequency);
+
 /// \section iOS Specific
 	
 	/// set a listener to receieve device (dis)connection events

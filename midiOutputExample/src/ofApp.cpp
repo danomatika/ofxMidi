@@ -77,6 +77,10 @@ void ofApp::keyPressed(int key) {
 		note = ofMap(key, 48, 122, 0, 127);
 		velocity = 64;
 		midiOut.sendNoteOn(channel, note,  velocity);
+		
+		// print out both the midi note and the frequency
+		ofLogNotice() << "note: " << note
+		              << " freq: " << ofxMidi::mtof(note) << " Hz";
 	}
 	
 	if(key == 'l') {
