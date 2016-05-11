@@ -67,12 +67,22 @@ Check out the Alsa utility apps aconnect & aconnectgui as well as the qjackctl g
 
 Windows dosen't come with a virtual MIDI routing system like Linux (ALSA) and OSX (CoreMIDI).
 
-If you want to connect your ofxMidi app to other software (synths, DAWs, etc) check out [loopMIDI](http://www.tobias-erichsen.de/loopMIDI.html). Run the app and create a few virtual ports which you can then connect to within your software. 
+If you want to connect your ofxMidi app to other software (synths, DAWs, etc) check out [loopMIDI](http://www.tobias-erichsen.de/loopMIDI.html). Run the app and create a few virtual ports which you can then connect to within your software.
 
-Running an Example Project
---------------------------
+Running an Example Projects
+---------------------------
 
-The example projects are in the `ofxMidi/midiExampleInput`, `ofxMidi/midiExampleOutput`, & `ofxMidi/midiExampleIOS` folders.
+The example projects are in the `ofxMidi/midiInputExample`, `ofxMidi/midiOutputExample`, & `ofxMidi/midiExampleIOS` folders.
+
+Project files for the examples are not included so you will need to generate the project files for your operating system and development environment using the OF ProjectGenerator which is included with the OpenFrameworks distribution.
+
+To (re)generate project files for an *existing* project:
+
+* click the "Import" button in the ProjectGenerator
+* navigate the to base folder for the project ie. "midiInputExample"
+* click the "Update" button
+
+If everything went Ok, you should now be able to open the generated project and build/run the example.
 
 ### OSX
 
