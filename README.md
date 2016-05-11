@@ -212,6 +212,9 @@ Instead create a static ofPtr and initialize it later:
 	    }
     }
 
+### ofxMidi classes created in constructors don't seem to work
+
+This is related to the issue above, in that the ofxMidi classes are being created too early in the app startup process and the back end MIDI library is not being set up correctly. The easiest & best solution is to call the ofxMidi class setup code as part of you ofApp's setup() function, whether there directly or within a subclass. This way you have direct control over when things are happening as opposed to within a constructor which may be called at an arbitrarily early point.
 
 DEVELOPING
 ----------
