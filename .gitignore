@@ -36,21 +36,19 @@ build/
 # example project files
 
 midiExampleIOS/Project.xcconfig
-midiExampleIOS/addons.make
+midiExampleIOS/config.make
 midiExampleIOS/midiExampleIOS.xcodeproj
 midiExampleIOS/ofxiOS-Info.plist
 midiExampleIOS/ofxiOS_Prefix.pch
 
 midiInputExample/Makefile
 midiInputExample/Project.xcconfig
-midiInputExample/addons.make
 midiInputExample/config.make
 midiInputExample/midiInputExample.xcodeproj
 midiInputExample/openFrameworks-Info.plist
 
 midiOutputExample/Makefile
 midiOutputExample/Project.xcconfig
-midiOutputExample/addons.make
 midiOutputExample/config.make
 midiOutputExample/midiOutputExample.xcodeproj
 midiOutputExample/openFrameworks-Info.plist
