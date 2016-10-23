@@ -33,5 +33,5 @@ cp -v $SRC/README.md $DEST
 cp -v $SRC/Sources/PGMidi/* $DEST
 
 # cleanup
-rm -rfv $SRC
+rm -rf $SRC
 

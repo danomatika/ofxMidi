@@ -12,7 +12,7 @@
 
 WD=$(dirname $0)
 
-VER=2.1.0
+VER=2.1.1
 
 SRC=rtmidi-$VER
 DEST=../libs/rtmidi
@@ -34,10 +34,13 @@ mkdir -p $DEST
 # copy license
 cp -v $SRC/readme $DEST
 
+# don't need C API
+rm $SRC/rtmidi_c.*
+
 # copy sources
 cp -v $SRC/*.h $DEST
 cp -v $SRC/*.cpp $DEST
 
 # cleanup
-rm -rfv $SRC rtmidi-$VER.tar.gz
+rm -rf $SRC rtmidi-$VER.tar.gz
 
