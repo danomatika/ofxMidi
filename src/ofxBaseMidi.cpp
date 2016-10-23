@@ -98,6 +98,10 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *me
 			midiMessage.pitch = (int) message->at(1);
 			midiMessage.value = (int) message->at(2);
 			break;
+		case MIDI_SONG_POS_POINTER:
+			midiMessage.value = (int) (message->at(2) << 7) +
+			                    (int) message->at(1); // msb + lsb
+			break;
 		default:
 			break;
 	}
