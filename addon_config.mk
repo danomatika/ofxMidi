@@ -17,7 +17,7 @@
 meta:
 	ADDON_NAME = ofxMidi
 	ADDON_DESCRIPTION = MIDI interface for OpenFrameworks
-	ADDON_AUTHOR = Dan Wilcox (original implementation by Chris O'Shea, Arturo Castro, Kyle McDonald)
+	ADDON_AUTHOR = Dan Wilcox (original implementation by Chris OShea, Arturo Castro, Kyle McDonald)
 	ADDON_TAGS = "MIDI" "audio" "control"
 	ADDON_URL = http://github.com/danomatika/ofxMidi
 
@@ -69,101 +69,77 @@ common:
 	# ADDON_INCLUDES_EXCLUDE =
 	
 linux64:
-	# when parsing the file system looking for sources exclude this for all or
-	# a specific platform
+	ADDON_PKG_CONFIG_LIBRARIES = alsa
+	
 	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
 	ADDON_SOURCES_EXCLUDE += src/ios/%
 	
-	# when parsing the file system looking for include paths exclude this for all or
-	# a specific platform
-	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
-	ADDON_INCLUDES_EXCLUDE += src/ios/%
-	
-linux:
-	# when parsing the file system looking for sources exclude this for all or
-	# a specific platform
-	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
-	ADDON_SOURCES_EXCLUDE += src/ios/%
-	
-	# when parsing the file system looking for include paths exclude this for all or
-	# a specific platform
-	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
-	ADDON_INCLUDES_EXCLUDE += src/ios/%
-	
-msys2:
-	# when parsing the file system looking for sources exclude this for all or
-	# a specific platform
-	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
-	ADDON_SOURCES_EXCLUDE += src/ios/%
-	
-	# when parsing the file system looking for include paths exclude this for all or
-	# a specific platform
-	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
-	ADDON_INCLUDES_EXCLUDE += src/ios/%
-	
-vs:
-	# when parsing the file system looking for sources exclude this for all or
-	# a specific platform
-	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
-	ADDON_SOURCES_EXCLUDE += src/ios/%
-	
-	# when parsing the file system looking for include paths exclude this for all or
-	# a specific platform
-	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
-	ADDON_INCLUDES_EXCLUDE += src/ios/%
-	
-linuxarmv6l:
-	# when parsing the file system looking for sources exclude this for all or
-	# a specific platform
-	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
-	ADDON_SOURCES_EXCLUDE += src/ios/%
-	
-	# when parsing the file system looking for include paths exclude this for all or
-	# a specific platform
-	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
-	ADDON_INCLUDES_EXCLUDE += src/ios/%
-	
-linuxarmv7l:
-	# when parsing the file system looking for sources exclude this for all or
-	# a specific platform
-	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
-	ADDON_SOURCES_EXCLUDE += src/ios/%
-	
-	# when parsing the file system looking for include paths exclude this for all or
-	# a specific platform
 	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
 	ADDON_INCLUDES_EXCLUDE += src/ios/%
 
-android/armeabi:	
+linux:
+	ADDON_PKG_CONFIG_LIBRARIES = alsa
 	
-android/armeabi-v7a:	
+	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
+	ADDON_SOURCES_EXCLUDE += src/ios/%
+	
+	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
+	ADDON_INCLUDES_EXCLUDE += src/ios/%
+
+linuxarmv6l:
+	ADDON_PKG_CONFIG_LIBRARIES = alsa
+	
+	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
+	ADDON_SOURCES_EXCLUDE += src/ios/%
+	
+	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
+	ADDON_INCLUDES_EXCLUDE += src/ios/%
+
+linuxarmv7l:
+	ADDON_PKG_CONFIG_LIBRARIES = alsa
+	
+	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
+	ADDON_SOURCES_EXCLUDE += src/ios/%
+	
+	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
+	ADDON_INCLUDES_EXCLUDE += src/ios/%
+
+msys2:
+	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
+	ADDON_SOURCES_EXCLUDE += src/ios/%
+	
+	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
+	ADDON_INCLUDES_EXCLUDE += src/ios/%
+
+vs:
+	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
+	ADDON_SOURCES_EXCLUDE += src/ios/%
+	
+	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
+	ADDON_INCLUDES_EXCLUDE += src/ios/%
+
+android/armeabi:
+
+android/armeabi-v7a:
 
 osx:
-	# osx/iOS only, any framework that should be included in the project
+	# osx/iOS only
 	ADDON_FRAMEWORKS = CoreMIDI
-
-	# when parsing the file system looking for sources exclude this for all or
-	# a specific platform
+	
 	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
 	ADDON_SOURCES_EXCLUDE += src/ios/%
 	
-	# when parsing the file system looking for include paths exclude this for all or
-	# a specific platform
 	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
 	ADDON_INCLUDES_EXCLUDE += src/ios/%
-    
-ios:
-	# osx/iOS only, any framework that should be included in the project
-	ADDON_FRAMEWORKS = CoreMIDI
 
-	# when parsing the file system looking for sources exclude this for all or
-	# a specific platform
+ios:
+	# osx/iOS only
+	ADDON_FRAMEWORKS = CoreMIDI
+	
 	ADDON_SOURCES_EXCLUDE = libs/rtmidi/%
 	ADDON_SOURCES_EXCLUDE += libs/portmidi/%
 	ADDON_SOURCES_EXCLUDE += src/desktop/%
 	
-	# when parsing the file system looking for include paths exclude this for all or
-	# a specific platform
 	ADDON_INCLUDES_EXCLUDE = libs/rtmidi/%
 	ADDON_INCLUDES_EXCLUDE += libs/portmidi/%
 	ADDON_INCLUDES_EXCLUDE += src/desktop/%
