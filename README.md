@@ -49,7 +49,7 @@ If you are using a stable version (007, ...) of OpenFrameworks then you want to 
 For example, the following commands will clone ofxMidi and switch to the OF 007 tagged version:
 
     git clone git://github.com/danomatika/ofxMidi.git
-    cd ofxPd
+    cd ofxMidi
     git checkout 007
 
 Midi Routing
