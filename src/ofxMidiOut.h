@@ -94,7 +94,7 @@ public:
 	/// allows for connections between software
 	///
 	/// note: a connected virtual port has a portNum = -1
-	///	note: an open virtual port ofxMidiOut object cannot see it's virtual
+	/// note: an open virtual port ofxMidiOut object cannot see it's virtual
 	///       own virtual port when listing ports
 	///
 	bool openVirtualPort(string portName="ofxMidi Virtual Output");
