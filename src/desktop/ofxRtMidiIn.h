@@ -19,7 +19,7 @@ public:
 
 	ofxRtMidiIn(const string name);
 	virtual ~ofxRtMidiIn();
-	
+
 	static void listPorts();
 	static vector<string>& getPortList();
 	static int getNumPorts();
@@ -29,7 +29,7 @@ public:
 	bool openPort(string deviceName);
 	bool openVirtualPort(string portName);
 	void closePort();
-	
+
 	void ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense);
 
 private:

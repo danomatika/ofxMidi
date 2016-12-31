@@ -176,7 +176,6 @@ void ofApp::deviceOrientationChanged(int newOrientation) {
 
 }
 
-
 //--------------------------------------------------------------
 void ofApp::touchCancelled(ofTouchEventArgs& args) {
 
@@ -187,8 +186,9 @@ void ofApp::addMessage(string msg) {
 	messageMutex.lock();
 	cout << msg << endl;
 	messages.push_back(msg);
-	while(messages.size() > maxMessages)
+	while(messages.size() > maxMessages) {
 		messages.pop_front();
+	}
 	messageMutex.unlock();
 }
 
@@ -204,7 +204,7 @@ void ofApp::midiInputAdded(string name, bool isNetwork) {
 	addMessage(msg.str());
 	
 	// create and open a new input port
-	ofxMidiIn * newInput = new ofxMidiIn;
+	ofxMidiIn *newInput = new ofxMidiIn;
 	newInput->openPort(name);
 	newInput->addListener(this);
 	inputs.push_back(newInput);
@@ -219,7 +219,7 @@ void ofApp::midiInputRemoved(string name, bool isNetwork) {
 	// close and remove input port
 	vector<ofxMidiIn*>::iterator iter;
 	for(iter = inputs.begin(); iter != inputs.end(); ++iter) {
-		ofxMidiIn * input = (*iter);
+		ofxMidiIn *input = (*iter);
 		if(input->getName() == name) {
 			input->closePort();
 			input->removeListener(this);
@@ -237,7 +237,7 @@ void ofApp::midiOutputAdded(string name, bool isNetwork) {
 	addMessage(msg.str());
 	
 	// create and open new output port
-	ofxMidiOut * newOutput = new ofxMidiOut;
+	ofxMidiOut *newOutput = new ofxMidiOut;
 	newOutput->openPort(name);
 	outputs.push_back(newOutput);
 }
@@ -251,7 +251,7 @@ void ofApp::midiOutputRemoved(string name, bool isNetwork) {
 	// close and remove output port
 	vector<ofxMidiOut*>::iterator iter;
 	for(iter = outputs.begin(); iter != outputs.end(); ++iter) {
-		ofxMidiOut * output = (*iter);
+		ofxMidiOut *output = (*iter);
 		if(output->getName() == name) {
 			output->closePort();
 			delete output;

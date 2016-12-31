@@ -13,9 +13,9 @@
 #import "pgmidi/iOSVersionDetection.h"
 #include "ofLog.h"
 
-NSAutoreleasePool * ofxPGMidiContext::pool = nil;
-PGMidi * ofxPGMidiContext::midi = nil;
-ofxPGMidiDelegate * ofxPGMidiContext::delegate = nil;
+NSAutoreleasePool *ofxPGMidiContext::pool = nil;
+PGMidi *ofxPGMidiContext::midi = nil;
+ofxPGMidiDelegate *ofxPGMidiContext::delegate = nil;
 
 // -----------------------------------------------------------------------------
 void ofxPGMidiContext::setup() {
@@ -30,13 +30,13 @@ void ofxPGMidiContext::setup() {
 }
 
 // -----------------------------------------------------------------------------
-PGMidi * ofxPGMidiContext::getMidi() {
+PGMidi* ofxPGMidiContext::getMidi() {
 	setup();
 	return midi;
 }
 
 // -----------------------------------------------------------------------------
-void ofxPGMidiContext::setConnectionListener(ofxMidiConnectionListener * listener) {
+void ofxPGMidiContext::setConnectionListener(ofxMidiConnectionListener *listener) {
 	[delegate setListenerPtr:(void*) listener];
 }
 

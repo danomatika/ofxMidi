@@ -31,11 +31,11 @@ public:
 ///
 /// check status type and grab data:
 /// 
-/// if(midiArg.status == MIDI_NOTE_ON) {
-///     cout << "note on " << midiArg.channel
-///          << midiArg.note << " " << midiArg.velocity
-///          << endl;
-/// }
+///     if(midiArg.status == MIDI_NOTE_ON) {
+///         cout << "note on " << midiArg.channel
+///              << midiArg.note << " " << midiArg.velocity
+///              << endl;
+///     }
 ///
 /// the message-specific types are only set for the appropriate
 /// message types ie pitch is only set for noteon, noteoff, and

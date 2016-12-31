@@ -14,7 +14,7 @@
 
 // PIMPL wrapper from http://stackoverflow.com/questions/7132755/wrapping-objective-c-in-objective-c-c
 struct ofxPGMidiOut::Destination {
-	PGMidiDestination * d; ///< output destination
+	PGMidiDestination *d; ///< output destination
 };
 
 // -----------------------------------------------------------------------------
@@ -36,20 +36,20 @@ ofxPGMidiOut::~ofxPGMidiOut() {
 
 // -----------------------------------------------------------------------------
 void ofxPGMidiOut::listPorts() {
-	PGMidi * midi = ofxPGMidiContext::getMidi();
+	PGMidi *midi = ofxPGMidiContext::getMidi();
 	int count = [midi.destinations count]; 
 	ofLogNotice("ofxMidiOut") << count << " ports available";
 	for(NSUInteger i = 0; i < count; ++i) {
-			PGMidiDestination * dest = [midi.destinations objectAtIndex:i];
+		PGMidiDestination *dest = [midi.destinations objectAtIndex:i];
 		ofLogNotice("ofxMidiOut") << i << ": " << [dest.name UTF8String];
 	}
 }
 
 // -----------------------------------------------------------------------------
 vector<string>& ofxPGMidiOut::getPortList() {
-	PGMidi * midi = ofxPGMidiContext::getMidi();
+	PGMidi *midi = ofxPGMidiContext::getMidi();
 	portList.clear();
-	for(PGMidiDestination * dest in midi.destinations) {
+	for(PGMidiDestination *dest in midi.destinations) {
 		portList.push_back([dest.name UTF8String]);
 	}
 	return portList;
@@ -63,16 +63,16 @@ int ofxPGMidiOut::getNumPorts() {
 // -----------------------------------------------------------------------------
 string ofxPGMidiOut::getPortName(unsigned int portNumber) {
 	
-	PGMidi * midi = ofxPGMidiContext::getMidi();
+	PGMidi *midi = ofxPGMidiContext::getMidi();
 	
 	// handle OBJ-C exceptions
 	@try {
-		PGMidiDestination * dest = [midi.destinations objectAtIndex:portNumber]; 
+		PGMidiDestination *dest = [midi.destinations objectAtIndex:portNumber]; 
 		return [dest.name UTF8String];
 	}
-	@catch(NSException * ex) {
+	@catch(NSException *ex) {
 		ofLogError("ofxMidiOut") << "couldn't get name for port " << portNumber
-			<< " " << [ex.name UTF8String] << ": " << [ex.reason UTF8String];
+		    << " " << [ex.name UTF8String] << ": " << [ex.reason UTF8String];
 	}
 	return "";
 }
@@ -80,14 +80,14 @@ string ofxPGMidiOut::getPortName(unsigned int portNumber) {
 // -----------------------------------------------------------------------------
 bool ofxPGMidiOut::openPort(unsigned int portNumber) {	
 	
-	PGMidi * midi = ofxPGMidiContext::getMidi();
-	PGMidiDestination * dest = nil;
+	PGMidi *midi = ofxPGMidiContext::getMidi();
+	PGMidiDestination *dest = nil;
 	
 	// handle OBJ-C exceptions
 	@try {
 		dest = [midi.destinations objectAtIndex:portNumber]; 
 	}
-	@catch(NSException * ex) {
+	@catch(NSException *ex) {
 		ofLogError("ofxMidiOut") << "couldn't open port " << portNumber
 			<< " " << [ex.name UTF8String] << ": " << [ex.reason UTF8String];
 		return false;
@@ -103,12 +103,12 @@ bool ofxPGMidiOut::openPort(unsigned int portNumber) {
 // -----------------------------------------------------------------------------
 bool ofxPGMidiOut::openPort(string deviceName) {
 	
-	PGMidi * midi = ofxPGMidiContext::getMidi();
+	PGMidi *midi = ofxPGMidiContext::getMidi();
 	
 	// iterate through MIDI ports, find requested device
 	int port = -1;
 	for(NSUInteger i = 0; i < [midi.destinations count]; ++i) {
-		PGMidiSource * dest = [midi.destinations objectAtIndex:i];
+		PGMidiSource *dest = [midi.destinations objectAtIndex:i];
 		if([dest.name UTF8String] == deviceName) {
 			port = i;
 			break;
@@ -151,8 +151,8 @@ void ofxPGMidiOut::closePort() {
 void ofxPGMidiOut::sendMessage() {
 
     Byte packetBuffer[message.size()+100];
-    MIDIPacketList * packetList = (MIDIPacketList*)packetBuffer;
-    MIDIPacket * packet = MIDIPacketListInit(packetList);
+    MIDIPacketList *packetList = (MIDIPacketList*)packetBuffer;
+    MIDIPacket *packet = MIDIPacketListInit(packetList);
 
     packet = MIDIPacketListAdd(packetList, sizeof(packetBuffer), packet, 0, message.size(), &message[0]);
 

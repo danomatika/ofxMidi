@@ -135,15 +135,15 @@ void ofApp::keyReleased(int key) {
 			//       at once
 			//
 			midiOut.sendMidiByte(MIDI_SYSEX);
-			midiOut.sendMidiByte(0x47);	// akai manufacturer code
+			midiOut.sendMidiByte(0x47); // akai manufacturer code
 			midiOut.sendMidiByte(0x00); // channel 0
 			midiOut.sendMidiByte(0x42); // MULTI
 			midiOut.sendMidiByte(0x48); // using an Akai S2000
 			midiOut.sendMidiByte(0x00); // Part 1
-			midiOut.sendMidiByte(0x00);	// transpose
+			midiOut.sendMidiByte(0x00); // transpose
 			midiOut.sendMidiByte(0x01); // Access Multi Parts
 			midiOut.sendMidiByte(0x4B); // offset
-			midiOut.sendMidiByte(0x00);	// offset
+			midiOut.sendMidiByte(0x00); // offset
 			midiOut.sendMidiByte(0x01); // Field size = 1
 			midiOut.sendMidiByte(0x00); // Field size = 1
 			midiOut.sendMidiByte(0x04); // pitch value = 4
@@ -189,7 +189,7 @@ void ofApp::keyReleased(int key) {
 			break;
 		
 		// note off using raw bytes
-		case ' ':	
+		case ' ':
 			// send with the byte stream interface, noteoff for note 60
 			midiOut << StartMidi() << 0x80 << 0x3C << 0x40 << FinishMidi();
 			break;

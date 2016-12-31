@@ -43,12 +43,12 @@ bool ofxBaseMidiIn::isVirtual() {
 }
 
 // -----------------------------------------------------------------------------
-void ofxBaseMidiIn::addListener(ofxMidiListener* listener) {
+void ofxBaseMidiIn::addListener(ofxMidiListener *listener) {
 	ofAddListener(newMessageEvent, listener, &ofxMidiListener::newMidiMessage);
 }
 
 // -----------------------------------------------------------------------------
-void ofxBaseMidiIn::removeListener(ofxMidiListener* listener) {
+void ofxBaseMidiIn::removeListener(ofxMidiListener *listener) {
 	ofRemoveListener(newMessageEvent, listener, &ofxMidiListener::newMidiMessage);
 }
 
@@ -184,7 +184,7 @@ void ofxBaseMidiOut::sendControlChange(int channel, int control, int value) {
 		ofLogWarning("ofxMidiOut") << "cannot send note ctrl change, byte stream in progress";
 		return;
 	}
-	
+
 	message.clear();
 	message.push_back(MIDI_CONTROL_CHANGE+(channel-1));
 	message.push_back(control);
@@ -216,8 +216,8 @@ void ofxBaseMidiOut::sendPitchBend(int channel, int value) {
 
 	message.clear();
 	message.push_back(MIDI_PITCH_BEND+(channel-1));
-	message.push_back(value & 0x7F);		// lsb 7bit
-	message.push_back((value >> 7) & 0x7F);	// msb 7bit
+	message.push_back(value & 0x7F);        // lsb 7bit
+	message.push_back((value >> 7) & 0x7F); // msb 7bit
 	sendMessage();
 }
 
@@ -227,7 +227,7 @@ void ofxBaseMidiOut::sendPitchBend(int channel, unsigned char lsb, unsigned char
 		ofLogWarning("ofxMidiOut") << "cannot send pitch bend, byte stream in progress";
 		return;
 	}
-	
+
 	message.clear();
 	message.push_back(MIDI_PITCH_BEND+(channel-1));
 	message.push_back(lsb);
@@ -302,14 +302,14 @@ void ofxBaseMidiOut::startMidiStream() {
 		ofLogWarning("ofxMidiOut") << "calling StartMidi when byte stream in progress";
 		return;
 	}
-    message.clear();
+	message.clear();
 	bMsgInProgress = true;
 }
 
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::finishMidiStream() {
-    if(!bMsgInProgress) {
-    	ofLogWarning("ofxMidiOut") << "can not finish midi byte stream, stream not in progress";
+	if(!bMsgInProgress) {
+		ofLogWarning("ofxMidiOut") << "can not finish midi byte stream, stream not in progress";
 		return;
 	}
 	sendMessage();

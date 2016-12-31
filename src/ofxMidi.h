@@ -45,16 +45,18 @@ public:
 
 /// \section iOS Specific
 	
-	/// set a listener to receieve device (dis)connection events
+	/// set a listener to receieve iOS device (dis)connection events
 	///
 	/// don't forget to clear before the listener is deallocated!
 	///
 	/// note: these are noops on Mac, Win, & Linux
 	///
-	static void setConnectionListener(ofxMidiConnectionListener * listener);
+	static void setConnectionListener(ofxMidiConnectionListener *listener);
+
+	/// clear iOS device event receiver
 	static void clearConnectionListener();
 	
-	/// enables the network midi session between iOS and Mac OSX on a
+	/// enables the network midi session between iOS and macOS on a
 	/// local wifi network
 	///
 	/// in ofxMidi: open the input/outport network ports named "Session 1"

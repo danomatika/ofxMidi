@@ -55,19 +55,19 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 // adapted from RTMidi CoreMidi message parsing
 - (void) midiSource:(PGMidiSource *)input midiReceived:(const MIDIPacketList *)packetList {
 
-    const MIDIPacket * packet = &packetList->packet[0];
+	const MIDIPacket *packet = &packetList->packet[0];
 	stringstream msg;
 	unsigned char statusByte;
 	unsigned short nBytes, curByte, msgSize;
 	unsigned long long time;
 	double delta = 0.0;
 	
-    for(int i = 0; i < packetList->numPackets; ++i) {
-       
+	for(int i = 0; i < packetList->numPackets; ++i) {
+		
 		nBytes = packet->length;
 		if(nBytes == 0)
 			continue;
-	   
+		
 		// calc time stamp
 		time = 0;
 		if(bFirstPacket) {
@@ -89,7 +89,7 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 		if(lastTime == 0 ) { // this happens when receiving asynchronous sysex messages
 		  lastTime = mach_absolute_time();
 		}
-	   
+		
 		// handle segmented sysex messages
 		curByte = 0;
 		if(bContinueSysex) {
@@ -184,7 +184,7 @@ uint64_t AbsoluteToNanos(uint64_t time) {
 		}
 		
 		packet = MIDIPacketNext(packet);
-    }
+	}
 }
 
 // -----------------------------------------------------------------------------

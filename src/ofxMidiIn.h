@@ -67,7 +67,7 @@ public:
 	/// the vector index corresponds with the name's port number
 	///
 	/// note: this order may change when new devices are added/removed
-	///		  from the system
+	///       from the system
 	///
 	static vector<string>& getPortList();
 	

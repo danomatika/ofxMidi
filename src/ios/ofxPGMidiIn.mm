@@ -15,15 +15,15 @@
 
 // PIMPL wrapper from http://stackoverflow.com/questions/7132755/wrapping-objective-c-in-objective-c-c
 struct ofxPGMidiIn::InputDelegate {
-	ofxPGMidiSourceDelegate * d; ///< Obj-C input delegate
+	ofxPGMidiSourceDelegate *d; ///< Obj-C input delegate
 };
 
 // -----------------------------------------------------------------------------
 ofxPGMidiIn::ofxPGMidiIn(const string name) : ofxBaseMidiIn(name) {
-	
+
 	// setup global midi instance
 	ofxPGMidiContext::setup();
-	
+
 	// setup Obj-C interface to PGMidi
 	inputDelegate = new InputDelegate;
 	inputDelegate->d = [[ofxPGMidiSourceDelegate alloc] init];
@@ -38,20 +38,20 @@ ofxPGMidiIn::~ofxPGMidiIn() {
 
 // -----------------------------------------------------------------------------
 void ofxPGMidiIn::listPorts() {
-	PGMidi * midi = ofxPGMidiContext::getMidi();
+	PGMidi *midi = ofxPGMidiContext::getMidi();
 	int count = [midi.sources count];
 	ofLogNotice("ofxMidiIn") << count << " ports available";
 	for(NSUInteger i = 0; i < count; ++i) {
-			PGMidiSource * source = [midi.sources objectAtIndex:i];
-			ofLogNotice("ofxMidiIn") << i << ": " << [source.name UTF8String];
+		PGMidiSource *source = [midi.sources objectAtIndex:i];
+		ofLogNotice("ofxMidiIn") << i << ": " << [source.name UTF8String];
 	}
 }
 
 // -----------------------------------------------------------------------------
 vector<string>& ofxPGMidiIn::getPortList() {
-	PGMidi * midi = ofxPGMidiContext::getMidi();
+	PGMidi *midi = ofxPGMidiContext::getMidi();
 	portList.clear();
-	for(PGMidiSource * source in midi.sources) {
+	for(PGMidiSource *source in midi.sources) {
 		portList.push_back([source.name UTF8String]);
 	}
 	return portList;
@@ -64,32 +64,32 @@ int ofxPGMidiIn::getNumPorts() {
 
 // -----------------------------------------------------------------------------
 string ofxPGMidiIn::getPortName(unsigned int portNumber) {
-	
-	PGMidi * midi = ofxPGMidiContext::getMidi();
-	
+
+	PGMidi *midi = ofxPGMidiContext::getMidi();
+
 	// handle OBJ-C exceptions
 	@try {
-		PGMidiSource * source = [midi.sources objectAtIndex:portNumber]; 
+		PGMidiSource *source = [midi.sources objectAtIndex:portNumber]; 
 		return [source.name UTF8String];
 	}
-	@catch(NSException * ex) {
+	@catch(NSException *ex) {
 		ofLogError("ofxMidiIn") << "couldn't get name for port " << portNumber
-			<< " " << [ex.name UTF8String] << ": " << [ex.reason UTF8String];
+		    << " " << [ex.name UTF8String] << ": " << [ex.reason UTF8String];
 	}
 	return "";
 }
 
 // -----------------------------------------------------------------------------
-bool ofxPGMidiIn::openPort(unsigned int portNumber) {	
+bool ofxPGMidiIn::openPort(unsigned int portNumber) {
 
-	PGMidi * midi = ofxPGMidiContext::getMidi();
-	PGMidiSource * source = nil;
-	
+	PGMidi *midi = ofxPGMidiContext::getMidi();
+	PGMidiSource *source = nil;
+
 	// handle OBJ-C exceptions
 	@try {
 		source = [midi.sources objectAtIndex:portNumber]; 
 	}
-	@catch(NSException * ex) {
+	@catch(NSException *ex) {
 		ofLogError("ofxMidiIn") << "couldn't open port " << portNumber
 			<< " " << [ex.name UTF8String] << ": " << [ex.reason UTF8String];
 		return false;
@@ -105,18 +105,18 @@ bool ofxPGMidiIn::openPort(unsigned int portNumber) {
 // -----------------------------------------------------------------------------
 bool ofxPGMidiIn::openPort(string deviceName) {
 
-	PGMidi * midi = ofxPGMidiContext::getMidi();
+	PGMidi *midi = ofxPGMidiContext::getMidi();
 
 	// iterate through MIDI ports, find requested device
 	int port = -1;
 	for(NSUInteger i = 0; i < [midi.sources count]; ++i) {
-		PGMidiSource * source = [midi.sources objectAtIndex:i];
+		PGMidiSource *source = [midi.sources objectAtIndex:i];
 		if([source.name UTF8String] == deviceName) {
 			port = i;
 			break;
 		}
 	}
-	
+
 	// bail if not found
 	if(port == -1) {
 		ofLogError("ofxMidiIn") << "port \"" << deviceName << "\" is not available";;
@@ -135,15 +135,15 @@ bool ofxPGMidiIn::openVirtualPort(string portName) {
 
 // -----------------------------------------------------------------------------
 void ofxPGMidiIn::closePort() {
-	
+
 	if(bOpen) {
 		ofLogVerbose("ofxMidiIn") << "closing port " << portNum << " " << portName;
-	
+		
 		// sometimes the source may already have been removed in PGMidi, so make
 		// sure we have a valid index otherwise the app will crash
-		PGMidi * midi = ofxPGMidiContext::getMidi();
+		PGMidi *midi = ofxPGMidiContext::getMidi();
 		if(portNum < midi.sources.count) {
-			PGMidiSource * source = [midi.sources objectAtIndex:portNum];
+			PGMidiSource *source = [midi.sources objectAtIndex:portNum];
 			[source removeDelegate:inputDelegate->d];
 		}
 	}
@@ -162,7 +162,7 @@ void ofxPGMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 	inputDelegate->d.bIgnoreSense = midiSense;
 	
 	ofLogVerbose("ofxMidiIn") << "ignore types on " << portName << ": sysex: " << midiSysex
-		<< " timing: " << midiTiming << " sense: " << midiSense;
+	    << " timing: " << midiTiming << " sense: " << midiSense;
 }
 
 // -----------------------------------------------------------------------------

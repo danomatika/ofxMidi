@@ -15,8 +15,8 @@
 class ofxMidiConnectionListener;
 
 /// interface to global pgmidi events
-@interface ofxPGMidiDelegate : NSObject <PGMidiDelegate> {	
-	ofxMidiConnectionListener * listenerPtr; ///< object to send receieved events to
+@interface ofxPGMidiDelegate : NSObject <PGMidiDelegate> {
+	ofxMidiConnectionListener *listenerPtr; ///< object to send receieved events to
 }
 
 - (void) midi:(PGMidi*)midi sourceAdded:(PGMidiSource *)source;
