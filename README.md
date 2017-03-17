@@ -14,7 +14,7 @@ BSD Simplified License.
 For information on usage and redistribution, and for a DISCLAIMER OF ALL
 WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 
-See Documentation on [Github](https://github.com/danomatika/ofxMidi) and the [OpenFrameworks Forum post](http://forum.openframeworks.cc/index.php/topic,2435.0.html).
+See Documentation on [Github](https://github.com/danomatika/ofxMidi) and the [OpenFrameworks Forum post](https://forum.openframeworks.cc/t/ofxmidi-updates/2435).
 
 OpenFrameworks is a cross platform open source toolkit for creative coding in C++.
 
