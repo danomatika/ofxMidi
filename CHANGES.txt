@@ -19,7 +19,7 @@
 * updated to RtMidi 2.1.0 (note: RtError.h was removed in this version)
 * updated PGMidi
 
-* fixed iOS crash caused by occaisional out of bounds PGMidi index
+* fixed iOS crash caused by occasional out of bounds PGMidi index
 
 * removed example project files (rebuild them with the OF ProjectGenerator)
 
