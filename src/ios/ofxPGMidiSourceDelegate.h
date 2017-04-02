@@ -18,7 +18,7 @@ class ofxPGMidiIn;
 /// interface to pgmidi input
 @interface ofxPGMidiSourceDelegate : NSObject <PGMidiSourceDelegate> {
 	
-	ofxPGMidiIn * inputPtr;	///< object to send receieved midi messages to
+	ofxPGMidiIn *inputPtr; ///< object to send receieved midi messages to
 	
 	bool bIgnoreSysex, bIgnoreTiming, bIgnoreSense;	///< ignore midi types?
 	
@@ -27,7 +27,7 @@ class ofxPGMidiIn;
 	bool bContinueSysex;         ///< is this packet part of a sysex message?
 	unsigned int maxMessageLen;  ///< max size of the byte buffer
 	
-	std::vector<unsigned char> message;	///< raw byte buffer
+	std::vector<unsigned char> message; ///< raw byte buffer
 }
 
 /// pgmidi callback

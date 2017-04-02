@@ -10,7 +10,7 @@
  */
 #pragma once
 
-/// /section  stream interface midi objects
+/// \section  stream interface midi objects
 /// ref: http://www.gweep.net/~prefect/eng/reference/protocol/midispec.html
 
 /// send a note on event (also set velocity = 0 for noteoff)

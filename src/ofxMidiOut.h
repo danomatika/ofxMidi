@@ -67,7 +67,7 @@ public:
 	/// the vector index corresponds with the name's port number
 	///
 	/// note: this order may change when new devices are added/removed
-	///		  from the system
+	///       from the system
 	///
 	static vector<string>& getPortList();
 	
@@ -94,7 +94,7 @@ public:
 	/// allows for connections between software
 	///
 	/// note: a connected virtual port has a portNum = -1
-	///	note: an open virtual port ofxMidiOut object cannot see it's virtual
+	/// note: an open virtual port ofxMidiOut object cannot see it's virtual
 	///       own virtual port when listing ports
 	///
 	bool openVirtualPort(string portName="ofxMidi Virtual Output");
@@ -122,12 +122,11 @@ public:
 	
 /// \section Sending
 	
-	///
 	/// midi events
 	///
 	/// number ranges:
 	///     channel         1 - 16
-	///	    pitch           0 - 127
+	///     pitch           0 - 127
 	///     velocity        0 - 127
 	///     control value   0 - 127
 	///     program value   0 - 127
@@ -136,12 +135,12 @@ public:
 	///
 	/// note:
 	///     - a noteon with vel = 0 is equivalent to a noteoff
-	///	    - send velocity = 64 if not using velocity values
-	///	    - most synths don't use the velocity value in a noteoff
-	///	    - the lsb & msb for raw pitch bend bytes are 7 bit
+	///     - send velocity = 64 if not using velocity values
+	///     - most synths don't use the velocity value in a noteoff
+	///     - the lsb & msb for raw pitch bend bytes are 7 bit
 	///
 	/// references:
-	///	    http://www.srm.com/qtma/davidsmidispec.html
+	///     http://www.srm.com/qtma/davidsmidispec.html
 	///
 	void sendNoteOn(int channel, int pitch, int velocity=64);
 	void sendNoteOff(int channel, int pitch, int velocity=64);
@@ -152,7 +151,6 @@ public:
 	void sendAftertouch(int channel, int value);
 	void sendPolyAftertouch(int channel, int pitch, int value);
 	
-	///
 	/// raw midi bytes
 	///
 	void sendMidiByte(unsigned char byte);
@@ -160,7 +158,6 @@ public:
 	
 /// \section Sending Stream Interface
 	
-	///
 	/// midi events
 	///
 	/// midiout << NoteOn(1, 64, 64) << NoteOff(1, 64);

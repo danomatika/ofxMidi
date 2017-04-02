@@ -36,9 +36,9 @@ void ofxMidiConnectionListener::midiOutputRemoved(string name, bool isNetwork) {
 // -----------------------------------------------------------------------------
 // from Pure Data x_acoustics.c
 float ofxMidi::mtof(float note) {
-	if (note <= -1500) return(0);
-    else if (note > 1499) return(mtof(1499));
-    else return (8.17579891564 * exp(.0577622650 * note));
+	if(note <= -1500) return (0);
+	else if(note > 1499) return (mtof(1499));
+	else return (8.17579891564 * exp(.0577622650 * note));
 }
 
 // from Pure Data x_acoustics.c
@@ -47,7 +47,7 @@ float ofxMidi::ftom(float frequency) {
 }
 
 // -----------------------------------------------------------------------------
-void ofxMidi::setConnectionListener(ofxMidiConnectionListener * listener) {
+void ofxMidi::setConnectionListener(ofxMidiConnectionListener *listener) {
 	#ifdef TARGET_OF_IPHONE
 		ofxPGMidiIn::setConnectionListener(listener);
 	#endif

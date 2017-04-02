@@ -137,8 +137,9 @@ void ofxRtMidiIn::closePort() {
 		ofLogVerbose("ofxMidiIn") << "closing port " << portNum << " " << portName;
 	}
 	midiIn.closePort();
-	if(bOpen)
+	if(bOpen) {
 		midiIn.cancelCallback();
+	}
 	portNum = -1;
 	portName = "";
 	bOpen = false;
@@ -149,7 +150,7 @@ void ofxRtMidiIn::closePort() {
 void ofxRtMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 	midiIn.ignoreTypes(midiSysex, midiTiming, midiSense);
 	ofLogVerbose("ofxMidiIn") <<"ignore types on " << portName << ": sysex: " << midiSysex
-		<< " timing: " << midiTiming << " sense: " << midiSense;
+	    << " timing: " << midiTiming << " sense: " << midiSense;
 }
 // -----------------------------------------------------------------------------
 void ofxRtMidiIn::_midiMessageCallback(double deltatime, vector<unsigned char> *message, void *userData) {

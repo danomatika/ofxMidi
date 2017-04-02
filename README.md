@@ -6,7 +6,7 @@ ofxMidi
 
 Midi input and output addon for openFrameworks
 
-Copyright (c) [Dan Wilcox](danomatika.com) 2011-2013<br/>
+Copyright (c) [Dan Wilcox](danomatika.com) 2011-2013  
 (original implementation by Chris O'Shea, Arturo Castro, Kyle McDonald)
 
 BSD Simplified License.
@@ -14,7 +14,7 @@ BSD Simplified License.
 For information on usage and redistribution, and for a DISCLAIMER OF ALL
 WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 
-See Documentation on [Github](https://github.com/danomatika/ofxMidi) and the [OpenFrameworks Forum post](http://forum.openframeworks.cc/index.php/topic,2435.0.html).
+See Documentation on [Github](https://github.com/danomatika/ofxMidi) and the [OpenFrameworks Forum post](https://forum.openframeworks.cc/t/ofxmidi-updates/2435).
 
 OpenFrameworks is a cross platform open source toolkit for creative coding in C++.
 
@@ -23,7 +23,7 @@ OpenFrameworks is a cross platform open source toolkit for creative coding in C+
 Description
 -----------
 
-ofxMidi provides [Music Instrument Digial Interface](http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface) IO capability to an OpenFrameworks app
+ofxMidi provides [Music Instrument Digital Interface](http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface) IO capability to an OpenFrameworks app
 
 * ofxMidiIn: a single midi input port, derive from the ofxMidiListener class to receive messages
 * ofxMidiMessage: a received midi message
@@ -42,15 +42,17 @@ To get a copy of the repository you can download the source from [http://github.
 
 The addon should sit in `openFrameworks/addons/ofxMidi/`.
 
-#### Which version to use?
+### Which version to use?
 
-If you are using a stable version (007, ...) of OpenFrameworks then you want to use a git tag of ofxMidi for that version. You can select the tag in the Github "Current Branch" menu or clone and check it out using git.
+The master branch of ofxMidi will work with the current stable version of OpenFrameworks and can be considered *relatively* stable.
 
-For example, the following commands will clone ofxMidi and switch to the OF 007 tagged version:
+Previous versions are tagged using [Semantic Versioning](http://semver.org) with the updates to newer versions of OpenFrameworks and MIDI libraries noted in the changelog, CHANGES.txt. You can select the tag in the Github "Current Branch" menu or clone and check it out using git.
+
+If you want to use ofxMidi with a previous version of OpenFrameworks, checkout the corresponding version tag after cloning:
 
     git clone git://github.com/danomatika/ofxMidi.git
     cd ofxMidi
-    git checkout 007
+    git checkout 1.0.5
 
 Midi Routing
 ------------
@@ -65,7 +67,7 @@ Check out the Alsa utility apps aconnect & aconnectgui as well as the qjackctl g
 
 ### Windows
 
-Windows dosen't come with a virtual MIDI routing system like Linux (ALSA) and OSX (CoreMIDI).
+Windows does not come with a virtual MIDI routing system like Linux (ALSA) and OSX (CoreMIDI).
 
 If you want to connect your ofxMidi app to other software (synths, DAWs, etc) check out [loopMIDI](http://www.tobias-erichsen.de/loopMIDI.html). Run the app and create a few virtual ports which you can then connect to within your software.
 
@@ -82,7 +84,7 @@ To (re)generate project files for an *existing* project:
 * navigate the to base folder for the project ie. "midiInputExample"
 * click the "Update" button
 
-If everything went Ok, you should now be able to open the generated project and build/run the example.
+If everything went ok, you should now be able to open the generated project and build/run the example.
 
 ### OSX
 
@@ -110,7 +112,7 @@ To develop your own project based on ofxMidi, simply copy an example project and
 
     openFrameworks/addons/ofxPd/midiExampleInput/ => openFrameworks/apps/myApps/midiExampleInput/
 
-It must be 3 levels down in the openframeworks folder structure.
+It must be 3 levels down in the OpenFrameworks folder structure.
 
 Then rename the folder:
 
@@ -235,9 +237,9 @@ Create an account, clone or fork the repo, then request a push/merge. Please use
 
 If you find any bugs or suggestions please log them to GitHub as well.
 
-### Adding a Midi Backend
+### Adding a Midi Back End
 
-If you want to add a new midi backend (Android, Jack, etc), you'll need two classes derived from ofxBaseMidiIn & ofxBaseMidiOut.
+If you want to add a new midi back end (Android, Jack, etc), you'll need two classes derived from ofxBaseMidiIn & ofxBaseMidiOut.
 
 Place your source files in a new folder named after your platform/library and add new include #ifdef flags to ofxMidiIn.h & ofxMidiIn.cpp.
 

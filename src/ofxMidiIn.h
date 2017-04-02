@@ -67,7 +67,7 @@ public:
 	/// the vector index corresponds with the name's port number
 	///
 	/// note: this order may change when new devices are added/removed
-	///		  from the system
+	///       from the system
 	///
 	static vector<string>& getPortList();
 	
@@ -94,7 +94,7 @@ public:
 	/// allows for connections between software
 	///
 	/// note: a connected virtual port has a portNum = -1
-	///	note: an open virtual port ofxMidiIn object cannot see it's virtual
+	/// note: an open virtual port ofxMidiIn object cannot see it's virtual
 	///       own virtual port when listing ports
 	///
 	bool openVirtualPort(string portName="ofxMidi Virtual Input");

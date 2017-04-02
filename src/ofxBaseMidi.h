@@ -39,10 +39,10 @@ public:
 	bool isVirtual();
 
 	virtual void ignoreTypes(bool midiSysex=true, bool midiTiming=true,
-		bool midiSense=true) = 0;
+	                         bool midiSense=true) = 0;
 
-	void addListener(ofxMidiListener* listener);
-	void removeListener(ofxMidiListener* listener);
+	void addListener(ofxMidiListener *listener);
+	void removeListener(ofxMidiListener *listener);
 
 	void setVerbose(bool verbose);
 
@@ -65,7 +65,6 @@ protected:
 	bool bVirtual; //< are we connected to a virtual port?
 };
 
-///
 /// a midi output port
 ///
 /// see ofxMidiOut for functional documentation
