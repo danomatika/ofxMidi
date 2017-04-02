@@ -46,6 +46,9 @@ public:
 
 	void setVerbose(bool verbose);
 
+	// builds ofxMidiMessage object from bytes + deltatime
+	static ofxMidiMessage buildMidiMessageFromBytes(vector<unsigned char> *bytes);
+
 protected:
 
 	/// parses and sends received raw messages to listeners

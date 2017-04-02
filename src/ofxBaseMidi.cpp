@@ -57,11 +57,9 @@ void ofxBaseMidiIn::setVerbose(bool verbose) {
 	bVerbose = verbose;
 }
 
-// PRIVATE
-// -----------------------------------------------------------------------------
-void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *message) {
-			
-	// parse message and fill event
+ofxMidiMessage ofxBaseMidiIn::buildMidiMessageFromBytes(vector<unsigned char> *message)
+{
+    	// parse message and fill event
 	ofxMidiMessage midiMessage(message);
 
 	if((message->at(0)) >= MIDI_SYSEX) {
@@ -71,11 +69,8 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *me
 		midiMessage.status = (MidiStatus) (message->at(0) & 0xF0);
 		midiMessage.channel = (int) (message->at(0) & 0x0F)+1;
 	}
-	
-	midiMessage.deltatime = deltatime;// * 1000; // convert s to ms
-	midiMessage.portNum = portNum;
-	midiMessage.portName = portName;
-	
+
+
 	switch(midiMessage.status) {
 		case MIDI_NOTE_ON :
 		case MIDI_NOTE_OFF:
@@ -105,7 +100,19 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *me
 		default:
 			break;
 	}
-	
+    return midiMessage;
+}
+
+// PRIVATE
+// -----------------------------------------------------------------------------
+void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *message) {
+			
+	ofxMidiMessage midiMessage = buildMidiMessageFromBytes(message);
+
+	midiMessage.deltatime = deltatime;// * 1000; // convert s to ms
+	midiMessage.portNum = portNum;
+	midiMessage.portName = portName;
+
 	if(bVerbose) {
 		ofLogVerbose("ofxMidiIn") << midiMessage.toString();
 	}
