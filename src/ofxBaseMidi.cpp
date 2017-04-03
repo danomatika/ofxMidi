@@ -63,49 +63,9 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *me
 			
 	// parse message and fill event
 	ofxMidiMessage midiMessage(message);
-
-	if((message->at(0)) >= MIDI_SYSEX) {
-		midiMessage.status = (MidiStatus)(message->at(0) & 0xFF);
-		midiMessage.channel = 0;
-	} else {
-		midiMessage.status = (MidiStatus) (message->at(0) & 0xF0);
-		midiMessage.channel = (int) (message->at(0) & 0x0F)+1;
-	}
-	
-	midiMessage.deltatime = deltatime;// * 1000; // convert s to ms
+	midiMessage.deltatime = deltatime;
 	midiMessage.portNum = portNum;
 	midiMessage.portName = portName;
-	
-	switch(midiMessage.status) {
-		case MIDI_NOTE_ON :
-		case MIDI_NOTE_OFF:
-			midiMessage.pitch = (int) message->at(1);
-			midiMessage.velocity = (int) message->at(2);
-			break;
-		case MIDI_CONTROL_CHANGE:
-			midiMessage.control = (int) message->at(1);
-			midiMessage.value = (int) message->at(2);
-			break;
-		case MIDI_PROGRAM_CHANGE:
-		case MIDI_AFTERTOUCH:
-			midiMessage.value = (int) message->at(1);
-			break;
-		case MIDI_PITCH_BEND:
-			midiMessage.value = (int) (message->at(2) << 7) +
-								(int) message->at(1); // msb + lsb
-			break;
-		case MIDI_POLY_AFTERTOUCH:
-			midiMessage.pitch = (int) message->at(1);
-			midiMessage.value = (int) message->at(2);
-			break;
-		case MIDI_SONG_POS_POINTER:
-			midiMessage.value = (int) (message->at(2) << 7) +
-			                    (int) message->at(1); // msb + lsb
-			break;
-		default:
-			break;
-	}
-	
 	if(bVerbose) {
 		ofLogVerbose("ofxMidiIn") << midiMessage.toString();
 	}

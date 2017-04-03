@@ -17,33 +17,26 @@ ofxMidiMessage::ofxMidiMessage() {
 
 // -----------------------------------------------------------------------------
 ofxMidiMessage::ofxMidiMessage(vector<unsigned char>* rawBytes) {
-	clear();
-	for(unsigned int i = 0; i < rawBytes->size(); ++i) {
-		bytes.push_back(rawBytes->at(i));
-	}
+	fromBytes(rawBytes);
 }
 
 // -----------------------------------------------------------------------------
 ofxMidiMessage::ofxMidiMessage(const ofxMidiMessage& from) {
-	status = from.status;
-	channel = from.channel;
-	pitch = from.pitch;
-	velocity = from.velocity;
-	control = from.control;
-	value = from.value;
-	bytes = from.bytes;
-	deltatime = from.deltatime;
-	portNum = from.portNum;
-	portName = from.portName;
-
-	bytes.clear();
-	for(unsigned int i = 0; i < from.bytes.size(); ++i) {
-		bytes.push_back(from.bytes[i]);
-	}
+	copy(from);
 }
 
 // -----------------------------------------------------------------------------
 ofxMidiMessage& ofxMidiMessage::operator=(const ofxMidiMessage& from) {
+	copy(from);
+	return *this;
+}
+
+// -----------------------------------------------------------------------------
+void ofxMidiMessage::copy(const ofxMidiMessage& from) {
+	bytes.clear();
+	for(unsigned int i = 0; i < from.bytes.size(); ++i) {
+		bytes.push_back(from.bytes[i]);
+	}
 	status = from.status;
 	channel = from.channel;
 	pitch = from.pitch;
@@ -54,12 +47,52 @@ ofxMidiMessage& ofxMidiMessage::operator=(const ofxMidiMessage& from) {
 	deltatime = from.deltatime;
 	portNum = from.portNum;
 	portName = from.portName;
-	
-	bytes.clear();
-	for(unsigned int i = 0; i < from.bytes.size(); ++i) {
-		bytes.push_back(from.bytes[i]);
+}
+
+// -----------------------------------------------------------------------------
+void ofxMidiMessage::fromBytes(vector<unsigned char> *rawBytes) {
+
+	// copy bytes
+	clear();
+	for(unsigned int i = 0; i < rawBytes->size(); ++i) {
+		bytes.push_back(rawBytes->at(i));
 	}
-	return *this;
+
+	// parse
+	if(bytes[0] >= MIDI_SYSEX) {
+		status = (MidiStatus) (bytes[0] & 0xFF);
+		channel = 0;
+	} else {
+		status = (MidiStatus) (bytes[0] & 0xF0);
+		channel = (int) (bytes[0] & 0x0F)+1;
+	}
+	switch(status) {
+		case MIDI_NOTE_ON :
+		case MIDI_NOTE_OFF:
+			pitch = (int) bytes[1];
+			velocity = (int) bytes[2];
+			break;
+		case MIDI_CONTROL_CHANGE:
+			control = (int) bytes[1];
+			value = (int) bytes[2];
+			break;
+		case MIDI_PROGRAM_CHANGE:
+		case MIDI_AFTERTOUCH:
+			value = (int) bytes[1];
+			break;
+		case MIDI_PITCH_BEND:
+			value = (int) (bytes[2] << 7) + (int) bytes[1]; // msb + lsb
+			break;
+		case MIDI_POLY_AFTERTOUCH:
+			pitch = (int) bytes[1];
+			value = (int) bytes[2];
+			break;
+		case MIDI_SONG_POS_POINTER:
+			value = (int) (bytes[2] << 7) + (int) bytes[1]; // msb + lsb
+			break;
+		default:
+			break;
+	}
 }
 
 // -----------------------------------------------------------------------------

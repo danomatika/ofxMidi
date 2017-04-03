@@ -73,9 +73,13 @@ public:
 /// \section Main
 
 	ofxMidiMessage();
-	ofxMidiMessage(vector<unsigned char>* rawBytes);
+	ofxMidiMessage(vector<unsigned char>* rawBytes); //< parses
 	ofxMidiMessage(const ofxMidiMessage& from);
 	ofxMidiMessage& operator=(const ofxMidiMessage& from);
+	void copy(const ofxMidiMessage& from);
+	
+	/// parse message from raw MIDI bytes
+	void fromBytes(vector<unsigned char> *rawBytes);
 	
 	/// clear the message contents, also resets status
 	void clear();
