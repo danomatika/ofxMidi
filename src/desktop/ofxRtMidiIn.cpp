@@ -13,8 +13,8 @@
 ofPtr<RtMidiIn> ofxRtMidiIn::s_midiIn;
 
 // -----------------------------------------------------------------------------
-ofxRtMidiIn::ofxRtMidiIn(const string name) :
-	ofxBaseMidiIn(name), midiIn(RtMidi::UNSPECIFIED, name) {
+ofxRtMidiIn::ofxRtMidiIn(const string name, ofxMidiApi api) :
+	ofxBaseMidiIn(name), midiIn((RtMidi::Api) api, name) {
 }
 
 // -----------------------------------------------------------------------------

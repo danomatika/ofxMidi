@@ -17,8 +17,8 @@ class ofxRtMidiOut : public ofxBaseMidiOut {
 
 public:
 
-	/// set the output client name (optional)
-	ofxRtMidiOut(const string name);
+	/// set the output client name and api (optional)
+	ofxRtMidiOut(const string name, ofxMidiApi api);
 	virtual ~ofxRtMidiOut();
 
 	static void listPorts();

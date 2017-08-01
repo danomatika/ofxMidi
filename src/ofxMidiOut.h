@@ -54,7 +54,7 @@ class ofxMidiOut {
 public:
 
 	/// set the output client name (optional)
-	ofxMidiOut(const string name="ofxMidiOut Client");
+	ofxMidiOut(const string name="ofxMidiOut Client", ofxMidiApi api = OFXMIDI_UNSPECIFIED);
 	virtual ~ofxMidiOut();
 	
 /// \section Global Port Info

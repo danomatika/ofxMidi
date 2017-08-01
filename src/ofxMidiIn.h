@@ -52,9 +52,8 @@
 class ofxMidiIn {
 
 public:
-
 	/// set the input client name (optional)
-	ofxMidiIn(const string name="ofxMidiIn Client");
+	ofxMidiIn(const string name="ofxMidiIn Client", ofxMidiApi api = OFXMIDI_UNSPECIFIED);
 	virtual ~ofxMidiIn();
 	
 /// \section Global Port Info
