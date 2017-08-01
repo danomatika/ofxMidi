@@ -10,6 +10,27 @@
  */
 #pragma once
 
+#ifndef TARGET_OF_IPHONE
+    #include "RtMidi.h"
+#endif
+
+// MIDI backend APIs
+
+enum ofxMidiApi {
+
+#ifdef TARGET_OF_IPHONE
+    OFXMIDI_UNSPECIFIED,
+    OFXMIDI_PGMIDI,
+#else
+    OFXMIDI_UNSPECIFIED     = RtMidi::UNSPECIFIED,
+    OFXMIDI_MACOSX_CORE     = RtMidi::MACOSX_CORE,
+    OFXMIDI_LINUX_ALSA      = RtMidi::LINUX_ALSA,
+    OFXMIDI_UNIX_JACK       = RtMidi::UNIX_JACK,
+    OFXMIDI_WINDOWS_MM      = RtMidi::WINDOWS_MM,
+    OFXMIDI_DUMMY           = RtMidi::RTMIDI_DUMMY
+#endif
+};
+
 /// \section  stream interface midi objects
 /// ref: http://www.gweep.net/~prefect/eng/reference/protocol/midispec.html
 

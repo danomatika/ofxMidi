@@ -13,8 +13,8 @@
 ofPtr<RtMidiOut> ofxRtMidiOut::s_midiOut;
 
 // -----------------------------------------------------------------------------
-ofxRtMidiOut::ofxRtMidiOut(const string name) :
-	ofxBaseMidiOut(name), midiOut(RtMidi::UNSPECIFIED, name) {
+ofxRtMidiOut::ofxRtMidiOut(const string name, ofxMidiApi api) :
+	ofxBaseMidiOut(name, api), midiOut((RtMidi::Api) api, name) {
 }
 
 // -----------------------------------------------------------------------------

@@ -19,7 +19,7 @@ class ofxPGMidiIn : public ofxBaseMidiIn {
 
 public:
 
-	ofxPGMidiIn(const string name);
+	ofxPGMidiIn(const string name, ofxMidiApi api);
 	virtual ~ofxPGMidiIn();
 
 	static void listPorts();

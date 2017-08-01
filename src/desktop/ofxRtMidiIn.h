@@ -17,7 +17,7 @@ class ofxRtMidiIn : public ofxBaseMidiIn {
 
 public:
 
-	ofxRtMidiIn(const string name);
+	ofxRtMidiIn(const string name, ofxMidiApi api);
 	virtual ~ofxRtMidiIn();
 
 	static void listPorts();

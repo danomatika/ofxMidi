@@ -16,7 +16,7 @@ class ofxPGMidiOut : public ofxBaseMidiOut {
 
 public:
 
-	ofxPGMidiOut(const string name);
+	ofxPGMidiOut(const string name, ofxMidiApi api);
 	virtual ~ofxPGMidiOut();
 	
 	static void listPorts();

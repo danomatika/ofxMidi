@@ -18,7 +18,7 @@ struct ofxPGMidiOut::Destination {
 };
 
 // -----------------------------------------------------------------------------
-ofxPGMidiOut::ofxPGMidiOut(const string name) : ofxBaseMidiOut(name) {
+ofxPGMidiOut::ofxPGMidiOut(const string name, ofxMidiApi api) : ofxBaseMidiOut(name) {
 	
 	// setup global midi instance
 	ofxPGMidiContext::setup();
