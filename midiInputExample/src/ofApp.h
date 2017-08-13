@@ -34,6 +34,7 @@ public:
 	
 	stringstream text;
 	
-	ofxMidiIn midiIn;
+	ofxMidiIn* midiIn;
+	ofxMidiMTCIn* sync;
 	ofxMidiMessage midiMessage;
 };
