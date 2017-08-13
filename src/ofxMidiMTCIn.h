@@ -44,6 +44,9 @@ public:
 	ofxMidiMTCIn(ofxMidiIn& midiIn);
 	~ofxMidiMTCIn();
 	
+	float  secondsSinceStart();
+	string toString(bool includeFPS=false);
+	
 	void newMidiMessage(ofxMidiMessage& message);
 	
 protected:

@@ -87,14 +87,11 @@ void ofApp::draw() {
 	ofDrawBitmapString(text.str(), 20, 240);
 	text.str(""); // clear
 	
-	text << "SMPTE time: ";
-	if (sync->ready) {
-		text << sync->hours << ":" << sync->minutes << ":" << sync->seconds << ":" << sync->frames;
-		text << "/" << sync->framesPerSecond;
-	} else {
-		text << "Unknown";
-	}
+	text << "SMPTE time: " << sync->toString(true);
 	ofDrawBitmapString(text.str(), 20, 288);
+	text.str(""); // clear
+	text << "(seconds):  " << sync->secondsSinceStart();
+	ofDrawBitmapString(text.str(), 20, 302);
 	text.str(""); // clear
 }
 

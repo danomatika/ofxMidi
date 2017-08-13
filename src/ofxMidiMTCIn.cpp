@@ -100,3 +100,21 @@ void ofxMidiMTCIn::updateFramesPerSecond() {
 	hours &= 0x1f;
 	ready = true;
 }
+
+string ofxMidiMTCIn::toString(bool includeFPS) {
+	if (!ready) return "Unknown";
+	
+	stringstream stream;
+	stream << std::setw(2) << std::setfill('0')
+	  << hours << ":" << minutes << ":" << seconds << ":" << frames;
+	if (includeFPS) stream << " [" << framesPerSecond << "]";
+	return stream.str();
+}
+
+float ofxMidiMTCIn::secondsSinceStart() {
+	if (!ready) return 0;
+	return hours * 60 * 60
+		+ minutes * 60
+		+ seconds
+		+ frames / (float) framesPerSecond;
+}
