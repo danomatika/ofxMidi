@@ -117,7 +117,6 @@ void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
-
 	switch(key) {
 		case 'l':
 			midiIn->listPorts();
