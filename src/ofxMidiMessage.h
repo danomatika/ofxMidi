@@ -30,7 +30,7 @@ public:
 /// a single multi byte MIDI message
 ///
 /// check status type and grab data:
-/// 
+///
 ///     if(midiArg.status == MIDI_NOTE_ON) {
 ///         cout << "note on " << midiArg.channel
 ///              << midiArg.note << " " << midiArg.velocity
@@ -58,7 +58,7 @@ public:
 	int value;          //< depends on message status type
 	
 	/// raw bytes
-	vector<unsigned char> bytes;
+	std::vector<unsigned char> bytes;
 	
 	/// delta time since last message in ms
 	double deltatime;
@@ -68,18 +68,18 @@ public:
 	/// note: portNum will be -1 from a virtual port
 	///
 	int portNum;
-	string portName;
+    std::string portName;
 
 /// \section Main
 
 	ofxMidiMessage();
-	ofxMidiMessage(vector<unsigned char>* rawBytes); //< parses
+    ofxMidiMessage(std::vector<unsigned char>* rawBytes); //< parses
 	ofxMidiMessage(const ofxMidiMessage& from);
 	ofxMidiMessage& operator=(const ofxMidiMessage& from);
 	void copy(const ofxMidiMessage& from);
 	
 	/// parse message from raw MIDI bytes
-	void fromBytes(vector<unsigned char> *rawBytes);
+    void fromBytes(std::vector<unsigned char> *rawBytes);
 	
 	/// clear the message contents, also resets status
 	void clear();
@@ -90,11 +90,11 @@ public:
 	///
 	/// PortName: status channel [ raw bytes in hex ] deltatime
 	///
-	string toString();
+    std::string toString();
 
 	/// get a midi status byte as a string
 	/// ie "Note On", "Note Off", "Control Change", etc
-	static string getStatusString(MidiStatus status);
+    static std::string getStatusString(MidiStatus status);
 };
 
 typedef ofEvent<ofxMidiMessage> ofxMidiEvent;

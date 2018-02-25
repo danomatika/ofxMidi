@@ -9,11 +9,12 @@
  *
  */
 #include "ofxRtMidiIn.h"
+#include "ofLog.h"
 
-ofPtr<RtMidiIn> ofxRtMidiIn::s_midiIn;
+std::shared_ptr<RtMidiIn> ofxRtMidiIn::s_midiIn;
 
 // -----------------------------------------------------------------------------
-ofxRtMidiIn::ofxRtMidiIn(const string name) :
+ofxRtMidiIn::ofxRtMidiIn(const std::string name) :
 	ofxBaseMidiIn(name), midiIn(RtMidi::UNSPECIFIED, name) {
 }
 
@@ -25,7 +26,7 @@ ofxRtMidiIn::~ofxRtMidiIn() {
 // -----------------------------------------------------------------------------
 void ofxRtMidiIn::listPorts() {
 	if(s_midiIn == NULL) {
-		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+		s_midiIn = std::shared_ptr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
 	}
 	ofLogNotice("ofxMidiIn") << s_midiIn->getPortCount() << " ports available";
 	for(unsigned int i = 0; i < s_midiIn->getPortCount(); ++i){
@@ -34,9 +35,9 @@ void ofxRtMidiIn::listPorts() {
 }
 
 // -----------------------------------------------------------------------------
-vector<string>& ofxRtMidiIn::getPortList() {
+std::vector<std::string>& ofxRtMidiIn::getPortList() {
 	if(s_midiIn == NULL) {
-		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+		s_midiIn = std::shared_ptr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
 	}
 	portList.clear();
 	for(unsigned int i=0; i < s_midiIn->getPortCount(); ++i) {
@@ -48,15 +49,15 @@ vector<string>& ofxRtMidiIn::getPortList() {
 // -----------------------------------------------------------------------------
 int ofxRtMidiIn::getNumPorts() {
 	if(s_midiIn == NULL) {
-		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+		s_midiIn = std::shared_ptr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
 	}
 	return s_midiIn->getPortCount();
 }
 
 // -----------------------------------------------------------------------------
-string ofxRtMidiIn::getPortName(unsigned int portNumber) {
+std::string ofxRtMidiIn::getPortName(unsigned int portNumber) {
 	if(s_midiIn == NULL) {
-		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
+		s_midiIn = std::shared_ptr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
 	}
 	// handle rtmidi exceptions
 	try {
@@ -88,12 +89,12 @@ bool ofxRtMidiIn::openPort(unsigned int portNumber) {
 }
 
 // -----------------------------------------------------------------------------
-bool ofxRtMidiIn::openPort(string deviceName) {
+bool ofxRtMidiIn::openPort(std::string deviceName) {
 	
 	// iterate through MIDI ports, find requested device
 	int port = -1;
 	for(unsigned int i = 0; i < midiIn.getPortCount(); ++i) {
-		string name = midiIn.getPortName(i);
+		std::string name = midiIn.getPortName(i);
 		if(name == deviceName) {
 			port = i;
 			break;
@@ -110,7 +111,7 @@ bool ofxRtMidiIn::openPort(string deviceName) {
 }
 
 // -----------------------------------------------------------------------------
-bool ofxRtMidiIn::openVirtualPort(string portName) {
+bool ofxRtMidiIn::openVirtualPort(std::string portName) {
 	// handle rtmidi exceptions
 	try {
 		closePort();
@@ -153,6 +154,6 @@ void ofxRtMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 	    << " timing: " << midiTiming << " sense: " << midiSense;
 }
 // -----------------------------------------------------------------------------
-void ofxRtMidiIn::_midiMessageCallback(double deltatime, vector<unsigned char> *message, void *userData) {
+void ofxRtMidiIn::_midiMessageCallback(double deltatime, std::vector<unsigned char> *message, void *userData) {
 	((ofxRtMidiIn*) userData)->manageNewMessage(deltatime * 1000, message); // convert s to ms
 }
