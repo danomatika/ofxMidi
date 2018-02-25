@@ -9,13 +9,14 @@
  *
  */
 #include "ofxBaseMidi.h"
+#include "ofLog.h"
 
 // MIDI IN
 
-vector<string> ofxBaseMidiIn::portList;
+std::vector<std::string> ofxBaseMidiIn::portList;
 
 // -----------------------------------------------------------------------------
-ofxBaseMidiIn::ofxBaseMidiIn(const string name) {
+ofxBaseMidiIn::ofxBaseMidiIn(const std::string name) {
 	portNum = -1;
 	portName = "";
 	bOpen = false;
@@ -28,7 +29,7 @@ int ofxBaseMidiIn::getPort() {
 }
 
 // -----------------------------------------------------------------------------
-string ofxBaseMidiIn::getName() {
+std::string ofxBaseMidiIn::getName() {
 	return portName;
 }
 
@@ -59,7 +60,7 @@ void ofxBaseMidiIn::setVerbose(bool verbose) {
 
 // PRIVATE
 // -----------------------------------------------------------------------------
-void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *message) {
+void ofxBaseMidiIn::manageNewMessage(double deltatime, std::vector<unsigned char> *message) {
 			
 	// parse message and fill event
 	ofxMidiMessage midiMessage(message);
@@ -76,10 +77,10 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, vector<unsigned char> *me
 
 // MIDI OUT
 
-vector<string> ofxBaseMidiOut::portList;
+std::vector<std::string> ofxBaseMidiOut::portList;
 
 // -----------------------------------------------------------------------------
-ofxBaseMidiOut::ofxBaseMidiOut(const string name) {
+ofxBaseMidiOut::ofxBaseMidiOut(const std::string name) {
 	portNum = -1;
 	portName = "";
 	bOpen = false;
@@ -93,7 +94,7 @@ int ofxBaseMidiOut::getPort() {
 }
 
 // -----------------------------------------------------------------------------
-string ofxBaseMidiOut::getName() {
+std::string ofxBaseMidiOut::getName() {
 	return portName;
 }
 
@@ -239,7 +240,7 @@ void ofxBaseMidiOut::sendMidiByte(unsigned char byte) {
 }
 
 //----------------------------------------------------------
-void ofxBaseMidiOut::sendMidiBytes(vector<unsigned char>& bytes) {
+void ofxBaseMidiOut::sendMidiBytes(std::vector<unsigned char>& bytes) {
 
 	// don't flush if a byte stream is in progress
 	if(bMsgInProgress) {

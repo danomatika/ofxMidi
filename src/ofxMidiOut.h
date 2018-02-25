@@ -54,7 +54,7 @@ class ofxMidiOut {
 public:
 
 	/// set the output client name (optional)
-	ofxMidiOut(const string name="ofxMidiOut Client");
+	ofxMidiOut(const std::string name="ofxMidiOut Client");
 	virtual ~ofxMidiOut();
 	
 /// \section Global Port Info
@@ -69,7 +69,7 @@ public:
 	/// note: this order may change when new devices are added/removed
 	///       from the system
 	///
-	static vector<string>& getPortList();
+	static std::vector<std::string>& getPortList();
 	
 	/// get the number of output ports
 	static int getNumPorts();
@@ -78,7 +78,7 @@ public:
 	///
 	/// returns "" if number is invalid
 	///
-	static string getPortName(unsigned int portNumber);
+	static std::string getPortName(unsigned int portNumber);
 	
 /// \section Connection
 	
@@ -87,7 +87,7 @@ public:
 	/// setting port = 0 will open the first available
 	///
 	bool openPort(unsigned int portNumber=0);
-	bool openPort(string deviceName);
+	bool openPort(std::string deviceName);
 	
 	/// create and connect to a virtual output port (MacOS and Linux ALSA only)
 	///
@@ -97,7 +97,7 @@ public:
 	/// note: an open virtual port ofxMidiOut object cannot see it's virtual
 	///       own virtual port when listing ports
 	///
-	bool openVirtualPort(string portName="ofxMidi Virtual Output");
+	bool openVirtualPort(std::string portName="ofxMidi Virtual Output");
 	
 	/// close the port connection
 	void closePort();
@@ -112,7 +112,7 @@ public:
 	///
 	/// returns "" if not connected
 	///
-	string getName();
+	std::string getName();
 	
 	/// returns true if connected
 	bool isOpen();
@@ -154,7 +154,7 @@ public:
 	/// raw midi bytes
 	///
 	void sendMidiByte(unsigned char byte);
-	void sendMidiBytes(vector<unsigned char>& bytes);
+    void sendMidiBytes(std::vector<unsigned char>& bytes);
 	
 /// \section Sending Stream Interface
 	
@@ -188,5 +188,5 @@ public:
 	
 private:
 	
-	ofPtr<ofxBaseMidiOut> midiOut;
+	std::shared_ptr<ofxBaseMidiOut> midiOut;
 };

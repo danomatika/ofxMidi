@@ -9,7 +9,7 @@
  *
  */
 #include "ofxMidi.h"
-
+#include "ofLog.h"
 // choose the midi backend
 #ifdef TARGET_OF_IPHONE
 	#include "ios/ofxPGMidiIn.h"
@@ -17,19 +17,19 @@
 
 
 // -----------------------------------------------------------------------------
-void ofxMidiConnectionListener::midiInputAdded(string name, bool isNetwork) {
+void ofxMidiConnectionListener::midiInputAdded(std::string name, bool isNetwork) {
 	ofLogNotice("ofxMidi") << "input added: " << name << " network: " << isNetwork;
 }
 
-void ofxMidiConnectionListener::midiInputRemoved(string name, bool isNetwork) {
+void ofxMidiConnectionListener::midiInputRemoved(std::string name, bool isNetwork) {
 	ofLogNotice("ofxMidi") << "input removed: " << name << " network: " << isNetwork;
 }
 
-void ofxMidiConnectionListener::midiOutputAdded(string name, bool isNetwork) {
+void ofxMidiConnectionListener::midiOutputAdded(std::string name, bool isNetwork) {
 	ofLogNotice("ofxMidi") << "output added: " << name << " network: " << isNetwork;
 }
 
-void ofxMidiConnectionListener::midiOutputRemoved(string name, bool isNetwork) {
+void ofxMidiConnectionListener::midiOutputRemoved(std::string name, bool isNetwork) {
 	ofLogNotice("ofxMidi") << "output removed: " << name << " network: " << isNetwork;
 }
 
