@@ -154,7 +154,7 @@ public:
 	/// raw midi bytes
 	///
 	void sendMidiByte(unsigned char byte);
-    void sendMidiBytes(std::vector<unsigned char>& bytes);
+	void sendMidiBytes(std::vector<unsigned char>& bytes);
 	
 /// \section Sending Stream Interface
 	

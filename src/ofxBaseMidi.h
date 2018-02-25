@@ -34,7 +34,7 @@ public:
 	virtual void closePort() = 0;
 	
 	int getPort();
-    std::string getName();
+	std::string getName();
 	bool isOpen();
 	bool isVirtual();
 
@@ -52,9 +52,9 @@ protected:
 	void manageNewMessage(double deltatime, std::vector<unsigned char> *message);
 	
 	int portNum;     //< current port num, -1 if not connected
-    std::string portName; //< current port name, "" if not connected
+	std::string portName; //< current port name, "" if not connected
 	
-    static std::vector<std::string> portList; //< list of port names
+	static std::vector<std::string> portList; //< list of port names
 	ofEvent<ofxMidiMessage> newMessageEvent;
 	
 	bool bOpen;    //< is the port currently open?
@@ -74,12 +74,12 @@ public:
 	virtual ~ofxBaseMidiOut() {}
 	
 	virtual bool openPort(unsigned int portNumber=0) = 0;
-    virtual bool openPort(std::string deviceName) = 0;
-    virtual bool openVirtualPort(std::string portName) = 0;
+	virtual bool openPort(std::string deviceName) = 0;
+	virtual bool openVirtualPort(std::string portName) = 0;
 	virtual void closePort() = 0;
 	
 	int getPort();
-    std::string getName();
+	std::string getName();
 	bool isOpen();
 	bool isVirtual();
 	
@@ -93,7 +93,7 @@ public:
 	void sendPolyAftertouch(int channel, int pitch, int value);
 	
 	void sendMidiByte(unsigned char byte);
-    void sendMidiBytes(std::vector<unsigned char>& bytes);
+	void sendMidiBytes(std::vector<unsigned char>& bytes);
 	
 	void startMidiStream();
 	void finishMidiStream();
@@ -104,10 +104,10 @@ protected:
 	virtual void sendMessage() = 0;
 	
 	int portNum;         //< current port num, -1 if not connected
-    std::string portName;     //< current port name, "" if not connected
+	std::string portName;     //< current port name, "" if not connected
 	
 	static std::vector<std::string> portList; //< list of port names
-    std::vector<unsigned char> message;  //< message byte buffer
+	std::vector<unsigned char> message;  //< message byte buffer
 	
 	bool bOpen;          //< is the port currently open?
 	bool bMsgInProgress; //< used with byte stream

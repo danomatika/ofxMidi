@@ -69,7 +69,7 @@ public:
 	/// note: this order may change when new devices are added/removed
 	///       from the system
 	///
-    static std::vector<std::string>& getPortList();
+	static std::vector<std::string>& getPortList();
 	
 	/// get the number of output ports
 	static int getNumPorts();
@@ -78,7 +78,7 @@ public:
 	///
 	/// returns "" if number is invalid
 	///
-    static std::string getPortName(unsigned int portNumber);
+	static std::string getPortName(unsigned int portNumber);
 
 /// \section Connection
 	
@@ -87,7 +87,7 @@ public:
 	/// setting port = 0 will open the first available
 	///
 	bool openPort(unsigned int portNumber=0);
-    bool openPort(std::string deviceName);
+	bool openPort(std::string deviceName);
 	
 	/// create and connect to a virtual output port (MacOS and Linux ALSA only)
 	///

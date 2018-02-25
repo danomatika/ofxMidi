@@ -35,9 +35,8 @@ public:
 private:
 	
 	RtMidiIn midiIn;
-//	static ofPtr<RtMidiIn> s_midiIn; //< for static calls (a little kludgey, I know)
 
-    static std::shared_ptr<RtMidiIn> s_midiIn; //< for static calls (a little kludgey, I know)
+	static std::shared_ptr<RtMidiIn> s_midiIn; //< for static calls (a little kludgey, I know)
 
     
 	/// static callback for rtmidi

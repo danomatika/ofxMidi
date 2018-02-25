@@ -36,5 +36,5 @@ private:
 	void sendMessage();
 
 	RtMidiOut midiOut;
-    static std::shared_ptr<RtMidiOut> s_midiOut; //< for static calls (a little kludgey, I know)
+	static std::shared_ptr<RtMidiOut> s_midiOut; //< for static calls (a little kludgey, I know)
 };

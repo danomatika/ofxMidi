@@ -30,7 +30,7 @@ public:
 /// a single multi byte MIDI message
 ///
 /// check status type and grab data:
-/// 
+///
 ///     if(midiArg.status == MIDI_NOTE_ON) {
 ///         cout << "note on " << midiArg.channel
 ///              << midiArg.note << " " << midiArg.velocity
