@@ -12,6 +12,7 @@
 
 #include "ofConstants.h"
 #include "ofUtils.h"
+#include "ofLog.h"
 
 #include "ofxMidiConstants.h"
 #include "ofxMidiMessage.h"
