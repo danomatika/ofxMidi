@@ -11,6 +11,7 @@
 #pragma once
 
 #include "RtMidi.h"
+#include "ofTypes.h"
 #include "../ofxBaseMidi.h"
 
 class ofxRtMidiOut : public ofxBaseMidiOut {
