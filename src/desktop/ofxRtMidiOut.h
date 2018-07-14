@@ -11,6 +11,7 @@
 #pragma once
 
 #include "RtMidi.h"
+#include "ofTypes.h"
 #include "../ofxBaseMidi.h"
 
 class ofxRtMidiOut : public ofxBaseMidiOut {
@@ -18,17 +19,17 @@ class ofxRtMidiOut : public ofxBaseMidiOut {
 public:
 
 	/// set the output client name (optional)
-	ofxRtMidiOut(const string name);
+	ofxRtMidiOut(const std::string name);
 	virtual ~ofxRtMidiOut();
 
 	static void listPorts();
-	static vector<string>& getPortList();
+	static std::vector<std::string>& getPortList();
 	static int getNumPorts();
-	static string getPortName(unsigned int portNumber);
+	static std::string getPortName(unsigned int portNumber);
 
 	bool openPort(unsigned int portNumber);
-	bool openPort(string deviceName);
-	bool openVirtualPort(string portName);
+	bool openPort(std::string deviceName);
+	bool openVirtualPort(std::string portName);
 	void closePort();
 	
 private:

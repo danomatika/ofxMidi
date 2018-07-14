@@ -10,6 +10,7 @@
  */
 #pragma once
 
+#include <cmath>
 #include "ofxMidiIn.h"
 #include "ofxMidiOut.h"
 
@@ -21,16 +22,16 @@ public:
 	ofxMidiConnectionListener() {}
 	virtual ~ofxMidiConnectionListener() {}
 	
-	virtual void midiInputAdded(string name, bool isNetwork=false);
-	virtual void midiInputRemoved(string name, bool isNetwork=false);
+	virtual void midiInputAdded(std::string name, bool isNetwork=false);
+	virtual void midiInputRemoved(std::string name, bool isNetwork=false);
 	
-	virtual void midiOutputAdded(string nam, bool isNetwork=false);
-	virtual void midiOutputRemoved(string name, bool isNetwork=false);
+	virtual void midiOutputAdded(std::string nam, bool isNetwork=false);
+	virtual void midiOutputRemoved(std::string name, bool isNetwork=false);
 };
 
 // global static access
 class ofxMidi {
-	
+
 public:
 
 /// \section Util
