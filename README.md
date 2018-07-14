@@ -110,13 +110,13 @@ _Note: These instructions are for manually creating a new project. You do not ne
 
 To develop your own project based on ofxMidi, simply copy an example project and rename it. You probably want to put it in your apps folder, for example, after copying:
 
-    openFrameworks/addons/ofxPd/midiExampleInput/ => openFrameworks/apps/myApps/midiExampleInput/
+    openFrameworks/addons/ofxMidi/midiExampleInput/ => openFrameworks/apps/myApps/midiExampleInput/
 
 It must be 3 levels down in the OpenFrameworks folder structure.
 
 Then rename the folder:
 
-    openFrameworks/apps/myApps/myPdProject/
+    openFrameworks/apps/myApps/myMidiProject/
 
 #### Xcode
 
