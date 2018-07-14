@@ -54,7 +54,7 @@ class ofxMidiIn {
 public:
 
 	/// set the input client name (optional)
-	ofxMidiIn(const string name="ofxMidiIn Client");
+	ofxMidiIn(const std::string name="ofxMidiIn Client");
 	virtual ~ofxMidiIn();
 	
 /// \section Global Port Info
@@ -69,7 +69,7 @@ public:
 	/// note: this order may change when new devices are added/removed
 	///       from the system
 	///
-	static vector<string>& getPortList();
+	static std::vector<std::string>& getPortList();
 	
 	/// get the number of output ports
 	static int getNumPorts();
@@ -78,7 +78,7 @@ public:
 	///
 	/// returns "" if number is invalid
 	///
-	static string getPortName(unsigned int portNumber);
+	static std::string getPortName(unsigned int portNumber);
 
 /// \section Connection
 	
@@ -87,8 +87,8 @@ public:
 	/// setting port = 0 will open the first available
 	///
 	bool openPort(unsigned int portNumber=0);
-	bool openPort(string deviceName);
-	
+	bool openPort(std::string deviceName);
+
 	/// create and connect to a virtual output port (MacOS and Linux ALSA only)
 	///
 	/// allows for connections between software
@@ -97,8 +97,8 @@ public:
 	/// note: an open virtual port ofxMidiIn object cannot see it's virtual
 	///       own virtual port when listing ports
 	///
-	bool openVirtualPort(string portName="ofxMidi Virtual Input");
-	
+	bool openVirtualPort(std::string portName="ofxMidi Virtual Input");
+
 	/// close the port connection
 	void closePort();
 	
@@ -107,19 +107,19 @@ public:
 	/// returns -1 if not connected or this is a virtual port
 	///
 	int getPort();
-	
+
 	/// get the connected output port name
 	///
 	/// returns "" if not connected
 	///
-	string getName();
-	
+	std::string getName();
+
 	/// returns true if connected
 	bool isOpen();
-	
+
 	/// returns true if this is a virtual port
 	bool isVirtual();
-	
+
 /// \section Receiving
 
 	/// specify if certain message types should be ignored

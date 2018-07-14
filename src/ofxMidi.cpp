@@ -17,19 +17,19 @@
 
 
 // -----------------------------------------------------------------------------
-void ofxMidiConnectionListener::midiInputAdded(string name, bool isNetwork) {
+void ofxMidiConnectionListener::midiInputAdded(std::string name, bool isNetwork) {
 	ofLogNotice("ofxMidi") << "input added: " << name << " network: " << isNetwork;
 }
 
-void ofxMidiConnectionListener::midiInputRemoved(string name, bool isNetwork) {
+void ofxMidiConnectionListener::midiInputRemoved(std::string name, bool isNetwork) {
 	ofLogNotice("ofxMidi") << "input removed: " << name << " network: " << isNetwork;
 }
 
-void ofxMidiConnectionListener::midiOutputAdded(string name, bool isNetwork) {
+void ofxMidiConnectionListener::midiOutputAdded(std::string name, bool isNetwork) {
 	ofLogNotice("ofxMidi") << "output added: " << name << " network: " << isNetwork;
 }
 
-void ofxMidiConnectionListener::midiOutputRemoved(string name, bool isNetwork) {
+void ofxMidiConnectionListener::midiOutputRemoved(std::string name, bool isNetwork) {
 	ofLogNotice("ofxMidi") << "output removed: " << name << " network: " << isNetwork;
 }
 
@@ -38,12 +38,12 @@ void ofxMidiConnectionListener::midiOutputRemoved(string name, bool isNetwork) {
 float ofxMidi::mtof(float note) {
 	if(note <= -1500) return (0);
 	else if(note > 1499) return (mtof(1499));
-	else return (8.17579891564 * exp(.0577622650 * note));
+	else return (8.17579891564 * std::exp(.0577622650 * note));
 }
 
 // from Pure Data x_acoustics.c
 float ofxMidi::ftom(float frequency) {
-	return (frequency > 0 ? 17.3123405046 * log(.12231220585 * frequency) : -1500);
+	return (frequency > 0 ? 17.3123405046 * std::log(.12231220585 * frequency) : -1500);
 }
 
 // -----------------------------------------------------------------------------

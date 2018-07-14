@@ -13,7 +13,7 @@
 ofPtr<RtMidiIn> ofxRtMidiIn::s_midiIn;
 
 // -----------------------------------------------------------------------------
-ofxRtMidiIn::ofxRtMidiIn(const string name) :
+ofxRtMidiIn::ofxRtMidiIn(const std::string name) :
 	ofxBaseMidiIn(name), midiIn(RtMidi::UNSPECIFIED, name) {
 }
 
@@ -34,7 +34,7 @@ void ofxRtMidiIn::listPorts() {
 }
 
 // -----------------------------------------------------------------------------
-vector<string>& ofxRtMidiIn::getPortList() {
+std::vector<std::string>& ofxRtMidiIn::getPortList() {
 	if(s_midiIn == NULL) {
 		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
 	}
@@ -54,7 +54,7 @@ int ofxRtMidiIn::getNumPorts() {
 }
 
 // -----------------------------------------------------------------------------
-string ofxRtMidiIn::getPortName(unsigned int portNumber) {
+std::string ofxRtMidiIn::getPortName(unsigned int portNumber) {
 	if(s_midiIn == NULL) {
 		s_midiIn = ofPtr<RtMidiIn>(new RtMidiIn(RtMidi::UNSPECIFIED, "ofxMidi Client"));
 	}
@@ -88,12 +88,12 @@ bool ofxRtMidiIn::openPort(unsigned int portNumber) {
 }
 
 // -----------------------------------------------------------------------------
-bool ofxRtMidiIn::openPort(string deviceName) {
+bool ofxRtMidiIn::openPort(std::string deviceName) {
 	
 	// iterate through MIDI ports, find requested device
 	int port = -1;
 	for(unsigned int i = 0; i < midiIn.getPortCount(); ++i) {
-		string name = midiIn.getPortName(i);
+		std::string name = midiIn.getPortName(i);
 		if(name == deviceName) {
 			port = i;
 			break;
@@ -110,7 +110,7 @@ bool ofxRtMidiIn::openPort(string deviceName) {
 }
 
 // -----------------------------------------------------------------------------
-bool ofxRtMidiIn::openVirtualPort(string portName) {
+bool ofxRtMidiIn::openVirtualPort(std::string portName) {
 	// handle rtmidi exceptions
 	try {
 		closePort();
@@ -153,6 +153,6 @@ void ofxRtMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 	    << " timing: " << midiTiming << " sense: " << midiSense;
 }
 // -----------------------------------------------------------------------------
-void ofxRtMidiIn::_midiMessageCallback(double deltatime, vector<unsigned char> *message, void *userData) {
+void ofxRtMidiIn::_midiMessageCallback(double deltatime, std::vector<unsigned char> *message, void *userData) {
 	((ofxRtMidiIn*) userData)->manageNewMessage(deltatime * 1000, message); // convert s to ms
 }

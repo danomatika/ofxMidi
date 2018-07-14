@@ -25,16 +25,16 @@ class ofxBaseMidiIn {
 
 public:
 
-	ofxBaseMidiIn(const string name);
+	ofxBaseMidiIn(const std::string name);
 	virtual ~ofxBaseMidiIn() {}
 	
 	virtual bool openPort(unsigned int portNumber) = 0;
-	virtual bool openPort(string deviceName) = 0;
-	virtual bool openVirtualPort(string portName) = 0;
+	virtual bool openPort(std::string deviceName) = 0;
+	virtual bool openVirtualPort(std::string portName) = 0;
 	virtual void closePort() = 0;
 	
 	int getPort();
-	string getName();
+	std::string getName();
 	bool isOpen();
 	bool isVirtual();
 
@@ -49,12 +49,12 @@ public:
 protected:
 
 	/// parses and sends received raw messages to listeners
-	void manageNewMessage(double deltatime, vector<unsigned char> *message);
+	void manageNewMessage(double deltatime, std::vector<unsigned char> *message);
 	
 	int portNum;     //< current port num, -1 if not connected
-	string portName; //< current port name, "" if not connected
+	std::string portName; //< current port name, "" if not connected
 	
-	static vector<string> portList; //< list of port names
+	static std::vector<std::string> portList; //< list of port names
 	ofEvent<ofxMidiMessage> newMessageEvent;
 	
 	bool bOpen;    //< is the port currently open?
@@ -70,16 +70,16 @@ class ofxBaseMidiOut {
 
 public:
 
-	ofxBaseMidiOut(const string name);
+	ofxBaseMidiOut(const std::string name);
 	virtual ~ofxBaseMidiOut() {}
 	
 	virtual bool openPort(unsigned int portNumber=0) = 0;
-	virtual bool openPort(string deviceName) = 0;
-	virtual bool openVirtualPort(string portName) = 0;
+	virtual bool openPort(std::string deviceName) = 0;
+	virtual bool openVirtualPort(std::string portName) = 0;
 	virtual void closePort() = 0;
 	
 	int getPort();
-	string getName();
+	std::string getName();
 	bool isOpen();
 	bool isVirtual();
 	
@@ -93,7 +93,7 @@ public:
 	void sendPolyAftertouch(int channel, int pitch, int value);
 	
 	void sendMidiByte(unsigned char byte);
-	void sendMidiBytes(vector<unsigned char>& bytes);
+	void sendMidiBytes(std::vector<unsigned char>& bytes);
 	
 	void startMidiStream();
 	void finishMidiStream();
@@ -104,10 +104,10 @@ protected:
 	virtual void sendMessage() = 0;
 	
 	int portNum;         //< current port num, -1 if not connected
-	string portName;     //< current port name, "" if not connected
+	std::string portName;     //< current port name, "" if not connected
 	
-	static vector<string> portList; //< list of port names
-	vector<unsigned char> message;  //< message byte buffer
+	static std::vector<std::string> portList; //< list of port names
+	std::vector<unsigned char> message;  //< message byte buffer
 	
 	bool bOpen;          //< is the port currently open?
 	bool bMsgInProgress; //< used with byte stream

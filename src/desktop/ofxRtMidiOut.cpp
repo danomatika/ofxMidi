@@ -13,7 +13,7 @@
 ofPtr<RtMidiOut> ofxRtMidiOut::s_midiOut;
 
 // -----------------------------------------------------------------------------
-ofxRtMidiOut::ofxRtMidiOut(const string name) :
+ofxRtMidiOut::ofxRtMidiOut(const std::string name) :
 	ofxBaseMidiOut(name), midiOut(RtMidi::UNSPECIFIED, name) {
 }
 
@@ -34,7 +34,7 @@ void ofxRtMidiOut::listPorts() {
 }
 
 // -----------------------------------------------------------------------------
-vector<string>& ofxRtMidiOut::getPortList() {
+std::vector<std::string>& ofxRtMidiOut::getPortList() {
 	if(s_midiOut == NULL) {
 		s_midiOut = ofPtr<RtMidiOut>(new RtMidiOut(RtMidi::UNSPECIFIED, "ofxMidi Client"));
 	}
@@ -54,7 +54,7 @@ int ofxRtMidiOut::getNumPorts() {
 }
 
 // -----------------------------------------------------------------------------
-string ofxRtMidiOut::getPortName(unsigned int portNumber) {
+std::string ofxRtMidiOut::getPortName(unsigned int portNumber) {
 	if(s_midiOut == NULL) {
 		s_midiOut = ofPtr<RtMidiOut>(new RtMidiOut(RtMidi::UNSPECIFIED, "ofxMidi Client"));
 	}
@@ -87,12 +87,12 @@ bool ofxRtMidiOut::openPort(unsigned int portNumber) {
 }
 
 // -----------------------------------------------------------------------------
-bool ofxRtMidiOut::openPort(string deviceName) {
+bool ofxRtMidiOut::openPort(std::string deviceName) {
 	
 	// iterate through MIDI ports, find requested device
 	int port = -1;
 	for(unsigned int i = 0; i < midiOut.getPortCount(); ++i) {
-		string name = midiOut.getPortName(i);
+		std::string name = midiOut.getPortName(i);
 		if(name == deviceName) {
 			port = i;
 			break;
@@ -109,7 +109,7 @@ bool ofxRtMidiOut::openPort(string deviceName) {
 }
 
 // -----------------------------------------------------------------------------
-bool ofxRtMidiOut::openVirtualPort(string portName) {
+bool ofxRtMidiOut::openVirtualPort(std::string portName) {
 	// handle rtmidi exceptions
 	try {
 		closePort();
