@@ -4,7 +4,7 @@ ofxMidi
 <img src="https://raw.github.com/danomatika/ofxMidi/master/res/midi_din.png"/>
 </p>
 
-Midi input and output addon for openFrameworks
+MIDI input and output addon for openFrameworks
 
 Copyright (c) [Dan Wilcox](danomatika.com) 2011-2013  
 (original implementation by Chris O'Shea, Arturo Castro, Kyle McDonald)
@@ -25,9 +25,9 @@ Description
 
 ofxMidi provides [Music Instrument Digital Interface](http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface) IO capability to an OpenFrameworks app
 
-* ofxMidiIn: a single midi input port, derive from the ofxMidiListener class to receive messages
-* ofxMidiMessage: a received midi message
-* ofxMidiOut: a single midi output port, includes a stream << interface
+* ofxMidiIn: a single MIDI input port, derive from the ofxMidiListener class to receive messages
+* ofxMidiMessage: a received MIDI message
+* ofxMidiOut: a single MIDI output port, includes a stream << interface
 
 This project utilizes [RtMidi](http://www.music.mcgill.ca/~gary/rtmidi/) for Mac, Windows, & Linux and [PGMidi](https://github.com/petegoodliffe/PGMidi) on iOS.
 
@@ -54,16 +54,16 @@ If you want to use ofxMidi with a previous version of OpenFrameworks, checkout t
     cd ofxMidi
     git checkout 1.0.5
 
-Midi Routing
+MIDI Routing
 ------------
 
 ### Mac OSX
 
-Checkout a useful app for midi port routing called [MIDI Patchbay](http://notahat.com/midi_patchbay).
+Checkout a useful app for MIDI port routing called [MIDI Patchbay](http://notahat.com/midi_patchbay).
 
 ### Linux
 
-Check out the Alsa utility apps aconnect & aconnectgui as well as the qjackctl gui for midi port routing control.
+Check out the Alsa utility apps aconnect & aconnectgui as well as the qjackctl gui for MIDI port routing control.
 
 ### Windows
 
