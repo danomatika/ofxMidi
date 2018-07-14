@@ -14,7 +14,7 @@ BSD Simplified License.
 For information on usage and redistribution, and for a DISCLAIMER OF ALL
 WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 
-See Documentation on [Github](https://github.com/danomatika/ofxMidi) and the [OpenFrameworks Forum post](https://forum.openframeworks.cc/t/ofxmidi-updates/2435).
+See Documentation on [Github](https://github.com/danomatika/ofxMidi) and the [openFrameworks Forum post](https://forum.openframeworks.cc/t/ofxmidi-updates/2435).
 
 OpenFrameworks is a cross platform open source toolkit for creative coding in C++.
 
@@ -23,7 +23,7 @@ OpenFrameworks is a cross platform open source toolkit for creative coding in C+
 Description
 -----------
 
-ofxMidi provides [Music Instrument Digital Interface](http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface) IO capability to an OpenFrameworks app
+ofxMidi provides [Music Instrument Digital Interface](http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface) IO capability to an openFrameworks app
 
 * ofxMidiIn: a single MIDI input port, derive from the ofxMidiListener class to receive messages
 * ofxMidiMessage: a received MIDI message
@@ -34,7 +34,7 @@ This project utilizes [RtMidi](http://www.music.mcgill.ca/~gary/rtmidi/) for Mac
 Installation
 ------------
 
-To use ofxMidi, first you need to download and install OpenFrameworks. ofxMidi is currently developed against the current stable version of Open Frameworks on github.
+To use ofxMidi, first you need to download and install openFrameworks. ofxMidi is currently developed against the current stable version of Open Frameworks on github.
 
 To get a copy of the repository you can download the source from [http://github.com/danomatika/ofxMidi/zipball/master](http://github.com/danomatika/ofxMidi/zipball/master) or, alternatively, you can use git clone:
 
@@ -44,11 +44,11 @@ The addon should sit in `openFrameworks/addons/ofxMidi/`.
 
 ### Which version to use?
 
-The master branch of ofxMidi will work with the current stable version of OpenFrameworks and can be considered *relatively* stable.
+The master branch of ofxMidi will work with the current stable version of openFrameworks and can be considered *relatively* stable.
 
-Previous versions are tagged using [Semantic Versioning](http://semver.org) with the updates to newer versions of OpenFrameworks and MIDI libraries noted in the changelog, CHANGES.txt. You can select the tag in the Github "Current Branch" menu or clone and check it out using git.
+Previous versions are tagged using [Semantic Versioning](http://semver.org) with the updates to newer versions of openFrameworks and MIDI libraries noted in the changelog, CHANGES.txt. You can select the tag in the Github "Current Branch" menu or clone and check it out using git.
 
-If you want to use ofxMidi with a previous version of OpenFrameworks, checkout the corresponding version tag after cloning:
+If you want to use ofxMidi with a previous version of openFrameworks, checkout the corresponding version tag after cloning:
 
     git clone git://github.com/danomatika/ofxMidi.git
     cd ofxMidi
@@ -76,7 +76,7 @@ Running an Example Projects
 
 The example projects are in the `ofxMidi/midiInputExample`, `ofxMidi/midiOutputExample`, & `ofxMidi/midiExampleIOS` folders.
 
-Project files for the examples are not included so you will need to generate the project files for your operating system and development environment using the OF ProjectGenerator which is included with the OpenFrameworks distribution.
+Project files for the examples are not included so you will need to generate the project files for your operating system and development environment using the OF ProjectGenerator which is included with the openFrameworks distribution.
 
 To (re)generate project files for an *existing* project:
 
@@ -112,7 +112,7 @@ To develop your own project based on ofxMidi, simply copy an example project and
 
     openFrameworks/addons/ofxMidi/midiExampleInput/ => openFrameworks/apps/myApps/midiExampleInput/
 
-It must be 3 levels down in the OpenFrameworks folder structure.
+It must be 3 levels down in the openFrameworks folder structure.
 
 Then rename the folder:
 
