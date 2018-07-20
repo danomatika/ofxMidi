@@ -17,12 +17,13 @@
 std::vector<std::string> ofxBaseMidiIn::portList;
 
 // -----------------------------------------------------------------------------
-ofxBaseMidiIn::ofxBaseMidiIn(const std::string name) {
+ofxBaseMidiIn::ofxBaseMidiIn(const std::string name, ofxMidiApi api) {
 	portNum = -1;
 	portName = "";
 	bOpen = false;
 	bVerbose = false;
 	bVirtual = false;
+	this->api = api;
 }
 // -----------------------------------------------------------------------------
 int ofxBaseMidiIn::getPort() {
@@ -42,6 +43,11 @@ bool ofxBaseMidiIn::isOpen() {
 // -----------------------------------------------------------------------------
 bool ofxBaseMidiIn::isVirtual() {
 	return bVirtual;
+}
+
+// -----------------------------------------------------------------------------
+ofxMidiApi ofxBaseMidiIn::getApi() {
+	return api;
 }
 
 // -----------------------------------------------------------------------------
@@ -81,12 +87,13 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, std::vector<unsigned char
 std::vector<std::string> ofxBaseMidiOut::portList;
 
 // -----------------------------------------------------------------------------
-ofxBaseMidiOut::ofxBaseMidiOut(const std::string name) {
+ofxBaseMidiOut::ofxBaseMidiOut(const std::string name, ofxMidiApi api) {
 	portNum = -1;
 	portName = "";
 	bOpen = false;
 	bMsgInProgress = false;
 	bVirtual = false;
+	this->api = api;
 }
 
 // -----------------------------------------------------------------------------
@@ -107,6 +114,11 @@ bool ofxBaseMidiOut::isOpen() {
 // -----------------------------------------------------------------------------
 bool ofxBaseMidiOut::isVirtual() {
 	return bVirtual;
+}
+
+// -----------------------------------------------------------------------------
+ofxMidiApi ofxBaseMidiOut::getApi() {
+	return api;
 }
 
 // -----------------------------------------------------------------------------

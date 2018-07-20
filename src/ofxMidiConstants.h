@@ -23,8 +23,16 @@
     #define __MACOSX_CORE__
 #endif
 
-// MIDI status bytes
+// api types, most of these match RtMidi::Api enums
+enum ofxMidiApi {
+	MIDI_API_DEFAULT,      // choose platform default
+	MIDI_API_COREMIDI,     // CoreMidi macOS or iOS
+	MIDI_API_ALSA,         // ALSA Linux
+	MIDI_API_JACK,         // JACK
+	MIDI_API_WINDOWS_MM    // Windows Multimedia MIDI
+};
 
+// MIDI status bytes
 enum MidiStatus {
 
     MIDI_UNKNOWN            = 0x00,

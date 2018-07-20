@@ -54,7 +54,7 @@ class ofxMidiIn {
 public:
 
 	/// set the input client name (optional)
-	ofxMidiIn(const std::string name="ofxMidiIn Client");
+	ofxMidiIn(const std::string name="ofxMidiIn Client", ofxMidiApi api=MIDI_API_DEFAULT);
 	virtual ~ofxMidiIn();
 	
 /// \section Global Port Info

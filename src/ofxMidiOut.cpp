@@ -11,8 +11,8 @@
 #include "ofxMidiOut.h"
 
 // -----------------------------------------------------------------------------
-ofxMidiOut::ofxMidiOut(const std::string name) {
-	midiOut = std::shared_ptr<ofxBaseMidiOut>(new OFX_MIDI_OUT_TYPE(name));
+ofxMidiOut::ofxMidiOut(const std::string name, ofxMidiApi api) {
+	midiOut = std::shared_ptr<ofxBaseMidiOut>(new OFX_MIDI_OUT_TYPE(name, api));
 }
 
 // -----------------------------------------------------------------------------

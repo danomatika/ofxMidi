@@ -21,7 +21,7 @@ struct ofxPGMidiIn::InputDelegate {
 };
 
 // -----------------------------------------------------------------------------
-ofxPGMidiIn::ofxPGMidiIn(const std::string name) : ofxBaseMidiIn(name) {
+ofxPGMidiIn::ofxPGMidiIn(const std::string name, ofxMidiApi api) : ofxBaseMidiIn(name, MIDI_API_COREMIDI) {
 
 	// setup global midi instance
 	ofxPGMidiContext::setup();

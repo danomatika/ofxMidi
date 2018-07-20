@@ -34,18 +34,18 @@
 ///
 ///        ...
 ///
-///        static ofPtr<ofxMidiOut> s_midiOut;
+///        static std::shared_ptr<ofxMidiOut> s_midiOut;
 ///    }
 ///
 /// in .cpp:
-///    ofPtr<ofxMidiOut> MyClass::s_midiOut;
+///    std::shared_ptr<ofxMidiOut> MyClass::s_midiOut;
 ///
 ///    ...
 ///
 ///    // initialize somewhere else
 ///    void MyClass::setup() {
 ///        if(s_midiOut == NULL) {
-///            s_midiOut = ofPtr<ofxMidiOut>(new ofxMidiOut("ofxMidi Client"));
+///            s_midiOut = std::shared_ptr<ofxMidiOut>(new ofxMidiOut("ofxMidi Client"));
 ///        }
 ///    }
 ///
@@ -54,7 +54,7 @@ class ofxMidiOut {
 public:
 
 	/// set the output client name (optional)
-	ofxMidiOut(const std::string name="ofxMidiOut Client");
+	ofxMidiOut(const std::string name="ofxMidiOut Client", ofxMidiApi api=MIDI_API_DEFAULT);
 	virtual ~ofxMidiOut();
 	
 /// \section Global Port Info

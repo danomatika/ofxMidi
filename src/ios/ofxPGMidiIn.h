@@ -19,7 +19,7 @@ class ofxPGMidiIn : public ofxBaseMidiIn {
 
 public:
 
-	ofxPGMidiIn(const std::string name);
+	ofxPGMidiIn(const std::string name, ofxMidiApi api=MIDI_API_DEFAULT);
 	virtual ~ofxPGMidiIn();
 
 	static void listPorts();

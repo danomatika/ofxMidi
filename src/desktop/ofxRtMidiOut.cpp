@@ -15,8 +15,8 @@
 std::shared_ptr<RtMidiOut> ofxRtMidiOut::s_midiOut;
 
 // -----------------------------------------------------------------------------
-ofxRtMidiOut::ofxRtMidiOut(const std::string name) :
-	ofxBaseMidiOut(name), midiOut(RtMidi::UNSPECIFIED, name) {
+ofxRtMidiOut::ofxRtMidiOut(const std::string name, ofxMidiApi api) :
+	ofxBaseMidiOut(name, api), midiOut((RtMidi::Api)api, name) {
 }
 
 // -----------------------------------------------------------------------------

@@ -17,7 +17,7 @@ class ofxRtMidiIn : public ofxBaseMidiIn {
 
 public:
 
-	ofxRtMidiIn(const std::string name);
+	ofxRtMidiIn(const std::string name, ofxMidiApi api=MIDI_API_DEFAULT);
 	virtual ~ofxRtMidiIn();
 
 	static void listPorts();

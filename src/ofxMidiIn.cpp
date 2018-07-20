@@ -11,8 +11,8 @@
 #include "ofxMidiIn.h"
 
 // -----------------------------------------------------------------------------
-ofxMidiIn::ofxMidiIn(const std::string name) {
-	midiIn = std::shared_ptr<ofxBaseMidiIn>(new OFX_MIDI_IN_TYPE(name));
+ofxMidiIn::ofxMidiIn(const std::string name, ofxMidiApi api) {
+	midiIn = std::shared_ptr<ofxBaseMidiIn>(new OFX_MIDI_IN_TYPE(name, api));
 }
 
 // -----------------------------------------------------------------------------

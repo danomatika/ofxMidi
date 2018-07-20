@@ -18,7 +18,7 @@ class ofxRtMidiOut : public ofxBaseMidiOut {
 public:
 
 	/// set the output client name (optional)
-	ofxRtMidiOut(const std::string name);
+	ofxRtMidiOut(const std::string name, ofxMidiApi api=MIDI_API_DEFAULT);
 	virtual ~ofxRtMidiOut();
 
 	static void listPorts();

@@ -15,8 +15,8 @@
 std::shared_ptr<RtMidiIn> ofxRtMidiIn::s_midiIn;
 
 // -----------------------------------------------------------------------------
-ofxRtMidiIn::ofxRtMidiIn(const std::string name) :
-	ofxBaseMidiIn(name), midiIn(RtMidi::UNSPECIFIED, name) {
+ofxRtMidiIn::ofxRtMidiIn(const std::string name, ofxMidiApi api) :
+	ofxBaseMidiIn(name, api), midiIn((RtMidi::Api)api, name) {
 }
 
 // -----------------------------------------------------------------------------

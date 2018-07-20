@@ -25,7 +25,7 @@ class ofxBaseMidiIn {
 
 public:
 
-	ofxBaseMidiIn(const std::string name);
+	ofxBaseMidiIn(const std::string name, ofxMidiApi api);
 	virtual ~ofxBaseMidiIn() {}
 	
 	virtual bool openPort(unsigned int portNumber) = 0;
@@ -37,6 +37,7 @@ public:
 	std::string getName();
 	bool isOpen();
 	bool isVirtual();
+	ofxMidiApi getApi();
 
 	virtual void ignoreTypes(bool midiSysex=true, bool midiTiming=true,
 	                         bool midiSense=true) = 0;
@@ -57,9 +58,10 @@ protected:
 	static std::vector<std::string> portList; //< list of port names
 	ofEvent<ofxMidiMessage> newMessageEvent;
 	
-	bool bOpen;    //< is the port currently open?
-	bool bVerbose; //< print incoming bytes?
-	bool bVirtual; //< are we connected to a virtual port?
+	bool bOpen;     //< is the port currently open?
+	bool bVerbose;  //< print incoming bytes?
+	bool bVirtual;  //< are we connected to a virtual port?
+	ofxMidiApi api; //< backend api
 };
 
 /// a midi output port
@@ -70,7 +72,7 @@ class ofxBaseMidiOut {
 
 public:
 
-	ofxBaseMidiOut(const std::string name);
+	ofxBaseMidiOut(const std::string name, ofxMidiApi api);
 	virtual ~ofxBaseMidiOut() {}
 	
 	virtual bool openPort(unsigned int portNumber=0) = 0;
@@ -82,6 +84,7 @@ public:
 	std::string getName();
 	bool isOpen();
 	bool isVirtual();
+	ofxMidiApi getApi();
 	
 	void sendNoteOn(int channel, int pitch, int velocity);
 	void sendNoteOff(int channel, int pitch, int velocity);
@@ -112,4 +115,5 @@ protected:
 	bool bOpen;          //< is the port currently open?
 	bool bMsgInProgress; //< used with byte stream
 	bool bVirtual;       //< are we connected to a virtual port?
+	ofxMidiApi api;      //< backend api
 };

@@ -20,7 +20,7 @@ struct ofxPGMidiOut::Destination {
 };
 
 // -----------------------------------------------------------------------------
-ofxPGMidiOut::ofxPGMidiOut(const std::string name) : ofxBaseMidiOut(name) {
+ofxPGMidiOut::ofxPGMidiOut(const std::string name, ofxMidiApi api) : ofxBaseMidiOut(name, MIDI_API_COREMIDI) {
 	
 	// setup global midi instance
 	ofxPGMidiContext::setup();
