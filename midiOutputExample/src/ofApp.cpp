@@ -84,7 +84,7 @@ void ofApp::keyPressed(int key) {
 	}
 	
 	if(key == 'l') {
-		ofxMidiOut::listPorts();
+		midiOut.listPorts();
 	}
 }
 
