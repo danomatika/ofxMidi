@@ -12,7 +12,7 @@
 
 WD=$(dirname $0)
 
-VER=2.1.1
+VER=3.0.0
 
 SRC=rtmidi-$VER
 DEST=../libs/rtmidi
@@ -32,7 +32,7 @@ tar -xvf rtmidi-$VER.tar.gz
 mkdir -p $DEST
 
 # copy license
-cp -v $SRC/readme $DEST
+cp -v $SRC/README.md $DEST
 
 # don't need C API
 rm $SRC/rtmidi_c.*
