@@ -126,7 +126,7 @@ Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
 
 #### Codeblocks (Win & Linux)
 
-* rename the *.cbp and *.workspace files
+* rename the \*.cbp and \*.workspace files
 * open the workspace and readd the renamed project file by dragging it onto the project tree (it will complain about the missing project you renamed)
 * if you renamed the project *folder* make sure to set the project name to this folder name or C::B will not be able to run the binary:
 	* right click on project in the tree (not the workspace)
@@ -134,9 +134,9 @@ Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
 
 #### Visual Studio
 
-* rename the *.sln, *.vcxproj, & *.vcxproj.filters files
+* rename the \*.sln, \*.vcxproj, & \*.vcxproj.filters files
 * open the solution and delete the old project from the projects tree
-* go to File->Add->Existing Projects/Solutions and select the *.vcxproj file
+* go to File->Add->Existing Projects/Solutions and select the \*.vcxproj file
 * right click on the project in the projects tree and rename it
 
 Adding ofxMidi to an Existing Project
@@ -205,7 +205,7 @@ Instead create a static ofPtr and initialize it later:
     
         ...
 
-        static ofPtr<ofxMidiOut> s_midiOut;
+        static std::shared_ptr<ofxMidiOut> s_midiOut;
     
         ...
 
@@ -213,14 +213,14 @@ Instead create a static ofPtr and initialize it later:
 
     // in .cpp:
 
-    ofPtr<ofxMidiOut> MyClass::s_midiOut;
+    std::shared_ptr<ofxMidiOut> MyClass::s_midiOut;
     
     ...
     
     // initialize somewhere else
     void MyClass::setup() {
 	    if(s_midiOut == NULL) {
-	        s_midiOut = ofPtr<ofxMidiOut>(new ofxMidiOut("ofxMidi Client"));
+	        s_midiOut = std::shared_ptr<ofxMidiOut>(new ofxMidiOut("ofxMidi Client"));
 	    }
     }
 

@@ -1,3 +1,8 @@
+1.0.7: 2018 Jul 20
+
+* updated for OF 0.10.0
+* updated to RtMidi 3.0.0
+
 1.0.6: 2016 Oct 24
 
 * added ProjectGenerator usage info to readme
