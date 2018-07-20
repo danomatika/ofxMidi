@@ -20,38 +20,22 @@ ofxMidiOut::~ofxMidiOut() {}
 
 // -----------------------------------------------------------------------------
 void ofxMidiOut::listPorts() {
-	#ifdef TARGET_OF_IPHONE
-		ofxPGMidiOut::listPorts();
-	#else
-		ofxRtMidiOut::listPorts();
-	#endif
+	midiOut->listPorts();
 }
 
 // -----------------------------------------------------------------------------
 std::vector<std::string>& ofxMidiOut::getPortList() {
-	#ifdef TARGET_OF_IPHONE
-		return ofxPGMidiOut::getPortList();
-	#else
-		return ofxRtMidiOut::getPortList();
-	#endif
+	return midiOut->getPortList();
 }
 
 // -----------------------------------------------------------------------------
 int ofxMidiOut::getNumPorts() {
-	#ifdef TARGET_OF_IPHONE
-		return ofxPGMidiOut::getNumPorts();
-	#else
-		return ofxRtMidiOut::getNumPorts();
-	#endif
+	return midiOut->getNumPorts();
 }
 
 // -----------------------------------------------------------------------------
 std::string ofxMidiOut::getPortName(unsigned int portNumber) {
-	#ifdef TARGET_OF_IPHONE
-		return ofxPGMidiOut::getPortName(portNumber);
-	#else
-		return ofxRtMidiOut::getPortName(portNumber);
-	#endif
+	return midiOut->getPortName(portNumber);
 }
 
 // -----------------------------------------------------------------------------

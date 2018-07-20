@@ -32,7 +32,12 @@ public:
 	virtual bool openPort(std::string deviceName) = 0;
 	virtual bool openVirtualPort(std::string portName) = 0;
 	virtual void closePort() = 0;
-	
+
+	virtual void listPorts() = 0;
+	virtual std::vector<std::string>& getPortList() = 0;
+	virtual int getNumPorts() = 0;
+	virtual std::string getPortName(unsigned int portNumber) = 0;
+
 	int getPort();
 	std::string getName();
 	bool isOpen();
@@ -79,6 +84,11 @@ public:
 	virtual bool openPort(std::string deviceName) = 0;
 	virtual bool openVirtualPort(std::string portName) = 0;
 	virtual void closePort() = 0;
+
+	virtual void listPorts() = 0;
+	virtual std::vector<std::string>& getPortList() = 0;
+	virtual int getNumPorts() = 0;
+	virtual std::string getPortName(unsigned int portNumber) = 0;
 	
 	int getPort();
 	std::string getName();

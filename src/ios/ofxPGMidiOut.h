@@ -19,10 +19,10 @@ public:
 	ofxPGMidiOut(const std::string name, ofxMidiApi api);
 	virtual ~ofxPGMidiOut();
 	
-	static void listPorts();
-	static std::vector<std::string>& getPortList();
-	static int getNumPorts();
-	static std::string getPortName(unsigned int portNumber);
+	void listPorts();
+	std::vector<std::string>& getPortList();
+	int getNumPorts();
+	std::string getPortName(unsigned int portNumber);
 	
 	bool openPort(unsigned int portNumber);
 	bool openPort(std::string deviceName);

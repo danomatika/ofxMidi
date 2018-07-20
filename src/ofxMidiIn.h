@@ -53,14 +53,14 @@ class ofxMidiIn {
 
 public:
 
-	/// set the input client name (optional)
+	/// set the input client name (optional) and api (optional)
 	ofxMidiIn(const std::string name="ofxMidiIn Client", ofxMidiApi api=MIDI_API_DEFAULT);
 	virtual ~ofxMidiIn();
 	
 /// \section Global Port Info
 	
 	/// print the connected output ports
-	static void listPorts();
+	void listPorts();
 	
 	/// get a list of output port names
 	/// 
@@ -69,16 +69,16 @@ public:
 	/// note: this order may change when new devices are added/removed
 	///       from the system
 	///
-	static std::vector<std::string>& getPortList();
+	std::vector<std::string>& getPortList();
 	
 	/// get the number of output ports
-	static int getNumPorts();
+	int getNumPorts();
 	
 	/// get the name of an output port by it's number
 	///
 	/// returns "" if number is invalid
 	///
-	static std::string getPortName(unsigned int portNumber);
+	std::string getPortName(unsigned int portNumber);
 
 /// \section Connection
 	
