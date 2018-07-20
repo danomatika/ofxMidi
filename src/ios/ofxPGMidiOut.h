@@ -16,17 +16,17 @@ class ofxPGMidiOut : public ofxBaseMidiOut {
 
 public:
 
-	ofxPGMidiOut(const string name);
+	ofxPGMidiOut(const std::string name);
 	virtual ~ofxPGMidiOut();
 	
 	static void listPorts();
-	static vector<string>& getPortList();
+	static std::vector<std::string>& getPortList();
 	static int getNumPorts();
-	static string getPortName(unsigned int portNumber);
+	static std::string getPortName(unsigned int portNumber);
 	
 	bool openPort(unsigned int portNumber);
-	bool openPort(string deviceName);
-	bool openVirtualPort(string portName); ///< currently noop on iOS
+	bool openPort(std::string deviceName);
+	bool openVirtualPort(std::string portName); ///< currently noop on iOS
 	void closePort();
 	
 private:

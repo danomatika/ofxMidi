@@ -15,6 +15,7 @@
 	#include "ios/ofxPGMidiIn.h"
 #endif
 #include "ofLog.h"
+#include <math.h>
 
 // -----------------------------------------------------------------------------
 void ofxMidiConnectionListener::midiInputAdded(std::string name, bool isNetwork) {

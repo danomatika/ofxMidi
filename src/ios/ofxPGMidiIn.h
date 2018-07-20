@@ -19,23 +19,23 @@ class ofxPGMidiIn : public ofxBaseMidiIn {
 
 public:
 
-	ofxPGMidiIn(const string name);
+	ofxPGMidiIn(const std::string name);
 	virtual ~ofxPGMidiIn();
 
 	static void listPorts();
-	static vector<string>& getPortList();
+	static std::vector<std::string>& getPortList();
 	static int getNumPorts();
-	static string getPortName(unsigned int portNumber);
+	static std::string getPortName(unsigned int portNumber);
 
 	bool openPort(unsigned int portNumber);
-	bool openPort(string deviceName);
-	bool openVirtualPort(string portName); ///< currently noop on iOS
+	bool openPort(std::string deviceName);
+	bool openVirtualPort(std::string portName); ///< currently noop on iOS
 	void closePort();
 	
 	void ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense);
 
 	/// wrapper around manageNewMessage
-	void messageReceived(double deltatime, vector<unsigned char> *message);
+	void messageReceived(double deltatime, std::vector<unsigned char> *message);
 
 	// iOS specific global stuff,
 	// easier to route through here thanks to Obj-C/C++ mix

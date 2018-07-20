@@ -10,6 +10,8 @@
  */
 #include "ofxPGMidiIn.h"
 
+#include "ofLog.h"
+
 #import "ofxPGMidiContext.h"
 #import "ofxPGMidiSourceDelegate.h"
 
@@ -19,7 +21,7 @@ struct ofxPGMidiIn::InputDelegate {
 };
 
 // -----------------------------------------------------------------------------
-ofxPGMidiIn::ofxPGMidiIn(const string name) : ofxBaseMidiIn(name) {
+ofxPGMidiIn::ofxPGMidiIn(const std::string name) : ofxBaseMidiIn(name) {
 
 	// setup global midi instance
 	ofxPGMidiContext::setup();
@@ -48,7 +50,7 @@ void ofxPGMidiIn::listPorts() {
 }
 
 // -----------------------------------------------------------------------------
-vector<string>& ofxPGMidiIn::getPortList() {
+std::vector<std::string>& ofxPGMidiIn::getPortList() {
 	PGMidi *midi = ofxPGMidiContext::getMidi();
 	portList.clear();
 	for(PGMidiSource *source in midi.sources) {
@@ -63,7 +65,7 @@ int ofxPGMidiIn::getNumPorts() {
 }
 
 // -----------------------------------------------------------------------------
-string ofxPGMidiIn::getPortName(unsigned int portNumber) {
+std::string ofxPGMidiIn::getPortName(unsigned int portNumber) {
 
 	PGMidi *midi = ofxPGMidiContext::getMidi();
 
@@ -103,7 +105,7 @@ bool ofxPGMidiIn::openPort(unsigned int portNumber) {
 }
 
 // -----------------------------------------------------------------------------
-bool ofxPGMidiIn::openPort(string deviceName) {
+bool ofxPGMidiIn::openPort(std::string deviceName) {
 
 	PGMidi *midi = ofxPGMidiContext::getMidi();
 
@@ -127,7 +129,7 @@ bool ofxPGMidiIn::openPort(string deviceName) {
 }
 
 // -----------------------------------------------------------------------------
-bool ofxPGMidiIn::openVirtualPort(string portName) {
+bool ofxPGMidiIn::openVirtualPort(std::string portName) {
 	ofLogWarning("ofxMidiIn") << "couldn't open virtual port \"" << portName << "\"";
 	ofLogWarning("ofxMidiIn") << "virtual ports are currently not supported on iOS";
 	return false;
@@ -166,7 +168,7 @@ void ofxPGMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 }
 
 // -----------------------------------------------------------------------------
-void ofxPGMidiIn::messageReceived(double deltatime, vector<unsigned char> *message) {
+void ofxPGMidiIn::messageReceived(double deltatime, std::vector<unsigned char> *message) {
 	manageNewMessage(deltatime, message);
 }
 
