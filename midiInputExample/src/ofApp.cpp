@@ -16,24 +16,29 @@ void ofApp::setup() {
 	ofBackground(255, 255, 255);
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
+	midiIn = new ofxMidiIn();
+	
 	// print input ports to console
-	midiIn.listPorts(); // via instance
+	midiIn->listPorts(); // via instance
 	//ofxMidiIn::listPorts(); // via static as well
 	
 	// open port by number (you may need to change this)
-	midiIn.openPort(1);
-	//midiIn.openPort("IAC Pure Data In");	// by name
-	//midiIn.openVirtualPort("ofxMidiIn Input"); // open a virtual port
+	midiIn->openPort(1);
+	//midiIn->openPort("IAC Pure Data In");       // by name
+	//midiIn->openVirtualPort("ofxMidiIn Input"); // open a virtual port
 	
 	// don't ignore sysex, timing, & active sense messages,
 	// these are ignored by default
-	midiIn.ignoreTypes(false, false, false);
+	midiIn->ignoreTypes(false, false, false);
 	
 	// add ofApp as a listener
-	midiIn.addListener(this);
+	midiIn->addListener(this);
 	
 	// print received messages to the console
-	midiIn.setVerbose(true);
+	midiIn->setVerbose(true);
+
+	// attach MTC listener
+	sync = new ofxMidiMTCIn(*midiIn);
 }
 
 //--------------------------------------------------------------
@@ -81,14 +86,23 @@ void ofApp::draw() {
 	text << "delta: " << midiMessage.deltatime;
 	ofDrawBitmapString(text.str(), 20, 240);
 	text.str(""); // clear
+	
+	text << "SMPTE time: " << sync->toString(true);
+	ofDrawBitmapString(text.str(), 20, 288);
+	text.str(""); // clear
+	text << "(seconds):  " << sync->secondsSinceStart();
+	ofDrawBitmapString(text.str(), 20, 302);
+	text.str(""); // clear
 }
 
 //--------------------------------------------------------------
 void ofApp::exit() {
 	
 	// clean up
-	midiIn.closePort();
-	midiIn.removeListener(this);
+	midiIn->closePort();
+	midiIn->removeListener(this);
+	delete sync;
+	delete midiIn;
 }
 
 //--------------------------------------------------------------
@@ -100,10 +114,9 @@ void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
-
 	switch(key) {
 		case 'l':
-			midiIn.listPorts();
+			midiIn->listPorts();
 			break;
 	}
 }

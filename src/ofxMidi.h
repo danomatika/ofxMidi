@@ -12,6 +12,7 @@
 
 #include "ofxMidiIn.h"
 #include "ofxMidiOut.h"
+#include "ofxMidiMTCIn.h"
 
 /// receives iOS midi device (dis)connection events
 class ofxMidiConnectionListener {
