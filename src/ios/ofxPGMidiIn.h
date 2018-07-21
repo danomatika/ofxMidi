@@ -22,10 +22,10 @@ public:
 	ofxPGMidiIn(const std::string name, ofxMidiApi api=MIDI_API_DEFAULT);
 	virtual ~ofxPGMidiIn();
 
-	void listPorts();
-	std::vector<std::string>& getPortList();
-	int getNumPorts();
-	std::string getPortName(unsigned int portNumber);
+	void listInPorts();
+	std::vector<std::string> getInPortList();
+	int getNumInPorts();
+	std::string getInPortName(unsigned int portNumber);
 
 	bool openPort(unsigned int portNumber);
 	bool openPort(std::string deviceName);

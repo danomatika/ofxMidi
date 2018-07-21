@@ -39,7 +39,7 @@ ofxPGMidiIn::~ofxPGMidiIn() {
 }
 
 // -----------------------------------------------------------------------------
-void ofxPGMidiIn::listPorts() {
+void ofxPGMidiIn::listInPorts() {
 	PGMidi *midi = ofxPGMidiContext::getMidi();
 	int count = [midi.sources count];
 	ofLogNotice("ofxMidiIn") << count << " ports available";
@@ -50,9 +50,9 @@ void ofxPGMidiIn::listPorts() {
 }
 
 // -----------------------------------------------------------------------------
-std::vector<std::string>& ofxPGMidiIn::getPortList() {
+std::vector<std::string> ofxPGMidiIn::getInPortList() {
 	PGMidi *midi = ofxPGMidiContext::getMidi();
-	portList.clear();
+	std::vector<std::string> portList;
 	for(PGMidiSource *source in midi.sources) {
 		portList.push_back([source.name UTF8String]);
 	}
@@ -60,12 +60,12 @@ std::vector<std::string>& ofxPGMidiIn::getPortList() {
 }
 
 // -----------------------------------------------------------------------------
-int ofxPGMidiIn::getNumPorts() {
+int ofxPGMidiIn::getNumInPorts() {
 	return [ofxPGMidiContext::getMidi().sources count];
 }
 
 // -----------------------------------------------------------------------------
-std::string ofxPGMidiIn::getPortName(unsigned int portNumber) {
+std::string ofxPGMidiIn::getInPortName(unsigned int portNumber) {
 
 	PGMidi *midi = ofxPGMidiContext::getMidi();
 

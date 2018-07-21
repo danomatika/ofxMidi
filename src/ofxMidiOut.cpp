@@ -19,23 +19,23 @@ ofxMidiOut::ofxMidiOut(const std::string name, ofxMidiApi api) {
 ofxMidiOut::~ofxMidiOut() {}
 
 // -----------------------------------------------------------------------------
-void ofxMidiOut::listPorts() {
-	midiOut->listPorts();
+void ofxMidiOut::listOutPorts() {
+	midiOut->listOutPorts();
 }
 
 // -----------------------------------------------------------------------------
-std::vector<std::string>& ofxMidiOut::getPortList() {
-	return midiOut->getPortList();
+std::vector<std::string> ofxMidiOut::getOutPortList() {
+	return midiOut->getOutPortList();
 }
 
 // -----------------------------------------------------------------------------
-int ofxMidiOut::getNumPorts() {
-	return midiOut->getNumPorts();
+int ofxMidiOut::getNumOutPorts() {
+	return midiOut->getNumOutPorts();
 }
 
 // -----------------------------------------------------------------------------
-std::string ofxMidiOut::getPortName(unsigned int portNumber) {
-	return midiOut->getPortName(portNumber);
+std::string ofxMidiOut::getOutPortName(unsigned int portNumber) {
+	return midiOut->getOutPortName(portNumber);
 }
 
 // -----------------------------------------------------------------------------

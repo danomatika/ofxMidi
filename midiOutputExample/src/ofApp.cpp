@@ -18,8 +18,7 @@ void ofApp::setup() {
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
 	// print the available output ports to the console
-	midiOut.listPorts(); // via instance
-	//ofxMidiOut::listPorts(); // via static too
+	midiOut.listOutPorts();
 	
 	// connect
 	midiOut.openPort(0); // by number
@@ -81,10 +80,6 @@ void ofApp::keyPressed(int key) {
 		// print out both the midi note and the frequency
 		ofLogNotice() << "note: " << note
 		              << " freq: " << ofxMidi::mtof(note) << " Hz";
-	}
-	
-	if(key == 'l') {
-		midiOut.listPorts();
 	}
 }
 
@@ -185,7 +180,7 @@ void ofApp::keyReleased(int key) {
 		
 		// print the port list
 		case '?':
-			midiOut.listPorts();
+			midiOut.listOutPorts();
 			break;
 		
 		// note off using raw bytes

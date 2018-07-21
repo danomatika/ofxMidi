@@ -23,7 +23,7 @@ ofxRtMidiIn::~ofxRtMidiIn() {
 }
 
 // -----------------------------------------------------------------------------
-void ofxRtMidiIn::listPorts() {
+void ofxRtMidiIn::listInPorts() {
 	ofLogNotice("ofxMidiIn") << midiIn.getPortCount() << " ports available";
 	for(unsigned int i = 0; i < midiIn.getPortCount(); ++i){
 		ofLogNotice("ofxMidiIn") <<  i << ": " << midiIn.getPortName(i);
@@ -31,21 +31,21 @@ void ofxRtMidiIn::listPorts() {
 }
 
 // -----------------------------------------------------------------------------
-std::vector<std::string>& ofxRtMidiIn::getPortList() {
-	portList.clear();
-	for(unsigned int i=0; i < midiIn.getPortCount(); ++i) {
+std::vector<std::string> ofxRtMidiIn::getInPortList() {
+	std::vector<std::string> portList;
+	for(unsigned int i = 0; i < midiIn.getPortCount(); ++i) {
 		portList.push_back(midiIn.getPortName(i));
 	}
 	return portList;
 }
 
 // -----------------------------------------------------------------------------
-int ofxRtMidiIn::getNumPorts() {
+int ofxRtMidiIn::getNumInPorts() {
 	return midiIn.getPortCount();
 }
 
 // -----------------------------------------------------------------------------
-std::string ofxRtMidiIn::getPortName(unsigned int portNumber) {
+std::string ofxRtMidiIn::getInPortName(unsigned int portNumber) {
 	// handle rtmidi exceptions
 	try {
 		return midiIn.getPortName(portNumber);

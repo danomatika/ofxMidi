@@ -17,8 +17,7 @@ void ofApp::setup() {
 	ofSetLogLevel(OF_LOG_VERBOSE);
 	
 	// print input ports to console
-	midiIn.listPorts(); // via instance
-	//ofxMidiIn::listPorts(); // via static as well
+	midiIn.listInPorts();
 	
 	// open port by number (you may need to change this)
 	midiIn.openPort(1);
@@ -42,45 +41,53 @@ void ofApp::update() {
 
 //--------------------------------------------------------------
 void ofApp::draw() {
-	ofSetColor(0);
+
+
+	for(unsigned int i = 0; i < midiMessages.size(); ++i) {
+
+		ofxMidiMessage &message = midiMessages[i];
+		int x = 10;
+		int y = i*40 + 40;
 	
-	// draw the last recieved message contents to the screen
-	text << "Received: " << ofxMidiMessage::getStatusString(midiMessage.status);
-	ofDrawBitmapString(text.str(), 20, 20);
-	text.str(""); // clear
-	
-	text << "channel: " << midiMessage.channel;
-	ofDrawBitmapString(text.str(), 20, 34);
-	text.str(""); // clear
-	
-	text << "pitch: " << midiMessage.pitch;
-	ofDrawBitmapString(text.str(), 20, 48);
-	text.str(""); // clear
-	ofDrawRectangle(20, 58, ofMap(midiMessage.pitch, 0, 127, 0, ofGetWidth()-40), 20);
-	
-	text << "velocity: " << midiMessage.velocity;
-	ofDrawBitmapString(text.str(), 20, 96);
-	text.str(""); // clear
-	ofDrawRectangle(20, 105, ofMap(midiMessage.velocity, 0, 127, 0, ofGetWidth()-40), 20);
-	
-	text << "control: " << midiMessage.control;
-	ofDrawBitmapString(text.str(), 20, 144);
-	text.str(""); // clear
-	ofDrawRectangle(20, 154, ofMap(midiMessage.control, 0, 127, 0, ofGetWidth()-40), 20);
-	
-	text << "value: " << midiMessage.value;
-	ofDrawBitmapString(text.str(), 20, 192);
-	text.str(""); // clear
-	if(midiMessage.status == MIDI_PITCH_BEND) {
-		ofDrawRectangle(20, 202, ofMap(midiMessage.value, 0, MIDI_MAX_BEND, 0, ofGetWidth()-40), 20);
+		// draw the last recieved message contents to the screen,
+		// this doesn't print all the data from every status type
+		// but you should get the general idea
+		stringstream text;
+		text << ofxMidiMessage::getStatusString(message.status);
+		while(text.str().length() < 16) { // pad status width
+			text << " ";
+		}
+
+		ofSetColor(127);
+		if(message.status < MIDI_SYSEX) {
+			text << "chan: " << message.channel;
+			if(message.status == MIDI_CONTROL_CHANGE) {
+				text << "\tctl: " << message.control;
+				ofDrawRectangle(x + ofGetWidth()*0.2, y + 12,
+					ofMap(message.control, 0, 127, 0, ofGetWidth()*0.2), 10);
+			}
+			else if(message.status == MIDI_PITCH_BEND) {
+				text << "\tval: " << message.value;
+				ofDrawRectangle(x + ofGetWidth()*0.2, y + 12,
+					ofMap(message.value, 0, MIDI_MAX_BEND, 0, ofGetWidth()*0.2), 10);
+			}
+			else {
+				text << "\tpitch: " << message.pitch;
+				ofDrawRectangle(x + ofGetWidth()*0.2, y + 12,
+					ofMap(message.pitch, 0, 127, 0, ofGetWidth()*0.2), 10);
+
+				text << "\tvel: " << message.velocity;
+				ofDrawRectangle(x + (ofGetWidth()*0.2 * 2), y + 12,
+					ofMap(message.velocity, 0, 127, 0, ofGetWidth()*0.2), 10);
+			}
+			text << " "; // pad for delta print
+		}
+
+		text << "delta: " << message.deltatime;
+		ofSetColor(0);
+		ofDrawBitmapString(text.str(), x, y);
+		text.str(""); // clear
 	}
-	else {
-		ofDrawRectangle(20, 202, ofMap(midiMessage.value, 0, 127, 0, ofGetWidth()-40), 20);
-	}
-	
-	text << "delta: " << midiMessage.deltatime;
-	ofDrawBitmapString(text.str(), 20, 240);
-	text.str(""); // clear
 }
 
 //--------------------------------------------------------------
@@ -94,16 +101,20 @@ void ofApp::exit() {
 //--------------------------------------------------------------
 void ofApp::newMidiMessage(ofxMidiMessage& msg) {
 
-	// make a copy of the latest message
-	midiMessage = msg;
+	// add the latest message to the message queue
+	midiMessages.push_back(msg);
+
+	// remove any old messages if we have too many
+	while(midiMessages.size() > maxMessages) {
+		midiMessages.erase(midiMessages.begin());
+	}
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
-
 	switch(key) {
-		case 'l':
-			midiIn.listPorts();
+		case '?':
+			midiIn.listInPorts();
 			break;
 	}
 }

@@ -14,8 +14,6 @@
 
 // MIDI IN
 
-std::vector<std::string> ofxBaseMidiIn::portList;
-
 // -----------------------------------------------------------------------------
 ofxBaseMidiIn::ofxBaseMidiIn(const std::string name, ofxMidiApi api) {
 	portNum = -1;
@@ -84,14 +82,12 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, std::vector<unsigned char
 
 // MIDI OUT
 
-std::vector<std::string> ofxBaseMidiOut::portList;
-
 // -----------------------------------------------------------------------------
 ofxBaseMidiOut::ofxBaseMidiOut(const std::string name, ofxMidiApi api) {
 	portNum = -1;
 	portName = "";
 	bOpen = false;
-	bMsgInProgress = false;
+	bStreamInProgress = false;
 	bVirtual = false;
 	this->api = api;
 }
@@ -123,168 +119,110 @@ ofxMidiApi ofxBaseMidiOut::getApi() {
 
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::sendNoteOn(int channel, int pitch, int velocity) {
-	
-	if(bMsgInProgress) {
-		ofLogWarning("ofxMidiOut") << "cannot send note on, byte stream in progress";
-		return;
-	}
-
-	message.clear();
-	message.push_back(MIDI_NOTE_ON+channel-1);
+	std::vector<unsigned char> message;
+	message.push_back(MIDI_NOTE_ON+(channel-1));
 	message.push_back(pitch);
 	message.push_back(velocity);
-	sendMessage();
+	sendMessage(message);
 }
 
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::sendNoteOff(int channel, int pitch, int velocity) {
-
-	if(bMsgInProgress) {
-		ofLogWarning("ofxMidiOut") << "cannot send note off, byte stream in progress";
-		return;
-	}
-
-	message.clear();
+	std::vector<unsigned char> message;
 	message.push_back(MIDI_NOTE_OFF+(channel-1));
 	message.push_back(pitch);
 	message.push_back(velocity);
-	sendMessage();
+	sendMessage(message);
 }
 
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::sendControlChange(int channel, int control, int value) {
-
-	if(bMsgInProgress) {
-		ofLogWarning("ofxMidiOut") << "cannot send note ctrl change, byte stream in progress";
-		return;
-	}
-
-	message.clear();
+	std::vector<unsigned char> message;
 	message.push_back(MIDI_CONTROL_CHANGE+(channel-1));
 	message.push_back(control);
 	message.push_back(value);
-	sendMessage();
+	sendMessage(message);
 }
 
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::sendProgramChange(int channel, int value) {
-
-	if(bMsgInProgress) {
-		ofLogWarning("ofxMidiOut") << "cannot send pgm change, byte stream in progress";
-		return;
-	}
-
-	message.clear();
+	std::vector<unsigned char> message;
 	message.push_back(MIDI_PROGRAM_CHANGE+(channel-1));
 	message.push_back(value);
-	sendMessage();
+	sendMessage(message);
 }
 
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::sendPitchBend(int channel, int value) {
-
-	if(bMsgInProgress) {
-		ofLogWarning("ofxMidiOut") << "cannot send pitch bend, byte stream in progress";
-		return;
-	}
-
-	message.clear();
+	std::vector<unsigned char> message;
 	message.push_back(MIDI_PITCH_BEND+(channel-1));
 	message.push_back(value & 0x7F);        // lsb 7bit
 	message.push_back((value >> 7) & 0x7F); // msb 7bit
-	sendMessage();
+	sendMessage(message);
 }
 
 void ofxBaseMidiOut::sendPitchBend(int channel, unsigned char lsb, unsigned char msb) {
-	
-	if(bMsgInProgress) {
-		ofLogWarning("ofxMidiOut") << "cannot send pitch bend, byte stream in progress";
-		return;
-	}
-
-	message.clear();
+	std::vector<unsigned char> message;
 	message.push_back(MIDI_PITCH_BEND+(channel-1));
 	message.push_back(lsb);
 	message.push_back(msb);
-	sendMessage();
+	sendMessage(message);
 }
 
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::sendAftertouch(int channel, int value) {
-
-	if(bMsgInProgress) {
-		ofLogWarning("ofxMidiOut") << "cannot send aftertouch, byte stream in progress";
-		return;
-	}
-
-	message.clear();
+	std::vector<unsigned char> message;
 	message.push_back(MIDI_AFTERTOUCH+(channel-1));
 	message.push_back(value);
-	sendMessage();
+	sendMessage(message);
 }
 
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::sendPolyAftertouch(int channel, int pitch, int value) {
-
-	if(bMsgInProgress) {
-		ofLogWarning("ofxMidiOut") << "cannot send poly aftertouch, byte stream in progress";
-		return;
-	}
-
-	message.clear();
+	std::vector<unsigned char> message;
 	message.push_back(MIDI_POLY_AFTERTOUCH+(channel-1));
 	message.push_back(pitch);
 	message.push_back(value);
-	sendMessage();
+	sendMessage(message);
 }
 
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::sendMidiByte(unsigned char byte) {
-
-	// don't flush if a byte stream is in progress
-	if(bMsgInProgress) {
-		message.push_back(byte);
+	if(bStreamInProgress) {
+		stream.push_back(byte);
 	}
 	else {
-		message.clear();
+		std::vector<unsigned char> message;
 		message.push_back(byte);
-		sendMessage();
+		sendMessage(message);
 	}
 }
 
 //----------------------------------------------------------
 void ofxBaseMidiOut::sendMidiBytes(std::vector<unsigned char>& bytes) {
-
-	// don't flush if a byte stream is in progress
-	if(bMsgInProgress) {
-		for(unsigned int i = 0; i < bytes.size(); ++i) {
-			message.push_back(bytes[i]);
-		}
+	if(bStreamInProgress) {
+		stream.insert(stream.end(), bytes.begin(), bytes.end());
 	}
 	else {
-		message.clear();
-		for(unsigned int i = 0; i < bytes.size(); ++i) {
-			message.push_back(bytes[i]);
-		}
-		sendMessage();
+		sendMessage(bytes);
 	}
 }
 
 //----------------------------------------------------------
 void ofxBaseMidiOut::startMidiStream() {
-	if(bMsgInProgress) {
+	if(bStreamInProgress) {
 		ofLogWarning("ofxMidiOut") << "calling StartMidi when byte stream in progress";
 		return;
 	}
-	message.clear();
-	bMsgInProgress = true;
+	stream.clear();
+	bStreamInProgress = true;
 }
 
 // -----------------------------------------------------------------------------
 void ofxBaseMidiOut::finishMidiStream() {
-	if(!bMsgInProgress) {
+	if(!bStreamInProgress) {
 		ofLogWarning("ofxMidiOut") << "can not finish midi byte stream, stream not in progress";
 		return;
 	}
-	sendMessage();
+	sendMessage(stream);
 }

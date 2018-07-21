@@ -27,7 +27,7 @@
 /// create multiple instances to connect to multiple ports
 ///
 /// *do not* create static instances as this will lead to a crash on Linux,
-/// instead create a static ofPtr and initialize it later:
+/// instead create a static std::shared_ptr and initialize it later:
 ///
 /// in .h:
 ///    class MyClass {
@@ -60,7 +60,7 @@ public:
 /// \section Global Port Info
 	
 	/// print the connected output ports
-	void listPorts();
+	void listOutPorts();
 	
 	/// get a list of output port names
 	/// 
@@ -69,16 +69,16 @@ public:
 	/// note: this order may change when new devices are added/removed
 	///       from the system
 	///
-	std::vector<std::string>& getPortList();
+	std::vector<std::string> getOutPortList();
 	
 	/// get the number of output ports
-	int getNumPorts();
+	int getNumOutPorts();
 	
 	/// get the name of an output port by it's number
 	///
 	/// returns "" if number is invalid
 	///
-	std::string getPortName(unsigned int portNumber);
+	std::string getOutPortName(unsigned int portNumber);
 	
 /// \section Connection
 	
@@ -89,7 +89,7 @@ public:
 	bool openPort(unsigned int portNumber=0);
 	bool openPort(std::string deviceName);
 	
-	/// create and connect to a virtual output port (MacOS and Linux ALSA only)
+	/// create and connect to a virtual output port (macOS and Linux ALSA only)
 	///
 	/// allows for connections between software
 	///
@@ -179,9 +179,11 @@ public:
 	///
 	/// build a raw midi byte message and send it with FinishMidi()
 	///
-	/// note: other midi messages (except raw miid bytes) cannot be sent while
+	/// note: other midi messages (except raw midi bytes) cannot be sent while
 	///       the stream is in progress
 	///
+	/// warning: this is not thread safe, use sendMidiBytes() in a shared context
+	//
 	ofxMidiOut& operator<<(const StartMidi& var);
 	ofxMidiOut& operator<<(const FinishMidi& var);
 	ofxMidiOut& operator<<(const unsigned char var);

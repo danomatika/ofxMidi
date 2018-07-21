@@ -33,10 +33,10 @@ public:
 	virtual bool openVirtualPort(std::string portName) = 0;
 	virtual void closePort() = 0;
 
-	virtual void listPorts() = 0;
-	virtual std::vector<std::string>& getPortList() = 0;
-	virtual int getNumPorts() = 0;
-	virtual std::string getPortName(unsigned int portNumber) = 0;
+	virtual void listInPorts() = 0;
+	virtual std::vector<std::string> getInPortList() = 0;
+	virtual int getNumInPorts() = 0;
+	virtual std::string getInPortName(unsigned int portNumber) = 0;
 
 	int getPort();
 	std::string getName();
@@ -59,9 +59,8 @@ protected:
 	
 	int portNum;     //< current port num, -1 if not connected
 	std::string portName; //< current port name, "" if not connected
-	
-	static std::vector<std::string> portList; //< list of port names
-	ofEvent<ofxMidiMessage> newMessageEvent;
+
+	ofEvent<ofxMidiMessage> newMessageEvent; //< current message event
 	
 	bool bOpen;     //< is the port currently open?
 	bool bVerbose;  //< print incoming bytes?
@@ -85,10 +84,10 @@ public:
 	virtual bool openVirtualPort(std::string portName) = 0;
 	virtual void closePort() = 0;
 
-	virtual void listPorts() = 0;
-	virtual std::vector<std::string>& getPortList() = 0;
-	virtual int getNumPorts() = 0;
-	virtual std::string getPortName(unsigned int portNumber) = 0;
+	virtual void listOutPorts() = 0;
+	virtual std::vector<std::string> getOutPortList() = 0;
+	virtual int getNumOutPorts() = 0;
+	virtual std::string getOutPortName(unsigned int portNumber) = 0;
 	
 	int getPort();
 	std::string getName();
@@ -112,18 +111,17 @@ public:
 	void finishMidiStream();
 	
 protected:
-	
-	/// sends current message
-	virtual void sendMessage() = 0;
+
+	/// send a raw byte message
+	virtual void sendMessage(std::vector<unsigned char> &message) = 0;
 	
 	int portNum;          //< current port num, -1 if not connected
 	std::string portName; //< current port name, "" if not connected
+
+	std::vector<unsigned char> stream; //< byte stream message byte buffer
 	
-	static std::vector<std::string> portList; //< list of port names
-	std::vector<unsigned char> message; //< message byte buffer
-	
-	bool bOpen;          //< is the port currently open?
-	bool bMsgInProgress; //< used with byte stream
-	bool bVirtual;       //< are we connected to a virtual port?
-	ofxMidiApi api;      //< backend api
+	bool bOpen;             //< is the port currently open?
+	bool bStreamInProgress; //< used with byte stream
+	bool bVirtual;          //< are we connected to a virtual port?
+	ofxMidiApi api;         //< backend api
 };

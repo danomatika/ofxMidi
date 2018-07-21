@@ -23,7 +23,7 @@ ofxRtMidiOut::~ofxRtMidiOut() {
 }
 
 // -----------------------------------------------------------------------------
-void ofxRtMidiOut::listPorts() {
+void ofxRtMidiOut::listOutPorts() {
 	ofLogNotice("ofxMidiOut") << midiOut.getPortCount() << " ports available";
 	for(unsigned int i = 0; i < midiOut.getPortCount(); ++i){
 		ofLogNotice("ofxMidiOut") <<  i << ": " << midiOut.getPortName(i);
@@ -31,8 +31,8 @@ void ofxRtMidiOut::listPorts() {
 }
 
 // -----------------------------------------------------------------------------
-std::vector<std::string>& ofxRtMidiOut::getPortList() {
-	portList.clear();
+std::vector<std::string> ofxRtMidiOut::getOutPortList() {
+	std::vector<std::string> portList;
 	for(unsigned int i = 0; i < midiOut.getPortCount(); ++i) {
 		portList.push_back(midiOut.getPortName(i));
 	}
@@ -40,12 +40,12 @@ std::vector<std::string>& ofxRtMidiOut::getPortList() {
 }
 
 // -----------------------------------------------------------------------------
-int ofxRtMidiOut::getNumPorts() {
+int ofxRtMidiOut::getNumOutPorts() {
 	return midiOut.getPortCount();
 }
 
 // -----------------------------------------------------------------------------
-std::string ofxRtMidiOut::getPortName(unsigned int portNumber) {
+std::string ofxRtMidiOut::getOutPortName(unsigned int portNumber) {
 	// handle rtmidi exceptions
 	try {
 		return midiOut.getPortName(portNumber);
@@ -127,19 +127,18 @@ void ofxRtMidiOut::closePort() {
 	portNum = -1;
 	portName = "";
 	bOpen = false;
-	bMsgInProgress = false;
+	bStreamInProgress = false;
 	bVirtual = false;
 }
 
 // PRIVATE
 // -----------------------------------------------------------------------------
-void ofxRtMidiOut::sendMessage() {
+void ofxRtMidiOut::sendMessage(std::vector<unsigned char> &message) {
 	// handle rtmidi exceptions
 	try {
 		midiOut.sendMessage(&message);
 	}
-	catch(RtMidiError& err) {
+	catch(RtMidiError &err) {
 		ofLogError("ofxMidiOut") << "couldn't send message: " << err.what();
 	}
-	bMsgInProgress = false;
 }

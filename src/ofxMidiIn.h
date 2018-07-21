@@ -27,25 +27,25 @@
 /// create multiple instances to connect to multiple ports
 ///
 /// *do not* create static instances as this will lead to a crash on Linux,
-/// instead create a static ofPtr and initialize it later:
+/// instead create a static std::shared_pttr and initialize it later:
 ///
 /// in .h:
 ///    class MyClass {
 ///
 ///        ...
 ///
-///        static ofPtr<ofxMidiIn> s_midiIn;
+///        static std::shared_ptr<ofxMidiIn> s_midiIn;
 ///    }
 ///
 /// in .cpp:
-///    ofPtr<ofxMidiIn> MyClass::s_midiIn;
+///    std::shared_ptr<ofxMidiIn> MyClass::s_midiIn;
 ///
 ///    ...
 ///
 ///    // initialize somewhere else
 ///    void MyClass::setup() {
 ///        if(s_midiIn == NULL) {
-///            s_midiIn = ofPtr<ofxMidiIn>(new ofxMidiIn("ofxMidi Client"));
+///            s_midiIn = std::shared_ptr<ofxMidiIn>(new ofxMidiIn("ofxMidi Client"));
 ///        }
 ///    }
 ///
@@ -59,37 +59,37 @@ public:
 	
 /// \section Global Port Info
 	
-	/// print the connected output ports
-	void listPorts();
+	/// print the connected input ports
+	void listInPorts();
 	
-	/// get a list of output port names
+	/// get a list of input port names
 	/// 
 	/// the vector index corresponds with the name's port number
 	///
 	/// note: this order may change when new devices are added/removed
 	///       from the system
 	///
-	std::vector<std::string>& getPortList();
+	std::vector<std::string> getInPortList();
 	
-	/// get the number of output ports
-	int getNumPorts();
+	/// get the number of input ports
+	int getNumInPorts();
 	
-	/// get the name of an output port by it's number
+	/// get the name of an input port by it's number
 	///
 	/// returns "" if number is invalid
 	///
-	std::string getPortName(unsigned int portNumber);
+	std::string getInPortName(unsigned int portNumber);
 
 /// \section Connection
 	
-	/// connect to an output port
+	/// connect to an input port
 	///
 	/// setting port = 0 will open the first available
 	///
 	bool openPort(unsigned int portNumber=0);
 	bool openPort(std::string deviceName);
 	
-	/// create and connect to a virtual output port (MacOS and Linux ALSA only)
+	/// create and connect to a virtual output port (macOS and Linux ALSA only)
 	///
 	/// allows for connections between software
 	///
@@ -108,7 +108,7 @@ public:
 	///
 	int getPort();
 	
-	/// get the connected output port name
+	/// get the connected input port name
 	///
 	/// returns "" if not connected
 	///

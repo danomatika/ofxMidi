@@ -1,7 +1,19 @@
-1.0.7: 2018 Jul 20
+1.1.0: 2018 Jul 20
+
+* added backend api type and constructor arguments (Sol Bekic)
 
 * updated for OF 0.10.0
 * updated to RtMidi 3.0.0
+* readme consistency fixes (tpltnt)
+* message parsing to ofxMidiMessage to ease raw byte handling (reported by
+  Damian Stewart)
+
+* fixed ofxMidiOut crash in a multi-thread context (reported by Hiroshi Matoba)
+
+* removed static port info functions as a in/out port instance api might be
+  different than the default (listPorts, getPortList, getNumPorts, getPortName)
+* renamed port info functions to *InPort and *OutPort naming (ie. listInPorts,
+  listOutPorts, etc)
 
 1.0.6: 2016 Oct 24
 
