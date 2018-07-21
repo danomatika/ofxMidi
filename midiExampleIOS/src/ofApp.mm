@@ -44,11 +44,13 @@ void ofApp::setup() {
 	ofxMidi::enableNetworking();
 	
 	// list the number of available input & output ports
-	ofxMidiIn::listPorts();
-	ofxMidiOut::listPorts();
+	ofxMidiIn input;
+	ofxMidiOut output;
+	input.listInPorts();
+	output.listOutPorts();
 	
 	// create and open input ports
-	for(int i = 0; i < ofxMidiIn::getNumPorts(); ++i) {
+	for(int i = 0; i < input.getNumInPorts(); ++i) {
 		
 		// new object
 		inputs.push_back(new ofxMidiIn);
@@ -61,7 +63,7 @@ void ofApp::setup() {
 	}
 	
 	// create and open output ports
-	for(int i = 0; i < ofxMidiOut::getNumPorts(); ++i) {
+	for(int i = 0; i < output.getNumOutPorts(); ++i) {
 		
 		// new object
 		outputs.push_back(new ofxMidiOut);

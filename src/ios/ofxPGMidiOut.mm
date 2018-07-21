@@ -48,7 +48,7 @@ void ofxPGMidiOut::listOutPorts() {
 }
 
 // -----------------------------------------------------------------------------
-std::vector<std::string>& ofxPGMidiOut::getOutPortList() {
+std::vector<std::string> ofxPGMidiOut::getOutPortList() {
 	PGMidi *midi = ofxPGMidiContext::getMidi();
 	std::vector<std::string> portList;
 	for(PGMidiDestination *dest in midi.destinations) {
@@ -150,7 +150,7 @@ void ofxPGMidiOut::closePort() {
 // PRIVATE
 // -----------------------------------------------------------------------------
 // adapted from PGMidi sendBytes
-void ofxPGMidiOut::sendMessage() {
+void ofxPGMidiOut::sendMessage(std::vector<unsigned char> &message) {
 
     Byte packetBuffer[message.size()+100];
     MIDIPacketList *packetList = (MIDIPacketList*)packetBuffer;
@@ -159,5 +159,4 @@ void ofxPGMidiOut::sendMessage() {
     packet = MIDIPacketListAdd(packetList, sizeof(packetBuffer), packet, 0, message.size(), &message[0]);
 
 	[destination->d sendPacketList:packetList];
-	bMsgInProgress = false;
 }

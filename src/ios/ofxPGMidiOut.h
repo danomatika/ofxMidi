@@ -31,7 +31,7 @@ public:
 	
 private:
 	
-	void sendMessage();
+	void sendMessage(std::vector<unsigned char> &message);
 
 	struct Destination; // forward declaration for Obj-C wrapper
 	Destination * destination; ///< output destination
