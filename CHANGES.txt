@@ -1,6 +1,7 @@
 1.1.0: 2018 Jul 20
 
 * added backend api type and constructor arguments (Sol Bekic)
+* added MIDI clock message parser and example
 
 * updated for OF 0.10.0
 * updated to RtMidi 3.0.0
