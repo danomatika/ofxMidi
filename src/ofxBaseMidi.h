@@ -10,9 +10,6 @@
  */
 #pragma once
 
-#include "ofConstants.h"
-#include "ofUtils.h"
-
 #include "ofxMidiConstants.h"
 #include "ofxMidiMessage.h"
 #include "ofxMidiTypes.h"

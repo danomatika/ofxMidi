@@ -10,7 +10,6 @@
  */
 #pragma once
 
-#include "ofConstants.h"
 #include "ofEvents.h"
 #include "ofxMidiConstants.h"
 
@@ -23,18 +22,17 @@ public:
 
 	ofxMidiListener() {}
 	virtual ~ofxMidiListener() {}
-	
-	virtual void newMidiMessage(ofxMidiMessage& msg)=0;
+
+	virtual void newMidiMessage(ofxMidiMessage& message) = 0;
 };
 
 /// a single multi byte MIDI message
 ///
 /// check status type and grab data:
 /// 
-///     if(midiArg.status == MIDI_NOTE_ON) {
-///         cout << "note on " << midiArg.channel
-///              << midiArg.note << " " << midiArg.velocity
-///              << endl;
+///     if(message.status == MIDI_NOTE_ON) {
+///         ofLog() << "note on " << message.channel
+///                 << message.note << " " << message.velocity;
 ///     }
 ///
 /// the message-specific types are only set for the appropriate

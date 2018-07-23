@@ -35,12 +35,6 @@ build/
 
 # example project files
 
-midiClockExample/Makefile
-midiClockExample/Project.xcconfig
-midiClockExample/config.make
-midiClockExample/midiClockExample.xcodeproj
-midiClockExample/openFrameworks-Info.plist
-
 midiExampleIOS/Project.xcconfig
 midiExampleIOS/config.make
 midiExampleIOS/midiExampleIOS.xcodeproj
@@ -59,3 +53,9 @@ midiOutputExample/Project.xcconfig
 midiOutputExample/config.make
 midiOutputExample/midiOutputExample.xcodeproj
 midiOutputExample/openFrameworks-Info.plist
+
+midiTimingExample/Makefile
+midiTimingExample/Project.xcconfig
+midiTimingExample/config.make
+midiTimingExample/midiTimingExample.xcodeproj
+midiTimingExample/openFrameworks-Info.plist

@@ -12,6 +12,8 @@
  */
 #include "ofxMidiClock.h"
 
+#include "ofLog.h"
+
 // -----------------------------------------------------------------------------
 bool ofxMidiClock::update(std::vector<unsigned char> &message) {
 	switch(message[0]) {
@@ -22,6 +24,7 @@ bool ofxMidiClock::update(std::vector<unsigned char> &message) {
 		case MIDI_SONG_POS_POINTER:
 			if(message.size() < 3) {return false;}
 			beats = (message[2] << 7) + message[1];
+			ofLogVerbose("ofxMidiClock") << "Song Pos " << beats;
 			return true;
 	}
 	return false;

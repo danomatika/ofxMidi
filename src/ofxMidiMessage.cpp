@@ -10,6 +10,8 @@
  */
 #include "ofxMidiMessage.h"
 
+#include "ofxMidi.h"
+
 // -----------------------------------------------------------------------------
 ofxMidiMessage::ofxMidiMessage() {
 	clear();
@@ -114,11 +116,7 @@ std::string ofxMidiMessage::toString() {
 	std::stringstream stream;
 	stream << portName << ": " << getStatusString(status) << " "
 		   << channel << " [ ";
-	for(unsigned int i = 0; i < bytes.size(); ++i) {
-		stream << std::hex << std::uppercase << std::setw(2) << std::setfill('0')
-			   << (int) bytes[i] << " "
-			   << std::dec << std::nouppercase << std::setw(1) << std::setfill(' ');
-	}
+	stream << ofxMidi::bytesToString(bytes);
 	stream << "] " << deltatime;
 	return stream.str();
 }

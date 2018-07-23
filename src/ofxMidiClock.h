@@ -19,7 +19,7 @@
 using namespace std::chrono;
 
 ///
-/// MIDI clock message parser to keep track of length, tempo, and song pos
+/// MIDI clock message parser
 ///
 /// currently input only, does not send clock ticks
 ///
