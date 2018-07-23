@@ -1,13 +1,13 @@
-1.1.0: 2018 Jul 20
+1.1.0: 2018 Jul 24
 
 * added backend api type and constructor arguments (Sol Bekic)
-* added MIDI clock message parser and example
+* added MIDI clock & timecode parsers and midiTimingExample
 
 * updated for OF 0.10.0
 * updated to RtMidi 3.0.0
 * readme consistency fixes (tpltnt)
-* message parsing to ofxMidiMessage to ease raw byte handling (reported by
-  Damian Stewart)
+* moved input parsing to ofxMidiMessage to ease raw byte handling
+  (reported by Damian Stewart)
 
 * fixed ofxMidiOut crash in a multi-thread context (reported by Hiroshi Matoba)
 
