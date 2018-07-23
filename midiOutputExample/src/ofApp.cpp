@@ -68,6 +68,9 @@ void ofApp::exit() {
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
 
+	// ignore shift+s since it is used in keyReleased for sysex sending
+	if(key == 'S') return;
+
 	// send a note on if the key is a letter or a number
 	if(isalnum((unsigned char) key)) {
 	
