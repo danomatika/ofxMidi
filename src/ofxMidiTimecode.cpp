@@ -16,6 +16,7 @@
 #include "ofxMidi.h"
 #include <sstream>
 #include <iomanip>
+#include <cmath>
 
 // ofxMidiTimecodeFrame
 
