@@ -36,6 +36,6 @@ private:
 	
 	RtMidiIn midiIn;
 	
-	/// static callback for rtmidi
+	/// static callback for RtMidi
 	static void _midiMessageCallback(double deltatime, std::vector<unsigned char> *message, void *userData);
 };

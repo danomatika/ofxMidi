@@ -14,7 +14,7 @@
 #include "ofxMidiMessage.h"
 #include "ofxMidiTypes.h"
 
-/// a base midi input port
+/// a base MIDI input port
 ///
 /// see ofxMidiIn for functional documentation
 ///
@@ -65,7 +65,7 @@ protected:
 	ofxMidiApi api; //< backend api
 };
 
-/// a midi output port
+/// a MIDI output port
 ///
 /// see ofxMidiOut for functional documentation
 ///

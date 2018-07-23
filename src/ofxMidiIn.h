@@ -12,7 +12,7 @@
 
 #include "ofxBaseMidi.h"
 
-// choose the midi backend
+// choose the MIDI backend
 #ifdef TARGET_OF_IPHONE
 	#include "ios/ofxPGMidiIn.h"
 	#define OFX_MIDI_IN_TYPE ofxPGMidiIn
@@ -22,7 +22,7 @@
 #endif
 
 ///
-/// a midi input port
+/// a MIDI input port
 ///
 /// create multiple instances to connect to multiple ports
 ///
@@ -131,9 +131,9 @@ public:
 	///
 	void ignoreTypes(bool midiSysex=true, bool midiTiming=true, bool midiSense=true);
 
-	/// add/remove listener for incoming midi events
+	/// add/remove listener for incoming MIDI events
 	///
-	/// listeners receive from *all* incoming midi channels
+	/// listeners receive from *all* incoming MIDI channels
 	///
 	void addListener(ofxMidiListener* listener);
 	void removeListener(ofxMidiListener* listener);
@@ -141,7 +141,7 @@ public:
 	/// set to verbose = true to print received byte info
 	///
 	/// warning: this will impact performance with large numbers
-	///          of midi messages
+	///          of MIDI messages
 	///
 	void setVerbose(bool verbose);
 

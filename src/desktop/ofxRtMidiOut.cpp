@@ -46,7 +46,7 @@ int ofxRtMidiOut::getNumOutPorts() {
 
 // -----------------------------------------------------------------------------
 std::string ofxRtMidiOut::getOutPortName(unsigned int portNumber) {
-	// handle rtmidi exceptions
+	// handle RtMidi exceptions
 	try {
 		return midiOut.getPortName(portNumber);
 	}
@@ -58,7 +58,7 @@ std::string ofxRtMidiOut::getOutPortName(unsigned int portNumber) {
 
 // -----------------------------------------------------------------------------
 bool ofxRtMidiOut::openPort(unsigned int portNumber) {	
-	// handle rtmidi exceptions
+	// handle RtMidi exceptions
 	try {
 		closePort();
 		midiOut.openPort(portNumber, "ofxMidi Output "+ofToString(portNumber));
@@ -98,7 +98,7 @@ bool ofxRtMidiOut::openPort(std::string deviceName) {
 
 // -----------------------------------------------------------------------------
 bool ofxRtMidiOut::openVirtualPort(std::string portName) {
-	// handle rtmidi exceptions
+	// handle RtMidi exceptions
 	try {
 		closePort();
 		midiOut.openVirtualPort(portName);
@@ -134,7 +134,7 @@ void ofxRtMidiOut::closePort() {
 // PRIVATE
 // -----------------------------------------------------------------------------
 void ofxRtMidiOut::sendMessage(std::vector<unsigned char> &message) {
-	// handle rtmidi exceptions
+	// handle RtMidi exceptions
 	try {
 		midiOut.sendMessage(&message);
 	}

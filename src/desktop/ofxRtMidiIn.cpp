@@ -46,7 +46,7 @@ int ofxRtMidiIn::getNumInPorts() {
 
 // -----------------------------------------------------------------------------
 std::string ofxRtMidiIn::getInPortName(unsigned int portNumber) {
-	// handle rtmidi exceptions
+	// handle RtMidi exceptions
 	try {
 		return midiIn.getPortName(portNumber);
 	}
@@ -58,7 +58,7 @@ std::string ofxRtMidiIn::getInPortName(unsigned int portNumber) {
 
 // -----------------------------------------------------------------------------
 bool ofxRtMidiIn::openPort(unsigned int portNumber) {	
-	// handle rtmidi exceptions
+	// handle RtMidi exceptions
 	try {
 		closePort();
 		midiIn.setCallback(&_midiMessageCallback, this);
@@ -99,7 +99,7 @@ bool ofxRtMidiIn::openPort(std::string deviceName) {
 
 // -----------------------------------------------------------------------------
 bool ofxRtMidiIn::openVirtualPort(std::string portName) {
-	// handle rtmidi exceptions
+	// handle RtMidi exceptions
 	try {
 		closePort();
 		midiIn.setCallback(&_midiMessageCallback, this);

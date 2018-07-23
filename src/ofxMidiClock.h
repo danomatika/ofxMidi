@@ -30,7 +30,7 @@ public:
 	ofxMidiClock() {}
 	virtual ~ofxMidiClock() {}
 
-	/// update clock from a raw midi message,
+	/// update clock from a raw MIDI message,
 	/// returns true if the message was handled
 	bool update(std::vector<unsigned char> &message);
 

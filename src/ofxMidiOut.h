@@ -12,7 +12,7 @@
 
 #include "ofxBaseMidi.h"
 
-// choose the midi backend
+// choose the MIDI backend
 #ifdef TARGET_OF_IPHONE
 	#include "ios/ofxPGMidiOut.h"
 	#define OFX_MIDI_OUT_TYPE ofxPGMidiOut
@@ -22,7 +22,7 @@
 #endif
 
 ///
-/// a midi output port
+/// a MIDI output port
 ///
 /// create multiple instances to connect to multiple ports
 ///
@@ -122,7 +122,7 @@ public:
 	
 /// \section Sending
 	
-	/// midi events
+	/// MIDI events
 	///
 	/// number ranges:
 	///     channel         1 - 16
@@ -151,19 +151,19 @@ public:
 	void sendAftertouch(int channel, int value);
 	void sendPolyAftertouch(int channel, int pitch, int value);
 	
-	/// raw midi bytes
+	/// raw MIDI bytes
 	///
 	void sendMidiByte(unsigned char byte);
 	void sendMidiBytes(std::vector<unsigned char>& bytes);
 	
 /// \section Sending Stream Interface
 	
-	/// midi events
+	/// MIDI events
 	///
-	/// midiout << NoteOn(1, 64, 64) << NoteOff(1, 64);
-	/// midiout << ControlChange(1, 100, 64) << ProgramChange(1, 100);
-	/// midiout << << PitchBend(1, 2000);
-	/// midiout << Aftertouch(1, 127) << PolyAftertouch(1, 64, 127);
+	/// midiOut << NoteOn(1, 64, 64) << NoteOff(1, 64);
+	/// midiOut << ControlChange(1, 100, 64) << ProgramChange(1, 100);
+	/// midiOut << << PitchBend(1, 2000);
+	/// midiOut << Aftertouch(1, 127) << PolyAftertouch(1, 64, 127);
 	///
 	ofxMidiOut& operator<<(const NoteOn& var);
 	ofxMidiOut& operator<<(const NoteOff& var);
@@ -173,13 +173,13 @@ public:
 	ofxMidiOut& operator<<(const Aftertouch& var);
 	ofxMidiOut& operator<<(const PolyAftertouch& var);
 	
-	/// compound raw midi byte stream
+	/// compound raw MIDI byte stream
 	///
-	/// midiout << StartMidi() << 0x90 << 0x3C << 0x40 << FinishMidi();
+	/// midiOut << StartMidi() << 0x90 << 0x3C << 0x40 << FinishMidi();
 	///
-	/// build a raw midi byte message and send it with FinishMidi()
+	/// build a raw MIDI byte message and send it with FinishMidi()
 	///
-	/// note: other midi messages (except raw midi bytes) cannot be sent while
+	/// note: other MIDI messages (except raw MIDI bytes) cannot be sent while
 	///       the stream is in progress
 	///
 	/// warning: this is not thread safe, use sendMidiBytes() in a shared context

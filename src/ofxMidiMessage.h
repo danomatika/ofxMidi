@@ -15,7 +15,7 @@
 
 class ofxMidiMessage;
 
-/// receives midi messages
+/// receives MIDI messages
 class ofxMidiListener {
 
 public:
@@ -90,7 +90,7 @@ public:
 	///
 	std::string toString();
 
-	/// get a midi status byte as a string
+	/// get a MIDI status byte as a string
 	/// ie "Note On", "Note Off", "Control Change", etc
 	static std::string getStatusString(MidiStatus status);
 };

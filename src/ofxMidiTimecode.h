@@ -56,7 +56,7 @@ public:
 	ofxMidiTimecode() {}
 	virtual ~ofxMidiTimecode() {}
 
-	/// update the timecode frame from a raw midi message,
+	/// update the timecode frame from a raw MIDI message,
 	/// returns true if the frame is new
 	bool update(std::vector<unsigned char> &message);
 

@@ -10,7 +10,7 @@
  */
 #include "ofxMidi.h"
 
-// choose the midi backend
+// choose the MIDI backend
 #ifdef TARGET_OF_IPHONE
 	#include "ios/ofxPGMidiIn.h"
 #endif

@@ -10,7 +10,7 @@
  */
 #pragma once
 
-/// \section  stream interface midi objects
+/// \section  stream interface MIDI objects
 /// ref: http://www.gweep.net/~prefect/eng/reference/protocol/midispec.html
 
 /// send a note on event (also set velocity = 0 for noteoff)
@@ -87,12 +87,12 @@ struct PolyAftertouch {
 		channel(channel), pitch(pitch), value(value) {}
 };
 
-/// start a raw midi byte stream
+/// start a raw MIDI byte stream
 struct StartMidi {
 	explicit StartMidi() {}
 };
 
-/// finish a midi byte stream
+/// finish a MIDI byte stream
 struct FinishMidi {
 	explicit FinishMidi() {}
 };

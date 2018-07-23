@@ -15,7 +15,7 @@
 #include "ofxMidiClock.h"
 #include "ofxMidiTimecode.h"
 
-/// receives iOS midi device (dis)connection events
+/// receives iOS MIDI device (dis)connection events
 class ofxMidiConnectionListener {
 
 public:
@@ -35,7 +35,7 @@ namespace ofxMidi {
 
 /// \section Util
 
-	/// convert midi note to frequency in Hz
+	/// convert MIDI note to frequency in Hz
 	/// ala the [mtof] object in Max & Pure Data
 	float mtof(float note);
 
@@ -43,7 +43,7 @@ namespace ofxMidi {
 	/// ala the [ftom] object in Max & Pure Data
 	float ftom(float frequency);
 
-	/// convert raw midi bytes to a printable string, ex. "F0 0C 33"
+	/// convert raw MIDI bytes to a printable string, ex. "F0 0C 33"
 	std::string bytesToString(std::vector<unsigned char> &bytes);
 
 /// \section iOS Specific
@@ -59,7 +59,7 @@ namespace ofxMidi {
 	/// clear iOS device event receiver
 	void clearConnectionListener();
 	
-	/// enables the network midi session between iOS and macOS on a
+	/// enables the network MIDI session between iOS and macOS on a
 	/// local wifi network
 	///
 	/// in ofxMidi: open the input/outport network ports named "Session 1"

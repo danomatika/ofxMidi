@@ -14,7 +14,7 @@
 
 #include "ofConstants.h"
 
-// for rtmidi
+// for RtMidi
 #ifdef TARGET_LINUX
     #define __LINUX_ALSA__
 #elif defined(TARGET_WIN32)
