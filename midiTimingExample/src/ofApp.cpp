@@ -14,7 +14,10 @@
 void ofApp::setup() {
 	ofSetVerticalSync(true);
 	ofBackground(255);
+	
 	ofSetLogLevel(OF_LOG_VERBOSE);
+	ofSetLogLevel("ofxMidiClock", OF_LOG_NOTICE);
+	ofSetLogLevel("ofxMidiTimecode", OF_LOG_NOTICE);
 
 	// open port by number (you may need to change this)
 	midiIn.openPort(0);
