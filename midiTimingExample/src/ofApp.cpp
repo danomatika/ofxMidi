@@ -49,9 +49,16 @@ void ofApp::draw() {
 	// MIDI CLOCK
 
 	ofDrawBitmapString((clockRunning ? "MIDI clock: running" : "MIDI clock: stopped"), 20, 30);
-	ofDrawBitmapString("pos beats: "+ofToString(floor(beats)), 20, 58);
+	ofDrawBitmapString("pos MIDI beats: "+ofToString(beats), 20, 58);
 	ofDrawBitmapString("pos seconds: "+ofToString(seconds), 20, 74);
-	ofDrawBitmapString("bpm: "+ofToString(round(bpm)), 20, 90);
+	ofDrawBitmapString("bpm: "+ofToString(bpm), 20, 90);
+
+	// a MIDI beat is a 16th note, so do a little math to convert to a time signature:
+	// 4/4 -> 4 notes per bar & quarter note = 1 beat, add 1 to count from 1 instead of 0
+	int quarters = beats / 4; // convert total # beats to # quarters
+	int bars = (quarters / 4) + 1; // compute # of bars
+	int beatsInBar = (quarters % 4) + 1; // compute remainder as # notes within the current bar
+	ofDrawBitmapString("4/4 bars: "+ofToString(bars)+" beat: "+ofToString(beatsInBar), 20, 106);
 
 	// MIDI TIMECODE
 

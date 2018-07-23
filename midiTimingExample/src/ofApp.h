@@ -46,7 +46,7 @@ public:
 
 	ofxMidiClock clock; //< clock message parser
 	bool clockRunning = false; //< is the clock sync running?
-	double beats = 0; //< song pos in beats
+	unsigned int beats = 0; //< song pos in beats
 	double seconds = 0; //< song pos in seconds, computed from beats
 	double bpm = 120; //< song tempo in bpm, computed from clock length
 

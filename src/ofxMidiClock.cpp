@@ -14,16 +14,23 @@
 
 #include "ofLog.h"
 
+using namespace std::chrono;
+
+// -----------------------------------------------------------------------------
+ofxMidiClock::ofxMidiClock() {
+	reset();
+}
+
 // -----------------------------------------------------------------------------
 bool ofxMidiClock::update(std::vector<unsigned char> &message) {
 	switch(message[0]) {
 		case MIDI_TIME_CLOCK:
 			tick();
-			beats += 0.166667; // 1 tick = 1/6 beat
 			return true;
 		case MIDI_SONG_POS_POINTER:
 			if(message.size() < 3) {return false;}
-			beats = (message[2] << 7) + message[1];
+			unsigned int beats = (message[2] << 7) + message[1];
+			ticks = beats * 6;
 			ofLogVerbose("ofxMidiClock") << "Song Pos " << beats;
 			return true;
 	}
@@ -34,7 +41,8 @@ bool ofxMidiClock::update(std::vector<unsigned char> &message) {
 void ofxMidiClock::tick() {
 	double us = duration_cast<microseconds>(steady_clock::now()-timestamp).count();
 	if(us < 200000) { // filter obviously bad values
-		length += (us/1000 - length) / 5; // average last 5 ticks
+		length += ((us/1000.0) - length) / 5.0; // average last 5 ticks
+		ticks++;
 	}
 	timestamp = steady_clock::now();
 }
@@ -42,28 +50,29 @@ void ofxMidiClock::tick() {
 // -----------------------------------------------------------------------------
 void ofxMidiClock::reset() {
 	timestamp = steady_clock::now();
+	ticks = 0;
 }
 
 /// Status
 
 // -----------------------------------------------------------------------------
-double ofxMidiClock::getBeats() {
-	return beats;
+unsigned int ofxMidiClock::getBeats() {
+	return ticks / 6;
 }
 
 // -----------------------------------------------------------------------------
-void ofxMidiClock::setBeats(double b) {
-	beats = b;
+void ofxMidiClock::setBeats(unsigned int beats) {
+	ticks = beats * 6;
 }
 
 // -----------------------------------------------------------------------------
 double ofxMidiClock::getSeconds() {
-	return beatsToSeconds(beats);
+	return beatsToSeconds(ticks / 6);
 }
 
 // -----------------------------------------------------------------------------
 void ofxMidiClock::setSeconds(double s) {
-	beats = secondsToBeats(s);
+	ticks = secondsToBeats(s) * 6;
 }
 
 // -----------------------------------------------------------------------------
@@ -79,20 +88,13 @@ void ofxMidiClock::setBpm(double bpm) {
 // Util
 
 // -----------------------------------------------------------------------------
-double ofxMidiClock::beatsToSeconds(double beats) {
-	return (beats * 6 * length) / 1000.0;
+double ofxMidiClock::beatsToSeconds(unsigned int beats) {
+	return ((double)beats * 6 * length) / 1000.0;
 }
 
 // -----------------------------------------------------------------------------
-double ofxMidiClock::secondsToBeats(double seconds) {
-	return (seconds * 1000.0) / (6 * length);
-}
-
-// -----------------------------------------------------------------------------
-double ofxMidiClock::songPosToSeconds(std::vector<unsigned char> &songPos) {
-	if(songPos.size() < 3) {return 0;}
-	unsigned int beats = (songPos[2] << 7) + songPos[1];
-	return beatsToSeconds(beats);
+unsigned int ofxMidiClock::secondsToBeats(double seconds) {
+	return (seconds * 1000) / (6 * length);
 }
 
 // -----------------------------------------------------------------------------

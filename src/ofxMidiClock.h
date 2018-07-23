@@ -16,8 +16,6 @@
 #include <chrono>
 #include "ofxMidiConstants.h"
 
-using namespace std::chrono;
-
 ///
 /// MIDI clock message parser
 ///
@@ -27,14 +25,14 @@ class ofxMidiClock {
 
 public:
 
-	ofxMidiClock() {}
+	ofxMidiClock();
 	virtual ~ofxMidiClock() {}
 
 	/// update clock from a raw MIDI message,
 	/// returns true if the message was handled
 	bool update(std::vector<unsigned char> &message);
 
-	/// measure length since last tick
+	/// manually increment ticks and measure length since last tick
 	void tick();
 
 	/// reset timestamp
@@ -43,10 +41,10 @@ public:
 /// \section Status
 
 	/// get the song position in beats
-	double getBeats();
+	unsigned int getBeats();
 
 	/// set the song position in beats
-	void setBeats(double b);
+	void setBeats(unsigned int b);
 
 	/// get the song position in seconds
 	double getSeconds();
@@ -64,14 +62,11 @@ public:
 
 	/// get the song position in seconds from a beat position,
     /// 1 beat = 1/16 note = 6 clock ticks
-	double beatsToSeconds(double beats);
+	double beatsToSeconds(unsigned int beats);
 
 	/// get the song position in beats from seconds,
 	/// 1 beat = 1/16 note = 6 clock ticks
-	double secondsToBeats(double seconds);
-
-	/// get the song position in seconds from a raw MIDI song pos message
-	double songPosToSeconds(std::vector<unsigned char> &songPos);
+	unsigned int secondsToBeats(double seconds);
 
 	/// calculate MIDI clock length in ms from a give tempo bpm
 	static double bpmToMs(double bpm);
@@ -82,6 +77,6 @@ public:
 protected:
 
 	double length = 20.833; //< averaged tick length in ms, default 120 bpm
-	double beats = 0.0; //< current song pos in beats (6 ticks = 1 beat)
-	steady_clock::time_point timestamp; //< last timestamp
+	unsigned long ticks = 0.0; //< current song pos in ticks (6 ticks = 1 beat)
+	std::chrono::steady_clock::time_point timestamp; //< last timestamp
 };
