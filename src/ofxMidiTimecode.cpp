@@ -12,10 +12,11 @@
  */
 #include "ofxMidiTimecode.h"
 
-#include "ofLog.h"
-#include "ofxMidi.h"
 #include <sstream>
 #include <iomanip>
+#include <cmath>
+#include "ofLog.h"
+#include "ofxMidi.h"
 
 // ofxMidiTimecodeFrame
 
