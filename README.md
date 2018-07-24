@@ -20,6 +20,8 @@ OpenFrameworks is a cross platform open source toolkit for creative coding in C+
 
 [http://www.openframeworks.cc](http://www.openframeworks.cc)
 
+This project has been supported by the CMU [Frank-Ratchye STUDIO for Creative Inquiry](http://studioforcreativeinquiry.org), the DU [Emergent Digital Practices Program](https://www.du.edu/ahss/edp/), and my time at the [ZKM | Hertz-Lab](https://zkm.de/en/about-the-zkm/organisation/hertz-lab).
+
 Description
 -----------
 
