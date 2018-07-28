@@ -1,3 +1,7 @@
+1.1.1: 2018 Jul 28
+
+* fixed RtMidi.h missing ofxMidiConstants.h include (reported by Nicola Pisanti)
+
 1.1.0: 2018 Jul 24
 
 * added backend api type and constructor arguments (Sol Bekic)
