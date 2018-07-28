@@ -41,6 +41,8 @@ rm $SRC/rtmidi_c.*
 cp -v $SRC/*.h $DEST
 cp -v $SRC/*.cpp $DEST
 
+# add include so MIDI api is set when compiling
+printf "%s\n" 52i "#include \"ofxMidiConstants.h\"" . x | ex $DEST/RtMidi.h
+
 # cleanup
 rm -rf $SRC rtmidi-$VER.tar.gz
-

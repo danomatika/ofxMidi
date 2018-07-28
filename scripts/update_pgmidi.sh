@@ -34,4 +34,3 @@ cp -v $SRC/Sources/PGMidi/* $DEST
 
 # cleanup
 rm -rf $SRC
-
