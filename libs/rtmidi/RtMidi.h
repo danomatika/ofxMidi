@@ -50,6 +50,8 @@
 #include <string>
 #include <vector>
 
+#include "ofxMidiConstants.h"
+
 /************************************************************************/
 /*! \class RtMidiError
     \brief Exception handling class for RtMidi.

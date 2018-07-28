@@ -15,12 +15,18 @@
 #include "ofConstants.h"
 
 // for RtMidi
-#ifdef TARGET_LINUX
-    #define __LINUX_ALSA__
+#if defined(TARGET_LINUX)
+    #ifndef __LINUX_ALSA__
+        #define __LINUX_ALSA__
+    #endif
 #elif defined(TARGET_WIN32)
-    #define __WINDOWS_MM__
+    #ifndef __WINDOWS_MM__
+        #define __WINDOWS_MM__
+    #endif
 #elif defined(TARGET_MACOSX)
-    #define __MACOSX_CORE__
+    #ifndef __MACOSX_CORE__
+        #define __MACOSX_CORE__
+    #endif
 #endif
 
 // api types, most of these match RtMidi::Api enums
