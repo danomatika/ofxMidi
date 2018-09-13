@@ -10,6 +10,7 @@
  */
 #include "ofxRtMidiOut.h"
 
+#include "ofUtils.h"
 #include "ofLog.h"
 
 // -----------------------------------------------------------------------------
