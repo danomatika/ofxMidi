@@ -10,6 +10,7 @@
  */
 #include "ofxRtMidiIn.h"
 
+#include "ofUtils.h"
 #include "ofLog.h"
 
 // -----------------------------------------------------------------------------
