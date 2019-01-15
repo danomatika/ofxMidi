@@ -90,6 +90,9 @@ public:
 	/// convert fps to the closest framerate value, ie. 24 fps -> 0x0
     static unsigned char fpsToRate(double fps);
 
+	/// returns conversion multiplier from framerate value, ie. 1.0/fps
+    static double rateToMultiplier(unsigned char rate);
+
 protected:
 
 	/// current frame, ie. last complete Quarter or Full Frame message

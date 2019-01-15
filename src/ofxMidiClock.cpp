@@ -89,7 +89,7 @@ void ofxMidiClock::setBpm(double bpm) {
 
 // -----------------------------------------------------------------------------
 double ofxMidiClock::beatsToSeconds(unsigned int beats) {
-	return ((double)beats * 6 * length) / 1000.0;
+	return (double)beats * length * 0.006; // 6 / 1000.0;
 }
 
 // -----------------------------------------------------------------------------
@@ -100,11 +100,11 @@ unsigned int ofxMidiClock::secondsToBeats(double seconds) {
 // -----------------------------------------------------------------------------
 double ofxMidiClock::bpmToMs(double bpm) {
 	if(bpm == 0) {return 0;}
-	return 1000.0 / ((bpm * 24.0) / 60.0);
+	return 2500.0 / bpm; // 1000.0 / ((bpm * 24.0) / 60.0);
 }
 
 // -----------------------------------------------------------------------------
 double ofxMidiClock::msToBpm(double ms) {
 	if(ms == 0) {return 0;}
-	return (1000.0 / ms / 24.0) * 60.0;
+	return 2500.0 / ms; // (1000.0 / ms / 24.0) * 60.0;
 }

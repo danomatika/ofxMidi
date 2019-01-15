@@ -35,28 +35,28 @@ std::string ofxMidiTimecodeFrame::toString() const {
 	return stream.str();
 }
 
-/// convert to time in seconds
+// -----------------------------------------------------------------------------
 double ofxMidiTimecodeFrame::toSeconds() const {
 	double time = (double)hours * 3600.0; // 60.0 * 60.0
 	time += (double)minutes * 60.0;
 	time += (double)seconds;
-	time += ofxMidiTimecode::framesToMs(frames, rate) / 100;
+	time += ofxMidiTimecode::framesToMs(frames, rate) / 1000;
 	return time;
 }
 
-/// convert from time in seconds, ignores framerate
+// -----------------------------------------------------------------------------
 void ofxMidiTimecodeFrame::fromSeconds(double s) {
 	return fromSeconds(s, 0x0);
 }
 
-/// convert from time in seconds & framerate value (not fps!)
+// -----------------------------------------------------------------------------
 void ofxMidiTimecodeFrame::fromSeconds(double s, unsigned char r) {
 	seconds = (int)s % 60;
 	minutes = (int)((s - seconds) * 0.016666667) % 60;
 	hours = (int)(s * 0.00027777778) % 60;
 
 	// round fractional part of seconds for ms
-	double ms = (int)(floor((s - floor(s)) * 100.0) + 0.5);
+	double ms = (int)(floor((s - floor(s)) * 1000.0) + 0.5);
 	frames = ofxMidiTimecode::msToFrames(ms, r);
 	rate = r;
 }
@@ -85,12 +85,12 @@ void ofxMidiTimecode::reset() {
 
 // -----------------------------------------------------------------------------
 int ofxMidiTimecode::framesToMs(int frames, unsigned char rate) {
-	return (int)((1.0/rateToFps(rate)) * (double)frames * 100.0);
+	return (int)(rateToMultiplier(rate) * (double)frames * 1000.0);
 }
 
 // -----------------------------------------------------------------------------
 int ofxMidiTimecode::msToFrames(int ms, unsigned char rate) {
-	return (int)((double)ms / (1.0/rateToFps(rate)) / 100.0);
+	return (int)((double)ms / rateToMultiplier(rate) / 1000.0);
 }
 
 // -----------------------------------------------------------------------------
@@ -115,6 +115,22 @@ unsigned char ofxMidiTimecode::fpsToRate(double fps) {
 	if(fps < 29) {return FRAMERATE_25;}
 	if(fps < 30) {return FRAMERATE_30_DROP;}
 	return FRAMERATE_30; // 30 fps
+}
+
+// -----------------------------------------------------------------------------
+double ofxMidiTimecode::rateToMultiplier(unsigned char rate) {
+	switch(rate) {
+		case FRAMERATE_24:
+			return 0.04166666667; // 1.0 / 24.0
+		case FRAMERATE_25:
+			return 0.04000000000; // 1.0 / 25.0
+		case FRAMERATE_30_DROP:
+			return 0.03336670003; // 1.0 / 29.97
+		case FRAMERATE_30:
+		default:
+			return 0.03333333333; // 1.0 / 30.0
+
+	}
 }
 
 /// PROTECTED
