@@ -69,7 +69,7 @@ common:
 	# ADDON_INCLUDES_EXCLUDE =
 	
 linux64:
-	ADDON_PKG_CONFIG_LIBRARIES = alsa
+	ADDON_PKG_CONFIG_LIBRARIES = alsa jack
 	
 	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
 	ADDON_SOURCES_EXCLUDE += src/ios/%
@@ -78,7 +78,7 @@ linux64:
 	ADDON_INCLUDES_EXCLUDE += src/ios/%
 
 linux:
-	ADDON_PKG_CONFIG_LIBRARIES = alsa
+	ADDON_PKG_CONFIG_LIBRARIES = alsa jack
 	
 	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
 	ADDON_SOURCES_EXCLUDE += src/ios/%
