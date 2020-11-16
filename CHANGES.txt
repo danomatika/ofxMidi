@@ -1,3 +1,7 @@
+1.1.2: TBA
+
+* fixed wrong readme ofxMidiConstants.h include note(reported by Steven Noreyko)
+
 1.1.1: 2018 Jul 28
 
 * fixed RtMidi.h missing ofxMidiConstants.h include (reported by Nicola Pisanti)

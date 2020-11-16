@@ -259,4 +259,4 @@ PGMidi sources are placed in `libs/pgmidi`.
 
 Next, make sure to add the following include to `RtMidi.cpp` at around line 38 or there will be link errors:
 
-    #include "ofxConstants.h"
+    #include "ofxMidiConstants.h"
