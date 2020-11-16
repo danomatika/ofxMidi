@@ -40,7 +40,7 @@ double ofxMidiTimecodeFrame::toSeconds() const {
 	double time = (double)hours * 3600.0; // 60.0 * 60.0
 	time += (double)minutes * 60.0;
 	time += (double)seconds;
-	time += ofxMidiTimecode::framesToMs(frames, rate) / 1000;
+	time += (double)ofxMidiTimecode::framesToMs(frames, rate) / 1000;
 	return time;
 }
 
