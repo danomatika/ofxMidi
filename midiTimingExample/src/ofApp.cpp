@@ -34,7 +34,7 @@ void ofApp::update() {
 
 	// MIDI TIMECODE
 
-	// if we havent received a quareter frame message from the timecode master,
+	// if we haven't received a quarter frame message from the timecode master,
 	// assume playback has stopped
 	if(timecodeRunning && ofGetElapsedTimeMillis() - timecodeTimestamp > 100) {
 		ofLog() << "timecode stopped";
