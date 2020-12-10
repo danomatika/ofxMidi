@@ -195,36 +195,73 @@ ofxMidi
 KNOWN ISSUES
 ------------
 
-### Using static ofxMidi objects on Linux causes seg faults
+### Help, app crashes when receiving MIDI messages
 
-Avoid creating static ofxMidiIn / ofxMidiOut objects on Linux as the compiler seems to set creation order so they are created *before* ALSA is ready. This leads to a confirmed seg fault on Ubuntu and probably all other flavors of Linux using ALSA. The midi apis on Windows and macOS do not share this problem. 
+If you are sub-classing `ofxMidiListener` and receiving MIDI messages via the
+`newMidiMessage()` callback function, there is a chance of segmentation faults
+(and crashes) if you share the received messages between multiple threads (ie.
+main GUI, OSC receiver, etc).
 
-Instead create a static ofPtr and initialize it later:
+Depending upon the design of your application, you may need to place a mutex
+object or shared lock around access to these resources shared between threads.
 
-    // in .h:
+For example, in ofApp.h:
+```cpp
+class ofApp : public ofBaseApp, public ofxMidiListener {
+...
+ofxMidiIn midiIn;
+std::vector<ofxMidiMessage> midiMessages; //< received messages
+ofMutex midiMutex; //< MIDI message access mutex 
+```
 
-    class MyClass {
-    
-        ...
+and ofApp.cpp:
+```cpp
+void draw() {
+  // draw current messages, lock in case of incoming messages
+  midiMutex.lock();
+  // do something with midiMessages
+  midiMutex.unlock();
+}
 
-        static std::shared_ptr<ofxMidiOut> s_midiOut;
-    
-        ...
+void newMidiMessage(ofxMidiMessage& msg) {
+    // lock and add new messages
+    midiMutex.lock();
+    midiMessages.push_back(msg);
+    midiMutex.unlock();
+}
+```
 
-    }
+This should stop multiple-thread access crashes, however may stutter incoming
+message timing as adding new messages will have to wait until the current frame
+is done. Another option is to use a lock-free design using a ring-buffer.
 
-    // in .cpp:
+### Using static ofxMidi objects on Linux causes segmentation faults
 
-    std::shared_ptr<ofxMidiOut> MyClass::s_midiOut;
-    
+Avoid creating static ofxMidiIn / ofxMidiOut objects on Linux as the compiler seems to set creation order so they are created *before* ALSA is ready. This leads to a confirmed segmentation fault on Ubuntu and probably all other flavors of Linux using ALSA. The midi apis on Windows and macOS do not share this problem.
+
+Instead, create a static shared_ptr and initialize it later. For example, in .h:
+```cpp
+class MyClass {
+
     ...
-    
-    // initialize somewhere else
-    void MyClass::setup() {
-	    if(s_midiOut == NULL) {
-	        s_midiOut = std::shared_ptr<ofxMidiOut>(new ofxMidiOut("ofxMidi Client"));
-	    }
-    }
+
+    static std::shared_ptr<ofxMidiOut> s_midiOut;
+}
+```
+
+and in .cpp:
+```cpp
+std::shared_ptr<ofxMidiOut> MyClass::s_midiOut;
+
+...
+
+// initialize somewhere else
+void MyClass::setup() {
+  if(s_midiOut == NULL) {
+      s_midiOut = std::shared_ptr<ofxMidiOut>(new ofxMidiOut("ofxMidi Client"));
+  }
+}
+```
 
 ### ofxMidi classes created in constructors don't seem to work
 
