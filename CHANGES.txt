@@ -1,6 +1,15 @@
-1.1.2: TBA
+1.2.0: 2020 Dec 10
 
-* fixed wrong readme ofxMidiConstants.h include note(reported by Steven Noreyko)
+* fixed incorrect timecode casting of ms to seconds (Alex Ramos)
+* fixed missing ofUtils.h include for ofToString usage (ISHII 2bit)
+* fixed wrong readme ofxMidiConstants.h include note (reported by Steven Noreyko)
+
+* added ofxMidiClock and ofxMidiTimecode message parsers
+* added pkg_config for Jack on Linux (Edwin van Ouwerkerk Moria)
+* added note about receiving message mutex to readme (suggested by Arnaud Loonstra)
+
+* small update to midiExampleIOS for OF 0.11.0
+* updated to RtMidi 4.0.0
 
 1.1.1: 2018 Jul 28
 

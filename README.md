@@ -6,7 +6,7 @@ ofxMidi
 
 MIDI input and output addon for openFrameworks
 
-Copyright (c) [Dan Wilcox](danomatika.com) 2011-2013  
+Copyright (c) [Dan Wilcox](danomatika.com) 2011-2020  
 (original implementation by Chris O'Shea, Arturo Castro, Kyle McDonald)
 
 BSD Simplified License.
