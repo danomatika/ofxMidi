@@ -12,7 +12,7 @@
 
 WD=$(dirname $0)
 
-VER=3.0.0
+VER=4.0.0
 
 SRC=rtmidi-$VER
 DEST=../libs/rtmidi
@@ -42,7 +42,8 @@ cp -v $SRC/*.h $DEST
 cp -v $SRC/*.cpp $DEST
 
 # add include so MIDI api is set when compiling
-printf "%s\n" 52i "#include \"ofxMidiConstants.h\"" . x | ex $DEST/RtMidi.h
+# the line to add may need to be changed as the RtMidi.h header changes
+printf "%s\n\n" 47i "#include \"ofxMidiConstants.h\"" . x | ex $DEST/RtMidi.h
 
 # cleanup
 rm -rf $SRC rtmidi-$VER.tar.gz
