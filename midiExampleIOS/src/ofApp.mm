@@ -12,9 +12,6 @@
 
 //--------------------------------------------------------------
 void ofApp::setup() {
-
-	// initialize the accelerometer
-	ofxAccelerometer.setup();
 	
 	// iPhoneAlerts will be sent to this
 	ofxiOSAlerts.addListener(this);
