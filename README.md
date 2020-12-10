@@ -235,6 +235,49 @@ This should stop multiple-thread access crashes, however may stutter incoming
 message timing as adding new messages will have to wait until the current frame
 is done. Another option is to use a lock-free design using a ring-buffer.
 
+### Undefined symbols for architecture x86_64 on iOS
+
+_Steps contributed by Zach Lee._
+
+There is a bug with the OF ProjectGenerator in 0.10 and 0.11 which may result in
+an iOS project using ofxMidi which will have build errors like the following:
+
+~~~
+Undefined symbols for architecture x86_64:
+  "_glBufferSubData", referenced from:
+      ofBufferObject::updateData(long, long, void const*) in libofxiOS_iphonesimulator_Debug.a(ofBufferObject.o)
+  "_glBufferData", referenced from:
+      ofBufferObject::setData(long, void const*, unsigned int) in libofxiOS_iphonesimulator_Debug.a(ofBufferObject.o)
+  "_glDeleteBuffers", referenced from:
+      ofBufferObject::Data::~Data() in libofxiOS_iphonesimulator_Debug.a(ofBufferObject.o)
+  "_glUniformMatrix4fv", referenced from:
+...
+  "_OBJC_CLASS_$_EAGLContext", referenced from:
+      objc-class-ref in libofxiOS_iphonesimulator_Debug.a(ES1Renderer.o)
+      objc-class-ref in libofxiOS_iphonesimulator_Debug.a(ES2Renderer.o)
+      objc-class-ref in libofxiOS_iphonesimulator_Debug.a(EAGLKView.o)
+  "_glCheckFramebufferStatus", referenced from:
+      -[ES2Renderer createFramebuffer:] in libofxiOS_iphonesimulator_Debug.a(ES2Renderer.o)
+     (maybe you meant: _glCheckFramebufferStatusFunc)
+  "_OBJC_CLASS_$_MIDINetworkSession", referenced from:
+      objc-class-ref in PGMidi.o
+  "_AVAudioSessionInterruptionTypeKey", referenced from:
+      -[SoundStream handleInterruption:] in libofxiOS_iphonesimulator_Debug.a(SoundStream.o)
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+Showing first 200 notices only
+Showing first 200 errors only
+~~~
+
+The fix is to remove a search path added by the PG which is causing the problem:
+
+1. click on your project in the sidebar
+2. select the project under TARGETS
+3. select the Build Settings tab
+4. scroll down to or find Framework Search Paths and remove the last entry:
+
+![iOS Framework search paths](ios-framework-search-paths.png)
+
 ### Using static ofxMidi objects on Linux causes segmentation faults
 
 Avoid creating static ofxMidiIn / ofxMidiOut objects on Linux as the compiler seems to set creation order so they are created *before* ALSA is ready. This leads to a confirmed segmentation fault on Ubuntu and probably all other flavors of Linux using ALSA. The midi apis on Windows and macOS do not share this problem.
