@@ -276,7 +276,7 @@ The fix is to remove a search path added by the PG which is causing the problem:
 3. select the Build Settings tab
 4. scroll down to or find Framework Search Paths and remove the last entry:
 
-![iOS Framework search paths](ios-framework-search-paths.png)
+![iOS Framework search paths](res/ios-framework-search-paths.png)
 
 ### Using static ofxMidi objects on Linux causes segmentation faults
 
