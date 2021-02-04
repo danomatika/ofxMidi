@@ -16,7 +16,7 @@ WARRANTIES, see the file, "LICENSE.txt," in this distribution.
 
 See Documentation on [Github](https://github.com/danomatika/ofxMidi) and the [openFrameworks Forum post](https://forum.openframeworks.cc/t/ofxmidi-updates/2435).
 
-OpenFrameworks is a cross platform open source toolkit for creative coding in C++.
+openFrameworks is a cross platform open source toolkit for creative coding in C++.
 
 [http://www.openframeworks.cc](http://www.openframeworks.cc)
 
@@ -83,7 +83,7 @@ Project files for the examples are not included so you will need to generate the
 To (re)generate project files for an *existing* project:
 
 * click the "Import" button in the ProjectGenerator
-* navigate the to base folder for the project ie. "midiInputExample"
+* navigate to the base folder for the example project ie. "midiInputExample"
 * click the "Update" button
 
 If everything went ok, you should now be able to open the generated project and build/run the example.
