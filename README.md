@@ -82,9 +82,9 @@ Project files for the examples are not included so you will need to generate the
 
 To (re)generate project files for an *existing* project:
 
-* click the "Import" button in the ProjectGenerator
-* navigate to the base folder for the example project ie. "midiInputExample"
-* click the "Update" button
+* Click the "Import" button in the ProjectGenerator
+* Navigate to the project's parent folder ie. "ofxMidi", select the base folder for the example project ie. "midiOutputExample", and click the Open button
+* Click the "Update" button
 
 If everything went ok, you should now be able to open the generated project and build/run the example.
 
@@ -128,18 +128,18 @@ Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
 
 #### Codeblocks (Win & Linux)
 
-* rename the \*.cbp and \*.workspace files
-* open the workspace and readd the renamed project file by dragging it onto the project tree (it will complain about the missing project you renamed)
-* if you renamed the project *folder* make sure to set the project name to this folder name or C::B will not be able to run the binary:
-	* right click on project in the tree (not the workspace)
-	* Properties...->Title
+* Rename the \*.cbp and \*.workspace files
+* Open the workspace and readd the renamed project file by dragging it onto the project tree (it will complain about the missing project you renamed)
+* If you renamed the project *folder* make sure to set the project name to this folder name or C::B will not be able to run the binary:
+  - Right click on project in the tree (not the workspace)
+  - Properties...->Title
 
 #### Visual Studio
 
-* rename the \*.sln, \*.vcxproj, & \*.vcxproj.filters files
-* open the solution and delete the old project from the projects tree
-* go to File->Add->Existing Projects/Solutions and select the \*.vcxproj file
-* right click on the project in the projects tree and rename it
+* Rename the \*.sln, \*.vcxproj, & \*.vcxproj.filters files
+* Open the solution and delete the old project from the projects tree
+* Go to File->Add->Existing Projects/Solutions and select the \*.vcxproj file
+* Right-click on the project in the projects tree and rename it
 
 Adding ofxMidi to an Existing Project
 -------------------------------------
@@ -148,17 +148,17 @@ _Note: These instructions are for manually adding ofxMidi to a project. You do n
 
 ### Xcode
 
-* create a new group "ofxMidi" in the "addons" group
-* drag these directories from ofxMidi into this new group: `ofxMidi/src` & `ofxMidi/libs`
-  * in the Add dialog: add to your current project target, uncheck "Copy items if needed" & select "Create groups"
-  * if building for macOS, remove the src/ios & libs/pgmidi folder references
-  * if building for iOS, remove the src/desktop & libs/rtmidi folder references
-* add the CoreMIDI framework to your project
-  * click on your project in the sidebar
-  * select the Summary tab
-  * click the + under Linked Frameworks & Libraries
-  * search for and select the CoreMIDI.framework from the list
-* add the following directories to your search path in your project's Project.xconfig file (See the Project.xconfig of the example project.):
+* Create a new group "ofxMidi" in the "addons" group
+* Drag these directories from ofxMidi into this new group: `ofxMidi/src` & `ofxMidi/libs`
+  - In the Add dialog: add to your current project target, uncheck "Copy items if needed" & select "Create groups"
+  - If building for macOS, remove the src/ios & libs/pgmidi folder references
+  - If building for iOS, remove the src/desktop & libs/rtmidi folder references
+* Add the CoreMIDI framework to your project
+  - Click on your project in the sidebar
+  - Select the Summary tab
+  - Click the + under Linked Frameworks & Libraries
+  - Search for and select the CoreMIDI.framework from the list
+* Add the following directories to your search path in your project's Project.xconfig file (see the Project.xconfig of the example project):
 <pre>
 ../../../addons/ofxMidi/src
 ../../../addons/ofxMidi/libs/rtmidi
@@ -166,31 +166,31 @@ _Note: These instructions are for manually adding ofxMidi to a project. You do n
 
 ### Linux Makefiles/CodeBlocks
 
-* edit addons.make in your project folder and add the following line to the end of the file:
+Edit addons.make in your project folder and add the following line to the end of the file:
 <pre>
 ofxMidi
 </pre>
 
 ### Win Codeblocks & Visual Studio
 
-* add the ofxMidi sources to the project tree
+* Add the ofxMidi sources to the project tree
     ofxMidi/src
     ofxMidi/libs/rtmidi
   * Codeblocks: right click on the project in the project tree and select Add Files Recursively...
   * Visual Studio: drag the ofxMidi/src & ofxMidi/libs/rtmidi folder onto the project tree
-* add the following search paths:
+* Add the following search paths:
 <pre>
 ..\\..\\..\addons\ofxMidi\src
 ..\\..\\..\addons\ofxMidi\libs\rtmidi
 </pre>
 * Codeblocks
-  * right click on the project in the project tree and select Build Options...
-  * select the project name in the tree, not release or debug
-  * Search directories tab->Add
+  - Right-click on the project in the project tree and select Build Options...
+  - Select the project name in the tree, not release or debug
+  - Search directories tab->Add
 * Visual Studio
-  * right click on the project in the project tree and select Properties
-  * set the Configuration to All Configurations
-  * Configuration Properties->C/C++->General->Additional Directories
+  - Right click on the project in the project tree and select Properties
+  - Set the Configuration to All Configurations
+  - Configuration Properties->C/C++->General->Additional Directories
 
 KNOWN ISSUES
 ------------
