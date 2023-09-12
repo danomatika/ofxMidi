@@ -96,3 +96,12 @@ void ofxMidiIn::removeListener(ofxMidiListener* listener) {
 void ofxMidiIn::setVerbose(bool verbose) {
 	midiIn->setVerbose(verbose);
 }
+
+// -----------------------------------------------------------------------------
+bool ofxMidiIn::getNextMessage(ofxMidiMessage &message) {
+	return midiIn->getNextMessage(message);
+}
+
+bool ofxMidiIn::hasWaitingMessages() const {
+	return midiIn->hasWaitingMessages();
+}

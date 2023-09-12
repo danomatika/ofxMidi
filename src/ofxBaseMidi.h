@@ -13,6 +13,7 @@
 #include "ofxMidiConstants.h"
 #include "ofxMidiMessage.h"
 #include "ofxMidiTypes.h"
+#include "ofThreadChannel.h"
 
 /// a base MIDI input port
 ///
@@ -48,6 +49,9 @@ public:
 	void removeListener(ofxMidiListener *listener);
 
 	void setVerbose(bool verbose);
+	
+	bool getNextMessage(ofxMidiMessage &message);
+	bool hasWaitingMessages() const;
 
 protected:
 
@@ -63,6 +67,9 @@ protected:
 	bool bVerbose;  //< print incoming bytes?
 	bool bVirtual;  //< are we connected to a virtual port?
 	ofxMidiApi api; //< backend api
+
+	ofThreadChannel<ofxMidiMessage> messagesChannel; ///< message passing thread channel
+
 };
 
 /// a MIDI output port

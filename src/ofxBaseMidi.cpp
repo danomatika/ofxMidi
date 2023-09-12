@@ -63,10 +63,20 @@ void ofxBaseMidiIn::setVerbose(bool verbose) {
 	bVerbose = verbose;
 }
 
+// -----------------------------------------------------------------------------
+bool ofxBaseMidiIn::hasWaitingMessages() const{
+	return !messagesChannel.empty();
+}
+
+//--------------------------------------------------------------
+bool ofxBaseMidiIn::getNextMessage(ofxMidiMessage &message){
+	return messagesChannel.tryReceive(message);
+}
+
 // PRIVATE
 // -----------------------------------------------------------------------------
 void ofxBaseMidiIn::manageNewMessage(double deltatime, std::vector<unsigned char> *message) {
-			
+	
 	// parse message and fill event
 	ofxMidiMessage midiMessage(message);
 	midiMessage.deltatime = deltatime;
@@ -76,8 +86,10 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, std::vector<unsigned char
 		ofLogVerbose("ofxMidiIn") << midiMessage.toString();
 	}
 	
-	// send event to listeners
-	ofNotifyEvent(newMessageEvent, midiMessage, this);
+	// send event to listeners or push onto thread channel
+	if (!ofNotifyEvent(newMessageEvent, midiMessage, this)) {
+		messagesChannel.send(std::move(midiMessage));
+	}
 }
 
 // MIDI OUT

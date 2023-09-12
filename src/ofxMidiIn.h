@@ -144,8 +144,11 @@ public:
 	///          of MIDI messages
 	///
 	void setVerbose(bool verbose);
+	
+	bool getNextMessage(ofxMidiMessage &message);
+	bool hasWaitingMessages() const;
+
 
 private:
-
 	std::shared_ptr<ofxBaseMidiIn> midiIn;
 };
