@@ -145,7 +145,11 @@ public:
 	///
 	void setVerbose(bool verbose);
 	
+	/// remove a message from the queue and copy it's data into msg
+	/// \return false if there are no waiting messages, otherwise return true
 	bool getNextMessage(ofxMidiMessage &message);
+	
+	/// \return true if there are any messages waiting for collection
 	bool hasWaitingMessages() const;
 
 
