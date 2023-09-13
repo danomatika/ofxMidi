@@ -27,8 +27,10 @@ Description
 
 ofxMidi provides [Music Instrument Digital Interface](http://en.wikipedia.org/wiki/Musical_Instrument_Digital_Interface) IO capability to an openFrameworks app
 
-* ofxMidiIn: a single MIDI input port, derive from the ofxMidiListener class to receive messages
+* ofxMidiIn: a single MIDI input port, derive from the ofxMidiListener class to get synchronous events (at the MIDI timing) or query the ofThreadChannel to receive messages safely within an asynchronous method (such as the ofApp::update() method).
+
 * ofxMidiMessage: a received MIDI message
+
 * ofxMidiOut: a single MIDI output port, includes a stream << interface
 
 This project utilizes [RtMidi](http://www.music.mcgill.ca/~gary/rtmidi/) for Mac, Windows, & Linux and [PGMidi](https://github.com/petegoodliffe/PGMidi) on iOS.
@@ -76,7 +78,7 @@ If you want to connect your ofxMidi app to other software (synths, DAWs, etc) ch
 Running an Example Projects
 ---------------------------
 
-The example projects are in the `ofxMidi/midiInputExample`, `ofxMidi/midiOutputExample`, & `ofxMidi/midiExampleIOS` folders.
+The example projects are in the `midiInputSynchronousEventsExample`, `ofxMidi/midiInputBufferedThreadChannelExample`, `ofxMidi/midiOutputExample`, `midiTimingExample` & `ofxMidi/midiExampleIOS` folders.
 
 Project files for the examples are not included so you will need to generate the project files for your operating system and development environment using the OF ProjectGenerator which is included with the openFrameworks distribution.
 
@@ -195,14 +197,17 @@ ofxMidi
 KNOWN ISSUES
 ------------
 
-### Help, app crashes when receiving MIDI messages
+### Help, app crashes when receiving MIDI messages as events
 
 If you are sub-classing `ofxMidiListener` and receiving MIDI messages via the
 `newMidiMessage()` callback function, there is a chance of segmentation faults
 (and crashes) if you share the received messages between multiple threads (ie.
 main GUI, OSC receiver, etc).
 
-Depending upon the design of your application, you may need to place a mutex
+Depending upon the design of your application, you may benefit from using the 
+ofThreadChannel facility (for instance in the update() method). 
+
+Otherwise you may solve the synchronisation issue by placing a mutex
 object or shared lock around access to these resources shared between threads.
 
 For example, in ofApp.h:
@@ -233,7 +238,7 @@ void newMidiMessage(ofxMidiMessage& msg) {
 
 This should stop multiple-thread access crashes, however may stutter incoming
 message timing as adding new messages will have to wait until the current frame
-is done. Another option is to use a lock-free design using a ring-buffer.
+is done. 
 
 ### Undefined symbols for architecture x86_64 on iOS
 
