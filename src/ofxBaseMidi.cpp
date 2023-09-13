@@ -87,7 +87,9 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, std::vector<unsigned char
 	}
 	
 	// send event to listeners or push onto thread channel
-	if (!ofNotifyEvent(newMessageEvent, midiMessage, this)) {
+	if (newMessageEvent.size()) {
+		ofNotifyEvent(newMessageEvent, midiMessage, this);
+	} else {
 		messagesChannel.send(std::move(midiMessage));
 	}
 }
