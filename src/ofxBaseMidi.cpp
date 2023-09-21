@@ -63,14 +63,23 @@ void ofxBaseMidiIn::setVerbose(bool verbose) {
 	bVerbose = verbose;
 }
 
+void ofxBaseMidiIn::ensureMessageChannel() {
+	if (!messagesChannel) {
+		ofLogNotice("ofxBaseMidiIn::getNextMessage") << "instanciating ofThreadChannel";
+		messagesChannel = std::make_unique<ofThreadChannel<ofxMidiMessage>>();
+	}
+}
+
 // -----------------------------------------------------------------------------
-bool ofxBaseMidiIn::hasWaitingMessages() const{
-	return !messagesChannel.empty();
+bool ofxBaseMidiIn::hasWaitingMessages() {
+	ensureMessageChannel();
+	return !messagesChannel->empty();
 }
 
 //--------------------------------------------------------------
 bool ofxBaseMidiIn::getNextMessage(ofxMidiMessage &message){
-	return messagesChannel.tryReceive(message);
+	ensureMessageChannel();
+	return messagesChannel->tryReceive(message);
 }
 
 // PRIVATE
@@ -89,8 +98,9 @@ void ofxBaseMidiIn::manageNewMessage(double deltatime, std::vector<unsigned char
 	// send event to listeners or push onto thread channel
 	if (newMessageEvent.size()) {
 		ofNotifyEvent(newMessageEvent, midiMessage, this);
-	} else {
-		messagesChannel.send(std::move(midiMessage));
+	}
+	if (messagesChannel) {
+		messagesChannel->send(std::move(midiMessage));
 	}
 }
 

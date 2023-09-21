@@ -51,7 +51,8 @@ public:
 	void setVerbose(bool verbose);
 	
 	bool getNextMessage(ofxMidiMessage &message);
-	bool hasWaitingMessages() const;
+	bool hasWaitingMessages();
+	void ensureMessageChannel();
 
 protected:
 
@@ -68,7 +69,7 @@ protected:
 	bool bVirtual;  //< are we connected to a virtual port?
 	ofxMidiApi api; //< backend api
 
-	ofThreadChannel<ofxMidiMessage> messagesChannel; ///< message passing thread channel
+	std::unique_ptr<ofThreadChannel<ofxMidiMessage>> messagesChannel; ///< message passing thread channel
 
 };
 
