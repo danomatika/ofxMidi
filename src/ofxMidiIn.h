@@ -89,6 +89,13 @@ public:
 	bool openPort(unsigned int portNumber=0);
 	bool openPort(std::string deviceName);
 	
+	/// aliases to openPort
+	///
+	/// setting port = 0 will open the first available
+	///
+	bool setup(unsigned int portNumber=0) { return openPort(portNumber); }
+	bool setup(std::string deviceName)  { return openPort(deviceName); }
+	
 	/// create and connect to a virtual output port (macOS and Linux ALSA only)
 	///
 	/// allows for connections between software
