@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 #
 # this script automatically updates the sources for the PGMidi ios library
 #
@@ -10,18 +10,16 @@
 # 2012 Dan Wilcox <danomatika@gmail.com> 
 #
 
-WD=$(dirname $0)
-
 SRC=PGMidi
 DEST=../libs/pgmidi
 
 ###
 
 # move to this scripts dir
-cd $WD
+cd $(dirname $0)
 
 # get latest source
-git clone git://github.com/petegoodliffe/PGMidi.git
+git clone https://github.com/petegoodliffe/PGMidi.git
 
 # create destination dir
 mkdir -p $DEST

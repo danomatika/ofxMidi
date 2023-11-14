@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/sh
 #
 # this script automatically updates the sources for the rtmidi library
 #
@@ -10,9 +10,7 @@
 # 2012 Dan Wilcox <danomatika@gmail.com> 
 #
 
-WD=$(dirname $0)
-
-VER=4.0.0
+VER=6.0.0
 
 SRC=rtmidi-$VER
 DEST=../libs/rtmidi
@@ -20,7 +18,7 @@ DEST=../libs/rtmidi
 ###
 
 # move to this scripts dir
-cd $WD
+cd $(dirname $0)
 
 # get latest source
 curl http://www.music.mcgill.ca/~gary/rtmidi/release/rtmidi-$VER.tar.gz -O
