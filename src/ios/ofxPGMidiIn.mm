@@ -29,7 +29,7 @@ ofxPGMidiIn::ofxPGMidiIn(const std::string name, ofxMidiApi api) : ofxBaseMidiIn
 	// setup Obj-C interface to PGMidi
 	inputDelegate = new InputDelegate;
 	inputDelegate->d = [[ofxPGMidiSourceDelegate alloc] init];
-	[inputDelegate->d setInputPtr:(void*) this];
+	[inputDelegate->d setInputPtr:(void *)this];
 }
 
 // -----------------------------------------------------------------------------

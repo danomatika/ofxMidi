@@ -37,7 +37,7 @@ PGMidi* ofxPGMidiContext::getMidi() {
 
 // -----------------------------------------------------------------------------
 void ofxPGMidiContext::setConnectionListener(ofxMidiConnectionListener *listener) {
-	[delegate setListenerPtr:(void*) listener];
+	[delegate setListenerPtr:(void *)listener];
 }
 
 // -----------------------------------------------------------------------------
