@@ -34,7 +34,7 @@ ofxPGMidiIn::ofxPGMidiIn(const std::string name, ofxMidiApi api) : ofxBaseMidiIn
 
 // -----------------------------------------------------------------------------
 ofxPGMidiIn::~ofxPGMidiIn() {
-	[inputDelegate->d release];
+	inputDelegate->d = nil;
 	delete inputDelegate;
 }
 
