@@ -76,7 +76,7 @@ public:
 
 protected:
 
-	double length = 20.833; //< averaged tick length in ms, default 120 bpm
-	unsigned long ticks = 0.0; //< current song pos in ticks (6 ticks = 1 beat)
-	std::chrono::steady_clock::time_point timestamp; //< last timestamp
+	double length = 20.833; ///< averaged tick length in ms, default 120 bpm
+	unsigned long ticks = 0.0; ///< current song pos in ticks (6 ticks = 1 beat)
+	std::chrono::steady_clock::time_point timestamp; ///< last timestamp
 };

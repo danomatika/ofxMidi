@@ -83,12 +83,12 @@ void ofxMidiIn::ignoreTypes(bool midiSysex, bool midiTiming, bool midiSense) {
 }
 
 // -----------------------------------------------------------------------------
-void ofxMidiIn::addListener(ofxMidiListener* listener) {
+void ofxMidiIn::addListener(ofxMidiListener *listener) {
 	midiIn->addListener(listener);
 }
 
 // -----------------------------------------------------------------------------
-void ofxMidiIn::removeListener(ofxMidiListener* listener) {
+void ofxMidiIn::removeListener(ofxMidiListener *listener) {
 	midiIn->removeListener(listener);
 }
 

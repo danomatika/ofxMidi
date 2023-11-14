@@ -23,7 +23,7 @@ public:
 	ofxMidiListener() {}
 	virtual ~ofxMidiListener() {}
 
-	virtual void newMidiMessage(ofxMidiMessage& message) = 0;
+	virtual void newMidiMessage(ofxMidiMessage &message) = 0;
 };
 
 /// a single multi byte MIDI message
@@ -36,7 +36,7 @@ public:
 ///     }
 ///
 /// the message-specific types are only set for the appropriate
-/// message types ie pitch is only set for noteon, noteoff, and
+/// message types ie. pitch is only set for noteon, noteoff, and
 /// polyaftertouch messages
 ///
 class ofxMidiMessage: public ofEventArgs {
@@ -46,14 +46,14 @@ public:
 /// \section Variables
 
 	MidiStatus status;
-	int channel;        //< 1 - 16
+	int channel;        ///< 1 - 16
 
 	/// message-specific values,
 	/// converted from raw bytes
-	int pitch;          //< 0 - 127
-	int velocity;       //< 0 - 127
-	int control;        //< 0 - 127
-	int value;          //< depends on message status type
+	int pitch;          ///< 0 - 127
+	int velocity;       ///< 0 - 127
+	int control;        ///< 0 - 127
+	int value;          ///< depends on message status type
 	
 	/// raw bytes
 	std::vector<unsigned char> bytes;
@@ -71,10 +71,10 @@ public:
 /// \section Main
 
 	ofxMidiMessage();
-	ofxMidiMessage(std::vector<unsigned char>* rawBytes); //< parses
-	ofxMidiMessage(const ofxMidiMessage& from);
-	ofxMidiMessage& operator=(const ofxMidiMessage& from);
-	void copy(const ofxMidiMessage& from);
+	ofxMidiMessage(std::vector<unsigned char> *rawBytes); ///< parses
+	ofxMidiMessage(const ofxMidiMessage &from);
+	ofxMidiMessage& operator=(const ofxMidiMessage &from);
+	void copy(const ofxMidiMessage &from);
 	
 	/// parse message from raw MIDI bytes
 	void fromBytes(std::vector<unsigned char> *rawBytes);

@@ -131,12 +131,12 @@ public:
 	///
 	void ignoreTypes(bool midiSysex=true, bool midiTiming=true, bool midiSense=true);
 
-	/// add/remove listener for incoming MIDI events
+	/// add/remove synchronous listener for incoming MIDI events
 	///
 	/// listeners receive from *all* incoming MIDI channels
 	///
-	void addListener(ofxMidiListener* listener);
-	void removeListener(ofxMidiListener* listener);
+	void addListener(ofxMidiListener *listener);
+	void removeListener(ofxMidiListener *listener);
 
 	/// set to verbose = true to print received byte info
 	///

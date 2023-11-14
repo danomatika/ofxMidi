@@ -66,7 +66,7 @@ void ofxBaseMidiIn::setVerbose(bool verbose) {
 // PRIVATE
 // -----------------------------------------------------------------------------
 void ofxBaseMidiIn::manageNewMessage(double deltatime, std::vector<unsigned char> *message) {
-			
+
 	// parse message and fill event
 	ofxMidiMessage midiMessage(message);
 	midiMessage.deltatime = deltatime;
@@ -199,7 +199,7 @@ void ofxBaseMidiOut::sendMidiByte(unsigned char byte) {
 }
 
 //----------------------------------------------------------
-void ofxBaseMidiOut::sendMidiBytes(std::vector<unsigned char>& bytes) {
+void ofxBaseMidiOut::sendMidiBytes(std::vector<unsigned char> &bytes) {
 	if(bStreamInProgress) {
 		stream.insert(stream.end(), bytes.begin(), bytes.end());
 	}

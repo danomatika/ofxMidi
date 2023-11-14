@@ -18,23 +18,23 @@ ofxMidiMessage::ofxMidiMessage() {
 }
 
 // -----------------------------------------------------------------------------
-ofxMidiMessage::ofxMidiMessage(std::vector<unsigned char>* rawBytes) {
+ofxMidiMessage::ofxMidiMessage(std::vector<unsigned char> *rawBytes) {
 	fromBytes(rawBytes);
 }
 
 // -----------------------------------------------------------------------------
-ofxMidiMessage::ofxMidiMessage(const ofxMidiMessage& from) {
+ofxMidiMessage::ofxMidiMessage(const ofxMidiMessage &from) {
 	copy(from);
 }
 
 // -----------------------------------------------------------------------------
-ofxMidiMessage& ofxMidiMessage::operator=(const ofxMidiMessage& from) {
+ofxMidiMessage& ofxMidiMessage::operator=(const ofxMidiMessage &from) {
 	copy(from);
 	return *this;
 }
 
 // -----------------------------------------------------------------------------
-void ofxMidiMessage::copy(const ofxMidiMessage& from) {
+void ofxMidiMessage::copy(const ofxMidiMessage &from) {
 	bytes.clear();
 	for(unsigned int i = 0; i < from.bytes.size(); ++i) {
 		bytes.push_back(from.bytes[i]);

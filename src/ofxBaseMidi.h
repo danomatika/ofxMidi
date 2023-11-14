@@ -54,15 +54,15 @@ protected:
 	/// parses and sends received raw messages to listeners
 	void manageNewMessage(double deltatime, std::vector<unsigned char> *message);
 	
-	int portNum;     //< current port num, -1 if not connected
-	std::string portName; //< current port name, "" if not connected
+	int portNum;     ///< current port num, -1 if not connected
+	std::string portName; ///< current port name, "" if not connected
 
-	ofEvent<ofxMidiMessage> newMessageEvent; //< current message event
+	ofEvent<ofxMidiMessage> newMessageEvent; ///< current message event
 	
-	bool bOpen;     //< is the port currently open?
-	bool bVerbose;  //< print incoming bytes?
-	bool bVirtual;  //< are we connected to a virtual port?
-	ofxMidiApi api; //< backend api
+	bool bOpen;     ///< is the port currently open?
+	bool bVerbose;  ///< print incoming bytes?
+	bool bVirtual;  ///< are we connected to a virtual port?
+	ofxMidiApi api; ///< backend api
 };
 
 /// a MIDI output port
@@ -102,7 +102,7 @@ public:
 	void sendPolyAftertouch(int channel, int pitch, int value);
 	
 	void sendMidiByte(unsigned char byte);
-	void sendMidiBytes(std::vector<unsigned char>& bytes);
+	void sendMidiBytes(std::vector<unsigned char> &bytes);
 	
 	void startMidiStream();
 	void finishMidiStream();
@@ -112,13 +112,13 @@ protected:
 	/// send a raw byte message
 	virtual void sendMessage(std::vector<unsigned char> &message) = 0;
 	
-	int portNum;          //< current port num, -1 if not connected
-	std::string portName; //< current port name, "" if not connected
+	int portNum;          ///< current port num, -1 if not connected
+	std::string portName; ///< current port name, "" if not connected
 
-	std::vector<unsigned char> stream; //< byte stream message byte buffer
+	std::vector<unsigned char> stream; ///< byte stream message byte buffer
 	
-	bool bOpen;             //< is the port currently open?
-	bool bStreamInProgress; //< used with byte stream
-	bool bVirtual;          //< are we connected to a virtual port?
-	ofxMidiApi api;         //< backend api
+	bool bOpen;             ///< is the port currently open?
+	bool bStreamInProgress; ///< used with byte stream
+	bool bVirtual;          ///< are we connected to a virtual port?
+	ofxMidiApi api;         ///< backend api
 };
