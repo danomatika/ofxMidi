@@ -4,12 +4,14 @@
 
 * added queued message passing for ofxMidiIn via the hasWaitingMessages() and
   getNextMessage() functions (Alexandre Burton)
+* added rtmidi in & out error callbacks, just print error for now
 
 * updated for OF 0.12.0
 * updated to RtMidi 0.6.0
 * iOS Obj-C++ sources now use ARC
 * updated midiInputExample with optional queued messaging support
 * readme typo fix (Darío Hereñú)
+* various source formatting updates
 
 * remove unused variable (reported by Dimitre Lima)
 
