@@ -15,6 +15,7 @@
 #include "ofxMidiClock.h"
 #include "ofxMidiTimecode.h"
 
+/// subclasses ofxMidiListener for direct message handling
 class ofApp : public ofBaseApp, public ofxMidiListener {
 
 public:
@@ -37,7 +38,7 @@ public:
 	void gotMessage(ofMessage message);
 
 	/// ofxMidiListener callback
-	void newMidiMessage(ofxMidiMessage &eventArgs);
+	void newMidiMessage(ofxMidiMessage &message);
 
 	ofxMidiIn midiIn;
 	bool verbose = false;

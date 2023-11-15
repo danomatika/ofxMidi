@@ -181,10 +181,10 @@ void ofApp::touchCancelled(ofTouchEventArgs &args) {
 }
 
 //--------------------------------------------------------------
-void ofApp::addMessage(std::string msg) {
+void ofApp::addMessage(std::string message) {
 	messageMutex.lock();
-	std::cout << msg << std::endl;
-	messages.push_back(msg);
+	std::cout << message << std::endl;
+	messages.push_back(message);
 	while(messages.size() > maxMessages) {
 		messages.pop_front();
 	}
@@ -192,8 +192,8 @@ void ofApp::addMessage(std::string msg) {
 }
 
 //--------------------------------------------------------------
-void ofApp::newMidiMessage(ofxMidiMessage &msg) {
-	addMessage(msg.toString());
+void ofApp::newMidiMessage(ofxMidiMessage &message) {
+	addMessage(message.toString());
 }
 
 //--------------------------------------------------------------

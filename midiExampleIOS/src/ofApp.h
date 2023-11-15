@@ -17,6 +17,7 @@
 
 #include <deque>
 
+/// subclasses ofxMidiListener for direct message handling
 class ofApp : public ofxiOSApp, public ofxMidiListener, public ofxMidiConnectionListener {
 	
 public:
@@ -39,8 +40,8 @@ public:
 	// add a message to the display queue
 	void addMessage(std::string msg);
 	
-	// midi message callback
-	void newMidiMessage(ofxMidiMessage &msg);
+	// midi message callback (direct message handling)
+	void newMidiMessage(ofxMidiMessage &message);
 	
 	// midi device (dis)connection event callbacks
 	void midiInputAdded(std::string name, bool isNetwork);
