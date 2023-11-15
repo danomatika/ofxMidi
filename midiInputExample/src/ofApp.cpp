@@ -28,7 +28,8 @@ void ofApp::setup() {
 	// these are ignored by default
 	midiIn.ignoreTypes(false, false, false);
 
-	// add ofApp as a listener
+	// add ofApp as a listener and enable direct message handling
+	// comment this to use queued message handling
 	midiIn.addListener(this);
 
 	// print received messages to the console
@@ -37,6 +38,21 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update() {
+
+	/// queued message handling
+	if(midiIn.hasWaitingMessages()) {
+		ofxMidiMessage message;
+
+		// add the latest message to the message queue
+		while(midiIn.getNextMessage(message)) {
+			midiMessages.push_back(message);
+		}
+
+		// remove any old messages if we have too many
+		while(midiMessages.size() > maxMessages) {
+			midiMessages.erase(midiMessages.begin());
+		}
+	}
 }
 
 //--------------------------------------------------------------
@@ -48,7 +64,7 @@ void ofApp::draw() {
 		int x = 10;
 		int y = i*40 + 40;
 
-		// draw the last recieved message contents to the screen,
+		// draw the last received message contents to the screen,
 		// this doesn't print all the data from every status type
 		// but you should get the general idea
 		stringstream text;
@@ -122,10 +138,12 @@ void ofApp::exit() {
 }
 
 //--------------------------------------------------------------
-void ofApp::newMidiMessage(ofxMidiMessage &msg) {
+/// direct message handling
+/// note: this is called on the MIDI thread, so copy message contents
+void ofApp::newMidiMessage(ofxMidiMessage &message) {
 
 	// add the latest message to the message queue
-	midiMessages.push_back(msg);
+	midiMessages.push_back(message);
 
 	// remove any old messages if we have too many
 	while(midiMessages.size() > maxMessages) {

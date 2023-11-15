@@ -13,6 +13,21 @@
 #include "ofMain.h"
 #include "ofxMidi.h"
 
+/// MIDI input messages can be handled in one of two ways: direct or queued
+///
+/// direct
+/// Subclass ofxMidiListener if you want to receive messages directly on the
+/// MIDI thread. Messages should be manually buffered for use on the GUI thread.
+/// This is faster as it is not limited by the draw framerate but you have to be
+/// careful of memory access.
+///
+/// queued
+/// Manually handle messages using hasWaitingMessages()/getNextMessage().
+/// Received messages are thread safe.
+///
+/// queued message passing is enabled by default and is disabled when an
+/// ofxMidiListener is added
+///
 class ofApp : public ofBaseApp, public ofxMidiListener {
 	
 public:
@@ -29,10 +44,13 @@ public:
 	void mouseDragged(int x, int y, int button);
 	void mousePressed(int x, int y, int button);
 	void mouseReleased();
-	
-	void newMidiMessage(ofxMidiMessage &eventArgs);
+
+	/// direct message handling
+	/// ofxMidiListener callback, called by ofxMidiIn instance if set as listener
+	/// note: this is not needed if you use queued message passing
+	void newMidiMessage(ofxMidiMessage &message);
 	
 	ofxMidiIn midiIn;
-	std::vector<ofxMidiMessage> midiMessages;
+	std::vector<ofxMidiMessage> midiMessages; ///< manual message queue
 	std::size_t maxMessages = 10; ///< max number of messages to keep track of
 };
