@@ -122,7 +122,7 @@ void ofApp::exit() {
 }
 
 //--------------------------------------------------------------
-void ofApp::newMidiMessage(ofxMidiMessage& msg) {
+void ofApp::newMidiMessage(ofxMidiMessage &msg) {
 
 	// add the latest message to the message queue
 	midiMessages.push_back(msg);

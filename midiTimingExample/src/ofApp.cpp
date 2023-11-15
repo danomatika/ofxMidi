@@ -150,7 +150,7 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {
 }
 
 //--------------------------------------------------------------
-void ofApp::newMidiMessage(ofxMidiMessage& message) {
+void ofApp::newMidiMessage(ofxMidiMessage &message) {
 
 	// MIDI CLOCK
 

@@ -37,25 +37,25 @@ public:
 	void deviceOrientationChanged(int newOrientation);
 	
 	// add a message to the display queue
-	void addMessage(string msg);
+	void addMessage(std::string msg);
 	
 	// midi message callback
-	void newMidiMessage(ofxMidiMessage& msg);
+	void newMidiMessage(ofxMidiMessage &msg);
 	
 	// midi device (dis)connection event callbacks
-	void midiInputAdded(string name, bool isNetwork);
-	void midiInputRemoved(string name, bool isNetwork);
+	void midiInputAdded(std::string name, bool isNetwork);
+	void midiInputRemoved(std::string name, bool isNetwork);
 	
-	void midiOutputAdded(string nam, bool isNetwork);
-	void midiOutputRemoved(string name, bool isNetwork);
+	void midiOutputAdded(std::string nam, bool isNetwork);
+	void midiOutputRemoved(std::string name, bool isNetwork);
 
-	vector<ofxMidiIn*> inputs;
-	vector<ofxMidiOut*> outputs;
+	std::vector<ofxMidiIn *> inputs;
+	std::vector<ofxMidiOut *> outputs;
 
-	deque<string> messages;
+	std::deque<std::string> messages;
 	int maxMessages;
 	ofMutex messageMutex; // make sure we don't read from queue while writing
 	
 	int note, ctl;
-	vector<unsigned char> bytes;
+	std::vector<unsigned char> bytes;
 };

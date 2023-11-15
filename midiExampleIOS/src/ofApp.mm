@@ -84,7 +84,7 @@ void ofApp::draw() {
 	ofDrawBitmapString("Input:", 10, 20);
 	int x = 10, y = 34;
 	messageMutex.lock();
-	deque<string>::iterator iter = messages.begin();
+	std::deque<std::string>::iterator iter = messages.begin();
 	for(; iter != messages.end(); ++iter) {
 		ofDrawBitmapString((*iter), x, y);
 		y += 14;
@@ -176,14 +176,14 @@ void ofApp::deviceOrientationChanged(int newOrientation) {
 }
 
 //--------------------------------------------------------------
-void ofApp::touchCancelled(ofTouchEventArgs& args) {
+void ofApp::touchCancelled(ofTouchEventArgs &args) {
 
 }
 
 //--------------------------------------------------------------
-void ofApp::addMessage(string msg) {
+void ofApp::addMessage(std::string msg) {
 	messageMutex.lock();
-	cout << msg << endl;
+	std::cout << msg << std::endl;
 	messages.push_back(msg);
 	while(messages.size() > maxMessages) {
 		messages.pop_front();
@@ -192,13 +192,13 @@ void ofApp::addMessage(string msg) {
 }
 
 //--------------------------------------------------------------
-void ofApp::newMidiMessage(ofxMidiMessage& msg) {
+void ofApp::newMidiMessage(ofxMidiMessage &msg) {
 	addMessage(msg.toString());
 }
 
 //--------------------------------------------------------------
-void ofApp::midiInputAdded(string name, bool isNetwork) {
-	stringstream msg;
+void ofApp::midiInputAdded(std::string name, bool isNetwork) {
+	std::stringstream msg;
 	msg << "ofxMidi: input added: " << name << " network: " << isNetwork;
 	addMessage(msg.str());
 	
@@ -210,13 +210,13 @@ void ofApp::midiInputAdded(string name, bool isNetwork) {
 }
 
 //--------------------------------------------------------------
-void ofApp::midiInputRemoved(string name, bool isNetwork) {
-	stringstream msg;
+void ofApp::midiInputRemoved(std::string name, bool isNetwork) {
+	std::stringstream msg;
 	msg << "ofxMidi: input removed: " << name << " network: " << isNetwork << endl;
 	addMessage(msg.str());
 	
 	// close and remove input port
-	vector<ofxMidiIn*>::iterator iter;
+	std::vector<ofxMidiIn *>::iterator iter;
 	for(iter = inputs.begin(); iter != inputs.end(); ++iter) {
 		ofxMidiIn *input = (*iter);
 		if(input->getName() == name) {
@@ -230,8 +230,8 @@ void ofApp::midiInputRemoved(string name, bool isNetwork) {
 }
 
 //--------------------------------------------------------------
-void ofApp::midiOutputAdded(string name, bool isNetwork) {
-	stringstream msg;
+void ofApp::midiOutputAdded(std::string name, bool isNetwork) {
+	std::stringstream msg;
 	msg << "ofxMidi: output added: " << name << " network: " << isNetwork << endl;
 	addMessage(msg.str());
 	
@@ -242,13 +242,13 @@ void ofApp::midiOutputAdded(string name, bool isNetwork) {
 }
 
 //--------------------------------------------------------------
-void ofApp::midiOutputRemoved(string name, bool isNetwork) {
-	stringstream msg;
+void ofApp::midiOutputRemoved(std::string name, bool isNetwork) {
+	std::stringstream msg;
 	msg << "ofxMidi: output removed: " << name << " network: " << isNetwork << endl;
 	addMessage(msg.str());
 	
 	// close and remove output port
-	vector<ofxMidiOut*>::iterator iter;
+	std::vector<ofxMidiOut *>::iterator iter;
 	for(iter = outputs.begin(); iter != outputs.end(); ++iter) {
 		ofxMidiOut *output = (*iter);
 		if(output->getName() == name) {

@@ -26,7 +26,7 @@ public:
 
 	void keyPressed(int key);
 	void keyReleased(int key);
-	void mouseMoved(int x, int y );
+	void mouseMoved(int x, int y);
 	void mouseDragged(int x, int y, int button);
 	void mousePressed(int x, int y, int button);
 	void mouseReleased(int x, int y, int button);
@@ -37,23 +37,23 @@ public:
 	void gotMessage(ofMessage message);
 
 	/// ofxMidiListener callback
-	void newMidiMessage(ofxMidiMessage& eventArgs);
+	void newMidiMessage(ofxMidiMessage &eventArgs);
 
 	ofxMidiIn midiIn;
 	bool verbose = false;
 
 	// MIDI CLOCK
 
-	ofxMidiClock clock; //< clock message parser
-	bool clockRunning = false; //< is the clock sync running?
-	unsigned int beats = 0; //< song pos in beats
-	double seconds = 0; //< song pos in seconds, computed from beats
-	double bpm = 120; //< song tempo in bpm, computed from clock length
+	ofxMidiClock clock; ///< clock message parser
+	bool clockRunning = false; ///< is the clock sync running?
+	unsigned int beats = 0; ///< song pos in beats
+	double seconds = 0; ///< song pos in seconds, computed from beats
+	double bpm = 120; ///< song tempo in bpm, computed from clock length
 
 	// MIDI TIMECODE
 	
-	ofxMidiTimecode timecode; //< timecode message parser
-	bool timecodeRunning = false; //< is the timecode sync running?
-	long timecodeTimestamp = 0; //< when last quarter frame message was received
-	ofxMidiTimecodeFrame frame; //< timecode frame data, ie. H M S frame rate
+	ofxMidiTimecode timecode; ///< timecode message parser
+	bool timecodeRunning = false; ///< is the timecode sync running?
+	long timecodeTimestamp = 0; ///< when last quarter frame message was received
+	ofxMidiTimecodeFrame frame; ///< timecode frame data, ie. H M S frame rate
 };

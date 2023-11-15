@@ -25,14 +25,14 @@ public:
 	void keyPressed(int key);
 	void keyReleased(int key);
 	
-	void mouseMoved(int x, int y );
+	void mouseMoved(int x, int y);
 	void mouseDragged(int x, int y, int button);
 	void mousePressed(int x, int y, int button);
 	void mouseReleased();
 	
-	void newMidiMessage(ofxMidiMessage& eventArgs);
+	void newMidiMessage(ofxMidiMessage &eventArgs);
 	
 	ofxMidiIn midiIn;
 	std::vector<ofxMidiMessage> midiMessages;
-	std::size_t maxMessages = 10; //< max number of messages to keep track of
+	std::size_t maxMessages = 10; ///< max number of messages to keep track of
 };
