@@ -51,6 +51,6 @@ public:
 	void newMidiMessage(ofxMidiMessage &message);
 	
 	ofxMidiIn midiIn;
-	std::vector<ofxMidiMessage> midiMessages; ///< manual message queue
+	std::vector<ofxMidiMessage> midiMessages; ///< received messages
 	std::size_t maxMessages = 10; ///< max number of messages to keep track of
 };
