@@ -45,8 +45,8 @@ bool ofxBaseMidiIn::isVirtual() {
 }
 
 // -----------------------------------------------------------------------------
-bool ofxMidiIn::isQueued() {
-	return messagesChannel;
+bool ofxBaseMidiIn::isQueued() {
+	return (messagesChannel != nullptr);
 }
 
 // -----------------------------------------------------------------------------
@@ -58,7 +58,7 @@ ofxMidiApi ofxBaseMidiIn::getApi() {
 void ofxBaseMidiIn::addListener(ofxMidiListener *listener) {
 	ofAddListener(newMessageEvent, listener, &ofxMidiListener::newMidiMessage);
 	if(messagesChannel) { // disable thread channel
-		delete messagesChannel;
+		messagesChannel.reset();
 	}
 }
 
@@ -73,7 +73,7 @@ void ofxBaseMidiIn::removeListener(ofxMidiListener *listener) {
 }
 
 //------------------------------------------------------------------------------
-bool ofxBaseMidiIn::hasWaitingMessages() {
+bool ofxBaseMidiIn::hasWaitingMessages() const {
 	return (messagesChannel ? !messagesChannel->empty() : false);
 }
 

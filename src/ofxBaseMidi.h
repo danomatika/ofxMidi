@@ -13,6 +13,7 @@
 #include "ofxMidiConstants.h"
 #include "ofxMidiMessage.h"
 #include "ofxMidiTypes.h"
+#include "ofThreadChannel.h"
 
 /// a base MIDI input port
 ///
@@ -25,9 +26,9 @@ public:
 	ofxBaseMidiIn(const std::string name, ofxMidiApi api);
 	virtual ~ofxBaseMidiIn() {}
 	
-	virtual bool openPort(unsigned int portNumber, bool queued) = 0;
-	virtual bool openPort(std::string deviceName, bool queued) = 0;
-	virtual bool openVirtualPort(std::string portName, bool queued) = 0;
+	virtual bool openPort(unsigned int portNumber) = 0;
+	virtual bool openPort(std::string deviceName) = 0;
+	virtual bool openVirtualPort(std::string portName) = 0;
 	virtual void closePort() = 0;
 
 	virtual void listInPorts() = 0;
