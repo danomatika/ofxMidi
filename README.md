@@ -185,10 +185,13 @@ KNOWN ISSUES
 
 ### Help, app crashes when receiving MIDI messages
 
-If you are sub-classing `ofxMidiListener` and receiving MIDI messages via the
-`newMidiMessage()` callback function, there is a chance of segmentation faults
-(and crashes) if you share the received messages between multiple threads (ie.
-main GUI, OSC receiver, etc).
+_As of ofxMidi 1.3.0, queued message passing is available for ofxMidiIn via
+getNextMessage()._
+
+If you are using direct message passing by sub-classing `ofxMidiListener` and
+receiving MIDI messages via the `newMidiMessage()` callback function, there is a
+chance of segmentation faults (and crashes) if you share the received messages
+between multiple threads (ie. main GUI, OSC receiver, etc).
 
 Depending upon the design of your application, you may need to place a mutex
 object or shared lock around access to these resources shared between threads.
