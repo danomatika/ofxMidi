@@ -20,11 +20,11 @@
 /// MTC frame
 struct ofxMidiTimecodeFrame {
 
-	int hours = 0;   //< hours 0-23
-	int minutes = 0; //< minutes 0-59
-	int seconds = 0; //< seconds 0-59
-	int frames = 0;  //< frames 0-29 (depending on framerate)
-	unsigned char rate = 0x0; //< 0x0: 24, 0x1: 25, 0x2: 29.97, 0x3: 30
+	int hours = 0;   ///< hours 0-23
+	int minutes = 0; ///< minutes 0-59
+	int seconds = 0; ///< seconds 0-59
+	int frames = 0;  ///< frames 0-29 (depending on framerate)
+	unsigned char rate = 0x0; ///< 0x0: 24, 0x1: 25, 0x2: 29.97, 0x3: 30
 
 	/// get the framerate value in fps
 	double getFps() const;
@@ -109,20 +109,20 @@ protected:
 
 		/// detected time direction
 		enum Direction {
-			BACKWARDS = -1, //< time is moving backwards ie. rewinding
-			UNKNOWN   =  0, //< unknown so far
-			FORWARDS  =  1  //< time is advancing
+			BACKWARDS = -1, ///< time is moving backwards ie. rewinding
+			UNKNOWN   =  0, ///< unknown so far
+			FORWARDS  =  1  ///< time is advancing
 		};
 
 		// data
 		ofxMidiTimecodeFrame frame;
 
 		// protocol handling
-		unsigned int count = 0; //< current received QF message count
-		bool receivedFirst = false; //< did we receive the first message? (0x0* frames)
-		bool receivedLast = false; //< did we receive the last message? (0x7* hours)
-		unsigned int lastDataByte = 0x00; //< last received data byte for direction detection
-		Direction direction = UNKNOWN; //< forwards or backwards?
+		unsigned int count = 0; ///< current received QF message count
+		bool receivedFirst = false; ///< did we receive the first message? (0x0* frames)
+		bool receivedLast = false; ///< did we receive the last message? (0x7* hours)
+		unsigned int lastDataByte = 0x00; ///< last received data byte for direction detection
+		Direction direction = UNKNOWN; ///< forwards or backwards?
 	};
 
 	/// current quarter frame info
@@ -134,7 +134,7 @@ protected:
 	/// messages (aka 0xF10* & 0xF17*) since a DAW could stop in the middle and start
 	/// a new set of Quarter Frame messages based on user input aka start/stop
 	///
-	/// also try to detect direction based on last receeved byte,
+	/// also try to detect direction based on last received byte,
 	/// this should hopefully handle both forwards and backwards playback:
 	/// * forwards:  0xF10*, 0xF11*, 0xF12*, 0xF13*, 0xF14*, 0xF15*, 0xF16*, 0xF17*
 	/// * backwards: 0xF17*, 0xF16*, 0xF15*, 0xF14*, 0xF13*, 0xF12*, 0xF11*, 0xF10*

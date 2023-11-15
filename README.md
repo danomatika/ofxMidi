@@ -6,7 +6,7 @@ ofxMidi
 
 MIDI input and output addon for openFrameworks
 
-Copyright (c) [Dan Wilcox](danomatika.com) 2011-2020  
+Copyright (c) [Dan Wilcox](danomatika.com) 2011-2023  
 (original implementation by Chris O'Shea, Arturo Castro, Kyle McDonald)
 
 BSD Simplified License.
@@ -90,20 +90,21 @@ If everything went ok, you should now be able to open the generated project and 
 
 ### macOS
 
-Open the Xcode project, select the project scheme, and hit "Run".
+Open the Xcode project, select the Debug scheme, and hit "Run".
 
 ### Linux
 
-Open the Code::Blocks .workspace and hit F9 to build. Optionally, you can build the example with the Makefile.
+Open the QT Creator project file and/or build the example with the Makefile.
 
-To built and run it on the terminal:
-
-    make
-    make run
+To build and run via Makefile on the terminal:
+~~~
+make
+make run
+~~~
 
 ### Windows
 
-An example Visual Studio solution as well as a Codeblocks workspace are included.
+Open the Visual Studio project, build and run.
 
 Creating a New ofxMidi Project
 ------------------------------
@@ -125,14 +126,6 @@ Then rename the folder:
 Rename the project in Xcode (do not rename the .xcodeproj file in Finder!):
 
 * Xcode Menu->Project->Rename
-
-#### Codeblocks (Win & Linux)
-
-* Rename the \*.cbp and \*.workspace files
-* Open the workspace and readd the renamed project file by dragging it onto the project tree (it will complain about the missing project you renamed)
-* If you renamed the project *folder* make sure to set the project name to this folder name or C::B will not be able to run the binary:
-  - Right click on project in the tree (not the workspace)
-  - Properties...->Title
 
 #### Visual Studio
 
@@ -176,17 +169,12 @@ ofxMidi
 * Add the ofxMidi sources to the project tree
     ofxMidi/src
     ofxMidi/libs/rtmidi
-  * Codeblocks: right click on the project in the project tree and select Add Files Recursively...
   * Visual Studio: drag the ofxMidi/src & ofxMidi/libs/rtmidi folder onto the project tree
 * Add the following search paths:
 <pre>
 ..\\..\\..\addons\ofxMidi\src
 ..\\..\\..\addons\ofxMidi\libs\rtmidi
 </pre>
-* Codeblocks
-  - Right-click on the project in the project tree and select Build Options...
-  - Select the project name in the tree, not release or debug
-  - Search directories tab->Add
 * Visual Studio
   - Right click on the project in the project tree and select Properties
   - Set the Configuration to All Configurations
@@ -197,10 +185,13 @@ KNOWN ISSUES
 
 ### Help, app crashes when receiving MIDI messages
 
-If you are sub-classing `ofxMidiListener` and receiving MIDI messages via the
-`newMidiMessage()` callback function, there is a chance of segmentation faults
-(and crashes) if you share the received messages between multiple threads (ie.
-main GUI, OSC receiver, etc).
+_As of ofxMidi 1.3.0, queued message passing is available for ofxMidiIn via
+getNextMessage()._
+
+If you are using direct message passing by sub-classing `ofxMidiListener` and
+receiving MIDI messages via the `newMidiMessage()` callback function, there is a
+chance of segmentation faults (and crashes) if you share the received messages
+between multiple threads (ie. main GUI, OSC receiver, etc).
 
 Depending upon the design of your application, you may need to place a mutex
 object or shared lock around access to these resources shared between threads.
@@ -308,7 +299,7 @@ void MyClass::setup() {
 
 ### ofxMidi classes created in constructors don't seem to work
 
-This is related to the issue above, in that the ofxMidi classes are being created too early in the app startup process and the back end MIDI library is not being set up correctly. The easiest & best solution is to call the ofxMidi class setup code as part of you ofApp's setup() function, whether there directly or within a subclass. This way you have direct control over when things are happening as opposed to within a constructor which may be called at an arbitrarily early point.
+This is related to the issue above, in that the ofxMidi classes are being created too early in the app startup process and the back end MIDI library is not being set up correctly. The easiest & best solution is to call the ofxMidi class setup code as part of your ofApp's setup() function, whether there directly or within a subclass. This way you have direct control over when things are happening as opposed to within a constructor which may be called at an arbitrarily early point.
 
 DEVELOPING
 ----------

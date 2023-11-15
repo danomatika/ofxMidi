@@ -140,7 +140,7 @@ void ofApp::windowResized(int w, int h) {
 }
 
 //--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg) {
+void ofApp::gotMessage(ofMessage message) {
 
 }
 
@@ -150,7 +150,7 @@ void ofApp::dragEvent(ofDragInfo dragInfo) {
 }
 
 //--------------------------------------------------------------
-void ofApp::newMidiMessage(ofxMidiMessage& message) {
+void ofApp::newMidiMessage(ofxMidiMessage &message) {
 
 	// MIDI CLOCK
 
