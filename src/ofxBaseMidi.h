@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Dan Wilcox <danomatika@gmail.com>
+ * Copyright (c) 2013-2023 Dan Wilcox <danomatika@gmail.com>
  *
  * BSD Simplified License.
  * For information on usage and redistribution, and for a DISCLAIMER OF ALL
@@ -25,9 +25,9 @@ public:
 	ofxBaseMidiIn(const std::string name, ofxMidiApi api);
 	virtual ~ofxBaseMidiIn() {}
 	
-	virtual bool openPort(unsigned int portNumber) = 0;
-	virtual bool openPort(std::string deviceName) = 0;
-	virtual bool openVirtualPort(std::string portName) = 0;
+	virtual bool openPort(unsigned int portNumber, bool queued) = 0;
+	virtual bool openPort(std::string deviceName, bool queued) = 0;
+	virtual bool openVirtualPort(std::string portName, bool queued) = 0;
 	virtual void closePort() = 0;
 
 	virtual void listInPorts() = 0;
@@ -39,6 +39,7 @@ public:
 	std::string getName();
 	bool isOpen();
 	bool isVirtual();
+	bool isQueued();
 	ofxMidiApi getApi();
 
 	virtual void ignoreTypes(bool midiSysex=true, bool midiTiming=true,
@@ -46,6 +47,9 @@ public:
 
 	void addListener(ofxMidiListener *listener);
 	void removeListener(ofxMidiListener *listener);
+
+	bool hasWaitingMessages() const;
+	bool getNextMessage(ofxMidiMessage &message);
 
 	void setVerbose(bool verbose);
 
@@ -63,6 +67,11 @@ protected:
 	bool bVerbose;  ///< print incoming bytes?
 	bool bVirtual;  ///< are we connected to a virtual port?
 	ofxMidiApi api; ///< backend api
+
+private:
+
+	/// message passing thread channel
+	std::unique_ptr<ofThreadChannel<ofxMidiMessage>> messagesChannel;
 };
 
 /// a MIDI output port

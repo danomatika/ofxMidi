@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013 Dan Wilcox <danomatika@gmail.com>
+ * Copyright (c) 2013-2023 Dan Wilcox <danomatika@gmail.com>
  *
  * BSD Simplified License.
  * For information on usage and redistribution, and for a DISCLAIMER OF ALL
@@ -15,7 +15,8 @@
 
 class ofxMidiMessage;
 
-/// receives MIDI messages
+/// MIDI message receiver base class
+/// subclass and add to an ofxMidiIn instance to receive messages directly
 class ofxMidiListener {
 
 public:
@@ -23,6 +24,7 @@ public:
 	ofxMidiListener() {}
 	virtual ~ofxMidiListener() {}
 
+	/// called on the MIDI thread, copy and/or buffer message content on usage
 	virtual void newMidiMessage(ofxMidiMessage &message) = 0;
 };
 
