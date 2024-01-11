@@ -104,6 +104,15 @@ linuxarmv7l:
 	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
 	ADDON_INCLUDES_EXCLUDE += src/ios/%
 
+linuxaarch64:
+	ADDON_PKG_CONFIG_LIBRARIES = alsa
+	
+	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
+	ADDON_SOURCES_EXCLUDE += src/ios/%
+	
+	ADDON_INCLUDES_EXCLUDE = libs/pgmidi/%
+	ADDON_INCLUDES_EXCLUDE += src/ios/%
+
 msys2:
 	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
 	ADDON_SOURCES_EXCLUDE += src/ios/%
