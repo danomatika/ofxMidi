@@ -1,3 +1,7 @@
+1.3.1: 2024 Jan 11
+
+* added addons_config.mk linuxaarch64 target for 64 bit RPi 4 (Andy Fischer)
+
 1.3.0: 2023 Nov 15
 
 * fixed ofxMidiClock getBeat and getSeconds conversion warnings (Dimitre Lima)
