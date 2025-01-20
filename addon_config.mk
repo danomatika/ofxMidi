@@ -131,8 +131,10 @@ android/armeabi:
 
 android/armeabi-v7a:
 
-osx:
-	# osx/iOS only
+osx: macos
+
+macos:
+	# macOS/iOS only
 	ADDON_FRAMEWORKS = CoreMIDI
 	
 	ADDON_SOURCES_EXCLUDE = libs/pgmidi/%
@@ -142,7 +144,7 @@ osx:
 	ADDON_INCLUDES_EXCLUDE += src/ios/%
 
 ios:
-	# osx/iOS only
+	# macOS/iOS only
 	ADDON_FRAMEWORKS = CoreMIDI
 	
 	ADDON_SOURCES_EXCLUDE = libs/rtmidi/%
